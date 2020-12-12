@@ -30,16 +30,17 @@ export function fetchUser(userObj) {
 
     fetch("http://localhost:3000/api/v1/auth", reqObj)
     .then(resp => resp.json())
-    .then(data => console.log(data))
-//       if (data.error) {
-//         history.push('/login')
-//         alert(data.error)
+    .then(data => {
+      if (data.error) {
+        history.push('/login')
+        alert(data.error)
 
-//       } else {
-//         dispatch({ type: "LOGIN_USER", data})
-//         localStorage.setItem('my_app_token', data.token)
-//       }
-//     })
+      } else {
+        dispatch({ type: "LOGIN_USER", data})
+        localStorage.setItem('my_app_token', data.token)
+        console.log(data)
+      }
+    })
   }
 }
 
@@ -66,15 +67,16 @@ export function signupUser(userObj) {
 
     fetch("http://localhost:3000/api/v1/users", reqObj)
     .then(resp => resp.json())
-    .then(data => console.log(data))
-    //   if (data.error) {
-    //     history.push('/signup')
-    //     alert(data.error)
+    .then(data => {
+      if (data.error) {
+        history.push('/signup')
+        alert(data.error)
 
-    //   } else {
-    //   dispatch({ type: "LOGIN_USER", data})
-    //   localStorage.setItem('my_app_token', data.token)
-    //   }
-    // })
+      } else {
+      dispatch({ type: "LOGIN_USER", data})
+      localStorage.setItem('my_app_token', data.token)
+      console.log(data)
+      }
+    })
   }
 }

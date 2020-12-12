@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchUser } from '../actions/user'
 import { Link } from 'react-router-dom'
+import { Container, Form, Button } from 'react-bootstrap'
 
 
 class Login extends Component {
@@ -14,7 +15,6 @@ class Login extends Component {
     this.setState({
       [e.target.name]: e.target.value
     })
-    console.log(e.target.name, e.target.value)
   }
 
   handleSubmit = (e) => {
@@ -32,16 +32,24 @@ class Login extends Component {
 
   render() {
     return (
-    <div>
-      <form className="login-form" onSubmit={this.handleSubmit}>
-        <h1>Login to GamePad</h1>
-        <input placeholder="Username" type="text" name="username" value={this.state.username} onChange={this.handleChange} />
-        <input placeholder="Password" type="text" name="password" value={this.state.password} onChange={this.handleChange} />
+      <Container style={{width: "50%"}}>  
 
-        <button type='submit'>Login</button>
-        <Link to={`/signup`}>or Signup</Link>
-      </form> 
-    </div>    
+        <h1 style={{textAlign: "center"}}>Login</h1>
+        <Form onSubmit={this.handleSubmit}>
+          <Form.Group controlId="formUsername">
+            <Form.Label>Username</Form.Label>
+              <Form.Control type="text" placeholder="Username" name="username" value={this.state.username} onChange={this.handleChange} />
+          </Form.Group>
+          <Form.Group controlId="formPassword">
+            <Form.Label>Password</Form.Label>
+              <Form.Control type="password" placeholder="Password" name="password" value={this.state.password} onChange={this.handleChange} />
+          </Form.Group>
+          <Button variant="outline-primary" type="submit">Login</Button>
+          <Link to={`/signup`}> or Signup</Link>
+        </Form>
+
+      </Container> 
+
     );
   }
 }

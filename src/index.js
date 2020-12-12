@@ -7,7 +7,7 @@ import rootReducer from './reducers/index'
 import thunk from 'redux-thunk'
 import App from './App';
 import './index.css';
-// import 'semantic-ui-css/semantic.min.css'
+import 'bootstrap/dist/css/bootstrap.min.css';
 import history from './history'
 
 
