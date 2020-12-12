@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchUser } from '../actions/user'
 import { Link } from 'react-router-dom'
-import { Container, Form, Button } from 'react-bootstrap'
+import Container from 'react-bootstrap/Container'
+import Form from 'react-bootstrap/Form'
+import Button from 'react-bootstrap/Button'
 
 
 class Login extends Component {
@@ -32,6 +34,7 @@ class Login extends Component {
 
   render() {
     return (
+
       <Container style={{width: "50%"}}>  
 
         <h1 style={{textAlign: "center"}}>Login</h1>
@@ -49,6 +52,7 @@ class Login extends Component {
         </Form>
 
       </Container> 
+    
 
     );
   }

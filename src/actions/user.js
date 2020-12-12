@@ -39,6 +39,7 @@ export function fetchUser(userObj) {
         dispatch({ type: "LOGIN_USER", data})
         localStorage.setItem('my_app_token', data.token)
         console.log(data)
+        history.push('/home')
       }
     })
   }
@@ -76,6 +77,7 @@ export function signupUser(userObj) {
       dispatch({ type: "LOGIN_USER", data})
       localStorage.setItem('my_app_token', data.token)
       console.log(data)
+      history.push('/home')
       }
     })
   }
