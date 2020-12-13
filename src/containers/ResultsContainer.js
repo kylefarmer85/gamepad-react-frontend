@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux'
 import { fetchSearchResults } from '../actions/search'
 import SearchResult from '../components/SearchResult'
@@ -6,39 +6,34 @@ import Loading from '../components/Loading'
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 
-class ResultsContainer extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      searchTerm: this.props.match.params.searchTerm
-    }
-  }
+const ResultsContainer = (props) => {
 
-  componentDidMount() {
-    console.log(this.props.match.params.searchTerm)
-    this.props.fetchSearchResults(this.state.searchTerm)
-  }
+  useEffect(() => {
+    console.log(props.match.params.searchTerm)
+    props.fetchSearchResults(props.match.params.searchTerm)
+  }, [props.match.params.searchTerm]);
+ 
 
-  renderSearchResults = () => {
-    return this.props.searchResults.map(game => {
+
+  const renderSearchResults = () => {
+    return props.searchResults.map(game => {
       return <SearchResult {...game} key={game.id}/>
     })
   }
 
-  render() {
-    return (
-      <Container>
-        <Row>
-          <h3>{this.props.match.params.searchTearm}</h3>
-          { this.props.loading?
-          <Loading />
-          :
-          this.renderSearchResults()
-          }
-        </Row>
-      </Container>
-    );
-  }
+
+  return (
+    <Container>
+      <Row>
+        <h3>{props.match.params.searchTearm}</h3>
+        { props.loading?
+        <Loading />
+        :
+        renderSearchResults()
+        }
+      </Row>
+    </Container>
+  );
 }
 
 
