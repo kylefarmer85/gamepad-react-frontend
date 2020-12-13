@@ -6,8 +6,8 @@ const ResultsContainer = (props) => {
 
   useEffect(() => {
     console.log(props.match.params.searchTerm)
-    fetchSearchResults(props.match.params.searchTerm)
-  },[props.match.params.searchTerm])
+    props.fetchSearchResults(props.match.params.searchTerm)
+  },[props])
 
   return (
     <div>
@@ -16,6 +16,12 @@ const ResultsContainer = (props) => {
   );
 }
 
+const mapStateToProps = (state) => {
+  return {
+    searchResults: state.searchResults,
+    loading: state.loading
+  }
+}
 
 
-export default connect(null, { fetchSearchResults })(ResultsContainer);
+export default connect(mapStateToProps, { fetchSearchResults })(ResultsContainer);

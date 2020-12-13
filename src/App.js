@@ -7,12 +7,32 @@ import NavBar from './components/NavBar'
 import Login from './components/Login'
 import Signup from './components/Signup'
 import Home from './components/Home'
-import Search from './components/Search'
 import ResultsContainer from './containers/ResultsContainer'
 
 
-
 class App extends Component {
+
+  // componentDidMount(){
+  //   const token = localStorage.getItem('my_app_token')
+
+  //   if (!token) {
+  //     this.props.history.push('/login')
+  //   } else {
+
+  //     const reqObj = {
+  //       method: 'GET',
+  //       headers: {
+  //         Authorization: `Bearer ${token}`
+  //       }
+  //     }
+
+  //     fetch('http://localhost:3000/api/v1/current_user', reqObj)
+  //     .then(resp => resp.json())
+  //     .then(data => {
+  //       this.props.currentUser(data)
+  //     })
+  //   }
+  // }
 
   render(){
     return (
