@@ -14,11 +14,14 @@ const NavBar = (props) => {
 
   return (
     <div>
-      <Navbar fixed="top" expand="md" bg="dark" variant="dark">
+      <Navbar expand="md" bg="dark" variant="dark">
       <Navbar.Brand href="/home">GamePad</Navbar.Brand>
         <Nav className="mr-auto">
         { props.user ?
+        <>
           <Nav.Link href="/login" onClick={handleLogout}>Logout</Nav.Link>
+          <Nav.Link href="/login" onClick={handleLogout}>Profile</Nav.Link>
+          </>
         :  
           <Nav.Link href="/login">Login</Nav.Link>
         } 

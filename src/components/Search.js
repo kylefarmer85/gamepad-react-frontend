@@ -11,11 +11,13 @@ const Search = () => {
 
   const handleChange = (e) => {
     setSearchTerm(e.target.value)
+    console.log(searchTerm)
   }
 
   const handleSubmit = (e) => {
     e.preventDefault()
     history.push(`/search/${searchTerm}`)
+    setSearchTerm("")
     e.target.reset()
     
   }
@@ -23,7 +25,7 @@ const Search = () => {
 
   return (
     <Form inline onSubmit={handleSubmit}>
-      <FormControl type="text"  name="searchTerm" placeholder="Search" className="mr-sm-2" onChange={handleChange} />
+      <FormControl type="text" name="searchTerm" placeholder="Search" className="mr-sm-2" onChange={handleChange} />
       <Button type="submit" variant="outline-light">Search</Button>
     </Form>
   );

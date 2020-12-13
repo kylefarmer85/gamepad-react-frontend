@@ -23,8 +23,7 @@ class Login extends Component {
     e.preventDefault()
 
     this.props.fetchUser(this.state)
-
-    // this.props.history.push('/notes')
+    
     this.setState({
       username: '',
       password: ''
