@@ -1,20 +1,23 @@
-import React, { useEffect } from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { fetchSearchResults } from '../actions/search'
 
-const ResultsContainer = (props) => {
+class ResultsContainer extends Component {
 
-  useEffect(() => {
-    console.log(props.match.params.searchTerm)
-    props.fetchSearchResults(props.match.params.searchTerm)
-  },[props])
+  componentDidMount() {
+    console.log(this.props.match.params.searchTerm)
+    this.props.fetchSearchResults(this.props.match.params.searchTerm)
+  }
 
-  return (
-    <div>
-      
-    </div>
-  );
+  render() {
+    return (
+      <div>
+        
+      </div>
+    );
+  }
 }
+
 
 const mapStateToProps = (state) => {
   return {
@@ -23,5 +26,6 @@ const mapStateToProps = (state) => {
   }
 }
 
-
 export default connect(mapStateToProps, { fetchSearchResults })(ResultsContainer);
+
+

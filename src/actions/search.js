@@ -1,3 +1,5 @@
+import history from '../history'
+
 export function fetchSearchResults(searchTerm) {
   return(dispatch) => {
     dispatch({type: 'START_ADDING_SEARCH_REQUEST'})
@@ -21,8 +23,6 @@ export function fetchSearchResults(searchTerm) {
 
       } else {
         dispatch({ type: "RETURN_RESULTS", data})
-        console.log(data)
-        history.push('/home')
       }
     })
   }

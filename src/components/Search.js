@@ -2,9 +2,10 @@ import React, { useState } from 'react';
 import Form from 'react-bootstrap/Form'
 import FormControl from 'react-bootstrap/FormControl'
 import Button from 'react-bootstrap/Button'
-import history from '../history'
+import { useHistory } from 'react-router-dom'
 
 const Search = () => {
+  let history = useHistory()
 
   const [searchTerm, setSearchTerm] = useState("")
 
@@ -16,7 +17,9 @@ const Search = () => {
     e.preventDefault()
     history.push(`/search/${searchTerm}`)
     e.target.reset()
+    
   }
+
 
   return (
     <Form inline onSubmit={handleSubmit}>
