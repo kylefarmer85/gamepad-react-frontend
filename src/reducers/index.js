@@ -1,8 +1,10 @@
 import { combineReducers } from 'redux';
-import user from './userReducer';
 import loading from './loadingReducer';
+import user from './userReducer';
+import searchResults from './searchReducer';
 
 export default combineReducers({
+  loading,
   user,
-  loading
+  searchResults
 });

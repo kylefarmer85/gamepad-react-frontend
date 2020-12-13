@@ -4,6 +4,12 @@ const loadingReducer = (state = false, action) => {
     case 'START_ADDING_USER_REQUEST':
       return true
 
+    case 'START_ADDING_SEARCH_REQUEST':
+      return true
+      
+    case 'RETURN_RESULTS':
+      return false  
+
     case 'LOGIN_USER':
       return false
 
