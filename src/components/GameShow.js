@@ -1,9 +1,11 @@
 import React from 'react';
 import { v4 as uuidv4 } from 'uuid'
 import Container from 'react-bootstrap/Container'
+import { addToFavorites } from '../actions/games'
+import { connect } from 'react-redux'
 
 
-const GameShow = ({game, screenshots}) => {
+const GameShow = ({game, screenshots, addToFavorites}) => {
 
     return (
       <Container>
@@ -16,7 +18,7 @@ const GameShow = ({game, screenshots}) => {
             }
             <br>
             </br>
-             <button>Add to Favorites</button>
+             <button onClick={() => addToFavorites(game.id, game.name,game.background_image)}>Add to Favorites</button>
         </div>
        
       
@@ -32,15 +34,18 @@ const GameShow = ({game, screenshots}) => {
         <img src= {game.background_image_additional} alt='game'/> */}
 
         
-        {
+        { 
+          screenshots ?
           screenshots.map(ss => <img src={ss.image} alt='screenshot' key={uuidv4()}></img>)
+          :
+          null
         }
       
         </Container>
     ); 
 }
 
-export default GameShow;
+export default connect (null, { addToFavorites })(GameShow)
 
 
 

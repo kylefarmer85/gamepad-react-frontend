@@ -3,9 +3,6 @@ const loadingReducer = (state = false, action) => {
 
     case 'START_ADDING_USER_REQUEST':
       return true
-
-    case 'START_ADDING_SEARCH_REQUEST':
-      return true
       
     case 'RETURN_RESULTS':
       return false  
@@ -15,6 +12,9 @@ const loadingReducer = (state = false, action) => {
 
     case 'CURRENT_USER':
       return false
+
+    case 'ADD_GAME':
+      return false  
     
     default:
       return state

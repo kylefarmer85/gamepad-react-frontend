@@ -2,7 +2,7 @@ import history from '../history'
 
 export function fetchSearchResults(searchTerm) {
   return(dispatch) => {
-    dispatch({type: 'START_ADDING_SEARCH_REQUEST'})
+    dispatch({type: 'START_ADDING_USER_REQUEST'})
 
     const reqObj = {
       method: 'POST',

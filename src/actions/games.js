@@ -1,7 +1,13 @@
 
-export function addToFavorites(gameApiId) {
-  return(dispatch) => {
-    dispatch({type: 'START_ADDING_USER_REQUEST'})
+export function addToFavorites(gameApiId, gameName, gameImage) {
+  return(dispatch, getState) => {
+    const state = getState()
+
+    const alreadyFavorite = state.games.find(g => g.game_api_id === gameApiId)
+
+    if (alreadyFavorite) {
+      return alert("This game is already in your collection")
+    }
 
     const reqObj = {
       method: 'POST',
@@ -9,20 +15,22 @@ export function addToFavorites(gameApiId) {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        game_api_id: gameApiId
+        user_id: state.user.id,
+        game_api_id: gameApiId,
+        game_name: gameName,
+        game_image: gameImage
       })
     }
 
-    fetch("http://localhost:3000/api/v1/auth", reqObj)
+    fetch("http://localhost:3000/api/v1/games/favorites", reqObj)
     .then(resp => resp.json())
-    .then(data => {
-      if (data.error) {
-        history.push('/login')
-        alert(data.error)
+    .then(game => {
+      console.log(game)
+      if (game.error) {
+        alert(game.error)
 
       } else {
-        dispatch({ type: "LOGIN_USER", data})
-        localStorage.setItem('my_app_token', data.token)
+        dispatch({ type: "ADD_GAME", game})
       }
     })
   }
