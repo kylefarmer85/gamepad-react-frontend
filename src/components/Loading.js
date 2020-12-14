@@ -3,14 +3,14 @@ import Sonic from '../gifs/sonic-foot-tap.gif'
 
 
 const divStyle = {
-  margin: "auto",
-  paddingTop: "25%"
+  display: 'block',
+  margin: '25% auto'
 }
 
 const Loading = () => {
   return (
-    <div style={divStyle}>
-     <img src={Sonic} alt="sonic waiting" />
+    <div >
+     <img style={divStyle} src={Sonic} alt="sonic waiting" />
     </div>
   );
 }

@@ -4,19 +4,18 @@ import FormControl from 'react-bootstrap/FormControl'
 import Button from 'react-bootstrap/Button'
 import { useHistory } from 'react-router-dom'
 
-const Search = () => {
+const SearchBar = () => {
   let history = useHistory()
 
   const [searchTerm, setSearchTerm] = useState("")
 
   const handleChange = (e) => {
     setSearchTerm(e.target.value)
-    console.log(searchTerm)
   }
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    history.push(`/search/${searchTerm}`)
+    history.push(`/games/search/${searchTerm}`)
     setSearchTerm("")
     e.target.reset()
     
@@ -31,5 +30,5 @@ const Search = () => {
   );
 }
 
-export default Search;
+export default SearchBar;
 

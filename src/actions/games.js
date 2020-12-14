@@ -1,8 +1,7 @@
-import history from '../history'
 
-export function fetchSearchResults(searchTerm) {
+export function addToFavorites(gameApiId) {
   return(dispatch) => {
-    dispatch({type: 'START_ADDING_SEARCH_REQUEST'})
+    dispatch({type: 'START_ADDING_USER_REQUEST'})
 
     const reqObj = {
       method: 'POST',
@@ -10,21 +9,21 @@ export function fetchSearchResults(searchTerm) {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        search_term: searchTerm
+        game_api_id: gameApiId
       })
     }
 
-    fetch("http://localhost:3000/api/v1/games/search", reqObj)
+    fetch("http://localhost:3000/api/v1/auth", reqObj)
     .then(resp => resp.json())
     .then(data => {
       if (data.error) {
-        history.push('/home')
+        history.push('/login')
         alert(data.error)
 
       } else {
-        dispatch({ type: "RETURN_RESULTS", data})
+        dispatch({ type: "LOGIN_USER", data})
+        localStorage.setItem('my_app_token', data.token)
       }
     })
   }
 }
-

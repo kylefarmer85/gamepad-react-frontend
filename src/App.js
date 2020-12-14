@@ -8,6 +8,8 @@ import Login from './components/Login'
 import Signup from './components/Signup'
 import Home from './components/Home'
 import ResultsContainer from './containers/ResultsContainer'
+import GameContainer from './containers/GameContainer'
+
 
 
 class App extends Component {
@@ -39,13 +41,13 @@ class App extends Component {
       <div className="App">
         <NavBar />
           <Switch>
-
+          
             <Route exact path ='/signup' component={Signup} />
-            <Route exact path ='/login' component={Login} />
-            <Route exact path ='/search/:searchTerm' component={ResultsContainer} />
+            <Route exact path ='/login' component={Login} /> 
+            <Route exact path ='/games/search/:searchTerm' component={ResultsContainer} />
+            <Route exact path ='/games/:id' component={GameContainer} />
             <Route path ='/' component={Home} />
             
-
           </Switch> 
       </div>
     );

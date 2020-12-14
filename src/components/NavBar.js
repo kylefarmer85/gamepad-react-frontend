@@ -3,7 +3,7 @@ import Navbar from 'react-bootstrap/Navbar'
 import Nav from 'react-bootstrap/Nav'
 import { connect } from 'react-redux';
 import { logoutUser } from '../actions/user'
-import Search from './Search'
+import SearchBar from './SearchBar'
 
 const NavBar = (props) => {
 
@@ -13,7 +13,7 @@ const NavBar = (props) => {
   }
 
   return (
-    <div>
+   
       <Navbar expand="md" bg="dark" variant="dark">
       <Navbar.Brand href="/home">GamePad</Navbar.Brand>
         <Nav className="mr-auto">
@@ -26,9 +26,9 @@ const NavBar = (props) => {
           <Nav.Link href="/login">Login</Nav.Link>
         } 
         </Nav>
-        <Search />
+        <SearchBar />
       </Navbar>
-    </div>
+   
   );
 }
 

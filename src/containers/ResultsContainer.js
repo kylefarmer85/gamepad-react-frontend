@@ -9,7 +9,6 @@ import Row from 'react-bootstrap/Row'
 const ResultsContainer = (props) => {
 
   useEffect(() => {
-    console.log(props.match.params.searchTerm)
     props.fetchSearchResults(props.match.params.searchTerm)
   }, [props.match.params.searchTerm]);
  
