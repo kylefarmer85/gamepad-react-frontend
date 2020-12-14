@@ -18,7 +18,6 @@ const SearchBar = () => {
     history.push(`/games/search/${searchTerm}`)
     setSearchTerm("")
     e.target.reset()
-    
   }
 
 

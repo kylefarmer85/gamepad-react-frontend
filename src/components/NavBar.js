@@ -20,7 +20,7 @@ const NavBar = (props) => {
         { props.user ?
         <>
           <Nav.Link href="/login" onClick={handleLogout}>Logout</Nav.Link>
-          <Nav.Link href="/login" onClick={handleLogout}>Profile</Nav.Link>
+          <Nav.Link>Profile</Nav.Link>
           </>
         :  
           <Nav.Link href="/login">Login</Nav.Link>

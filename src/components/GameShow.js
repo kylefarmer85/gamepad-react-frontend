@@ -10,6 +10,7 @@ const GameShow = ({game, screenshots, addToFavorites}) => {
 
     return (
       <Container>
+        {/* needs styling */}
         <div style={{textAlign: "center"}}>
           <h1>{game.name}</h1>
           <p>Released: {game.released}</p>
@@ -19,30 +20,29 @@ const GameShow = ({game, screenshots, addToFavorites}) => {
             }
             <br>
             </br>
-             <button onClick={() => addToFavorites(game.id, game.name,game.background_image)}>Add to Favorites</button>
+            <button onClick={() => addToFavorites(game.id, game.name,game.background_image)}>Add to Favorites</button>
         </div>
        
-      
-          { 
-          game.clip === null ? null :
-          <video src={game.clip.clip} type="video/mp4" controls/>
-          }
-     
-          <p id="details">{game.description_raw}</p>
-   
+    
+        { 
+        game.clip === null ? null :
+        <video src={game.clip.clip} type="video/mp4" controls/>
+        }
+    
+        <p id="details">{game.description_raw}</p>
+  
         {/* <img src={game.background_image} alt='game'/>
   
         <img src= {game.background_image_additional} alt='game'/> */}
 
-        
         { 
           screenshots ?
           screenshots.map(ss => <img src={ss.image} alt='screenshot' key={uuidv4()}></img>)
           :
           null
         }
-        <ReviewsContainer />
-        </Container>
+        <ReviewsContainer gameApiId={game.id} />
+      </Container>
     ); 
 }
 
