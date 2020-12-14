@@ -3,6 +3,7 @@ import { v4 as uuidv4 } from 'uuid'
 import Container from 'react-bootstrap/Container'
 import { addToFavorites } from '../actions/games'
 import { connect } from 'react-redux'
+import ReviewsContainer from '../containers/ReviewsContainer';
 
 
 const GameShow = ({game, screenshots, addToFavorites}) => {
@@ -40,7 +41,7 @@ const GameShow = ({game, screenshots, addToFavorites}) => {
           :
           null
         }
-      
+        <ReviewsContainer />
         </Container>
     ); 
 }

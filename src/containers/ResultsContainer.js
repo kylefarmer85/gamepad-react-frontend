@@ -20,15 +20,15 @@ const ResultsContainer = (props) => {
     })
   }
 
-
   return (
     <Container>
       <Row>
-        <h3>{props.match.params.searchTearm}</h3>
         { props.loading?
-        <Loading />
+          <div style={{marginLeft:"45%", marginTop:"25%"}}>
+            <Loading />
+          </div>
         :
-        renderSearchResults()
+          renderSearchResults()
         }
       </Row>
     </Container>

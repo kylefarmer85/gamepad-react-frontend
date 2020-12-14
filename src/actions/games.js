@@ -6,7 +6,7 @@ export function addToFavorites(gameApiId, gameName, gameImage) {
     const alreadyFavorite = state.games.find(g => g.game_api_id === gameApiId)
 
     if (alreadyFavorite) {
-      return alert("This game is already in your collection")
+      return alert(`This game is already in ${state.user.username}'s collection!`)
     }
 
     const reqObj = {
@@ -31,6 +31,7 @@ export function addToFavorites(gameApiId, gameName, gameImage) {
 
       } else {
         dispatch({ type: "ADD_GAME", game})
+        alert(`${game.name} added to ${state.user.username}'s Favorites!`)
       }
     })
   }
