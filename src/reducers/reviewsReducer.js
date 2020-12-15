@@ -6,7 +6,6 @@ const reviewsReducer = (state = [], action) => {
       return action.data.reviews
 
     case 'ADD_REVIEW':
-      debugger
       return [...state, action.data]
 
     case 'DELETE_REVIEW':

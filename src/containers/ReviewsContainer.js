@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Loading from '../components/Loading'
 import Review from '../components/Review'
 import ReviewForm from '../components/ReviewForm'
+import { v4 as uuidv4 } from 'uuid'
 
 class ReviewsContainer extends Component {
   constructor(props) {
@@ -44,8 +45,14 @@ class ReviewsContainer extends Component {
     })
   }
 
-  handleAddReview = () => {
-
+  handleAddReview = (review, id, username) => {
+    const newReview = {...review, user_id: id, username: username}
+    
+    this.setState(prevState => {
+      return {
+        reviews: [...prevState.reviews, newReview]
+      }
+    })
   }
 
 
@@ -54,7 +61,7 @@ class ReviewsContainer extends Component {
       return "There Are No Reviews Yet"
     }
     return this.state.reviews.map(review => {
-      return <Review {...review} key={review.id} handleDelete={this.handleDelete} />
+      return <Review {...review} key={uuidv4()} handleDelete={this.handleDelete} />
     })
   }
 

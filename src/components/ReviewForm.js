@@ -12,7 +12,7 @@ class ReviewForm extends Component {
         rating: "",
         gameName: this.props.gameName,
         gameApiId: this.props.gameApiId,
-        gameImage: this.props.gameImage
+        gameImage: this.props.gameImage,
       }
     }
 
@@ -24,25 +24,28 @@ class ReviewForm extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault()
-    
-    !this.props.user ?
-    alert("You must be logged in to submit a review.")
-    :
-    this.props.addReview(this.state, this.props.user.id, this.props.user.username)
-    
-    this.setState({
-      content: "",
-      rating: ""
-    })
-   
+
+    if (this.props.user) {
+      this.props.addReview(this.state, this.props.user.id, this.props.user.username)
+      
+      this.props.handleAddReview(this.state, this.props.user.id, this.props.user.username)
+
+      this.setState({
+        content: "",
+        rating: ""
+      })
+    } else {
+      alert("You must be logged in to submit a review.")
+    }
   }
+  
 
   render() {
     return (
       <Form onSubmit={this.handleSubmit}>
         <Form.Group controlId="formReview">
-          <Form.Label>Review</Form.Label>
-          <Form.Control name="content" value={this.state.content} as="textarea" rows={3} placeholder="Add a Review!" onChange={this.handleChange}/>
+          <Form.Label>Leave a Review</Form.Label>
+          <Form.Control name="content" value={this.state.content} as="textarea" rows={3} onChange={this.handleChange}/>
         </Form.Group>
         <Form.Group controlId="fromRating" >
           <Form.Label>Rating</Form.Label>
@@ -58,8 +61,8 @@ class ReviewForm extends Component {
             <option>9</option>
             <option>10</option>
           </Form.Control>
-          <Button type="submit">Submit</Button>
         </Form.Group>
+        <Button type="submit">Submit</Button>
       </Form>
     );
   }
