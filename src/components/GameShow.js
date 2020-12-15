@@ -41,8 +41,8 @@ const GameShow = ({game, screenshots, addToFavorites}) => {
           :
           null
         }
-        <ReviewsContainer gameApiId={game.id} />
-      </Container>
+        <ReviewsContainer gameApiId={game.id} gameName={game.name} gameImage={game.background_image} />
+      </Container >
     ); 
 }
 

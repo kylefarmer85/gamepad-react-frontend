@@ -15,7 +15,7 @@ export function deleteReview(id) {
   }
 }
 
-export function addReview(id) {
+export function addReview(review, userId, username) {
   return(dispatch) => {
 
     const reqObj = {
@@ -24,20 +24,24 @@ export function addReview(id) {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        title: this.state.title,
-        content: this.state.content,
-        user_id: this.props.user.id,
+        user_id: userId,
+        username: username,
+        content: review.content,
+        rating: review.rating,
+        game_name: review.gameName,
+        game_api_id: review.gameApiId,
+        game_image: review.gameImage
       })
     }
 
     fetch(`http://localhost:3000/api/v1/reviews`, reqObj)
     .then(resp => resp.json())
-    .then(console.log)
-    //   if (data.error) {
-    //     alert(data.error)
-    //   } else {
-    //     dispatch({ type: "ADD_REVIEW", data})
-    //   }
-    // })
+    .then(data => {
+      if (data.error) {
+        alert(data.error)
+      } else {
+        dispatch({ type: "ADD_REVIEW", data})
+      }
+    })
   }
 }

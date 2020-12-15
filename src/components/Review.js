@@ -6,7 +6,6 @@ import { deleteReview } from '../actions/reviews'
 const Review = ({id, user_id, game_name, content, rating, username, user, handleDelete, deleteReview}) => {
 
   const handleClick = () => {
-    
     deleteReview(id)
     handleDelete(id)
   }

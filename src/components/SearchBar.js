@@ -23,7 +23,7 @@ const SearchBar = () => {
 
   return (
     <Form inline onSubmit={handleSubmit}>
-      <FormControl type="text" name="searchTerm" placeholder="Search" className="mr-sm-2" onChange={handleChange} />
+      <FormControl type="text" name="searchTerm" className="mr-sm-2" onChange={handleChange} />
       <Button type="submit" variant="outline-light">Search</Button>
     </Form>
   );

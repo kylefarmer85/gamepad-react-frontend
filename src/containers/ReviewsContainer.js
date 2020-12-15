@@ -44,6 +44,11 @@ class ReviewsContainer extends Component {
     })
   }
 
+  handleAddReview = () => {
+
+  }
+
+
   renderGameReviews = () => {
     if (this.state.reviews === null) {
       return "There Are No Reviews Yet"
@@ -64,7 +69,7 @@ class ReviewsContainer extends Component {
            this.renderGameReviews()
         }
         </div>
-        <ReviewForm />
+        <ReviewForm gameApiId={this.props.gameApiId} gameName={this.props.gameName} gameImage={this.props.gameImage} handleAddReview={this.handleAddReview} />
       </div>
     );
   }
