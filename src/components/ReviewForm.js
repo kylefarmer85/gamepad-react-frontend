@@ -26,27 +26,49 @@ class ReviewForm extends Component {
     e.preventDefault()
 
     if (this.props.user) {
-      this.props.addReview(this.state, this.props.user.id, this.props.user.username)
-      
-      this.props.handleAddReview(this.state, this.props.user.id, this.props.user.username)
 
-      this.setState({
-        content: "",
-        rating: ""
+      const reqObj = {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          user_id: this.props.user.id,
+          username: this.props.user.username,
+          content: this.state.content,
+          rating: this.state.rating,
+          game_name: this.state.gameName,
+          game_api_id: this.state.gameApiId,
+          game_image: this.state.gameImage
+        })
+      }
+      fetch(`http://localhost:3000/api/v1/reviews`, reqObj)
+      .then(resp => resp.json())
+      .then(review => {
+        this.props.addReview(review)
+        this.props.handleAddReview(review)
+
+        this.setState({
+          content: "",
+          rating: ""
+        })
       })
+
     } else {
       alert("You must be logged in to submit a review.")
     }
   }
-  
+
 
   render() {
     return (
       <Form onSubmit={this.handleSubmit}>
         <Form.Group controlId="formReview">
+
           <Form.Label>Leave a Review</Form.Label>
           <Form.Control name="content" value={this.state.content} as="textarea" rows={3} onChange={this.handleChange}/>
         </Form.Group>
+
         <Form.Group controlId="fromRating" >
           <Form.Label>Rating</Form.Label>
           <Form.Control as="select" name="rating" value={this.state.rating} onChange={this.handleChange}>
@@ -62,6 +84,7 @@ class ReviewForm extends Component {
             <option>10</option>
           </Form.Control>
         </Form.Group>
+        
         <Button type="submit">Submit</Button>
       </Form>
     );
@@ -70,7 +93,8 @@ class ReviewForm extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    user: state.user
+    user: state.user,
+    reviews: state.reviews
   }
 }
 

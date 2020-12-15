@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import Loading from '../components/Loading'
 import Review from '../components/Review'
 import ReviewForm from '../components/ReviewForm'
-import { v4 as uuidv4 } from 'uuid'
 
 class ReviewsContainer extends Component {
   constructor(props) {
@@ -24,7 +23,6 @@ class ReviewsContainer extends Component {
         game_api_id: this.props.gameApiId,
       })
     }
-
     fetch("http://localhost:3000/api/v1/reviews/all", reqObj)
     .then(resp => resp.json())
     .then(gameReviews => {
@@ -36,6 +34,7 @@ class ReviewsContainer extends Component {
     })
   }  
 
+
   handleDelete = (id) => {
     const updatedReviews = this.state.reviews.filter(review => {
       return review.id !== id
@@ -45,12 +44,11 @@ class ReviewsContainer extends Component {
     })
   }
 
-  handleAddReview = (review, id, username) => {
-    const newReview = {...review, user_id: id, username: username}
-    
+  
+  handleAddReview = (review) => {
     this.setState(prevState => {
       return {
-        reviews: [...prevState.reviews, newReview]
+        reviews: [...prevState.reviews, review]
       }
     })
   }
@@ -61,7 +59,7 @@ class ReviewsContainer extends Component {
       return "There Are No Reviews Yet"
     }
     return this.state.reviews.map(review => {
-      return <Review {...review} key={uuidv4()} handleDelete={this.handleDelete} />
+      return <Review {...review} key={review.id} handleDelete={this.handleDelete}/>
     })
   }
 
@@ -76,7 +74,9 @@ class ReviewsContainer extends Component {
            this.renderGameReviews()
         }
         </div>
-        <ReviewForm gameApiId={this.props.gameApiId} gameName={this.props.gameName} gameImage={this.props.gameImage} handleAddReview={this.handleAddReview} />
+        <div>
+          <ReviewForm gameApiId={this.props.gameApiId} gameName={this.props.gameName} gameImage={this.props.gameImage} handleAddReview={this.handleAddReview} />
+        </div>
       </div>
     );
   }
