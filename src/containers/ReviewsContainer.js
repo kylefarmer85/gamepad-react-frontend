@@ -1,10 +1,17 @@
 import React, { Component } from 'react';
+import Loading from '../components/Loading'
+import Review from '../components/Review'
+import ReviewForm from '../components/ReviewForm'
 
 class ReviewsContainer extends Component {
-  state = {
-    reviews: [],
-    loading: true
+  constructor(props) {
+    super(props)
+    this.state = {
+      reviews: [],
+      loading: true
+    }  
   }  
+
 
   componentDidMount(){
     const reqObj = {
@@ -17,7 +24,7 @@ class ReviewsContainer extends Component {
       })
     }
 
-    fetch("http://localhost:3000/api/v1/games/reviews/all", reqObj)
+    fetch("http://localhost:3000/api/v1/reviews/all", reqObj)
     .then(resp => resp.json())
     .then(gameReviews => {
       console.log(gameReviews)
@@ -28,11 +35,36 @@ class ReviewsContainer extends Component {
     })
   }  
 
+  handleDelete = (id) => {
+    const updatedReviews = this.state.reviews.filter(review => {
+      return review.id !== id
+    })
+    this.setState({
+      reviews: updatedReviews
+    })
+  }
+
+  renderGameReviews = () => {
+    if (this.state.reviews === null) {
+      return "There Are No Reviews Yet"
+    }
+    return this.state.reviews.map(review => {
+      return <Review {...review} key={review.id} handleDelete={this.handleDelete} />
+    })
+  }
+
   render() {
     return (
       <div>
-
-        
+        <div>
+        {
+          this.state.loading ?
+            <Loading />
+          :
+           this.renderGameReviews()
+        }
+        </div>
+        <ReviewForm />
       </div>
     );
   }

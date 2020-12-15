@@ -20,6 +20,8 @@ const NavBar = (props) => {
         { props.user ?
         <>
           <Nav.Link href="/login" onClick={handleLogout}>Logout</Nav.Link>
+          
+          {/* use user.id to link to profile */}
           <Nav.Link>Profile</Nav.Link>
           </>
         :  
@@ -39,5 +41,5 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, { logoutUser })(NavBar);
+export default connect(mapStateToProps, { logoutUser }) (NavBar);
 
