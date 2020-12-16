@@ -1,13 +1,5 @@
-
-export function addToFavorites(gameApiId, gameName, gameImage) {
-  return(dispatch, getState) => {
-    const state = getState()
-    
-    // const alreadyFavorite = state.games.find(g => g.game_api_id === gameApiId)
-
-    // if (alreadyFavorite) {
-    //   return alert(`This game is already in ${state.user.username}'s collection!`)
-    // }
+export function addToFavorites(gameApiId, gameName, gameImage, user) {
+  return(dispatch) => {
 
     const reqObj = {
       method: 'POST',
@@ -15,7 +7,7 @@ export function addToFavorites(gameApiId, gameName, gameImage) {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        user_id: state.user.id,
+        user_id: user.id,
         game_api_id: gameApiId,
         game_name: gameName,
         game_image: gameImage
@@ -31,7 +23,7 @@ export function addToFavorites(gameApiId, gameName, gameImage) {
 
       } else {
         dispatch({ type: "ADD_GAME", game})
-        alert(`${game.name} added to ${state.user.username}'s Favorites!`)
+        alert(`${game.name} added to ${user.username}'s Favorites!`)
       }
     })
   }

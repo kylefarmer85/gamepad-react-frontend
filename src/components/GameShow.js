@@ -19,7 +19,7 @@ const GameShow = ({game, screenshots, addToFavorites, user, games}) => {
     if (alreadyFavorite) {
         return alert(`This game is already in ${user.username}'s collection!`)
       } else {
-      addToFavorites(game.id, game.name, game.background_image)
+      addToFavorites(game.id, game.name, game.background_image, user)
     }
   }
 
