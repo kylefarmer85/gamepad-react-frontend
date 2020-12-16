@@ -39,7 +39,7 @@ export function fetchUser(userObj) {
         dispatch({ type: "LOGIN_USER", data})
         localStorage.setItem('my_app_token', data.token)
         console.log(data)
-        history.push('/home')
+        history.push('/')
       }
     })
   }
@@ -77,7 +77,7 @@ export function signupUser(userObj) {
       dispatch({ type: "LOGIN_USER", data})
       localStorage.setItem('my_app_token', data.token)
       console.log(data)
-      history.push('/home')
+      history.push('/')
       }
     })
   }
@@ -107,12 +107,12 @@ export function updateUser(userObj) {
     .then(resp => resp.json())
     .then(data => {
       if (data.error) {
-        history.push(`/user/${userObj.id}/profile`)
+        history.push(`/users/${userObj.id}/profile`)
         alert(data.error)
 
       } else {
       dispatch({ type: "UPDATE_USER", data})
-      history.push(`/user/${userObj.id}/profile`)
+      history.push(`/users/${userObj.id}/profile`)
       }
     })
   }

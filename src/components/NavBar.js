@@ -7,11 +7,12 @@ import SearchBar from './SearchBar'
 import { Link } from 'react-router-dom'
 
 
+
 const NavBar = (props) => {
 
   const handleLogout = () => {
-    props.logoutUser()
     localStorage.removeItem("my_app_token")
+    props.logoutUser()
   }
 
   return (

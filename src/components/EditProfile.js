@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import Container from 'react-bootstrap/Container'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
-import { updateUser } from '../actions/user'
+import { logoutUser, updateUser } from '../actions/user'
 
 class EditProfile extends Component {
   constructor(props) {
@@ -30,6 +30,20 @@ class EditProfile extends Component {
   handleSubmit = (e) => {
     e.preventDefault()
     this.props.updateUser(this.state)
+  }
+
+  handleDelete = (e) => {
+    fetch(`http://localhost:3000/api/v1/users/${this.props.user.id}`, {
+      method: 'DELETE'
+    })
+    .then(resp => resp.json())
+    .then(deletedUser => {
+      alert(`${deletedUser.username} was deleted`)
+      this.props.history.push('/login')
+      
+      localStorage.removeItem("my_app_token")
+      this.props.logoutUser()
+    })
   }
 
 
@@ -79,7 +93,8 @@ class EditProfile extends Component {
               <Form.Control type="text" size="sm" name="favGame" value={this.state.favGame} onChange={this.handleChange} />
           </Form.Group>
           <Button variant="outline-primary" type="submit">Update</Button>
-          <Link to={`/user/${this.props.user.id}/profile`}> or Back to Profile</Link>
+          <Button as={Link} to={`/users/${this.props.user.id}/profile`}>Back to Profile</Button>
+          <Button onClick={this.handleDelete}>Delete Profile</Button>
         </Form>     
   
       </Container> 
@@ -94,4 +109,4 @@ const mapStateToProps = (state) => {
 }
 
 
-export default connect (mapStateToProps, { updateUser }) (EditProfile);
+export default connect (mapStateToProps, { updateUser, logoutUser }) (EditProfile);

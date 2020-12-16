@@ -1,7 +1,8 @@
 import React from 'react';
 import Card from 'react-bootstrap/Card'
+import { Link } from 'react-router-dom'
 
-const FavoriteGame = ({name, image}) => {
+const FavoriteGame = ({game_api_id, name, image}) => {
 
   const imgStyle = {
     width: "100%",
@@ -17,10 +18,13 @@ const FavoriteGame = ({name, image}) => {
   }
 
   return ( 
-    <Card style={cardStyle}>
-      <Card.Img style={imgStyle} variant="top" src={image} />
-      <Card.Text>{name}</Card.Text>
-    </Card>      
+  
+      <Card as={Link} to={`/games/${game_api_id}`} style={cardStyle}>
+        <img style={imgStyle} variant="top" src={image} alt="game" />
+        <p>{name}</p>
+      </Card>   
+ 
+  
   );
 }
 
