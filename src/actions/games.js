@@ -2,7 +2,7 @@
 export function addToFavorites(gameApiId, gameName, gameImage) {
   return(dispatch, getState) => {
     const state = getState()
-
+    
     const alreadyFavorite = state.games.find(g => g.game_api_id === gameApiId)
 
     if (alreadyFavorite) {

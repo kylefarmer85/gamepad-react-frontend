@@ -3,13 +3,15 @@ import Media from 'react-bootstrap/Media'
 import { connect } from 'react-redux'
 import { deleteReview } from '../actions/reviews'
 
-const Review = ({ game_name, content, rating, username, id, user_id, user, deleteReview }) => {
+const Review = ({ game_name, content, rating, username, id, user_id, user, deleteReview, handleDelete }) => {
 
 
   const handleClick = () => {
     deleteReview(id)
-    
-    // handleDelete(id)
+
+    if (handleDelete) {
+      handleDelete(id)
+    }
   
     alert("Review Deleted!")
   }
