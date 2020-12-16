@@ -20,8 +20,8 @@ const Review = ({ game_name, user_pic, content, rating, username, id, user_id, u
   const mediaStyle = {
     margin: "2%",
     outline: "solid",
-    outlineColor: "blue",
-    textDecoration: "none"
+    outlineColor: "lightGreen",
+    textAlign: "left"
   }
 
   const bodyStyle = {

@@ -7,6 +7,7 @@ import SearchBar from './SearchBar'
 import { Link } from 'react-router-dom'
 
 
+
 const NavBar = (props) => {
 
   const handleLogout = () => {

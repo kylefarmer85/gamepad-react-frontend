@@ -20,7 +20,7 @@ class App extends Component {
     const token = localStorage.getItem('my_app_token')
 
     if (!token) {
-      this.props.history.push('/login')
+      return
     } else {
 
       const reqObj = {
