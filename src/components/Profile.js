@@ -49,7 +49,7 @@ class Profile extends Component {
           <Row>
           <Col style={{outline: "solid"}} className ="p-3">
             <img style={imgStyle} src={this.props.user.pic} alt="profile"/>
-            <Button as={Link} to={`/user/${this.props.user.id}/edit`}>Edit Profile</Button>
+            <Button as={Link} to={`/user/${this.props.user.id}/edit`}>Edit Info</Button>
           </Col>
           <Col className ="p-3">
             <Row>

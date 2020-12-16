@@ -3,6 +3,7 @@ import Media from 'react-bootstrap/Media'
 import { connect } from 'react-redux'
 import { deleteReview } from '../actions/reviews'
 import Button from 'react-bootstrap/Button'
+import { Link } from 'react-router-dom'
 
 const Review = ({ game_name, user_pic, content, rating, username, id, user_id, user, deleteReview, handleDelete }) => {
 
@@ -19,7 +20,8 @@ const Review = ({ game_name, user_pic, content, rating, username, id, user_id, u
   const mediaStyle = {
     margin: "2%",
     outline: "solid",
-    outlineColor: "blue"
+    outlineColor: "blue",
+    textDecoration: "none"
   }
 
   const bodyStyle = {
@@ -28,19 +30,24 @@ const Review = ({ game_name, user_pic, content, rating, username, id, user_id, u
   }
 
   return (
+   
     <Media style={mediaStyle}>
-        <img 
-        width={64}
-        height={64}
-        className="mt-5 p-2"
-        src={user_pic}
-        alt="user pic"
-        />
+      <Link to={`/users/${user_id}/profile`}>
+          <img 
+          width={64}
+          height={64}
+          className="mt-5 p-2"
+          src={user_pic}
+          alt="user pic"
+          />
+        </Link>
       <Media.Body style={bodyStyle}>
         <p>{content}</p>
         <em>{game_name}</em><br></br>
         <strong>Rating: {rating}</strong>
-        <p>by: {username}</p>
+        <Link to={`/users/${user_id}/profile`}>
+          <p>by: {username}</p>
+        </Link>
         {
           user ?
             user.id === user_id ?
@@ -52,6 +59,7 @@ const Review = ({ game_name, user_pic, content, rating, username, id, user_id, u
         }
       </Media.Body>
     </Media>
+
   );
 }
 

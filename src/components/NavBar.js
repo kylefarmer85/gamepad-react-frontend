@@ -23,7 +23,7 @@ const NavBar = (props) => {
       <>
         <Nav.Link onClick={handleLogout} as={Link} to={"/login"}>Logout</Nav.Link>
 
-        <Nav.Link as={Link} to={`/user/${props.user.id}/profile`}>Profile</Nav.Link>
+        <Nav.Link as={Link} to={`/users/${props.user.id}/profile`}>Profile</Nav.Link>
       </>
       :  
         <Nav.Link as={Link} to={`/login`}>Login</Nav.Link>
