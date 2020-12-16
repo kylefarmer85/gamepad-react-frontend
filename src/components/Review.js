@@ -8,7 +8,11 @@ const Review = ({ game_name, content, rating, username, id, user_id, user, handl
 
   const handleClick = () => {
     deleteReview(id)
+    
+    if (handleDelete) {
     handleDelete(id)
+    }
+    alert("Review Deleted!")
   }
 
   return (

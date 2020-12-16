@@ -9,7 +9,7 @@ const imgStyle = {
 }
 
 const cardStyle = {
-  width: '15rem', 
+  width: '15em', 
   height:'20em', 
   textAlign:"center",
   overflow: "hidden"
@@ -18,7 +18,7 @@ const cardStyle = {
 const SearchResult = (props) => {
   return (
     <Link to={`/games/${props.id}`}>
-      <Col style={{paddingTop:'5%'}}>
+      <Col className="pt-5">
         <Card style={cardStyle}>
           <Card.Img style={imgStyle} variant="top" src={props.background_image} />
           <Card.Body>

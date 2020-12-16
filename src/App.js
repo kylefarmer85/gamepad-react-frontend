@@ -9,32 +9,34 @@ import Signup from './components/Signup'
 import Home from './components/Home'
 import ResultsContainer from './containers/ResultsContainer'
 import GameContainer from './containers/GameContainer'
+import Profile from './components/Profile'
+import EditProfile from './components/EditProfile'
 
 
 
 class App extends Component {
 
-  // componentDidMount(){
-  //   const token = localStorage.getItem('my_app_token')
+  componentDidMount(){
+    const token = localStorage.getItem('my_app_token')
 
-  //   if (!token) {
-  //     this.props.history.push('/login')
-  //   } else {
+    if (!token) {
+      this.props.history.push('/login')
+    } else {
 
-  //     const reqObj = {
-  //       method: 'GET',
-  //       headers: {
-  //         Authorization: `Bearer ${token}`
-  //       }
-  //     }
+      const reqObj = {
+        method: 'GET',
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      }
 
-  //     fetch('http://localhost:3000/api/v1/current_user', reqObj)
-  //     .then(resp => resp.json())
-  //     .then(data => {
-  //       this.props.currentUser(data)
-  //     })
-  //   }
-  // }
+      fetch('http://localhost:3000/api/v1/current_user', reqObj)
+      .then(resp => resp.json())
+      .then(data => {
+        this.props.currentUser(data)
+      })
+    }
+  }
 
   render(){
     return (
@@ -46,6 +48,8 @@ class App extends Component {
             <Route exact path ='/login' component={Login} /> 
             <Route exact path ='/games/search/:searchTerm' component={ResultsContainer} />
             <Route exact path ='/games/:id' component={GameContainer} />
+            <Route exact path ='/user/:id/profile' component={Profile} />
+            <Route exact path ='/user/:id/edit' component={EditProfile} />
             <Route path ='/' component={Home} />
             
           </Switch> 

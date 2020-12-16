@@ -82,3 +82,38 @@ export function signupUser(userObj) {
     })
   }
 }
+
+export function updateUser(userObj) {
+  return(dispatch) => {
+    // dispatch({type: 'START_ADDING_USER_REQUEST'})
+
+    const reqObj = {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        username: userObj.username,
+        password: userObj.password,
+        password_confirmation: userObj.passwordConfirmation,
+        email: userObj.email,
+        pic: userObj.pic,
+        fav_genre: userObj.favGenre,
+        fav_game: userObj.favGame
+      })
+    }
+
+    fetch(`http://localhost:3000/api/v1/users/${userObj.id}`, reqObj)
+    .then(resp => resp.json())
+    .then(console.log)
+    //   if (data.error) {
+    //     history.push(`/user/${userObj.id}/profile`)
+    //     alert(data.error)
+
+    //   } else {
+    //   dispatch({ type: "UPDATE_USER", data})
+    //   history.push(`/user/${userObj.id}/profile`)
+    //   }
+    // })
+  }
+}

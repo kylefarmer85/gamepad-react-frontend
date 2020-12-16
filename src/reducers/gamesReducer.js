@@ -4,9 +4,15 @@ const gamesReducer = (state = [], action) => {
     case 'LOGIN_USER':
       return action.data.games
 
-    case 'ADD_GAME':
-      return [...state, action.game]
+    case 'CURRENT_USER':
+      return action.data.games
 
+    case 'ADD_GAME':
+      return [...state, action.game]  
+
+    case 'LOGOUT_USER':
+      return null    
+      
     default: 
     return state
   }

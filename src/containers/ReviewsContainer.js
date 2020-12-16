@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Loading from '../components/Loading'
 import Review from '../components/Review'
 import ReviewForm from '../components/ReviewForm'
+import Container from 'react-bootstrap/Container'
 
 class ReviewsContainer extends Component {
   constructor(props) {
@@ -66,17 +67,15 @@ class ReviewsContainer extends Component {
   render() {
     return (
       <div>
-        <div>
+        <Container>
         {
           this.state.loading ?
             <Loading />
           :
            this.renderGameReviews()
         }
-        </div>
-        <div>
-          <ReviewForm gameApiId={this.props.gameApiId} gameName={this.props.gameName} gameImage={this.props.gameImage} handleAddReview={this.handleAddReview} />
-        </div>
+        </Container>
+        <ReviewForm gameApiId={this.props.gameApiId} gameName={this.props.gameName} gameImage={this.props.gameImage} handleAddReview={this.handleAddReview} />
       </div>
     );
   }

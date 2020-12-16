@@ -4,18 +4,26 @@ const loadingReducer = (state = false, action) => {
     case 'START_ADDING_USER_REQUEST':
       return true
       
+
     case 'RETURN_RESULTS':
       return false  
+
 
     case 'LOGIN_USER':
       return false
 
+
     case 'CURRENT_USER':
       return false
 
+
     case 'ADD_GAME':
       return false  
-    
+
+      
+    case 'LOGOUT_USER':
+      return null    
+
     default:
       return state
   }
