@@ -35,6 +35,7 @@ class ReviewForm extends Component {
         body: JSON.stringify({
           user_id: this.props.user.id,
           username: this.props.user.username,
+          user_pic: this.props.user.pic,
           content: this.state.content,
           rating: this.state.rating,
           game_name: this.state.gameName,
@@ -62,7 +63,7 @@ class ReviewForm extends Component {
 
   render() {
     return (
-      <Form onSubmit={this.handleSubmit}>
+      <Form style={{padding: "5% 50% 5% 5%"}} onSubmit={this.handleSubmit}>
         <Form.Group controlId="formReview">
 
           <Form.Label>Leave a Review</Form.Label>
