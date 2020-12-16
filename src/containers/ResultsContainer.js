@@ -15,6 +15,9 @@ const ResultsContainer = (props) => {
 
 
   const renderSearchResults = () => {
+    if (props.searchResults === null) {
+      return alert ("Please try your search again.")
+    }
     return props.searchResults.map(game => {
       return <SearchResult {...game} key={game.id}/>
     })
