@@ -36,14 +36,14 @@ class ReviewsContainer extends Component {
   }  
 
 
-  handleDelete = (id) => {
-    const updatedReviews = this.state.reviews.filter(review => {
-      return review.id !== id
-    })
-    this.setState({
-      reviews: updatedReviews
-    })
-  }
+  // handleDelete = (id) => {
+  //   const updatedReviews = this.state.reviews.filter(review => {
+  //     return review.id !== id
+  //   })
+  //   this.setState({
+  //     reviews: updatedReviews
+  //   })
+  // }
 
   
   handleAddReview = (review) => {
