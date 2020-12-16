@@ -3,6 +3,8 @@ import Loading from '../components/Loading'
 import Review from '../components/Review'
 import ReviewForm from '../components/ReviewForm'
 import Container from 'react-bootstrap/Container'
+import { v4 as uuidv4 } from 'uuid'
+
 
 class ReviewsContainer extends Component {
   constructor(props) {
@@ -36,23 +38,25 @@ class ReviewsContainer extends Component {
   }  
 
 
-  // handleDelete = (id) => {
-  //   const updatedReviews = this.state.reviews.filter(review => {
-  //     return review.id !== id
-  //   })
-  //   this.setState({
-  //     reviews: updatedReviews
-  //   })
-  // }
+  handleDelete = (id) => {
+    const updatedReviews = this.state.reviews.filter(review => {
+      return review.id !== id
+    })
+    this.setState({
+      reviews: updatedReviews
+    })
+  }
 
   
   handleAddReview = (review) => {
+
     this.setState(prevState => {
       return {
         reviews: [...prevState.reviews, review]
       }
     })
   }
+  
 
 
   renderGameReviews = () => {

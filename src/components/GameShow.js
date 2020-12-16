@@ -6,7 +6,14 @@ import { connect } from 'react-redux'
 import ReviewsContainer from '../containers/ReviewsContainer';
 
 
-const GameShow = ({game, screenshots, addToFavorites}) => {
+const GameShow = ({game, screenshots, addToFavorites, user}) => {
+
+  const handleFavorite = () => {
+    !user ?
+      alert ("You must be logged in to add favorites")
+    :
+      addToFavorites(game.id, game.name, game.background_image)
+  }
 
     return (
       <Container>
@@ -20,7 +27,7 @@ const GameShow = ({game, screenshots, addToFavorites}) => {
             }
             <br>
             </br>
-            <button onClick={() => addToFavorites(game.id, game.name,game.background_image)}>Add to Favorites</button>
+            <button onClick={handleFavorite}>Add to Favorites</button>
         </div>
        
     
@@ -46,7 +53,13 @@ const GameShow = ({game, screenshots, addToFavorites}) => {
     ); 
 }
 
-export default connect (null, { addToFavorites })(GameShow)
+const mapStateToProps = (state) => {
+  return {
+    user: state.user
+  }
+}
+
+export default connect (mapStateToProps, { addToFavorites })(GameShow)
 
 
 
