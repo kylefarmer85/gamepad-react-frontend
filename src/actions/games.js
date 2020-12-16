@@ -3,11 +3,11 @@ export function addToFavorites(gameApiId, gameName, gameImage) {
   return(dispatch, getState) => {
     const state = getState()
     
-    const alreadyFavorite = state.games.find(g => g.game_api_id === gameApiId)
+    // const alreadyFavorite = state.games.find(g => g.game_api_id === gameApiId)
 
-    if (alreadyFavorite) {
-      return alert(`This game is already in ${state.user.username}'s collection!`)
-    }
+    // if (alreadyFavorite) {
+    //   return alert(`This game is already in ${state.user.username}'s collection!`)
+    // }
 
     const reqObj = {
       method: 'POST',

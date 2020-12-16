@@ -3,7 +3,6 @@ import Loading from '../components/Loading'
 import Review from '../components/Review'
 import ReviewForm from '../components/ReviewForm'
 import Container from 'react-bootstrap/Container'
-import { v4 as uuidv4 } from 'uuid'
 
 
 class ReviewsContainer extends Component {

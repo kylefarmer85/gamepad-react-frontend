@@ -6,14 +6,23 @@ import { connect } from 'react-redux'
 import ReviewsContainer from '../containers/ReviewsContainer';
 
 
-const GameShow = ({game, screenshots, addToFavorites, user}) => {
+const GameShow = ({game, screenshots, addToFavorites, user, games}) => {
 
   const handleFavorite = () => {
-    !user ?
-      alert ("You must be logged in to add favorites")
-    :
+    
+    if (!user) {
+      return  alert("You must be logged in to add favorites")
+    } 
+
+    const alreadyFavorite = games.find(g => g.game_api_id === game.id)
+
+    if (alreadyFavorite) {
+        return alert(`This game is already in ${user.username}'s collection!`)
+      } else {
       addToFavorites(game.id, game.name, game.background_image)
+    }
   }
+
 
     return (
       <Container>
@@ -55,7 +64,8 @@ const GameShow = ({game, screenshots, addToFavorites, user}) => {
 
 const mapStateToProps = (state) => {
   return {
-    user: state.user
+    user: state.user,
+    games: state.games
   }
 }
 
