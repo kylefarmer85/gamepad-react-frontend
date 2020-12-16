@@ -105,15 +105,15 @@ export function updateUser(userObj) {
 
     fetch(`http://localhost:3000/api/v1/users/${userObj.id}`, reqObj)
     .then(resp => resp.json())
-    .then(console.log)
-    //   if (data.error) {
-    //     history.push(`/user/${userObj.id}/profile`)
-    //     alert(data.error)
+    .then(data => {
+      if (data.error) {
+        history.push(`/user/${userObj.id}/profile`)
+        alert(data.error)
 
-    //   } else {
-    //   dispatch({ type: "UPDATE_USER", data})
-    //   history.push(`/user/${userObj.id}/profile`)
-    //   }
-    // })
+      } else {
+      dispatch({ type: "UPDATE_USER", data})
+      history.push(`/user/${userObj.id}/profile`)
+      }
+    })
   }
 }

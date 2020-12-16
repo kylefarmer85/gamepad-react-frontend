@@ -28,7 +28,6 @@ class EditProfile extends Component {
   }
 
   handleSubmit = (e) => {
-    debugger
     e.preventDefault()
     this.props.updateUser(this.state)
   }
