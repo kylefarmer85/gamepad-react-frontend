@@ -79,7 +79,7 @@ class EditProfile extends Component {
               <Form.Control type="text" size="sm" name="favGame" value={this.state.favGame} onChange={this.handleChange} />
           </Form.Group>
           <Button variant="outline-primary" type="submit">Update</Button>
-          <Link to={`/user/${this.props.user.id}/profile`}> or Back to Profile</Link>
+          <Link to={`/users/${this.props.user.id}/profile`}> or Back to Profile</Link>
         </Form>     
   
       </Container> 
