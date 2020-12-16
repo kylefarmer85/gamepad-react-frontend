@@ -18,7 +18,7 @@ class App extends Component {
 
   componentDidMount(){
     const token = localStorage.getItem('my_app_token')
-
+    
     if (!token) {
       return
     } else {

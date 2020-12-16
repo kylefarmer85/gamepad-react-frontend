@@ -5,7 +5,7 @@ import { deleteReview } from '../actions/reviews'
 import Button from 'react-bootstrap/Button'
 import { Link } from 'react-router-dom'
 
-const Review = ({ game_name, user_pic, content, rating, username, id, user_id, user, deleteReview, handleDelete }) => {
+const Review = ({ game_name, user_pic, game_api_id, content, rating, username, id, user_id, user, deleteReview, handleDelete }) => {
 
 
   const handleClick = () => {
@@ -41,13 +41,16 @@ const Review = ({ game_name, user_pic, content, rating, username, id, user_id, u
           alt="user pic"
           />
         </Link>
+
       <Media.Body style={bodyStyle}>
         <p>{content}</p>
         <em>{game_name}</em><br></br>
         <strong>Rating: {rating}</strong>
+
         <Link to={`/users/${user_id}/profile`}>
           <p>by: {username}</p>
         </Link>
+
         {
           user ?
             user.id === user_id ?
