@@ -1,17 +1,19 @@
 import React, { Component } from 'react';
-import HomeGamesContainer from './HomeGamesContainer'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
+import SlicedGamesContainer from './SlicedGamesContainer'
 import { randomYear, randomGenre } from "../helpers/randomFuncs" 
 import Container from 'react-bootstrap/Container'
 import Col from 'react-bootstrap/Col'
 import Row from 'react-bootstrap/Row'
+import Loading from '../components/Loading'
 
 class YearAndGenreContainer extends Component {
   state = {
     year: "",
     genre: "",
     games: [],
+    index: 0,
     loading: true,
   }
 
@@ -79,6 +81,24 @@ class YearAndGenreContainer extends Component {
   }
 
 
+  slicedGames = () => {
+    if (this.state.index > this.state.games.length) {
+      this.setState({
+        index: 0
+      })
+    }
+    return this.state.games.slice(this.state.index, this.state.index +4)
+  }
+
+  nextGames = () => {
+    this.setState(prevState => {
+      return {
+        index: prevState.index + 4
+      }
+    })
+  }
+
+
   render() {
     return (
       <Container fluid className="m-4">
@@ -135,9 +155,12 @@ class YearAndGenreContainer extends Component {
             <Row style={{justifyContent: "center"}}>        
             { 
             this.state.loading ?
-              null
+              <Loading />
             :
-              <HomeGamesContainer games={this.state.games} />
+            <>
+            <Button className="mr-2" onClick={this.nextGames}>Next Games</Button>
+            <SlicedGamesContainer slicedGames={this.slicedGames()} />
+            </>
             }        
             </Row>
           </Col>
