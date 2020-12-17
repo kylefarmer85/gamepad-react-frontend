@@ -21,7 +21,7 @@ const Review = ({ game_name, user_pic, game_api_id, content, rating, username, i
     margin: "2%",
     outline: "solid",
     outlineColor: "lightGreen",
-    textAlign: "left"
+    textAlign: "left",
   }
 
   const bodyStyle = {

@@ -12,15 +12,15 @@ class HomeGamesContainer extends Component {
   }
 
   slicedGames = () => {
-    if (this.state.index > this.state.games.length) {
+    if (this.state.index === this.state.games.length) {
       this.setState({
         index: 0
       })
     }
-    return this.state.games.slice(this.state.index, this.state.index +6)
+    return this.state.games.slice(this.state.index, this.state.index +4)
   }
 
-  moreGames = () => {
+  nextGames = () => {
     this.setState(prevState => {
       return {
         index: prevState.index + 4
@@ -30,10 +30,10 @@ class HomeGamesContainer extends Component {
 
   render() {
     return (
-      <div>
+      <>
+        <Button className="mr-2" onClick={this.nextGames}>Next Games</Button>
         <SlicedGamesContainer slicedGames={this.slicedGames()} />
-        <Button onClick={this.moreGames}>Next Games</Button>
-      </div>
+      </>
     );
   }
 }
