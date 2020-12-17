@@ -1,21 +1,99 @@
 import React, { Component } from 'react';
+import SearchResult from '../components/SearchResult'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
+import Container from 'react-bootstrap/Container'
+import Row from 'react-bootstrap/Row'
+import { randomYear, randomGenre } from "../helpers/randomFuncs" 
 
 class YearAndGenreContainer extends Component {
   state = {
     year: "",
-    genre: ""
+    genre: "",
+    games: [],
+    loading: true
   }
 
+  componentDidMount(){
+    const reqObj = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        year: randomYear(),
+        genre: randomGenre()
+      })
+    }
+
+    fetch(`http://localhost:3000/api/v1/games/yearandgenre`, reqObj)
+    .then(resp => resp.json())
+    .then(data => {
+      if (data.error) {
+        alert(data.error)
+      } else {
+        this.setState({
+          games: data.results,
+          loading: false
+        })
+        console.log(data.results)
+      }
+    })
+  }
+
+  handleSubmit = (e) => {
+    e.preventDefault()
+
+    const reqObj = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        year: this.state.year,
+        genre: this.state.genre
+      })
+    }
+
+    fetch(`http://localhost:3000/api/v1/games/yearandgenre`, reqObj)
+    .then(resp => resp.json())
+    .then(data => {
+      if (data.error) {
+        alert(data.error)
+      } else {
+        this.setState({
+          games: data.results,
+          loading: false
+        })
+        console.log(data.results)
+      }
+    })
+  }
+
+  handleChange = (e) => {
+    this.setState({
+      [e.target.name]: e.target.value
+    })
+    console.log(this.state.year, this.state.genre)
+  }
+
+  renderGames = () => {
+    if (this.state.games === null) {
+      return alert ("Please try another search.")
+    }
+
+    return this.state.games.map(game => {
+      return <SearchResult {...game} key={game.id}/>
+    })
+  }
 
   render() {
     return (
       <div>
-        <Form>
+        <Form className="m-5" onSubmit={this.handleSubmit}>
           <Form.Group controlId="exampleForm.ControlSelect2">
             <Form.Label>Choose a Year</Form.Label>
-            <Form.Control as="select">
+            <Form.Control name="year" value={this.state.year} onChange={this.handleChange} as="select">
               <option>1977</option>
               <option>1978</option>
               <option>1979</option>
@@ -43,7 +121,7 @@ class YearAndGenreContainer extends Component {
             </Form.Group> 
             <Form.Group controlId="exampleForm.ControlSelect2">
             <Form.Label>Choose a Genre</Form.Label>
-            <Form.Control as="select">
+            <Form.Control name="genre" value={this.state.genre} onChange={this.handleChange} as="select">
               <option>Action</option>
               <option>Adventure</option>
               <option>Platformer</option>
@@ -59,6 +137,16 @@ class YearAndGenreContainer extends Component {
             </Form.Group>     
           <Button type="submit">Browse Games</Button>
         </Form>
+        {
+        this.state.loading ?
+          null
+        :
+        <Container>
+          <Row>
+           { this.renderGames()}
+          </Row>
+        </Container>
+        }        
       </div>
     );
   }

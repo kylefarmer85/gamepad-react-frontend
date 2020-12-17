@@ -54,7 +54,6 @@ class ReviewForm extends Component {
           rating: ""
         })
       })
-
     } else {
       alert("You must be logged in to submit a review.")
     }
