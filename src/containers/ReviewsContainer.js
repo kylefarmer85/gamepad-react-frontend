@@ -3,7 +3,6 @@ import Loading from '../components/Loading'
 import Review from '../components/Review'
 import ReviewForm from '../components/ReviewForm'
 import Container from 'react-bootstrap/Container'
-import { v4 as uuidv4 } from 'uuid'
 
 class ReviewsContainer extends Component {
   constructor(props) {
@@ -63,7 +62,7 @@ class ReviewsContainer extends Component {
     }
 
     return this.state.reviews.map(review => {
-      return <Review {...review} key={uuidv4()} handleDelete={this.handleDelete}/>
+      return <Review {...review} key={review.id} handleDelete={this.handleDelete}/>
     })
   }
 

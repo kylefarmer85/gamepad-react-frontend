@@ -45,6 +45,7 @@ class ReviewForm extends Component {
       fetch(`http://localhost:3000/api/v1/reviews`, reqObj)
       .then(resp => resp.json())
       .then(review => {
+        
         this.props.addReview(review)
         this.props.handleAddReview(review)
 
