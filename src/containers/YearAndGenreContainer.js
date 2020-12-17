@@ -5,13 +5,14 @@ import Button from 'react-bootstrap/Button'
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import { randomYear, randomGenre } from "../helpers/randomFuncs" 
+import HomeGamesContainer from './HomeGamesContainer'
 
 class YearAndGenreContainer extends Component {
   state = {
     year: "",
     genre: "",
     games: [],
-    loading: true
+    loading: true,
   }
 
   componentDidMount(){
@@ -77,15 +78,6 @@ class YearAndGenreContainer extends Component {
     console.log(this.state.year, this.state.genre)
   }
 
-  renderGames = () => {
-    if (this.state.games === null) {
-      return alert ("Please try another search.")
-    }
-
-    return this.state.games.map(game => {
-      return <SearchResult {...game} key={game.id}/>
-    })
-  }
 
   render() {
     return (
@@ -140,11 +132,7 @@ class YearAndGenreContainer extends Component {
         this.state.loading ?
           null
         :
-        <Container>
-          <Row>
-           { this.renderGames()}
-          </Row>
-        </Container>
+          <HomeGamesContainer games={this.state.games} />
         }        
       </div>
     );
