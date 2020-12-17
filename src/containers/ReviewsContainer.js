@@ -3,7 +3,7 @@ import Loading from '../components/Loading'
 import Review from '../components/Review'
 import ReviewForm from '../components/ReviewForm'
 import Container from 'react-bootstrap/Container'
-
+import { v4 as uuidv4 } from 'uuid'
 
 class ReviewsContainer extends Component {
   constructor(props) {
@@ -48,7 +48,6 @@ class ReviewsContainer extends Component {
 
   
   handleAddReview = (review) => {
-
     this.setState(prevState => {
       return {
         reviews: [...prevState.reviews, review]
@@ -62,8 +61,9 @@ class ReviewsContainer extends Component {
     if (this.state.reviews === null) {
       return "There Are No Reviews Yet"
     }
+
     return this.state.reviews.map(review => {
-      return <Review {...review} key={review.id} handleDelete={this.handleDelete}/>
+      return <Review {...review} key={uuidv4()} handleDelete={this.handleDelete}/>
     })
   }
 

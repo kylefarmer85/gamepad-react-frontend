@@ -4,6 +4,7 @@ import Container from 'react-bootstrap/Container'
 import { addToFavorites } from '../actions/games'
 import { connect } from 'react-redux'
 import ReviewsContainer from '../containers/ReviewsContainer';
+import Button from 'react-bootstrap/button'
 
 
 const GameShow = ({game, screenshots, addToFavorites, user, games}) => {
@@ -38,9 +39,9 @@ const GameShow = ({game, screenshots, addToFavorites, user, games}) => {
             }
             <br>
             </br>
-            <button onClick={handleFavorite}>Add to Favorites</button>
+            <Button onClick={handleFavorite}>Add to Favorites</Button>
         </div>
-       
+       <div style={{textAlign: "center"}}>
     
         { 
         game.clip === null ? null :
@@ -59,6 +60,7 @@ const GameShow = ({game, screenshots, addToFavorites, user, games}) => {
           :
           null
         }
+        </div>
         <ReviewsContainer gameApiId={game.id} gameName={game.name} gameImage={game.background_image} />
   
       </Container >

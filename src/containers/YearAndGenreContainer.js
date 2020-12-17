@@ -92,7 +92,7 @@ class YearAndGenreContainer extends Component {
       <div>
         <Form className="m-5" onSubmit={this.handleSubmit}>
           <Form.Group controlId="exampleForm.ControlSelect2">
-            <Form.Label>Choose a Year</Form.Label>
+            <Form.Label>Browse By Year and Genre</Form.Label>
             <Form.Control name="year" value={this.state.year} onChange={this.handleChange} as="select">
               <option>1977</option>
               <option>1978</option>
@@ -120,7 +120,6 @@ class YearAndGenreContainer extends Component {
             </Form.Control>
             </Form.Group> 
             <Form.Group controlId="exampleForm.ControlSelect2">
-            <Form.Label>Choose a Genre</Form.Label>
             <Form.Control name="genre" value={this.state.genre} onChange={this.handleChange} as="select">
               <option>Action</option>
               <option>Adventure</option>

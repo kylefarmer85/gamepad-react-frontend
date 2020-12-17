@@ -26,7 +26,6 @@ class ReviewForm extends Component {
     e.preventDefault()
 
     if (this.props.user) {
-
       const reqObj = {
         method: 'POST',
         headers: {

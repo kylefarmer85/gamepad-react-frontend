@@ -92,7 +92,7 @@ class ConsoleAndGenreContainer extends Component {
       <div>
         <Form className="m-5" onSubmit={this.handleSubmit}>
           <Form.Group controlId="exampleForm.ControlSelect2">
-            <Form.Label>Choose a Console</Form.Label>
+            <Form.Label>Browse By Console and Genre</Form.Label>
             <Form.Control name="console" value={this.state.console} onChange={this.handleChange}  as="select">
               <option>Atari 2600</option>
               <option>Atari 5200</option>
@@ -116,7 +116,6 @@ class ConsoleAndGenreContainer extends Component {
             </Form.Control>
             </Form.Group> 
             <Form.Group controlId="exampleForm.ControlSelect2">
-            <Form.Label>Choose a Genre</Form.Label>
             <Form.Control name="genre" value={this.state.genre} onChange={this.handleChange} as="select">
               <option>Action</option>
               <option>Adventure</option>
