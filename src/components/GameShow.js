@@ -25,9 +25,11 @@ const GameShow = ({game, screenshots, addToFavorites, user, games}) => {
 
 
     return (
-      <Container>
+      <Container className="mt-5 center-block">
         {/* needs styling */}
+        
         <div style={{textAlign: "center"}}>
+          <img src={game.background_image} alt="game" />
           <h1>{game.name}</h1>
           <p>Released: {game.released}</p>
           <p>Platform(s):</p>
@@ -58,6 +60,7 @@ const GameShow = ({game, screenshots, addToFavorites, user, games}) => {
           null
         }
         <ReviewsContainer gameApiId={game.id} gameName={game.name} gameImage={game.background_image} />
+  
       </Container >
     ); 
 }

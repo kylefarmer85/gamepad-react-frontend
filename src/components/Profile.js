@@ -73,8 +73,8 @@ const Profile = (props) => {
       :
         <div style={{textAlign: "center"}}>
 
-          <Container className="mt-5" style={{outline: "solid"}}  fluid="lg">
-            <Row style={{outline: "solid"}}>
+          <Container className="mt-5" fluid="lg">
+            <Row>
               <Col>
                 <h1>{user.username}</h1>
               </Col>
@@ -83,7 +83,7 @@ const Profile = (props) => {
               </Col>
             </Row>
             <Row>
-              <Col style={{outline: "solid"}} className ="p-3">
+              <Col className ="p-3">
                 <img style={imgStyle} src={user.pic} alt="profile"/>
                 {
                   props.user ?

@@ -6,13 +6,13 @@ const FavoriteGame = ({game_api_id, name, image}) => {
 
   const imgStyle = {
     width: "100%",
-    height: "60%"
+    height: "55%"
   }
 
   const cardStyle = {
     margin: "2%",
     width: '8em', 
-    height:'10em', 
+    height:'11em', 
     textAlign:"center",
     overflow: "hidden"
   }

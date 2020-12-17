@@ -1,11 +1,22 @@
-import React from 'react';
+import React, { Component } from 'react';
+import ConsoleAndGenreContainer from '../containers/ConsoleAndGenreContainer'
+import YearAndGenreContainer from '../containers/YearAndGenreContainer'
 
-const Home = () => {
-  return (
-    <div>
-      <h1>homepage</h1>
-    </div>
-  );
+
+
+class Home extends Component {
+  render() {
+    return (
+      <div>
+        <ConsoleAndGenreContainer />
+        <YearAndGenreContainer />
+
+      </div>
+    );
+  }
 }
 
 export default Home;
+
+
+
