@@ -101,7 +101,7 @@ class TopByConsoleContainer extends Component {
 
   render() {
     return (
-      <Container fluid className="m-2 mt-4">
+      <Container fluid className="m-2">
         <Row>
           <Col xs lg={3}>
             <Form className="mt-4" onSubmit={this.handleSubmit}>
