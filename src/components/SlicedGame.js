@@ -1,6 +1,7 @@
 import React from 'react';
 import Card from 'react-bootstrap/Card'
 import { Link } from 'react-router-dom'
+import Mario from '../images/mario-is-missing.jpg'
 
 const SlicedGame = ({name, background_image, released, id}) => {
 
@@ -23,7 +24,12 @@ const SlicedGame = ({name, background_image, released, id}) => {
 
   return (
     <Card as={Link} to={`/games/${id}`} style={cardStyle}>
-      <img style={imgStyle} variant="top" src={background_image} alt="game" />
+
+      { background_image === null ?
+        <img style={imgStyle} variant="top" src={Mario} alt="game" />
+      :
+        <img style={imgStyle} variant="top" src={background_image} alt="game" />
+      }
       <div style={pStyle}>
         <p>{name}<br></br>{released}</p>
       </div>

@@ -1,19 +1,24 @@
 import React, { Component } from 'react';
-import HomeGamesContainer from './HomeGamesContainer'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
+import SlicedGamesContainer from './SlicedGamesContainer'
 import { randomYear, randomGenre } from "../helpers/randomFuncs" 
 import Container from 'react-bootstrap/Container'
 import Col from 'react-bootstrap/Col'
 import Row from 'react-bootstrap/Row'
+import Loading from '../components/Loading'
 
 class YearAndGenreContainer extends Component {
   state = {
     year: "",
     genre: "",
     games: [],
+    index: 0,
     loading: true,
   }
+
+  randomYear = randomYear()
+  randomGenre = randomGenre()
 
   componentDidMount(){
     const reqObj = {
@@ -22,8 +27,8 @@ class YearAndGenreContainer extends Component {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        year: randomYear(),
-        genre: randomGenre()
+        year: this.randomYear,
+        genre: this.randomGenre
       })
     }
 
@@ -79,15 +84,34 @@ class YearAndGenreContainer extends Component {
   }
 
 
+  slicedGames = () => {
+    if (this.state.index > this.state.games.length) {
+      this.setState({
+        index: 0
+      })
+    }
+    return this.state.games.slice(this.state.index, this.state.index +4)
+  }
+
+  nextGames = () => {
+    this.setState(prevState => {
+      return {
+        index: prevState.index + 4
+      }
+    })
+  }
+
+
   render() {
     return (
-      <Container fluid className="m-4">
+      <Container fluid className="m-2">
         <Row>
-          <Col xs lg={2}>
+          <Col xs lg={3}>
             <Form onSubmit={this.handleSubmit}>
               <Form.Group controlId="exampleForm.ControlSelect2">
                 <Form.Label>Browse By Year and Genre</Form.Label>
                 <Form.Control name="year" value={this.state.year} onChange={this.handleChange} as="select">
+                  <option>{this.randomYear}</option>
                   <option>1977</option>
                   <option>1978</option>
                   <option>1979</option>
@@ -115,6 +139,7 @@ class YearAndGenreContainer extends Component {
               </Form.Group> 
               <Form.Group controlId="exampleForm.ControlSelect2">
                 <Form.Control name="genre" value={this.state.genre} onChange={this.handleChange} as="select">
+                  <option>{this.randomGenre}</option>
                   <option>Action</option>
                   <option>Adventure</option>
                   <option>Platformer</option>
@@ -131,13 +156,16 @@ class YearAndGenreContainer extends Component {
               <Button type="submit">Browse Games</Button>
             </Form>
           </Col >
-          <Col xs lg={10}>
+          <Col xs lg={9}>
             <Row style={{justifyContent: "center"}}>        
             { 
             this.state.loading ?
-              null
+              <Loading />
             :
-              <HomeGamesContainer games={this.state.games} />
+            <>
+            <Button variant="dark" className="mr-2" onClick={this.nextGames}>Next</Button>
+            <SlicedGamesContainer slicedGames={this.slicedGames()} />
+            </>
             }        
             </Row>
           </Col>
