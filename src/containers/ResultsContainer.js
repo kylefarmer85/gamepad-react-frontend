@@ -3,6 +3,7 @@ import SearchResult from '../components/SearchResult'
 import Loading from '../components/Loading'
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
+import SlicedGame from '../components/SlicedGame'
 
 const ResultsContainer = (props) => {
 
@@ -35,21 +36,23 @@ const ResultsContainer = (props) => {
       return alert ("Please try your search again.")
     }
     return searchResults.map(game => {
-      return <SearchResult {...game} key={game.id}/>
+      return <SlicedGame {...game} key={game.id}/>
     })
   }
 
   return (
     <Container>
-      <Row>
+      
         { loading?
-          <div style={{marginLeft:"45%", marginTop:"25%"}}>
+          <div>
             <Loading />
           </div>
         :
-          renderSearchResults()
+        <Row>
+          {renderSearchResults()}
+        </Row>
         }
-      </Row>
+      
     </Container>
   );
 }

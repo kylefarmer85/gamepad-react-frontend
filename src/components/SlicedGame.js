@@ -7,8 +7,11 @@ const SlicedGame = ({name, background_image, released, id}) => {
 
   const cardStyle = {
     margin: "1%",
+    padding: "1%",
     width: '10em', 
-    height:'15em', 
+    height:'14em', 
+    backgroundColor: "#c2c5cc",
+    boxShadow: "2px 2px #343A40",
     overflow: "hidden",
   }
 
@@ -18,7 +21,7 @@ const SlicedGame = ({name, background_image, released, id}) => {
   }
 
   const pStyle = {
-    margin: "auto",
+    marginTop: "5%",
     textAlign: "center",
   }
 
@@ -31,7 +34,7 @@ const SlicedGame = ({name, background_image, released, id}) => {
         <img style={imgStyle} variant="top" src={background_image} alt="game" />
       }
       <div style={pStyle}>
-        <p>{name}<br></br>{released}</p>
+        <p><strong>{name}</strong><br></br>{released.slice(0,4)}</p>
       </div>
     </Card>   
 

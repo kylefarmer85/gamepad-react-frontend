@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ConsoleAndGenreContainer from '../containers/ConsoleAndGenreContainer'
 import YearAndGenreContainer from '../containers/YearAndGenreContainer'
+import TopByConsoleContainer from '../containers/TopByConsoleContainer';
 
 
 
@@ -10,7 +11,7 @@ class Home extends Component {
       <div>
         <ConsoleAndGenreContainer />
         <YearAndGenreContainer />
-
+        <TopByConsoleContainer />
       </div>
     );
   }

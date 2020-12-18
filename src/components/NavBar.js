@@ -17,9 +17,9 @@ const NavBar = (props) => {
 
   return (
     <Navbar expand="md" bg="dark" variant="dark">
-      <Navbar.Brand href="/home">GamePad</Navbar.Brand>
-      
-      <Nav className="mr-auto">
+      <Nav className="mr-auto ml-2">
+
+      <Navbar.Brand style={{outline: "solid white", padding: "5px"}} href="/home">GamePad</Navbar.Brand>
       
       { props.user ?
       <>

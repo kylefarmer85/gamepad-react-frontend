@@ -2,24 +2,22 @@ import React, { Component } from 'react';
 import SlicedGamesContainer from './SlicedGamesContainer'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
-import { randomGenre, randomConsole } from "../helpers/randomFuncs"
+import { randomConsole } from "../helpers/randomFuncs"
 import Container from 'react-bootstrap/Container'
 import Col from 'react-bootstrap/Col'
 import Row from 'react-bootstrap/Row'
 import Loading from '../components/Loading'
 
 
-class ConsoleAndGenreContainer extends Component {
+class TopByConsoleContainer extends Component {
   state = {
     console: "",
-    genre: "",
     games: [],
     index: 0,
     loading: true
   }
 
   randomConsole = randomConsole()
-  randomGenre = randomGenre()
 
   componentDidMount(){
     const reqObj = {
@@ -28,12 +26,11 @@ class ConsoleAndGenreContainer extends Component {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        console: this.randomConsole,
-        genre: this.randomGenre
+        console: this.randomConsole
       })
     }
 
-    fetch(`http://localhost:3000/api/v1/games/consoleandgenre`, reqObj)
+    fetch(`http://localhost:3000/api/v1/games/topbyconsole`, reqObj)
     .then(resp => resp.json())
     .then(data => {
       if (data.error) {
@@ -62,7 +59,7 @@ class ConsoleAndGenreContainer extends Component {
       })
     }
 
-    fetch(`http://localhost:3000/api/v1/games/consoleandgenre`, reqObj)
+    fetch(`http://localhost:3000/api/v1/games/topbyconsole`, reqObj)
     .then(resp => resp.json())
     .then(data => {
       if (data.error) {
@@ -109,7 +106,7 @@ class ConsoleAndGenreContainer extends Component {
           <Col xs lg={3}>
             <Form className="mt-4" onSubmit={this.handleSubmit}>
               <Form.Group controlId="exampleForm.ControlSelect2">
-                <Form.Label>Browse By Console and Genre</Form.Label>
+                <Form.Label>Top Games by Console</Form.Label>
                 <Form.Control name="console" value={this.state.console} onChange={this.handleChange}  as="select">
                   <option>{this.randomConsole}</option>
                   <option>Atari 2600</option>
@@ -133,22 +130,6 @@ class ConsoleAndGenreContainer extends Component {
                   <option>Dreamcast</option>
                 </Form.Control>
               </Form.Group> 
-              <Form.Group controlId="exampleForm.ControlSelect2">
-                <Form.Control name="genre" value={this.state.genre} onChange={this.handleChange} as="select">
-                  <option>{this.randomGenre}</option>
-                  <option>Action</option>
-                  <option>Adventure</option>
-                  <option>Platformer</option>
-                  <option>Arcade</option>
-                  <option>RPG</option>
-                  <option>Fighting</option>
-                  <option>Sports</option>
-                  <option>Racing</option>
-                  <option>Puzzle</option>
-                  <option>Strategy</option>
-                  <option>Family</option>
-                </Form.Control>
-              </Form.Group>     
               <Button type="submit">Browse Games</Button>
             </Form> 
           </Col >
@@ -172,20 +153,4 @@ class ConsoleAndGenreContainer extends Component {
   }
 }
 
-export default ConsoleAndGenreContainer;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+export default TopByConsoleContainer;

@@ -80,7 +80,6 @@ class YearAndGenreContainer extends Component {
     this.setState({
       [e.target.name]: e.target.value
     })
-    console.log(this.state.year, this.state.genre)
   }
 
 
@@ -107,7 +106,7 @@ class YearAndGenreContainer extends Component {
       <Container fluid className="m-2">
         <Row>
           <Col xs lg={3}>
-            <Form onSubmit={this.handleSubmit}>
+            <Form className="mt-4" onSubmit={this.handleSubmit}>
               <Form.Group controlId="exampleForm.ControlSelect2">
                 <Form.Label>Browse By Year and Genre</Form.Label>
                 <Form.Control name="year" value={this.state.year} onChange={this.handleChange} as="select">
@@ -163,8 +162,9 @@ class YearAndGenreContainer extends Component {
               <Loading />
             :
             <>
-            <Button variant="dark" className="mr-2" onClick={this.nextGames}>←</Button>
-            <SlicedGamesContainer slicedGames={this.slicedGames()} />
+              <SlicedGamesContainer slicedGames={this.slicedGames()} />
+
+              <Button style={{fontSize: "30px", marginLeft: "1%"}} variant="dark" onClick={this.nextGames}>→</Button>
             </>
             }        
             </Row>
