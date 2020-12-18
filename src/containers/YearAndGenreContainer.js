@@ -157,13 +157,13 @@ class YearAndGenreContainer extends Component {
             </Form>
           </Col >
           <Col xs lg={9}>
-            <Row style={{justifyContent: "center"}}>        
+            <Row className="mr-1" style={{justifyContent: "center"}}>        
             { 
             this.state.loading ?
               <Loading />
             :
             <>
-            <Button variant="dark" className="mr-2" onClick={this.nextGames}>Next</Button>
+            <Button variant="dark" className="mr-2" onClick={this.nextGames}>←</Button>
             <SlicedGamesContainer slicedGames={this.slicedGames()} />
             </>
             }        

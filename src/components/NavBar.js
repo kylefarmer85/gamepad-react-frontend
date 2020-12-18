@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { logoutUser } from '../actions/user'
 import SearchBar from './SearchBar'
 import { Link } from 'react-router-dom'
-
+import NavBarSprites from './NavBarSprites'
 
 
 const NavBar = (props) => {
@@ -20,6 +20,7 @@ const NavBar = (props) => {
       <Navbar.Brand href="/home">GamePad</Navbar.Brand>
       
       <Nav className="mr-auto">
+      
       { props.user ?
       <>
         <Nav.Link onClick={handleLogout} as={Link} to={"/login"}>Logout</Nav.Link>
@@ -29,9 +30,13 @@ const NavBar = (props) => {
       :  
         <Nav.Link as={Link} to={`/login`}>Login</Nav.Link>
       } 
-      </Nav>
 
+      </Nav>
+      
       <SearchBar />
+      
+      <NavBarSprites />
+      
     </Navbar>
   );
 }

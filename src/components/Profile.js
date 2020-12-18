@@ -10,14 +10,6 @@ import Button from 'react-bootstrap/Button'
 import Review from './Review'
 
 
-const imgStyle = {
-  width: "50%",
-  margin: "25%",
-  borderRadius: "25%"
-}
-
-
-
 const Profile = (props) => {
 
   const [user, setUser] = useState({})
@@ -119,7 +111,12 @@ const Profile = (props) => {
     }
   }
   
+  const imgStyle = {
+    width: "50%",
+    margin: "25%",
+  }
   
+
   export default connect(mapStateToProps, null) (Profile);
 
 
