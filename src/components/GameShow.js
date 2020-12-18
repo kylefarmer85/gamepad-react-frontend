@@ -26,7 +26,7 @@ const GameShow = ({game, screenshots, addToFavorites, user, games}) => {
 
 
     return (
-      <Container className="mt-5 center-block">
+      <Container className="mt-5 ">
         {/* needs styling */}
         
         <div style={{textAlign: "center"}}>

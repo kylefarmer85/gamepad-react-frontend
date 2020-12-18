@@ -7,22 +7,25 @@ const SlicedGame = ({name, background_image, released, id}) => {
 
   const cardStyle = {
     margin: "1%",
-    padding: "1%",
+    padding: "1.3%",
     width: '10em', 
     height:'14em', 
-    backgroundColor: "#c2c5cc",
-    boxShadow: "2px 2px #343A40",
+    backgroundColor: "#E5E3E3",
+    boxShadow: "2px 2px grey",
     overflow: "hidden",
   }
 
   const imgStyle = {
     width: "100%",
     height: "50%",
+    backgroundColor: "#B7A955",
+    outline: "4px grey solid",
   }
 
   const pStyle = {
     marginTop: "5%",
     textAlign: "center",
+    color: "black",
   }
 
   return (
@@ -34,7 +37,13 @@ const SlicedGame = ({name, background_image, released, id}) => {
         <img style={imgStyle} variant="top" src={background_image} alt="game" />
       }
       <div style={pStyle}>
-        <p><strong>{name}</strong><br></br>{released.slice(0,4)}</p>
+        <strong>{name}</strong><br></br>
+      {
+        released ?
+        <span style={{color: "#A5356D"}}>{released.slice(0,4)}</span>
+      :
+        null
+      }
       </div>
     </Card>   
 

@@ -34,17 +34,15 @@ class Login extends Component {
   render() {
     return (
 
-      <Container style={{width: "50%"}}>  
+      <Container style={{width: "50%", marginTop: "5%"}}>  
 
         <h1 style={{textAlign: "center"}}>Login</h1>
         <Form onSubmit={this.handleSubmit}>
           <Form.Group controlId="formUsername">
-            <Form.Label>Username</Form.Label>
-              <Form.Control type="text" placeholder="Username" name="username" value={this.state.username} onChange={this.handleChange} />
+            <Form.Control type="text" placeholder="Username" name="username" value={this.state.username} onChange={this.handleChange} />
           </Form.Group>
           <Form.Group controlId="formPassword">
-            <Form.Label>Password</Form.Label>
-              <Form.Control type="password" placeholder="Password" name="password" value={this.state.password} onChange={this.handleChange} />
+            <Form.Control type="password" placeholder="Password" name="password" value={this.state.password} onChange={this.handleChange} />
           </Form.Group>
           <Button variant="outline-primary" type="submit">Login</Button>
           <Link to={`/signup`}> or Signup</Link>

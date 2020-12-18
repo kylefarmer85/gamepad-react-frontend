@@ -4,6 +4,7 @@ import { Switch, Route, withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { currentUser } from './actions/user'
 import NavBar from './components/NavBar'
+import NavConsoleList from './components/NavConsoleList'
 import Login from './components/Login'
 import Signup from './components/Signup'
 import Home from './components/Home'
@@ -42,6 +43,7 @@ class App extends Component {
     return (
       <div className="App">
         <NavBar />
+        <NavConsoleList />
           <Switch>
           
             <Route exact path ='/signup' component={Signup} />

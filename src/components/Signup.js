@@ -42,32 +42,30 @@ class Signup extends Component {
 
   render() {
     return (
-      <Container style={{width: "50%"}}>  
+      <Container style={{width: "50%", marginTop: "5%"}}>  
         <h1 style={{textAlign: "center"}}>Signup</h1>
         <Form onSubmit={this.handleSubmit}>
+
           <Form.Group controlId="formUsername">
-            <Form.Label>Username</Form.Label>
-              <Form.Control type="text" size="sm" placeholder="Username" name="username" value={this.state.username} onChange={this.handleChange} />
+            <Form.Control type="text" placeholder="Username" name="username" value={this.state.username} onChange={this.handleChange} />
           </Form.Group>
+
           <Form.Group controlId="formPassword">
-            <Form.Label>Password</Form.Label>
-              <Form.Control type="password" size="sm" placeholder="Password" name="password" value={this.state.password} onChange={this.handleChange} />
+            <Form.Control type="password" placeholder="Password" name="password" value={this.state.password} onChange={this.handleChange} />
           </Form.Group>
+
           <Form.Group controlId="fomrPasswordConfirmation">
-            <Form.Label>Confirm Password</Form.Label>
-              <Form.Control type="password" size="sm" placeholder="Confirm Password" name="passwordConfirmation" value={this.state.passwordConfirmation} onChange={this.handleChange} />
+            <Form.Control type="password" placeholder="Confirm Password" name="passwordConfirmation" value={this.state.passwordConfirmation} onChange={this.handleChange} />
           </Form.Group>
           <Form.Group controlId="formEmail">
-            <Form.Label>Email address</Form.Label>
-              <Form.Control type="email" size="sm" placeholder="Email Address" name="email" value={this.state.email} onChange={this.handleChange} />
+            <Form.Control type="email" placeholder="Email Address" name="email" value={this.state.email} onChange={this.handleChange} />
           </Form.Group>
           <Form.Group controlId="formPic">
-            <Form.Label>Profile Pic URL</Form.Label>
-              <Form.Control type="text" size="sm" placeholder="Profile Pic URL" name="pic" value={this.state.pic} onChange={this.handleChange} />
+            <Form.Control type="text" placeholder="Profile Pic URL" name="pic" value={this.state.pic} onChange={this.handleChange} />
           </Form.Group>
           <Form.Group controlId="formFavGenre">
             <Form.Label>Favorite Genre</Form.Label>
-              <Form.Control as="select" size="sm" name="favGenre" value={this.state.favGenre} onChange={this.handleChange}>
+              <Form.Control as="select" name="favGenre" value={this.state.favGenre} onChange={this.handleChange}>
               <option>Action</option>
               <option>Adventure</option>
               <option>Platformer</option>
@@ -82,8 +80,7 @@ class Signup extends Component {
               </Form.Control>
           </Form.Group>
           <Form.Group controlId="formFavGame">
-            <Form.Label>Favorite Game</Form.Label>
-              <Form.Control type="text" size="sm" placeholder="Favorite Game" name="favGame" value={this.state.favGame} onChange={this.handleChange} />
+            <Form.Control type="text" placeholder="Favorite Game" name="favGame" value={this.state.favGame} onChange={this.handleChange} />
           </Form.Group>
           <Button variant="outline-primary" type="submit">Signup</Button>
           <Link to={`/login`}> or Login</Link>

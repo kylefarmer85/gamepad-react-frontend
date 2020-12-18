@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import SearchResult from '../components/SearchResult'
 import Loading from '../components/Loading'
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
@@ -48,9 +47,12 @@ const ResultsContainer = (props) => {
             <Loading />
           </div>
         :
-        <Row>
-          {renderSearchResults()}
-        </Row>
+        <>
+          <h2 style={{textAlign: "center", marginTop: "2%"}}>Results for {props.match.params.searchTerm}</h2>
+          <Row className="mr-1" style={{justifyContent: "center"}}>
+            {renderSearchResults()}
+          </Row>
+        </>
         }
       
     </Container>
