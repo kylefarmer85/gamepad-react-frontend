@@ -8,6 +8,7 @@ import Col from 'react-bootstrap/Col'
 import Row from 'react-bootstrap/Row'
 import Loading from '../components/Loading'
 
+
 class ConsoleAndGenreContainer extends Component {
   state = {
     console: "",
@@ -17,6 +18,9 @@ class ConsoleAndGenreContainer extends Component {
     loading: true
   }
 
+  randomConsole = randomConsole()
+  randomGenre = randomGenre()
+
   componentDidMount(){
     const reqObj = {
       method: 'POST',
@@ -24,8 +28,8 @@ class ConsoleAndGenreContainer extends Component {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        console: randomConsole(),
-        genre: randomGenre()
+        console: this.randomConsole,
+        genre: this.randomGenre
       })
     }
 
@@ -101,13 +105,14 @@ class ConsoleAndGenreContainer extends Component {
 
   render() {
     return (
-      <Container fluid className="m-4">
+      <Container fluid className="m-2 mt-4">
         <Row>
-          <Col xs lg={2}>
+          <Col xs lg={3}>
             <Form onSubmit={this.handleSubmit}>
               <Form.Group controlId="exampleForm.ControlSelect2">
                 <Form.Label>Browse By Console and Genre</Form.Label>
                 <Form.Control name="console" value={this.state.console} onChange={this.handleChange}  as="select">
+                  <option>{this.randomConsole}</option>
                   <option>Atari 2600</option>
                   <option>Atari 5200</option>
                   <option>Atari 7800</option>
@@ -131,6 +136,7 @@ class ConsoleAndGenreContainer extends Component {
               </Form.Group> 
               <Form.Group controlId="exampleForm.ControlSelect2">
                 <Form.Control name="genre" value={this.state.genre} onChange={this.handleChange} as="select">
+                  <option>{this.randomGenre}</option>
                   <option>Action</option>
                   <option>Adventure</option>
                   <option>Platformer</option>
@@ -147,14 +153,14 @@ class ConsoleAndGenreContainer extends Component {
               <Button type="submit">Browse Games</Button>
             </Form> 
           </Col >
-          <Col xs lg={10}>
+          <Col xs lg={9}>
             <Row style={{justifyContent: "center"}}>
               { 
               this.state.loading ?
                 <Loading />
               :
               <>
-              <Button className="mr-2" onClick={this.nextGames}>Next Games</Button>
+              <Button variant="dark" className="mr-2" onClick={this.nextGames}>Next</Button>
               <SlicedGamesContainer slicedGames={this.slicedGames()} />
               </> 
               }     
