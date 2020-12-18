@@ -74,10 +74,14 @@ class ReviewsContainer extends Component {
           this.state.loading ?
             <Loading />
           :
-           this.renderGameReviews()
+          <>
+           <h1 style={{textAlign: "center", marginTop: "3%"}}>Reviews</h1> 
+           { this.renderGameReviews() }
+          </>
         }
-        </Container>
+        
         <ReviewForm gameApiId={this.props.gameApiId} gameName={this.props.gameName} gameImage={this.props.gameImage} handleAddReview={this.handleAddReview} />
+        </Container>
       </div>
     );
   }

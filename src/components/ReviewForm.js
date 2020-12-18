@@ -3,6 +3,7 @@ import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import { connect } from 'react-redux'
 import { addReview } from '../actions/reviews'
+import { toast } from 'react-toastify'
 
 class ReviewForm extends Component {
   constructor(props) {
@@ -49,13 +50,15 @@ class ReviewForm extends Component {
         this.props.addReview(review)
         this.props.handleAddReview(review)
 
+        toast.success("Review posted!", {position: "bottom-center", autoClose: 3000})
+
         this.setState({
           content: "",
           rating: ""
         })
       })
     } else {
-      alert("You must be logged in to submit a review.")
+      toast.error("You must be logged in to submit a review.", {position: "bottom-center", autoClose: 3000})
     }
   }
 

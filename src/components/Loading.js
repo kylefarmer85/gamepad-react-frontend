@@ -12,7 +12,7 @@ const randomGif = () => {
 
 const imgStyle = {
   display: 'block',
-  margin: '25% auto',
+  margin: '20% auto',
   maxHeight: "10em",
   maxWidth: "10em"
 }

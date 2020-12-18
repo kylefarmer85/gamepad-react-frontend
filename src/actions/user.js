@@ -1,4 +1,5 @@
 import history from '../history'
+import { toast } from  'react-toastify'
 
 export const logoutUser = () => {
   return {
@@ -32,12 +33,16 @@ export function fetchUser(userObj) {
     .then(resp => resp.json())
     .then(data => {
       if (data.error) {
+        toast.error(data.error, {position: "top-center", autoClose: 5000})
+
         history.push('/login')
-        alert(data.error)
 
       } else {
         dispatch({ type: "LOGIN_USER", data})
         localStorage.setItem('my_app_token', data.token)
+
+        toast.success(`Welcome ${data.user.username}`, {position: 'top-center', autoClose: 3000})
+
         console.log(data)
         history.push('/')
       }
@@ -70,13 +75,15 @@ export function signupUser(userObj) {
     .then(resp => resp.json())
     .then(data => {
       if (data.error) {
+        toast.error(data.error, {position: 'top-center', autoClose: 3000})
+
         history.push('/signup')
-        alert(data.error)
 
       } else {
       dispatch({ type: "LOGIN_USER", data})
       localStorage.setItem('my_app_token', data.token)
       console.log(data)
+      toast.success(`Welcome ${data.user.username}`, {position: 'top-center', autoClose: 3000})
       history.push('/')
       }
     })
@@ -107,12 +114,16 @@ export function updateUser(userObj) {
     .then(resp => resp.json())
     .then(data => {
       if (data.error) {
+        toast.error(data.error, {position: "top-center", autoClose: 5000})
+
         history.push(`/users/${userObj.id}/profile`)
-        alert(data.error)
+
 
       } else {
-      dispatch({ type: "UPDATE_USER", data})
-      history.push(`/users/${userObj.id}/profile`)
+        toast.info(`${userObj.username}'s info was updated!`, {position: "top-center", autoClose: 3000})
+
+        dispatch({ type: "UPDATE_USER", data})
+        history.push(`/users/${userObj.id}/profile`)
       }
     })
   }

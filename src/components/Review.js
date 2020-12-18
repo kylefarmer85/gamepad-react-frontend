@@ -14,19 +14,19 @@ const Review = ({ game_name, user_pic, game_api_id, content, rating, username, i
     if (handleDelete) {
       handleDelete(id)
     }
-    alert("Review Deleted!")
+
   }
 
   const mediaStyle = {
-    margin: "2%",
+    margin: "3% 5% ",
     outline: "solid",
-    outlineColor: "lightGreen",
-    textAlign: "left",
+    outlineColor: "#B7A955",
+    textAlign: "left"
   }
 
   const bodyStyle = {
     backgroundColor: "lightGray",
-    padding: "2% 10%",
+    padding: "2%",
   }
 
   return (
@@ -34,9 +34,9 @@ const Review = ({ game_name, user_pic, game_api_id, content, rating, username, i
     <Media style={mediaStyle}>
       <Link to={`/users/${user_id}/profile`}>
           <img 
-          width={64}
-          height={64}
-          className="mt-5 p-2"
+          width={128}
+          height={128}
+          className="mt-4 p-2"
           src={user_pic}
           alt="user pic"
           />

@@ -1,3 +1,5 @@
+import { toast } from 'react-toastify'
+
 export function deleteReview(id) {
   return(dispatch) => {
 
@@ -10,6 +12,7 @@ export function deleteReview(id) {
         alert(data.error)
       } else {
         dispatch({ type: "DELETE_REVIEW", data})
+        toast.info("Review Deleted!", {position: "bottom-center", autoClose:3000})
       }
     })
   }

@@ -1,3 +1,5 @@
+import { toast } from 'react-toastify'
+
 export function addToFavorites(gameApiId, gameName, gameImage, user) {
   return(dispatch) => {
 
@@ -23,7 +25,7 @@ export function addToFavorites(gameApiId, gameName, gameImage, user) {
 
       } else {
         dispatch({ type: "ADD_GAME", game})
-        alert(`${game.name} added to ${user.username}'s Favorites!`)
+        toast.success(`${game.name} added to ${user.username}'s Favorites!`, {position: "top-center", autoClose:3000})
       }
     })
   }

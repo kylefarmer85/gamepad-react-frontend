@@ -5,20 +5,23 @@ import { addToFavorites } from '../actions/games'
 import { connect } from 'react-redux'
 import ReviewsContainer from '../containers/ReviewsContainer';
 import Button from 'react-bootstrap/button'
+import { toast } from 'react-toastify'
 
+
+toast.configure()
 
 const GameShow = ({game, screenshots, addToFavorites, user, games}) => {
 
   const handleFavorite = () => {
     
     if (!user) {
-      return  alert("You must be logged in to add favorites")
+      return  toast.error("You must be logged in to add favorites", {position: "top-center", autoClose: 3000})
     } 
 
     const alreadyFavorite = games.find(g => g.game_api_id === game.id)
 
     if (alreadyFavorite) {
-        return alert(`This game is already in ${user.username}'s collection!`)
+        return toast.info(`This game is already in ${user.username}'s collection!`, {position: "top-center", autoClose: 3000})
       } else {
       addToFavorites(game.id, game.name, game.background_image, user)
     }
@@ -30,7 +33,7 @@ const GameShow = ({game, screenshots, addToFavorites, user, games}) => {
         {/* needs styling */}
         
         <div style={{textAlign: "center"}}>
-          <img src={game.background_image} alt="game" />
+          <img style={{height: "50%", width: "50%"}} src={game.background_image} alt="game" />
           <h1>{game.name}</h1>
           <p>Released: {game.released}</p>
           <p>Platform(s):</p>
@@ -56,7 +59,7 @@ const GameShow = ({game, screenshots, addToFavorites, user, games}) => {
 
         { 
           screenshots ?
-          screenshots.map(ss => <img src={ss.image} alt='screenshot' key={uuidv4()}></img>)
+          screenshots.map(ss => <img src={ss.image} style={{height: "20em", width: "20em"}} alt='screenshot' key={uuidv4()}></img>)
           :
           null
         }

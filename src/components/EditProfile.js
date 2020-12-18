@@ -6,6 +6,7 @@ import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import { logoutUser, updateUser } from '../actions/user'
 
+
 class EditProfile extends Component {
   constructor(props) {
     super(props)
@@ -92,9 +93,9 @@ class EditProfile extends Component {
             <Form.Label>Favorite Game</Form.Label>
               <Form.Control type="text" size="sm" name="favGame" value={this.state.favGame} onChange={this.handleChange} />
           </Form.Group>
-          <Button variant="outline-primary" type="submit">Update</Button>
-          <Button as={Link} to={`/users/${this.props.user.id}/profile`}>Back to Profile</Button>
-          <Button onClick={this.handleDelete}>Delete Profile</Button>
+          <Button style={{margin: "1%"}} variant="outline-primary" type="submit">Update</Button>
+          <Button style={{margin: "1%"}} as={Link} to={`/users/${this.props.user.id}/profile`}>Back to Profile</Button>
+          <Button style={{margin: "1%"}} onClick={this.handleDelete}>Delete Profile</Button>
         </Form>     
   
       </Container> 

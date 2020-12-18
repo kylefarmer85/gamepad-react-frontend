@@ -8,6 +8,7 @@ import thunk from 'redux-thunk'
 import App from './App';
 import './index.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import 'react-toastify/dist/ReactToastify.css';
 import history from './history'
 
 
