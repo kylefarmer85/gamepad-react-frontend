@@ -64,7 +64,6 @@ return (
     <div style={pStyle}>
       <strong>{name}</strong><br></br>
     </div>
-      <Button style={{fontSize: "5pt"}} variant="outline-dark" size="sm">❌</Button>
     
   </Card>   
 

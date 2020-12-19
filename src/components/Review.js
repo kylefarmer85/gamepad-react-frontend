@@ -32,15 +32,14 @@ const Review = ({ game_name, user_pic, game_api_id, content, rating, username, i
   return (
    
     <Media style={mediaStyle}>
-      <Link to={`/users/${user_id}/profile`}>
-          <img 
-          width={128}
-          height={128}
-          className="mt-4 p-2"
+     
+          <img as={Link} to={`/users/${user_id}/profile`}
+          style={{margin: "auto", width: "128px", height: "128px"}}
+          className="img-thumbnail"
           src={user_pic}
           alt="user pic"
           />
-        </Link>
+        
 
       <Media.Body style={bodyStyle}>
         <p>{content}</p>

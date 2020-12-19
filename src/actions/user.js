@@ -41,7 +41,7 @@ export function fetchUser(userObj) {
         dispatch({ type: "LOGIN_USER", data})
         localStorage.setItem('my_app_token', data.token)
 
-        toast.success(`Welcome ${data.user.username}`, {position: 'top-center', autoClose: 3000})
+        toast.info(`Welcome ${data.user.username}!`, {position: 'top-center', autoClose: 3000})
 
         console.log(data)
         history.push('/')
@@ -83,7 +83,7 @@ export function signupUser(userObj) {
       dispatch({ type: "LOGIN_USER", data})
       localStorage.setItem('my_app_token', data.token)
       console.log(data)
-      toast.success(`Welcome ${data.user.username}`, {position: 'top-center', autoClose: 3000})
+      toast.success(`Welcome ${data.user.username}!`, {position: 'top-center', autoClose: 3000})
       history.push('/')
       }
     })

@@ -6,6 +6,7 @@ import { connect } from 'react-redux'
 import ReviewsContainer from '../containers/ReviewsContainer';
 import Button from 'react-bootstrap/button'
 import { toast } from 'react-toastify'
+import crt2 from '../images/crt2.png'
 
 
 toast.configure()
@@ -33,7 +34,9 @@ const GameShow = ({game, screenshots, addToFavorites, user, games}) => {
         {/* needs styling */}
         
         <div style={{textAlign: "center"}}>
+          
           <img style={{height: "50%", width: "50%"}} src={game.background_image} alt="game" />
+
           <h1>{game.name}</h1>
           <p>Released: {game.released}</p>
           <p>Platform(s):</p>
@@ -47,11 +50,13 @@ const GameShow = ({game, screenshots, addToFavorites, user, games}) => {
        <div style={{textAlign: "center"}}>
     
         { 
-        game.clip === null ? null :
-        <video src={game.clip.clip} type="video/mp4" controls/>
+        game.clip === null ? 
+          null 
+        :
+          <video src={game.clip.clip} type="video/mp4" controls/>
         }
     
-        <p id="details">{game.description_raw}</p>
+        <p style={{textAlign: "left"}} >{game.description_raw}</p>
   
         {/* <img src={game.background_image} alt='game'/>
   
@@ -59,7 +64,7 @@ const GameShow = ({game, screenshots, addToFavorites, user, games}) => {
 
         { 
           screenshots ?
-          screenshots.map(ss => <img src={ss.image} style={{height: "20em", width: "20em"}} alt='screenshot' key={uuidv4()}></img>)
+          screenshots.map(ss => <img src={ss.image} style={{height: "16em", width: "20em", margin: "1%"}} alt='screenshot' key={uuidv4()}></img>)
           :
           null
         }

@@ -6,51 +6,49 @@ import { randomGenre, randomConsole } from "../helpers/randomFuncs"
 import Container from 'react-bootstrap/Container'
 import Col from 'react-bootstrap/Col'
 import Row from 'react-bootstrap/Row'
-import Loading from '../components/Loading'
 
 
 class ConsoleAndGenreContainer extends Component {
   state = {
-    console: "",
-    genre: "",
+    console: randomConsole(),
+    genre: randomGenre(),
     games: [],
     index: 0,
     loading: true
   }
 
-  randomConsole = randomConsole()
-  randomGenre = randomGenre()
+  // randomConsole = randomConsole()
+  // randomGenre = randomGenre()
 
   componentDidMount(){
-    const reqObj = {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        console: this.randomConsole,
-        genre: this.randomGenre
-      })
-    }
+    this.fetchGames()
+    // const reqObj = {
+    //   method: 'POST',
+    //   headers: {
+    //     'Content-Type': 'application/json'
+    //   },
+    //   body: JSON.stringify({
+    //     console: this.randomConsole,
+    //     genre: this.randomGenre
+    //   })
+    // }
 
-    fetch(`http://localhost:3000/api/v1/games/consoleandgenre`, reqObj)
-    .then(resp => resp.json())
-    .then(data => {
-      if (data.error) {
-        alert(data.error)
-      } else {
-        this.setState({
-          games: data.results,
-          loading: false
-        })
-        console.log(data.results)
-      }
-    })
+    // fetch(`http://localhost:3000/api/v1/games/consoleandgenre`, reqObj)
+    // .then(resp => resp.json())
+    // .then(data => {
+    //   if (data.error) {
+    //     alert(data.error)
+    //   } else {
+    //     this.setState({
+    //       games: data.results,
+    //       loading: false
+    //     })
+    //     console.log(data.results)
+    //   }
+    // })
   }
 
-  handleSubmit = (e) => {
-    e.preventDefault()
-
+  fetchGames = () => {
     const reqObj = {
       method: 'POST',
       headers: {
@@ -75,6 +73,35 @@ class ConsoleAndGenreContainer extends Component {
         console.log(data.results)
       }
     })
+  }
+
+  handleSubmit = (e) => {
+    e.preventDefault()
+    this.fetchGames()
+    // const reqObj = {
+    //   method: 'POST',
+    //   headers: {
+    //     'Content-Type': 'application/json'
+    //   },
+    //   body: JSON.stringify({
+    //     console: this.state.console,
+    //     genre: this.state.genre
+    //   })
+    // }
+
+    // fetch(`http://localhost:3000/api/v1/games/consoleandgenre`, reqObj)
+    // .then(resp => resp.json())
+    // .then(data => {
+    //   if (data.error) {
+    //     alert(data.error)
+    //   } else {
+    //     this.setState({
+    //       games: data.results,
+    //       loading: false
+    //     })
+    //     console.log(data.results)
+    //   }
+    // })
   }
 
   handleChange = (e) => {
@@ -111,7 +138,7 @@ class ConsoleAndGenreContainer extends Component {
               <Form.Group controlId="exampleForm.ControlSelect2">
                 <Form.Label>Browse By Console and Genre</Form.Label>
                 <Form.Control name="console" value={this.state.console} onChange={this.handleChange}  as="select">
-                  <option>{this.randomConsole}</option>
+                  {/* <option>{this.randomConsole}</option> */}
                   <option>Atari 2600</option>
                   <option>Atari 5200</option>
                   <option>Atari 7800</option>
@@ -135,7 +162,7 @@ class ConsoleAndGenreContainer extends Component {
               </Form.Group> 
               <Form.Group controlId="exampleForm.ControlSelect2">
                 <Form.Control name="genre" value={this.state.genre} onChange={this.handleChange} as="select">
-                  <option>{this.randomGenre}</option>
+                  {/* <option>{this.randomGenre}</option> */}
                   <option>Action</option>
                   <option>Adventure</option>
                   <option>Platformer</option>
@@ -156,7 +183,7 @@ class ConsoleAndGenreContainer extends Component {
             <Row className="mr-1" style={{justifyContent: "center"}}>
               { 
               this.state.loading ?
-                <Loading />
+                null
               :
               <>
                 <SlicedGamesContainer slicedGames={this.slicedGames()} />

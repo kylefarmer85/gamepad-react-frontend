@@ -10,46 +10,45 @@ import Loading from '../components/Loading'
 
 class YearAndGenreContainer extends Component {
   state = {
-    year: "",
-    genre: "",
+    year: randomYear(),
+    genre: randomGenre(),
     games: [],
     index: 0,
     loading: true,
   }
 
-  randomYear = randomYear()
-  randomGenre = randomGenre()
+  // randomYear = randomYear()
+  // randomGenre = randomGenre()
 
   componentDidMount(){
-    const reqObj = {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        year: this.randomYear,
-        genre: this.randomGenre
-      })
-    }
+    this.fetchGames()
+  //   const reqObj = {
+  //     method: 'POST',
+  //     headers: {
+  //       'Content-Type': 'application/json'
+  //     },
+  //     body: JSON.stringify({
+  //       year: this.randomYear,
+  //       genre: this.randomGenre
+  //     })
+  //   }
 
-    fetch(`http://localhost:3000/api/v1/games/yearandgenre`, reqObj)
-    .then(resp => resp.json())
-    .then(data => {
-      if (data.error) {
-        alert(data.error)
-      } else {
-        this.setState({
-          games: data.results,
-          loading: false
-        })
-        console.log(data.results)
-      }
-    })
+  //   fetch(`http://localhost:3000/api/v1/games/yearandgenre`, reqObj)
+  //   .then(resp => resp.json())
+  //   .then(data => {
+  //     if (data.error) {
+  //       alert(data.error)
+  //     } else {
+  //       this.setState({
+  //         games: data.results,
+  //         loading: false
+  //       })
+  //       console.log(data.results)
+  //     }
+  //   })
   }
 
-  handleSubmit = (e) => {
-    e.preventDefault()
-
+  fetchGames = () => {
     const reqObj = {
       method: 'POST',
       headers: {
@@ -74,6 +73,35 @@ class YearAndGenreContainer extends Component {
         console.log(data.results)
       }
     })
+  }
+
+  handleSubmit = (e) => {
+    e.preventDefault()
+    this.fetchGames()
+    // const reqObj = {
+    //   method: 'POST',
+    //   headers: {
+    //     'Content-Type': 'application/json'
+    //   },
+    //   body: JSON.stringify({
+    //     year: this.state.year,
+    //     genre: this.state.genre
+    //   })
+    // }
+
+    // fetch(`http://localhost:3000/api/v1/games/yearandgenre`, reqObj)
+    // .then(resp => resp.json())
+    // .then(data => {
+    //   if (data.error) {
+    //     alert(data.error)
+    //   } else {
+    //     this.setState({
+    //       games: data.results,
+    //       loading: false
+    //     })
+    //     console.log(data.results)
+    //   }
+    // })
   }
 
   handleChange = (e) => {
@@ -110,7 +138,7 @@ class YearAndGenreContainer extends Component {
               <Form.Group controlId="exampleForm.ControlSelect2">
                 <Form.Label>Browse By Year and Genre</Form.Label>
                 <Form.Control name="year" value={this.state.year} onChange={this.handleChange} as="select">
-                  <option>{this.randomYear}</option>
+                  {/* <option>{this.randomYear}</option> */}
                   <option>1977</option>
                   <option>1978</option>
                   <option>1979</option>
@@ -134,11 +162,15 @@ class YearAndGenreContainer extends Component {
                   <option>1997</option>
                   <option>1998</option>
                   <option>1999</option>
+                  <option>2000</option>
+                  <option>2001</option>
+                  <option>2002</option>
+                  <option>2003</option>
                 </Form.Control>
               </Form.Group> 
               <Form.Group controlId="exampleForm.ControlSelect2">
                 <Form.Control name="genre" value={this.state.genre} onChange={this.handleChange} as="select">
-                  <option>{this.randomGenre}</option>
+                  {/* <option>{this.randomGenre}</option> */}
                   <option>Action</option>
                   <option>Adventure</option>
                   <option>Platformer</option>

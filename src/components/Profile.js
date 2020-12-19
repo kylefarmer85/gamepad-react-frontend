@@ -65,7 +65,7 @@ const Profile = (props) => {
       :
         <div style={{textAlign: "center"}}>
 
-          <Container className="mt-5" fluid="lg">
+          <Container className="mt-5" fluid>
             <Row>
               <Col>
                 <h1>{user.username}</h1>
