@@ -10,7 +10,7 @@ import Signup from './components/Signup'
 import Home from './components/Home'
 import ResultsContainer from './containers/ResultsContainer'
 import GameContainer from './containers/GameContainer'
-import Profile from './components/Profile'
+import ProfileContainer from './containers/ProfileContainer'
 import EditProfile from './components/EditProfile'
 
 
@@ -50,7 +50,7 @@ class App extends Component {
             <Route exact path ='/login' component={Login} /> 
             <Route exact path ='/games/search/:searchTerm' component={ResultsContainer} />
             <Route exact path ='/games/:id' component={GameContainer} />
-            <Route exact path ='/users/:id/profile' component={Profile} />
+            <Route exact path ='/users/:id/profile' component={ProfileContainer} />
             <Route exact path ='/users/:id/edit' component={EditProfile} />
             <Route path ='/' component={Home} />
             

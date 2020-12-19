@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
-import FavoriteGame from './FavoriteGame'
-import Loading from './Loading'
+import FavoriteGame from '../components/FavoriteGame'
+import Loading from '../components/Loading'
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Button from 'react-bootstrap/Button'
-import Review from './Review'
+import Review from '../components/Review'
 
 
-const Profile = (props) => {
+const ProfileContainer = (props) => {
 
   const [user, setUser] = useState({})
   const [loading, setLoading] = useState(true)
@@ -117,7 +117,7 @@ const Profile = (props) => {
   }
   
 
-  export default connect(mapStateToProps, null) (Profile);
+  export default connect(mapStateToProps, null) (ProfileContainer);
 
 
 

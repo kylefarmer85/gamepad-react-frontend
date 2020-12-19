@@ -5,7 +5,7 @@ const userReducer = (state = null, action) => {
       return action.data.user
   
     case 'CURRENT_USER':
-      return action.data
+      return action.data.user
 
     case 'LOGOUT_USER':
       return null
