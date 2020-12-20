@@ -7,7 +7,7 @@ import Button from 'react-bootstrap/Button'
 import { logoutUser, updateUser } from '../actions/user'
 
 
-class EditProfile extends Component {
+class EditUserInfo extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -34,6 +34,10 @@ class EditProfile extends Component {
   }
 
   handleDelete = (e) => {
+    if (!window.confirm(`Are you sure you want to delete ${this.props.user.username}?`)) {
+      return
+    }
+
     fetch(`http://localhost:3000/api/v1/users/${this.props.user.id}`, {
       method: 'DELETE'
     })
@@ -53,26 +57,32 @@ class EditProfile extends Component {
       <Container style={{width: "50%"}}>  
         <h1 style={{textAlign: "center"}}>Edit Profile</h1>
         <Form onSubmit={this.handleSubmit}>
+
           <Form.Group controlId="formUsername">
             <Form.Label>Username</Form.Label>
               <Form.Control type="text" size="sm" name="username" value={this.state.username} onChange={this.handleChange} />
           </Form.Group>
+
           <Form.Group controlId="formPassword">
             <Form.Label>Password</Form.Label>
               <Form.Control type="password" size="sm" name="password" value={this.state.password} onChange={this.handleChange} />
           </Form.Group>
+
           <Form.Group controlId="fomrPasswordConfirmation">
             <Form.Label>Confirm Password</Form.Label>
               <Form.Control type="password" size="sm" name="passwordConfirmation" value={this.state.passwordConfirmation} onChange={this.handleChange} />
           </Form.Group>
+
           <Form.Group controlId="formEmail">
             <Form.Label>Email address</Form.Label>
               <Form.Control type="email" size="sm" name="email" value={this.state.email} onChange={this.handleChange} />
           </Form.Group>
+
           <Form.Group controlId="formPic">
             <Form.Label>Profile Pic URL</Form.Label>
               <Form.Control type="text" size="sm" name="pic" value={this.state.pic} onChange={this.handleChange} />
           </Form.Group>
+
           <Form.Group controlId="formFavGenre">
             <Form.Label>Favorite Genre</Form.Label>
               <Form.Control as="select" size="sm" name="favGenre" value={this.state.favGenre} onChange={this.handleChange}>
@@ -89,12 +99,16 @@ class EditProfile extends Component {
               <option>Family</option>
               </Form.Control>
           </Form.Group>
+
           <Form.Group controlId="formFavGame">
             <Form.Label>Favorite Game</Form.Label>
               <Form.Control type="text" size="sm" name="favGame" value={this.state.favGame} onChange={this.handleChange} />
           </Form.Group>
+
           <Button style={{margin: "1%"}} variant="outline-primary" type="submit">Update</Button>
+
           <Button style={{margin: "1%"}} as={Link} to={`/users/${this.props.user.id}/profile`}>Back to Profile</Button>
+          
           <Button style={{margin: "1%"}} onClick={this.handleDelete}>Delete Profile</Button>
         </Form>     
   
@@ -110,4 +124,4 @@ const mapStateToProps = (state) => {
 }
 
 
-export default connect (mapStateToProps, { updateUser, logoutUser }) (EditProfile);
+export default connect (mapStateToProps, { updateUser, logoutUser }) (EditUserInfo);

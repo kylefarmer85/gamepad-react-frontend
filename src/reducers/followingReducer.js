@@ -15,6 +15,9 @@ const followingReducer = (state = [], action) => {
         return f.id !== action.unfollowedUser.id
       }) 
       return updatedFollowing
+
+    case 'LOGOUT_USER':
+      return null    
     
     default:
     return state  

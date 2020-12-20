@@ -7,6 +7,9 @@ const followersReducer = (state = [], action) => {
     case "CURRENT_USER":
       return action.data.followers
     
+    case 'LOGOUT_USER':
+      return null  
+    
     default:
     return state  
   }

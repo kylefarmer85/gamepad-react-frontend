@@ -22,28 +22,3 @@ const FollowersContainer = ({followers, toggleShowFollowers}) => {
 
 export default FollowersContainer;
 
-// import React, { Component } from 'react'; 
-
-// class FollowersContainer extends Component {
-
-//   renderFollowers = () => {
-//     return this.props.followers.map(user => {
-//       return <FollowShow {...user} key={user.id} />
-//     })
-//   }
-
-//   render() {
-//     return (
-//       <div>
-
-//         <Button onClick={this.props.toggleShowFollowers}>Show Following</Button>
-
-//         <h3>Followers</h3>
-//         {this.renderFollowers()}
-
-//       </div>
-//     );
-//   }
-// }
-
-// export default FollowersContainer;

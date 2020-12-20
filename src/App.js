@@ -11,19 +11,18 @@ import Home from './components/Home'
 import ResultsContainer from './containers/ResultsContainer'
 import GameContainer from './containers/GameContainer'
 import ProfileContainer from './containers/ProfileContainer'
-import EditProfile from './components/EditProfile'
-
+import EditUserInfo from './components/EditUserInfo'
 
 
 class App extends Component {
 
   componentDidMount(){
     const token = localStorage.getItem('my_app_token')
-    
+
     if (!token) {
       return
     } else {
-
+      
       const reqObj = {
         method: 'GET',
         headers: {
@@ -34,7 +33,11 @@ class App extends Component {
       fetch('http://localhost:3000/api/v1/current_user', reqObj)
       .then(resp => resp.json())
       .then(data => {
-        this.props.currentUser(data)
+        if (data.error) {
+          localStorage.removeItem("my_app_token")
+        } else { 
+          this.props.currentUser(data)
+        }
       })
     }
   }
@@ -51,7 +54,7 @@ class App extends Component {
             <Route exact path ='/games/search/:searchTerm' component={ResultsContainer} />
             <Route exact path ='/games/:id' component={GameContainer} />
             <Route exact path ='/users/:id/profile' component={ProfileContainer} />
-            <Route exact path ='/users/:id/edit' component={EditProfile} />
+            <Route exact path ='/users/:id/edit' component={EditUserInfo} />
             <Route path ='/' component={Home} />
             
           </Switch> 
