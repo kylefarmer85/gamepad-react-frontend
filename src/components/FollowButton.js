@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { followUser, unfollowUser } from '../actions/follows'
 import Button from 'react-bootstrap/Button'
 
-const Follows = ({followedUserId, followerId, addFollowerToProfile, removeFollowerFromProfile, followUser, unfollowUser, following}) => {
+const FollowButton = ({followedUserId, followerId, addFollowerToProfile, removeFollowerFromProfile, followUser, unfollowUser, following}) => {
 
   const follow = () => {
     followUser(followedUserId, followerId)
@@ -37,4 +37,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, {followUser, unfollowUser}) (Follows);
+export default connect(mapStateToProps, {followUser, unfollowUser}) (FollowButton);

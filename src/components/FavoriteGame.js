@@ -34,14 +34,22 @@ return (
         <strong>{name}</strong><br></br>
       </div>
 
-      <div style={{position: "absolute", bottom: "0px"}}>
+      
       {
-        gameUserId === user.id ?
-          <Button onClick={removeFavorite} variant="outlin-dark" size="sm" style={{fontSize: "7pt"}}>✘ remove</Button>
+        user ?
+          gameUserId === user.id ?
+
+            <div style={{position: "absolute", bottom: "0px"}}>
+              <Button onClick={removeFavorite} variant="outlin-dark" size="sm" style={{fontSize: "7pt"}}>✘ remove</Button>
+            </div>  
+
+          :
+            null
         :
           null
       } 
-      </div>
+      
+      
     </Card>
 
   );
