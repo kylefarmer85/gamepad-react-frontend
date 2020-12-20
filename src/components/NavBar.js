@@ -23,7 +23,7 @@ const NavBar = (props) => {
     <Navbar expand="md" bg="dark" variant="dark">
       <Nav className="mr-auto ml-2">
 
-      <Navbar.Brand style={{outline: "solid white", padding: "5px"}} href="/home">GamePad</Navbar.Brand>
+      <Navbar.Brand style={{outline: "solid white", padding: "5px"}} as={Link} to={`/home`}>GamePad</Navbar.Brand>
       
       { props.user ?
       <>

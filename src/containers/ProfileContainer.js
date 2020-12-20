@@ -8,6 +8,7 @@ import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Button from 'react-bootstrap/Button'
 import Review from '../components/Review'
+import Follows from '../components/Follows'
 
 
 const ProfileContainer = (props) => {
@@ -20,7 +21,6 @@ const ProfileContainer = (props) => {
     .then(resp => resp.json())
     .then(user => {
       if (user.error) {
-        this.props.history.push('/')
         alert(user.error)
       
       } else {
@@ -33,7 +33,6 @@ const ProfileContainer = (props) => {
 
 
   const removeFavoriteFromProfile = (gameId) => {
-
     const updatedGames = user.games.filter(game => {
     return game.id !== gameId
     })
@@ -41,12 +40,10 @@ const ProfileContainer = (props) => {
     setUser({
       ...user,
       games: updatedGames
-    }
-    )
+    })
   }
 
   const renderFavorites = () => {
-
     return user.games.map(game => {
       //gave diff variable name to user id to compare the current user from state in the FavoriteGame component
       return <FavoriteGame {...game} gameUserId={user.id} removeFavoriteFromProfile={removeFavoriteFromProfile} key={game.id} />
@@ -58,6 +55,7 @@ const ProfileContainer = (props) => {
     const updatedReviews = user.reviews.filter(r => {
       return r.id !== id
     })
+
     setUser(prevState => {
       return {
       ...prevState,
@@ -69,6 +67,28 @@ const ProfileContainer = (props) => {
   const renderReviews = () => {
     return user.reviews.map(review => {
       return <Review {...review} key={review.id} handleDelete={handleDelete} />
+    })
+  }
+
+  const addFollowerToProfile = () => {
+    setUser(prevState => {
+      return {
+        ...prevState,
+        followers: [...prevState.followers, props.user]
+      }
+    })
+  }
+  
+  const removeFollowerFromProfile = () => {
+    const updatedFollowers = user.followers.filter(f => {
+    return f.id !== props.user.id
+    })
+
+    setUser(prevState => {
+      return {
+        ...prevState,
+        followers: updatedFollowers
+      }
     })
   }
 
@@ -97,11 +117,11 @@ const ProfileContainer = (props) => {
                 {
                   props.user ?
                     props.user.id === user.id ?
-                    <Button as={Link} to={`/users/${props.user.id}/edit`}>Edit Info</Button>
+                      <Button as={Link} to={`/users/${props.user.id}/edit`}>Edit Info</Button>
                     :
-                    null
+                      <Follows followedUserId={user.id} followerId={props.user.id} addFollowerToProfile={addFollowerToProfile} removeFollowerFromProfile={removeFollowerFromProfile}/>
                   :
-                    null
+                    <p>Login to Follow User</p>
                 } 
               </Col>
               <Col className ="p-3">

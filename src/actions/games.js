@@ -21,7 +21,7 @@ export function addToFavorites(gameApiId, gameName, gameImage, user) {
     .then(game => {
       console.log(game)
       if (game.error) {
-        alert(game.error)
+        toast.error(game.error, {position: "top-center", autoClose: false})
 
       } else {
         dispatch({ type: "ADD_GAME", game})
