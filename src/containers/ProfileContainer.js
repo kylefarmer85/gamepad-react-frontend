@@ -24,6 +24,7 @@ const ProfileContainer = (props) => {
         alert(user.error)
       
       } else {
+        console.log(user)
         setUser(user)
         setLoading(false)
       }
@@ -31,11 +32,27 @@ const ProfileContainer = (props) => {
   }, [props.match.params.id]);
 
 
-  const renderGames = () => {
+  const removeFavoriteFromProfile = (gameId) => {
+
+    const updatedGames = user.games.filter(game => {
+    return game.id !== gameId
+    })
+
+    setUser({
+      ...user,
+      games: updatedGames
+    }
+    )
+  }
+
+  const renderFavorites = () => {
+
     return user.games.map(game => {
-      return <FavoriteGame {...game} key={game.id} />
+      //gave diff variable name to user id to compare the current user from state in the FavoriteGame component
+      return <FavoriteGame {...game} gameUserId={user.id} removeFavoriteFromProfile={removeFavoriteFromProfile} key={game.id} />
     })
   }
+
 
   const handleDelete = (id) => {
     const updatedReviews = user.reviews.filter(r => {
@@ -89,7 +106,7 @@ const ProfileContainer = (props) => {
               </Col>
               <Col className ="p-3">
                 <Row>
-                 {renderGames()}
+                 {renderFavorites()}
                 </Row>
               </Col>
             </Row>

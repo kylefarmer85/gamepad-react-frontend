@@ -30,3 +30,33 @@ export function addToFavorites(gameApiId, gameName, gameImage, user) {
     })
   }
 }
+
+export function removeFromFavorites(id, user, name) {
+  return (dispatch) => {
+
+    const reqObj = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        user_id: user.id,
+        game_id: id,
+      })
+    }
+
+    fetch(`http://localhost:3000/api/v1/favorites/remove`, reqObj)
+
+    .then(resp => resp.json())
+    .then(favorite => {
+      console.log(favorite)
+      if (favorite.error) {
+        toast.error(favorite.error, {position: "top-center", autoClose: false})
+
+      } else {
+        dispatch({ type: "REMOVE_GAME", id})
+        toast.info(`${name} removed from ${user.username}'s Favorites`, {position: "top-center", autoClose:3000})
+      }
+    })
+  }
+}

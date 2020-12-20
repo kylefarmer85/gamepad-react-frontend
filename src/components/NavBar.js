@@ -6,11 +6,15 @@ import { logoutUser } from '../actions/user'
 import SearchBar from './SearchBar'
 import { Link } from 'react-router-dom'
 import NavBarSprites from './NavBarSprites'
+import { toast } from 'react-toastify';
 
 
 const NavBar = (props) => {
 
   const handleLogout = () => {
+
+    toast.info("You have successfully logged out.", {position: "top-center", autoClose: 3000})
+
     localStorage.removeItem("my_app_token")
     props.logoutUser()
   }
@@ -32,11 +36,8 @@ const NavBar = (props) => {
       } 
 
       </Nav>
-      
       <SearchBar />
-      
       <NavBarSprites />
-      
     </Navbar>
   );
 }
