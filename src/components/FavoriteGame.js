@@ -6,37 +6,39 @@ import { connect } from 'react-redux'
 import { removeFromFavorites } from '../actions/games'
 import Button from 'react-bootstrap/Button'
 
+
 const FavoriteGame = ({id, gameUserId, game_api_id, name, image, user, removeFavoriteFromProfile, removeFromFavorites}) => {
 
   const removeFavorite = () => {
-    console.log(id, user, name);
     removeFromFavorites(id, user, name)
     removeFavoriteFromProfile(id)
   }
 
+
+  
 return (
-  <div>
-  <Card as={Link} to={`/games/${game_api_id}`} style={cardStyle}>
-    { image === null ?
-      <img style={imgStyle} variant="top" src={Mario} alt="game" />
-    :
-      <img style={imgStyle} variant="top" src={image} alt="game" />
-    }
-    <div style={pStyle}>
-      <strong>{name}</strong><br></br>
+  <div style={{margin: "1%"}}>
+    <Card as={Link} to={`/games/${game_api_id}`} style={cardStyle}>
 
-
-    </div>
-  </Card>   
-  {
-      gameUserId === user.id ?
-        <Button onClick={removeFavorite}>Remove</Button>
+      { image === null ?
+        <img style={imgStyle} git variant="top" src={Mario} alt="game" />
       :
-        null
-    }
-  </div>
+        <img style={imgStyle} variant="top" src={image} alt="game" />
+      }
 
-);
+      <div style={pStyle}>
+        <strong>{name}</strong><br></br>
+      </div>
+
+    </Card>
+      {
+        gameUserId === user.id ?
+          <Button onClick={removeFavorite}>Remove</Button>
+        :
+          null
+      }
+    </div>    
+  );
 }
 
 const cardStyle = {

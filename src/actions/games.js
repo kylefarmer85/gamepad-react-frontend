@@ -55,7 +55,7 @@ export function removeFromFavorites(id, user, name) {
 
       } else {
         dispatch({ type: "REMOVE_GAME", id})
-        toast.info(`${name} removed from ${user.username}'s Favorites`, {position: "top-center", autoClose:3000})
+        toast.info(`${name} removed from ${user.username}'s Favorites`, {position: "top-right", autoClose:3000})
       }
     })
   }
