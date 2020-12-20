@@ -4,9 +4,11 @@ import { connect } from 'react-redux'
 import { deleteReview } from '../actions/reviews'
 import Button from 'react-bootstrap/Button'
 import { Link } from 'react-router-dom'
+import { useHistory } from "react-router-dom"
 
 const Review = ({ game_name, user_pic, game_api_id, content, rating, username, id, user_id, user, deleteReview, handleDelete }) => {
 
+  let history = useHistory()  
 
   const handleClick = () => {
     deleteReview(id)
@@ -15,6 +17,10 @@ const Review = ({ game_name, user_pic, game_api_id, content, rating, username, i
       handleDelete(id)
     }
 
+  }
+
+  const goToUser = () => {
+    history.push(`/users/${user_id}/profile`)
   }
 
   const mediaStyle = {
@@ -33,7 +39,7 @@ const Review = ({ game_name, user_pic, game_api_id, content, rating, username, i
    
     <Media style={mediaStyle}>
      
-          <img as={Link} to={`/users/${user_id}/profile`}
+          <img onClick={goToUser}
           style={{margin: "auto", width: "128px", height: "128px"}}
           className="img-thumbnail"
           src={user_pic}

@@ -21,11 +21,11 @@ export function addToFavorites(gameApiId, gameName, gameImage, user) {
     .then(game => {
       console.log(game)
       if (game.error) {
-        alert(game.error)
+        toast.error(game.error, {position: "bottom-center", autoClose: false})
 
       } else {
         dispatch({ type: "ADD_GAME", game})
-        toast.success(`${game.name} added to ${user.username}'s Favorites!`, {position: "top-center", autoClose:3000})
+        toast.success(`${game.name} added to ${user.username}'s Favorites!`, {position: "bottom-center", autoClose:3000})
       }
     })
   }
@@ -51,11 +51,11 @@ export function removeFromFavorites(id, user, name) {
     .then(favorite => {
       console.log(favorite)
       if (favorite.error) {
-        toast.error(favorite.error, {position: "top-center", autoClose: false})
+        toast.error(favorite.error, {position: "bottom-center", autoClose: false})
 
       } else {
         dispatch({ type: "REMOVE_GAME", id})
-        toast.info(`${name} removed from ${user.username}'s Favorites`, {position: "top-right", autoClose:3000})
+        toast.info(`${name} removed from ${user.username}'s Favorites`, {position: "bottom-center", autoClose:3000})
       }
     })
   }
