@@ -6,7 +6,6 @@ import { connect } from 'react-redux'
 import ReviewsContainer from '../containers/ReviewsContainer';
 import Button from 'react-bootstrap/button'
 import { toast } from 'react-toastify'
-import crt2 from '../images/crt2.png'
 
 
 toast.configure()
@@ -16,13 +15,13 @@ const GameShow = ({game, screenshots, addToFavorites, user, games}) => {
   const handleFavorite = () => {
     
     if (!user) {
-      return  toast.error("You must be logged in to add favorites", {position: "top-center", autoClose: 3000})
+      return  toast.error("You must be logged in to add favorites", {position: "bottom-center", autoClose: 3000})
     } 
 
     const alreadyFavorite = games.find(g => g.game_api_id === game.id)
 
     if (alreadyFavorite) {
-        return toast.info(`This game is already in ${user.username}'s collection!`, {position: "top-center", autoClose: 3000})
+        return toast.info(`This game is already in ${user.username}'s collection!`, {position: "bottom-center", autoClose: 3000})
       } else {
       addToFavorites(game.id, game.name, game.background_image, user)
     }

@@ -3,7 +3,7 @@ import Card from 'react-bootstrap/Card'
 import Mario from '../images/mario-is-missing.jpg'
 import { connect } from 'react-redux'
 import { removeFromFavorites } from '../actions/games'
-import { useHistory } from "react-router-dom"
+import { useHistory } from 'react-router-dom'
 import Button from 'react-bootstrap/Button'
 
 
@@ -17,9 +17,7 @@ const FavoriteGame = ({id, gameUserId, game_api_id, name, image, user, removeFav
   }
 
   const goToGame = () => {
-    
     history.push(`/games/${game_api_id}`)
-
   }
 
 return (
@@ -35,6 +33,7 @@ return (
       <div onClick={goToGame} style={pStyle}>
         <strong>{name}</strong><br></br>
       </div>
+
       <div style={{position: "absolute", bottom: "0px"}}>
       {
         gameUserId === user.id ?

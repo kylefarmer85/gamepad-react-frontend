@@ -22,7 +22,7 @@ export function followUser(followedUserId, followerId) {
       
       } else {
         dispatch({ type: "ADD_FOLLOWING", followedUser})
-        toast.success(`You are now following ${followedUser.username}!`, {position: "top-center", autoClose: 3000})
+        toast.success(`You are now following ${followedUser.username}!`, {position: "bottom-center", autoClose: 3000})
       }
     })
   }
@@ -47,7 +47,7 @@ export function unfollowUser(followedUserId, followerId) {
     .then(unfollowedUser => {
 
       dispatch({ type: "REMOVE_FOLLOWING", unfollowedUser})
-      toast.info(`You have unfollowed ${unfollowedUser.username}!`, {position: "top-center", autoClose: 3000})
+      toast.info(`You have unfollowed ${unfollowedUser.username}!`, {position: "bottom-center", autoClose: 3000})
     })
   }
 }

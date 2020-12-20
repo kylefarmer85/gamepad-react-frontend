@@ -41,7 +41,7 @@ export function fetchUser(userObj) {
         dispatch({ type: "LOGIN_USER", data})
         localStorage.setItem('my_app_token', data.token)
 
-        toast.info(`Welcome ${data.user.username}!`, {position: 'top-center', autoClose: 3000})
+        toast.info(`Welcome ${data.user.username}!`, {position: 'bottom-center', autoClose: 3000})
 
         console.log(data)
         history.push('/')
@@ -83,7 +83,7 @@ export function signupUser(userObj) {
       dispatch({ type: "LOGIN_USER", data})
       localStorage.setItem('my_app_token', data.token)
       console.log(data)
-      toast.success(`Welcome ${data.user.username}!`, {position: 'top-center', autoClose: 3000})
+      toast.success(`Welcome ${data.user.username}!`, {position: 'bottom-center', autoClose: 3000})
       history.push('/')
       }
     })
@@ -120,7 +120,7 @@ export function updateUser(userObj) {
 
 
       } else {
-        toast.info(`${userObj.username}'s info was updated!`, {position: "top-center", autoClose: 3000})
+        toast.info(`${userObj.username}'s info was updated!`, {position: "bottom-center", autoClose: 3000})
 
         dispatch({ type: "UPDATE_USER", data})
         history.push(`/users/${userObj.id}/profile`)
