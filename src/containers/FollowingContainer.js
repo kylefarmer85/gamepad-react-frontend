@@ -1,8 +1,7 @@
 import React from 'react';
 import FollowShow from '../components/FollowShow'
-import Button from 'react-bootstrap/Button'
 
-const FollowingContainer = ({followings, toggleShowFollowers}) => {
+const FollowingContainer = ({followings}) => {
   
   const renderFollowings = () => {
     return followings.map(user => {
@@ -12,10 +11,12 @@ const FollowingContainer = ({followings, toggleShowFollowers}) => {
   
   return (
     <div>
-      <Button onClick={toggleShowFollowers}>Show Followers</Button>
-      
-      <h3>Following</h3>
-      {renderFollowings()}
+      {
+      followings.length === 0 ?
+        <h3>Not following anyone</h3>
+      :
+        renderFollowings()
+      }
     </div>
   );
 }

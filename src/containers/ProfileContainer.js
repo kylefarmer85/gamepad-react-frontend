@@ -7,6 +7,7 @@ import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Button from 'react-bootstrap/Button'
+import ToggleButton from 'react-bootstrap/ToggleButton'
 import Review from '../components/Review'
 import FollowButton from '../components/FollowButton'
 import FollowersContainer from './FollowersContainer'
@@ -16,7 +17,7 @@ import FollowingContainer from './FollowingContainer'
 const ProfileContainer = (props) => {
 
   const [user, setUser] = useState({})
-  const [showFollowers, setShowFollowers] = useState(false)
+  const [showFollowers, setShowFollowers] = useState(true)
   const [loading, setLoading] = useState(true)
 
 
@@ -107,11 +108,11 @@ const ProfileContainer = (props) => {
     }
 
   const renderFollowersContainer = () => {
-    return <FollowersContainer followers={user.followers} toggleShowFollowers={toggleShowFollowers}/>
+    return <FollowersContainer followers={user.followers} />
   }
 
   const renderFollowingContainer = () => {
-    return <FollowingContainer followings={user.followings} toggleShowFollowers={toggleShowFollowers} />
+    return <FollowingContainer followings={user.followings} />
   }
 
 
@@ -153,12 +154,33 @@ const ProfileContainer = (props) => {
             </Row>
             <Row>
               <Col>
+                <ToggleButton
+                  type="radio"
+                  variant="none"
+                  name="radio"
+                  value={showFollowers}
+                  checked={showFollowers}
+                  onChange={toggleShowFollowers}
+                > Followers: {user.followers.length}
+                </ToggleButton>
+
+                <ToggleButton
+                  type="radio"
+                  variant="none"
+                  name="radio"
+                  value={!showFollowers}
+                  checked={!showFollowers}
+                  onChange={toggleShowFollowers}
+                > Following: {user.followings.length}
+                </ToggleButton>
+
                 {
                 showFollowers ?
                   renderFollowersContainer()
                 :
                   renderFollowingContainer()
                 }
+
               </Col>
               <Col>
                 <h3>Reviews</h3>
