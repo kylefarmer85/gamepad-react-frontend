@@ -55,20 +55,19 @@ export function signupUser(userObj) {
   return(dispatch) => {
     dispatch({type: 'START_ADDING_USER_REQUEST'})
 
+
+    const formData = new FormData()
+
+    Object.keys(userObj).forEach((key, value) => {
+    return formData.append(key, userObj[key])
+    })
+  
+
     const reqObj = {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json'
       },
-      body: JSON.stringify({
-        username: userObj.username,
-        password: userObj.password,
-        password_confirmation: userObj.passwordConfirmation,
-        email: userObj.email,
-        pic: userObj.pic,
-        fav_genre: userObj.favGenre,
-        fav_game: userObj.favGame
-      })
+      body: formData
     }
 
     fetch("http://localhost:3000/api/v1/users", reqObj)
