@@ -22,7 +22,7 @@ const UserSearchResult = (props) => {
     .then(resp => resp.json())
     .then(id => {
       if (id.error) {
-        toast.error("No users found matching that search term", {position: "bottom-center", autoclose: 3000})
+        toast.error("No user found matching that name.", {position: "top-center", autoclose: 3000})
         history.push('/home')
 
       } else {

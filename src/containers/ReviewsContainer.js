@@ -57,10 +57,6 @@ class ReviewsContainer extends Component {
 
 
   renderGameReviews = () => {
-    if (this.state.reviews === null) {
-      return "There Are No Reviews Yet"
-    }
-
     return this.state.reviews.map(review => {
       return <Review {...review} key={review.id} handleDelete={this.handleDelete}/>
     })
@@ -75,7 +71,15 @@ class ReviewsContainer extends Component {
             <Loading />
           :
           <>
-           <h1 style={{textAlign: "center", marginTop: "3%"}}>Reviews</h1> 
+           <h1 style={{textAlign: "center", marginTop: "3%"}}>
+            {
+            this.state.reviews.length === 0 ? 
+              "Leave the first review!"
+            :
+              "Reviews"
+            }
+             </h1> 
+             
            { this.renderGameReviews() }
           </>
         }

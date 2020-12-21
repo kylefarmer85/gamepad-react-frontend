@@ -11,7 +11,6 @@ import { toast } from 'react-toastify'
 toast.configure()
 
 const GameShow = ({game, screenshots, addToFavorites, user, games}) => {
-
   const handleFavorite = () => {
     
     if (!user) {

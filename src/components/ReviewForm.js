@@ -68,7 +68,7 @@ class ReviewForm extends Component {
       <Form style={{padding: "5% 50% 5% 5%"}} onSubmit={this.handleSubmit}>
         <Form.Group controlId="formReview">
 
-          <Form.Label>Leave a Review</Form.Label>
+          <Form.Label>Create a new review</Form.Label>
           <Form.Control name="content" value={this.state.content} as="textarea" rows={3} onChange={this.handleChange}/>
         </Form.Group>
 
