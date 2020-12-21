@@ -3,6 +3,7 @@ import Loading from '../components/Loading'
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import SlicedGame from '../components/SlicedGame'
+import { toast } from 'react-toastify'
 
 const ResultsContainer = (props) => {
 
@@ -31,9 +32,10 @@ const ResultsContainer = (props) => {
 
 
   const renderSearchResults = () => {
-    if (searchResults === null) {
-      return alert ("Please try your search again.")
+    if (!searchResults) {
+      return toast.error("Please try your search again", {position: "bottom-center", autoClose: 3000})
     }
+
     return searchResults.map(game => {
       return <SlicedGame {...game} key={game.id}/>
     })

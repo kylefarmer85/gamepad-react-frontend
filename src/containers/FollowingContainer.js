@@ -13,7 +13,7 @@ const FollowingContainer = ({followings}) => {
     <div>
       {
       followings.length === 0 ?
-        <h3>Not following anyone</h3>
+        <h3>Not following anyone.</h3>
       :
         renderFollowings()
       }
