@@ -17,35 +17,8 @@ class YearAndGenreContainer extends Component {
     loading: true,
   }
 
-  // randomYear = randomYear()
-  // randomGenre = randomGenre()
-
   componentDidMount(){
     this.fetchGames()
-  //   const reqObj = {
-  //     method: 'POST',
-  //     headers: {
-  //       'Content-Type': 'application/json'
-  //     },
-  //     body: JSON.stringify({
-  //       year: this.randomYear,
-  //       genre: this.randomGenre
-  //     })
-  //   }
-
-  //   fetch(`http://localhost:3000/api/v1/games/yearandgenre`, reqObj)
-  //   .then(resp => resp.json())
-  //   .then(data => {
-  //     if (data.error) {
-  //       alert(data.error)
-  //     } else {
-  //       this.setState({
-  //         games: data.results,
-  //         loading: false
-  //       })
-  //       console.log(data.results)
-  //     }
-  //   })
   }
 
   fetchGames = () => {
@@ -77,30 +50,6 @@ class YearAndGenreContainer extends Component {
   handleSubmit = (e) => {
     e.preventDefault()
     this.fetchGames()
-    // const reqObj = {
-    //   method: 'POST',
-    //   headers: {
-    //     'Content-Type': 'application/json'
-    //   },
-    //   body: JSON.stringify({
-    //     year: this.state.year,
-    //     genre: this.state.genre
-    //   })
-    // }
-
-    // fetch(`http://localhost:3000/api/v1/games/yearandgenre`, reqObj)
-    // .then(resp => resp.json())
-    // .then(data => {
-    //   if (data.error) {
-    //     alert(data.error)
-    //   } else {
-    //     this.setState({
-    //       games: data.results,
-    //       loading: false
-    //     })
-    //     console.log(data.results)
-    //   }
-    // })
   }
 
   handleChange = (e) => {

@@ -17,35 +17,8 @@ class ConsoleAndGenreContainer extends Component {
     loading: true
   }
 
-  // randomConsole = randomConsole()
-  // randomGenre = randomGenre()
-
   componentDidMount(){
     this.fetchGames()
-    // const reqObj = {
-    //   method: 'POST',
-    //   headers: {
-    //     'Content-Type': 'application/json'
-    //   },
-    //   body: JSON.stringify({
-    //     console: this.randomConsole,
-    //     genre: this.randomGenre
-    //   })
-    // }
-
-    // fetch(`http://localhost:3000/api/v1/games/consoleandgenre`, reqObj)
-    // .then(resp => resp.json())
-    // .then(data => {
-    //   if (data.error) {
-    //     alert(data.error)
-    //   } else {
-    //     this.setState({
-    //       games: data.results,
-    //       loading: false
-    //     })
-    //     console.log(data.results)
-    //   }
-    // })
   }
 
   fetchGames = () => {
@@ -77,30 +50,6 @@ class ConsoleAndGenreContainer extends Component {
   handleSubmit = (e) => {
     e.preventDefault()
     this.fetchGames()
-    // const reqObj = {
-    //   method: 'POST',
-    //   headers: {
-    //     'Content-Type': 'application/json'
-    //   },
-    //   body: JSON.stringify({
-    //     console: this.state.console,
-    //     genre: this.state.genre
-    //   })
-    // }
-
-    // fetch(`http://localhost:3000/api/v1/games/consoleandgenre`, reqObj)
-    // .then(resp => resp.json())
-    // .then(data => {
-    //   if (data.error) {
-    //     alert(data.error)
-    //   } else {
-    //     this.setState({
-    //       games: data.results,
-    //       loading: false
-    //     })
-    //     console.log(data.results)
-    //   }
-    // })
   }
 
   handleChange = (e) => {
