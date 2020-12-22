@@ -12,7 +12,6 @@ class Signup extends Component {
     password: '',
     passwordConfirmation: '',
     email: '',
-    pic: '',
     favGenre: "Action",
     favGame: '',
     photo: ''
@@ -70,9 +69,9 @@ class Signup extends Component {
             <Form.Control type="email" placeholder="Email Address" name="email" value={this.state.email} onChange={this.handleChange} />
           </Form.Group>
 
-          <Form.Group controlId="formPic">
+          {/* <Form.Group controlId="formPic">
             <Form.Control type="text" placeholder="Profile Pic URL" name="pic" value={this.state.pic} onChange={this.handleChange} />
-          </Form.Group>
+          </Form.Group> */}
 
           <Form.Group controlId="formPhoto">
           <Form.Label>Upload a Profile Image</Form.Label>

@@ -25,6 +25,7 @@ class ReviewForm extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault()
+    let photoUrl = `http://localhost:3000/${this.props.user.photo}`  
 
     if (this.props.user) {
       const reqObj = {
@@ -35,7 +36,7 @@ class ReviewForm extends Component {
         body: JSON.stringify({
           user_id: this.props.user.id,
           username: this.props.user.username,
-          user_pic: this.props.user.pic,
+          user_pic: photoUrl,
           content: this.state.content,
           rating: this.state.rating,
           game_name: this.state.gameName,

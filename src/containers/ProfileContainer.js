@@ -30,7 +30,7 @@ const ProfileContainer = (props) => {
       
       } else {
         console.log(user)
-
+        
         setUser(user)
         setLoading(false)
       }
