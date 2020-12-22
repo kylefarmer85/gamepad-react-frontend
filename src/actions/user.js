@@ -14,6 +14,7 @@ export const currentUser = (data) => {
   }
 }
 
+
 export function fetchUser(userObj) {
   return(dispatch) => {
     dispatch({type: 'START_ADDING_USER_REQUEST'})
@@ -55,13 +56,11 @@ export function signupUser(userObj) {
   return(dispatch) => {
     dispatch({type: 'START_ADDING_USER_REQUEST'})
 
-
     const formData = new FormData()
 
     Object.keys(userObj).forEach((key, value) => {
     return formData.append(key, userObj[key])
     })
-  
 
     const reqObj = {
       method: 'POST',
@@ -89,24 +88,21 @@ export function signupUser(userObj) {
   }
 }
 
+
 export function updateUser(userObj) {
   return(dispatch) => {
-    // dispatch({type: 'START_ADDING_USER_REQUEST'})
+
+    const formData = new FormData()
+
+    Object.keys(userObj).forEach((key, value) => {
+    return formData.append(key, userObj[key])
+    })
 
     const reqObj = {
       method: 'PATCH',
       headers: {
-        'Content-Type': 'application/json'
       },
-      body: JSON.stringify({
-        username: userObj.username,
-        password: userObj.password,
-        password_confirmation: userObj.passwordConfirmation,
-        email: userObj.email,
-        pic: userObj.pic,
-        fav_genre: userObj.favGenre,
-        fav_game: userObj.favGame
-      })
+      body: formData
     }
 
     fetch(`http://localhost:3000/api/v1/users/${userObj.id}`, reqObj)
@@ -116,7 +112,6 @@ export function updateUser(userObj) {
         toast.error(data.error, {position: "top-center", autoClose: 5000})
 
         history.push(`/users/${userObj.id}/profile`)
-
 
       } else {
         toast.info(`${userObj.username}'s info was updated!`, {position: "bottom-center", autoClose: 3000})

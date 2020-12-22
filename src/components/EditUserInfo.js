@@ -14,17 +14,23 @@ class EditUserInfo extends Component {
       id: this.props.user.id,
       username: this.props.user.username,
       password: "",
-      passwordConfirmation: "",
+      password_confirmation: "",
       email: this.props.user.email,
-      pic: this.props.user.pic,
-      favGenre: this.props.user.fav_genre,
-      favGame: this.props.user.fav_game
+      fav_genre: this.props.user.fav_genre,
+      fav_game: this.props.user.fav_game,
+      photo: ''
     }
   }
 
   handleChange = (e) => {
     this.setState({
       [e.target.name]: e.target.value
+    })
+  }
+
+  handlePhoto = (e) => {
+    this.setState({
+      photo: e.target.files[0]
     })
   }
 
@@ -68,9 +74,9 @@ class EditUserInfo extends Component {
               <Form.Control type="password" size="sm" name="password" value={this.state.password} onChange={this.handleChange} />
           </Form.Group>
 
-          <Form.Group controlId="fomrPasswordConfirmation">
+          <Form.Group controlId="formPasswordConfirmation">
             <Form.Label>Confirm Password</Form.Label>
-              <Form.Control type="password" size="sm" name="passwordConfirmation" value={this.state.passwordConfirmation} onChange={this.handleChange} />
+              <Form.Control type="password" size="sm" name="password_confirmation" value={this.state.password_confirmation} onChange={this.handleChange} />
           </Form.Group>
 
           <Form.Group controlId="formEmail">
@@ -78,14 +84,15 @@ class EditUserInfo extends Component {
               <Form.Control type="email" size="sm" name="email" value={this.state.email} onChange={this.handleChange} />
           </Form.Group>
 
-          <Form.Group controlId="formPic">
-            <Form.Label>Profile Pic URL</Form.Label>
-              <Form.Control type="text" size="sm" name="pic" value={this.state.pic} onChange={this.handleChange} />
+
+          <Form.Group controlId="formPhoto">
+          <Form.Label>Upload a Profile Image</Form.Label>
+            <Form.Control type="file" placeholder="Upload a Profile Photo" name="photo" onChange={this.handlePhoto} />
           </Form.Group>
 
           <Form.Group controlId="formFavGenre">
             <Form.Label>Favorite Genre</Form.Label>
-              <Form.Control as="select" size="sm" name="favGenre" value={this.state.favGenre} onChange={this.handleChange}>
+              <Form.Control as="select" size="sm" name="fav_genre" value={this.state.fav_genre} onChange={this.handleChange}>
               <option>Action</option>
               <option>Adventure</option>
               <option>Platformer</option>
@@ -102,7 +109,7 @@ class EditUserInfo extends Component {
 
           <Form.Group controlId="formFavGame">
             <Form.Label>Favorite Game</Form.Label>
-              <Form.Control type="text" size="sm" name="favGame" value={this.state.favGame} onChange={this.handleChange} />
+              <Form.Control type="text" size="sm" name="fav_game" value={this.state.fav_game} onChange={this.handleChange} />
           </Form.Group>
 
           <Button style={{margin: "1%"}} variant="outline-primary" type="submit">Update</Button>

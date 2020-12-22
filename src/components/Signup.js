@@ -37,11 +37,11 @@ class Signup extends Component {
     this.setState({
       username: '',
       password: '',
-      passwordConfirmation: '',
+      password_confirmation: '',
       email: '',
       pic: '',
-      favGenre: '',
-      favGame: '',
+      fav_genre: '',
+      fav_game: '',
       photo: ''
     })
   }
@@ -61,17 +61,14 @@ class Signup extends Component {
             <Form.Control type="password" placeholder="Password" name="password" value={this.state.password} onChange={this.handleChange} />
           </Form.Group>
 
-          <Form.Group controlId="fomrPasswordConfirmation">
-            <Form.Control type="password" placeholder="Confirm Password" name="passwordConfirmation" value={this.state.passwordConfirmation} onChange={this.handleChange} />
+          <Form.Group controlId="formPasswordConfirmation">
+            <Form.Control type="password" placeholder="Confirm Password" name="password_confirmation" value={this.state.password_confirmation} onChange={this.handleChange} />
           </Form.Group>
 
           <Form.Group controlId="formEmail">
             <Form.Control type="email" placeholder="Email Address" name="email" value={this.state.email} onChange={this.handleChange} />
           </Form.Group>
 
-          {/* <Form.Group controlId="formPic">
-            <Form.Control type="text" placeholder="Profile Pic URL" name="pic" value={this.state.pic} onChange={this.handleChange} />
-          </Form.Group> */}
 
           <Form.Group controlId="formPhoto">
           <Form.Label>Upload a Profile Image</Form.Label>
@@ -80,7 +77,7 @@ class Signup extends Component {
 
           <Form.Group controlId="formFavGenre">
             <Form.Label>Favorite Genre</Form.Label>
-              <Form.Control as="select" name="favGenre" value={this.state.favGenre} onChange={this.handleChange}>
+              <Form.Control as="select" name="fav_genre" value={this.state.fav_genre} onChange={this.handleChange}>
               <option>Action</option>
               <option>Adventure</option>
               <option>Platformer</option>
@@ -95,7 +92,7 @@ class Signup extends Component {
               </Form.Control>
           </Form.Group>
           <Form.Group controlId="formFavGame">
-            <Form.Control type="text" placeholder="Favorite Game" name="favGame" value={this.state.favGame} onChange={this.handleChange} />
+            <Form.Control type="text" placeholder="Favorite Game" name="fav_game" value={this.state.fav_game} onChange={this.handleChange} />
           </Form.Group>
           <Button variant="outline-primary" type="submit">Signup</Button>
           <Link to={`/login`}> or Login</Link>

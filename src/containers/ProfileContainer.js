@@ -30,7 +30,7 @@ const ProfileContainer = (props) => {
       
       } else {
         console.log(user)
-        
+
         setUser(user)
         setLoading(false)
       }
@@ -115,7 +115,7 @@ const ProfileContainer = (props) => {
     return <FollowingContainer followings={user.followings} />
   }
 
-  let photoUrl = `http://localhost:3000/${user.photo}`
+  let photoUrl = `http://localhost:3000${user.photo}`
 
   return (
     

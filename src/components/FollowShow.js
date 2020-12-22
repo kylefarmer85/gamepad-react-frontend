@@ -10,7 +10,7 @@ const FollowShow = ({id, username, photo}) => {
     history.push(`/users/${id}/profile`)
   }
 
-  let photoUrl = `http://localhost:3000/${photo}` 
+  let photoUrl = `http://localhost:3000${photo}` 
 
   return (
     <div>
