@@ -67,22 +67,22 @@ class EditUserInfo extends Component {
 
           <Form.Group controlId="formUsername">
             <Form.Label>Username</Form.Label>
-              <Form.Control type="text" size="sm" name="username" value={this.state.username} onChange={this.handleChange} />
+              <Form.Control type="text" name="username" value={this.state.username} onChange={this.handleChange} />
           </Form.Group>
 
           <Form.Group controlId="formPassword">
             <Form.Label>Password</Form.Label>
-              <Form.Control type="password" size="sm" name="password" value={this.state.password} onChange={this.handleChange} />
+              <Form.Control type="password" name="password" value={this.state.password} onChange={this.handleChange} />
           </Form.Group>
 
           <Form.Group controlId="formPasswordConfirmation">
             <Form.Label>Confirm Password</Form.Label>
-              <Form.Control type="password" size="sm" name="password_confirmation" value={this.state.password_confirmation} onChange={this.handleChange} />
+              <Form.Control type="password" name="password_confirmation" value={this.state.password_confirmation} onChange={this.handleChange} />
           </Form.Group>
 
           <Form.Group controlId="formEmail">
             <Form.Label>Email address</Form.Label>
-              <Form.Control type="email" size="sm" name="email" value={this.state.email} onChange={this.handleChange} />
+              <Form.Control type="email" name="email" value={this.state.email} onChange={this.handleChange} />
           </Form.Group>
 
 
@@ -119,7 +119,7 @@ class EditUserInfo extends Component {
 
           <Form.Group controlId="formFavGenre">
             <Form.Label>Favorite Genre</Form.Label>
-              <Form.Control as="select" size="sm" name="fav_genre" value={this.state.fav_genre} onChange={this.handleChange}>
+              <Form.Control as="select" name="fav_genre" value={this.state.fav_genre} onChange={this.handleChange}>
               <option>Action</option>
               <option>Adventure</option>
               <option>Platformer</option>
@@ -136,7 +136,7 @@ class EditUserInfo extends Component {
 
           <Form.Group controlId="formFavGame">
             <Form.Label>Favorite Game</Form.Label>
-              <Form.Control type="text" size="sm" name="fav_game" value={this.state.fav_game} onChange={this.handleChange} />
+              <Form.Control type="text" name="fav_game" value={this.state.fav_game} onChange={this.handleChange} />
           </Form.Group>
 
           <Button style={{margin: "1%"}} variant="outline-primary" type="submit">Update</Button>

@@ -83,8 +83,8 @@ class YearAndGenreContainer extends Component {
         <Row>
           <Col xs lg={3}>
             <Form className="mt-4" onSubmit={this.handleSubmit}>
-              <Form.Group controlId="exampleForm.ControlSelect2">
-                <Form.Label>Browse By Year and Genre</Form.Label>
+              <Form.Group controlId="formYear">
+                <Form.Label>Browse Games By Year and Genre</Form.Label>
                 <Form.Control name="year" value={this.state.year} onChange={this.handleChange} as="select">
                   {/* <option>{this.randomYear}</option> */}
                   <option>1977</option>
@@ -116,7 +116,7 @@ class YearAndGenreContainer extends Component {
                   <option>2003</option>
                 </Form.Control>
               </Form.Group> 
-              <Form.Group controlId="exampleForm.ControlSelect2">
+              <Form.Group controlId="formGenre">
                 <Form.Control name="genre" value={this.state.genre} onChange={this.handleChange} as="select">
                   {/* <option>{this.randomGenre}</option> */}
                   <option>Action</option>

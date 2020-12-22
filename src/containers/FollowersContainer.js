@@ -1,11 +1,11 @@
 import React from 'react';
-import FollowShow from '../components/FollowShow'
+import UserThumb from '../components/UserThumb'
 
 const FollowersContainer = ({followers}) => {
   
   const renderFollowers = () => {
     return followers.map(user => {
-      return <FollowShow {...user} key={user.id} />
+      return <UserThumb {...user} key={user.id} />
     })
   }
   

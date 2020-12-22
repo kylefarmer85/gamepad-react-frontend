@@ -7,7 +7,7 @@ import NavBar from './components/NavBar'
 import NavConsoleList from './components/NavConsoleList'
 import Login from './components/Login'
 import Signup from './components/Signup'
-import Home from './components/Home'
+import HomeContainer from './containers/HomeContainer'
 import ResultsContainer from './containers/ResultsContainer'
 import GameContainer from './containers/GameContainer'
 import ProfileContainer from './containers/ProfileContainer'
@@ -57,7 +57,7 @@ class App extends Component {
             <Route exact path ='/users/:id/profile' component={ProfileContainer} />
             <Route exact path ='/users/:id/edit' component={EditUserInfo} />
             <Route exact path ='/users/search/:searchTerm' component={UserSearchResult} />
-            <Route path ='/' component={Home} />
+            <Route path ='/' component={HomeContainer} />
             
           </Switch> 
       </div>

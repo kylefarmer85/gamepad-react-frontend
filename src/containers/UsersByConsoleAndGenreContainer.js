@@ -1,26 +1,27 @@
 import React, { Component } from 'react';
-import SlicedGamesContainer from './SlicedGamesContainer'
+import SearchedUsersContainer from './SearchedUsersContainer'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
-import { randomConsole } from "../helpers/randomFuncs"
+// import { randomGenre, randomConsole } from "../helpers/randomFuncs"
 import Container from 'react-bootstrap/Container'
 import Col from 'react-bootstrap/Col'
 import Row from 'react-bootstrap/Row'
 
 
-class TopByConsoleContainer extends Component {
+class UsersByConsoleAndGenreContainer extends Component {
   state = {
-    console: randomConsole(),
-    games: [],
+    console: "Super Nintendo",
+    genre: "Platformer",
+    users: [],
     index: 0,
     loading: true
   }
 
   componentDidMount(){
-    this.fetchGames()
+    this.fetchUsers()
   }
 
-  fetchGames = () => {
+  fetchUsers = () => {
     const reqObj = {
       method: 'POST',
       headers: {
@@ -32,14 +33,15 @@ class TopByConsoleContainer extends Component {
       })
     }
 
-    fetch(`http://localhost:3000/api/v1/games/topbyconsole`, reqObj)
+    fetch(`http://localhost:3000/api/v1/users/searchbyconsoleandgenre`, reqObj)
     .then(resp => resp.json())
     .then(data => {
       if (data.error) {
         alert(data.error)
       } else {
+
         this.setState({
-          games: data.results,
+          users: data,
           loading: false
         })
       }
@@ -48,7 +50,7 @@ class TopByConsoleContainer extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault()
-    this.fetchGames()
+    this.fetchUsers()
   }
 
   handleChange = (e) => {
@@ -58,16 +60,16 @@ class TopByConsoleContainer extends Component {
   }
 
 
-  slicedGames = () => {
-    if (this.state.index > this.state.games.length) {
+  slicedUsers = () => {
+    if (this.state.index > this.state.users.length) {
       this.setState({
         index: 0
       })
     }
-    return this.state.games.slice(this.state.index, this.state.index +4)
+    return this.state.users.slice(this.state.index, this.state.index +4)
   }
 
-  nextGames = () => {
+  nextUsers = () => {
     this.setState(prevState => {
       return {
         index: prevState.index + 4
@@ -78,14 +80,13 @@ class TopByConsoleContainer extends Component {
 
   render() {
     return (
-      <Container fluid className="m-2">
+      <Container fluid className="m-2 mt-4">
         <Row>
           <Col xs lg={3}>
             <Form className="mt-4" onSubmit={this.handleSubmit}>
               <Form.Group controlId="formConsole">
-                <Form.Label>Top Games by Console</Form.Label>
+                <Form.Label>Browse Users By Console and Genre</Form.Label>
                 <Form.Control name="console" value={this.state.console} onChange={this.handleChange}  as="select">
-                  {/* <option>{this.randomConsole}</option> */}
                   <option>Atari 2600</option>
                   <option>Atari 5200</option>
                   <option>Atari 7800</option>
@@ -107,6 +108,21 @@ class TopByConsoleContainer extends Component {
                   <option>Dreamcast</option>
                 </Form.Control>
               </Form.Group> 
+              <Form.Group controlId="formGenre">
+                <Form.Control name="genre" value={this.state.genre} onChange={this.handleChange} as="select">
+                  <option>Action</option>
+                  <option>Adventure</option>
+                  <option>Platformer</option>
+                  <option>Arcade</option>
+                  <option>RPG</option>
+                  <option>Fighting</option>
+                  <option>Sports</option>
+                  <option>Racing</option>
+                  <option>Puzzle</option>
+                  <option>Strategy</option>
+                  <option>Family</option>
+                </Form.Control>
+              </Form.Group>     
               <Button type="submit">Browse Games</Button>
             </Form> 
           </Col >
@@ -117,9 +133,9 @@ class TopByConsoleContainer extends Component {
                 null
               :
               <>
-                <SlicedGamesContainer slicedGames={this.slicedGames()} />
+                <SearchedUsersContainer users={this.slicedUsers()} />
 
-                <Button style={{fontSize: "30px", marginLeft: "1%"}} variant="dark" onClick={this.nextGames}>→</Button>
+                <Button style={{fontSize: "30px", marginLeft: "1%"}} variant="dark" onClick={this.nextUsers}>→</Button>
               </> 
               }     
             </Row>
@@ -130,4 +146,4 @@ class TopByConsoleContainer extends Component {
   }
 }
 
-export default TopByConsoleContainer;
+export default UsersByConsoleAndGenreContainer;

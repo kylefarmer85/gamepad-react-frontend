@@ -83,10 +83,9 @@ class ConsoleAndGenreContainer extends Component {
         <Row>
           <Col xs lg={3}>
             <Form className="mt-4" onSubmit={this.handleSubmit}>
-              <Form.Group controlId="exampleForm.ControlSelect2">
-                <Form.Label>Browse By Console and Genre</Form.Label>
+              <Form.Group controlId="formConsole">
+                <Form.Label>Browse Games By Console and Genre</Form.Label>
                 <Form.Control name="console" value={this.state.console} onChange={this.handleChange}  as="select">
-                  {/* <option>{this.randomConsole}</option> */}
                   <option>Atari 2600</option>
                   <option>Atari 5200</option>
                   <option>Atari 7800</option>
@@ -108,9 +107,8 @@ class ConsoleAndGenreContainer extends Component {
                   <option>Dreamcast</option>
                 </Form.Control>
               </Form.Group> 
-              <Form.Group controlId="exampleForm.ControlSelect2">
+              <Form.Group controlId="formGenre">
                 <Form.Control name="genre" value={this.state.genre} onChange={this.handleChange} as="select">
-                  {/* <option>{this.randomGenre}</option> */}
                   <option>Action</option>
                   <option>Adventure</option>
                   <option>Platformer</option>

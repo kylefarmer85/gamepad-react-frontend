@@ -2,7 +2,7 @@ import React from 'react';
 import { useHistory } from "react-router-dom"
 
 
-const FollowShow = ({id, username, photo}) => {
+const UserThumb = ({id, username, photo}) => {
 
   let history = useHistory()   
   
@@ -25,4 +25,4 @@ const FollowShow = ({id, username, photo}) => {
   );
 }
 
-export default FollowShow;
+export default UserThumb;
