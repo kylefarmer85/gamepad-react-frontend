@@ -115,8 +115,10 @@ const ProfileContainer = (props) => {
     return <FollowingContainer followings={user.followings} />
   }
 
+  let photoUrl = `http://localhost:3000${user.photo}`
 
   return (
+    
     <div>
       {
       loading ?
@@ -135,7 +137,7 @@ const ProfileContainer = (props) => {
             </Row>
             <Row>
               <Col className ="p-3">
-                <img style={imgStyle} src={user.pic} alt="profile"/>
+                <img style={imgStyle} src={photoUrl} alt="profile"/>
                 {
                   props.user ?
                     props.user.id === user.id ?

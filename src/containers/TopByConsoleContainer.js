@@ -67,7 +67,6 @@ class TopByConsoleContainer extends Component {
           games: data.results,
           loading: false
         })
-        console.log(data.results)
       }
     })
   }
