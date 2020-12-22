@@ -25,9 +25,11 @@ class ReviewForm extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault()
-    let photoUrl = `http://localhost:3000/${this.props.user.photo}`  
 
     if (this.props.user) {
+      
+      let photoUrl = `http://localhost:3000/${this.props.user.photo}`  
+
       const reqObj = {
         method: 'POST',
         headers: {

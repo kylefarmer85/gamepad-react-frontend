@@ -16,6 +16,7 @@ class EditUserInfo extends Component {
       password: "",
       password_confirmation: "",
       email: this.props.user.email,
+      fav_console: this.props.user.fav_console,
       fav_genre: this.props.user.fav_genre,
       fav_game: this.props.user.fav_game,
       photo: ''
@@ -88,6 +89,32 @@ class EditUserInfo extends Component {
           <Form.Group controlId="formPhoto">
           <Form.Label>Upload a Profile Image</Form.Label>
             <Form.Control type="file" placeholder="Upload a Profile Photo" name="photo" onChange={this.handlePhoto} />
+          </Form.Group>
+
+
+          <Form.Group controlId="formFavConsole">
+            <Form.Label>Favorite Console</Form.Label>
+            <Form.Control as="select" name="fav_console" value={this.state.fav_console} onChange={this.handleChange}>
+              <option>Atari 2600</option>
+              <option>Atari 5200</option>
+              <option>Atari 7800</option>
+              <option>Nintendo Entertainment System</option>
+              <option>Sega Master System</option>
+              <option>Sega Genesis</option>
+              <option>Neo Geo</option>
+              <option>Game Boy</option>
+              <option>Game Gear</option>
+              <option>Super Nintendo</option>
+              <option>Sega CD</option>
+              <option>Atari Jaguar</option>
+              <option>Panasonic 3DO</option>
+              <option>Sega 32X</option>
+              <option>Sega Saturn</option>
+              <option>PlayStation</option>
+              <option>Nintendo 64</option>
+              <option>Game Boy Color</option>
+              <option>Dreamcast</option>
+            </Form.Control>
           </Form.Group>
 
           <Form.Group controlId="formFavGenre">

@@ -10,10 +10,11 @@ class Signup extends Component {
   state = {
     username: '',
     password: '',
-    passwordConfirmation: '',
+    password_confirmation: '',
     email: '',
-    favGenre: "Action",
-    favGame: '',
+    fav_genre: "Action",
+    fav_console: '',
+    fav_game: '',
     photo: ''
   }
 
@@ -75,6 +76,31 @@ class Signup extends Component {
             <Form.Control type="file" placeholder="Upload a Profile Photo" name="photo" onChange={this.handlePhoto} />
           </Form.Group>
 
+          <Form.Group controlId="formFavConsole">
+            <Form.Label>Favorite Console</Form.Label>
+            <Form.Control as="select" name="fav_console" value={this.state.fav_console} onChange={this.handleChange}>
+              <option>Atari 2600</option>
+              <option>Atari 5200</option>
+              <option>Atari 7800</option>
+              <option>Nintendo Entertainment System</option>
+              <option>Sega Master System</option>
+              <option>Sega Genesis</option>
+              <option>Neo Geo</option>
+              <option>Game Boy</option>
+              <option>Game Gear</option>
+              <option>Super Nintendo</option>
+              <option>Sega CD</option>
+              <option>Atari Jaguar</option>
+              <option>Panasonic 3DO</option>
+              <option>Sega 32X</option>
+              <option>Sega Saturn</option>
+              <option>PlayStation</option>
+              <option>Nintendo 64</option>
+              <option>Game Boy Color</option>
+              <option>Dreamcast</option>
+            </Form.Control>
+          </Form.Group>
+
           <Form.Group controlId="formFavGenre">
             <Form.Label>Favorite Genre</Form.Label>
               <Form.Control as="select" name="fav_genre" value={this.state.fav_genre} onChange={this.handleChange}>
@@ -91,9 +117,11 @@ class Signup extends Component {
               <option>Family</option>
               </Form.Control>
           </Form.Group>
+
           <Form.Group controlId="formFavGame">
             <Form.Control type="text" placeholder="Favorite Game" name="fav_game" value={this.state.fav_game} onChange={this.handleChange} />
           </Form.Group>
+
           <Button variant="outline-primary" type="submit">Signup</Button>
           <Link to={`/login`}> or Login</Link>
         </Form>     

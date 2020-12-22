@@ -20,7 +20,7 @@ const FollowShow = ({id, username, photo}) => {
           src={photoUrl}
           alt="user pic"
           />
-      <h5>{username}</h5>
+      <h5 onClick={goToUser}>{username}</h5>
     </div>
   );
 }
