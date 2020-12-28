@@ -51,6 +51,7 @@ const ProfileContainer = (props) => {
 
 
   const renderFavorites = () => {
+
     return user.games.map(game => {
       return <FavoriteGame {...game} gameUserId={user.id} removeFavoriteFromProfile={removeFavoriteFromProfile} key={game.id} />
     })

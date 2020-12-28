@@ -22,7 +22,7 @@ const loadingReducer = (state = false, action) => {
 
       
     case 'LOGOUT_USER':
-      return null    
+      return false    
 
     default:
       return state

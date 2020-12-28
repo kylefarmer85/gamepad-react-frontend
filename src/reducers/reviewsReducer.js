@@ -21,7 +21,7 @@ const reviewsReducer = (state = [], action) => {
 
 
     case 'LOGOUT_USER':
-      return null      
+      return []      
 
     default: 
     return state

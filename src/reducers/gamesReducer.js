@@ -17,7 +17,7 @@ const gamesReducer = (state = [], action) => {
       return updatedGames 
 
     case 'LOGOUT_USER':
-      return null    
+      return []    
       
     default: 
     return state

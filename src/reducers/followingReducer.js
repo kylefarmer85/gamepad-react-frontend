@@ -17,7 +17,7 @@ const followingReducer = (state = [], action) => {
       return updatedFollowing
 
     case 'LOGOUT_USER':
-      return null    
+      return []    
     
     default:
     return state  
