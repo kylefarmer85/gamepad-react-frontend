@@ -3,6 +3,7 @@ import ConsoleAndGenreContainer from './ConsoleAndGenreContainer'
 import YearAndGenreContainer from './YearAndGenreContainer'
 import TopByConsoleContainer from './TopByConsoleContainer';
 import UsersByConsoleAndGenreContainer from './UsersByConsoleAndGenreContainer'
+import HighestRatedByFollowingsContainer from './HighestRatedByFollowingsContainer'
 import { connect } from 'react-redux'
 
 
@@ -15,7 +16,10 @@ class HomeContainer extends Component {
         <TopByConsoleContainer />
         {
         this.props.user ?
+        <>
+          <HighestRatedByFollowingsContainer />
           <UsersByConsoleAndGenreContainer />
+        </>  
         :
           null
         }
