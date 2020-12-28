@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import './App.css';
 import { Switch, Route, withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { currentUser } from './actions/user'
+import { currentUser, startAddingUserRequest } from './actions/user'
 import NavBar from './components/NavBar'
 import NavConsoleList from './components/NavConsoleList'
 import Login from './components/Login'
@@ -23,7 +23,7 @@ class App extends Component {
     if (!token) {
       return
     } else {
-      
+
       const reqObj = {
         method: 'GET',
         headers: {
@@ -34,6 +34,7 @@ class App extends Component {
       fetch('http://localhost:3000/api/v1/current_user', reqObj)
       .then(resp => resp.json())
       .then(data => {
+  
         if (data.error) {
           localStorage.removeItem("my_app_token")
         } else { 
@@ -65,4 +66,4 @@ class App extends Component {
   }
 }
 
-export default connect(null,{ currentUser })(withRouter(App));
+export default connect(null,{ currentUser, startAddingUserRequest })(withRouter(App));

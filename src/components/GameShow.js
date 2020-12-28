@@ -11,14 +11,13 @@ import { toast } from 'react-toastify'
 toast.configure()
 
 const GameShow = ({game, screenshots, addToFavorites, user, games}) => {
+
   const handleFavorite = () => {
-    
     if (!user) {
       return  toast.error("You must be logged in to add favorites", {position: "bottom-center", autoClose: 3000})
     } 
 
     const alreadyFavorite = games.find(g => g.game_api_id === game.id)
-
     if (alreadyFavorite) {
         return toast.info(`This game is already in ${user.username}'s collection!`, {position: "bottom-center", autoClose: 3000})
       } else {
@@ -31,8 +30,7 @@ const GameShow = ({game, screenshots, addToFavorites, user, games}) => {
       <Container className="mt-5 ">
         {/* needs styling */}
         
-        <div style={{textAlign: "center"}}>
-          
+        <div style={{textAlign: "center"}}>     
           <img style={{height: "50%", width: "50%"}} src={game.background_image} alt="game" />
 
           <h1>{game.name}</h1>
@@ -41,9 +39,9 @@ const GameShow = ({game, screenshots, addToFavorites, user, games}) => {
             {
             game.platforms.map(p => <span key={uuidv4()}>{`${p.platform.name} | ` }</span>)
             }
-            <br>
-            </br>
-            <Button onClick={handleFavorite}>Add to Favorites</Button>
+          <br>
+          </br>
+          <Button onClick={handleFavorite}>Add to Favorites</Button>
         </div>
        <div style={{textAlign: "center"}}>
     
@@ -55,10 +53,6 @@ const GameShow = ({game, screenshots, addToFavorites, user, games}) => {
         }
     
         <p style={{textAlign: "left"}} >{game.description_raw}</p>
-  
-        {/* <img src={game.background_image} alt='game'/>
-  
-        <img src= {game.background_image_additional} alt='game'/> */}
 
         { 
           screenshots ?

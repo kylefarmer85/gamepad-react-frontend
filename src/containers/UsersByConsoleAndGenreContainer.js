@@ -127,18 +127,18 @@ class UsersByConsoleAndGenreContainer extends Component {
             </Form> 
           </Col >
           <Col xs lg={9}>
+            
+            { 
+            this.state.loading ?
+              null
+            :
             <Row className="mr-1" style={{justifyContent: "center"}}>
-              { 
-              this.state.loading ?
-                null
-              :
-              <>
-                <SearchedUsersContainer users={this.slicedUsers()} />
+              <SearchedUsersContainer users={this.slicedUsers()} />
 
-                <Button style={{fontSize: "30px", marginLeft: "1%"}} variant="dark" onClick={this.nextUsers}>→</Button>
-              </> 
-              }     
+              <Button style={{fontSize: "30px", marginLeft: "1%"}} variant="dark" onClick={this.nextUsers}>→</Button>
             </Row>
+            }     
+            
           </Col>
         </Row>
       </Container>

@@ -14,6 +14,11 @@ export const currentUser = (data) => {
   }
 }
 
+export const startAddingUserRequest = () => {
+  return {
+    type: 'START_ADDING_USER_REQUEST',
+  }
+}
 
 export function fetchUser(userObj) {
   return(dispatch) => {

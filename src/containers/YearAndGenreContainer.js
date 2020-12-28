@@ -136,18 +136,18 @@ class YearAndGenreContainer extends Component {
             </Form>
           </Col >
           <Col xs lg={9}>
-            <Row className="mr-1" style={{justifyContent: "center"}}>        
-            { 
-            this.state.loading ?
-              <Loading />
-            :
-            <>
-              <SlicedGamesContainer slicedGames={this.slicedGames()} />
+                 
+          { 
+          this.state.loading ?
+            <Loading />
+          :
+          <Row className="mr-1" style={{justifyContent: "center"}}>   
+            <SlicedGamesContainer slicedGames={this.slicedGames()} />
 
-              <Button style={{fontSize: "30px", marginLeft: "1%"}} variant="dark" onClick={this.nextGames}>→</Button>
-            </>
-            }        
-            </Row>
+            <Button style={{fontSize: "30px", marginLeft: "1%"}} variant="dark" onClick={this.nextGames}>→</Button>
+          </Row>
+          }        
+            
           </Col>
         </Row>
       </Container>

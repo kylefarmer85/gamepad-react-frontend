@@ -61,33 +61,30 @@ class EditUserInfo extends Component {
 
   render() {
     return (
+    
       <Container style={{width: "50%"}}>  
         <h1 style={{textAlign: "center"}}>Edit Profile</h1>
         <Form onSubmit={this.handleSubmit}>
 
           <Form.Group controlId="formUsername">
-            <Form.Label>Username</Form.Label>
-              <Form.Control type="text" name="username" value={this.state.username} onChange={this.handleChange} />
+            <Form.Control type="text" name="username" value={this.state.username} onChange={this.handleChange} />
           </Form.Group>
 
           <Form.Group controlId="formPassword">
-            <Form.Label>Password</Form.Label>
-              <Form.Control type="password" name="password" value={this.state.password} onChange={this.handleChange} />
+            <Form.Control type="password" placeholder="Password" name="password" value={this.state.password} onChange={this.handleChange} />
           </Form.Group>
 
           <Form.Group controlId="formPasswordConfirmation">
-            <Form.Label>Confirm Password</Form.Label>
-              <Form.Control type="password" name="password_confirmation" value={this.state.password_confirmation} onChange={this.handleChange} />
+            <Form.Control type="password" placeholder="Confirm Password" name="password_confirmation" value={this.state.password_confirmation} onChange={this.handleChange} />
           </Form.Group>
 
           <Form.Group controlId="formEmail">
-            <Form.Label>Email address</Form.Label>
-              <Form.Control type="email" name="email" value={this.state.email} onChange={this.handleChange} />
+            <Form.Control type="email" name="email" value={this.state.email} onChange={this.handleChange} />
           </Form.Group>
 
 
           <Form.Group controlId="formPhoto">
-          <Form.Label>Upload a Profile Image</Form.Label>
+            <Form.Label>Upload a Profile Image</Form.Label>
             <Form.Control type="file" placeholder="Upload a Profile Photo" name="photo" onChange={this.handlePhoto} />
           </Form.Group>
 
@@ -145,7 +142,6 @@ class EditUserInfo extends Component {
           
           <Button style={{margin: "1%"}} onClick={this.handleDelete}>Delete Profile</Button>
         </Form>     
-  
       </Container> 
     );
   }

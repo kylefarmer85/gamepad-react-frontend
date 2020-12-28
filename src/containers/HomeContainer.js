@@ -3,6 +3,7 @@ import ConsoleAndGenreContainer from './ConsoleAndGenreContainer'
 import YearAndGenreContainer from './YearAndGenreContainer'
 import TopByConsoleContainer from './TopByConsoleContainer';
 import UsersByConsoleAndGenreContainer from './UsersByConsoleAndGenreContainer'
+import { connect } from 'react-redux'
 
 
 class HomeContainer extends Component {
@@ -12,13 +13,24 @@ class HomeContainer extends Component {
         <ConsoleAndGenreContainer />
         <YearAndGenreContainer />
         <TopByConsoleContainer />
-        <UsersByConsoleAndGenreContainer />
+        {
+        this.props.user ?
+          <UsersByConsoleAndGenreContainer />
+        :
+          null
+        }
       </div>
     );
   }
 }
 
-export default HomeContainer;
+const mapStateToProps = (state) => {
+  return {
+    user: state.user
+  }
+}
+
+export default connect (mapStateToProps, null) (HomeContainer);
 
 
 
