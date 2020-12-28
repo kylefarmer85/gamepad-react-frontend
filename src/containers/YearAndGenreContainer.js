@@ -79,10 +79,10 @@ class YearAndGenreContainer extends Component {
 
   render() {
     return (
-      <Container fluid className="m-2">
-        <Row>
-          <Col xs lg={3}>
-            <Form className="mt-4" onSubmit={this.handleSubmit}>
+      <Container fluid className="mt-3">
+        <Row className="align-items-center">
+          <Col lg={3}>
+            <Form onSubmit={this.handleSubmit}>
               <Form.Group controlId="formYear">
                 <Form.Label>Browse Games By Year and Genre</Form.Label>
                 <Form.Control name="year" value={this.state.year} onChange={this.handleChange} as="select">
@@ -135,13 +135,13 @@ class YearAndGenreContainer extends Component {
               <Button type="submit">Browse Games</Button>
             </Form>
           </Col >
-          <Col xs lg={9}>
+          <Col lg={9}>
                  
           { 
           this.state.loading ?
             <Loading />
           :
-          <Row className="mr-1" style={{justifyContent: "center"}}>   
+          <Row className="align-items-center" style={{justifyContent: "center"}}>   
             <SlicedGamesContainer slicedGames={this.slicedGames()} />
 
             <Button style={{fontSize: "30px", marginLeft: "1%"}} variant="dark" onClick={this.nextGames}>→</Button>

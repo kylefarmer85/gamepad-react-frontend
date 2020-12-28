@@ -64,18 +64,18 @@ class HighestRatedByFollowingsContainer extends Component {
 
   render() {
     return (
-      <Container fluid className="m-2">
-        <Row>
-          <Col xs lg={3}>
-            Top Rated by Users You Follow
+      <Container fluid className="mt-3">
+        <Row className="align-items-center">
+          <Col lg={3}>
+            Highest Rated Games by Users You Follow
           </Col >
-          <Col xs lg={9}>
+          <Col lg={9}>
             
             { 
             this.state.loading ?
               null
             :
-            <Row className="mr-1" style={{justifyContent: "center"}}>
+            <Row className="align-items-center" style={{justifyContent: "center"}}>
               <SlicedGamesContainer slicedGames={this.slicedGames()} />
 
               <Button style={{fontSize: "30px", marginLeft: "1%"}} variant="dark" onClick={this.nextGames}>→</Button>
