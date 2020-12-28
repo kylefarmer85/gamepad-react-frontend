@@ -51,7 +51,6 @@ const ProfileContainer = (props) => {
 
 
   const renderFavorites = () => {
-
     return user.games.map(game => {
       return <FavoriteGame {...game} gameUserId={user.id} removeFavoriteFromProfile={removeFavoriteFromProfile} key={game.id} />
     })
@@ -137,7 +136,7 @@ const ProfileContainer = (props) => {
               </Col>
             </Row>
             <Row>
-              <Col className ="p-3">
+              <Col>
                 <img style={imgStyle} src={photoUrl} alt="profile"/>
                 {
                   props.user ?
