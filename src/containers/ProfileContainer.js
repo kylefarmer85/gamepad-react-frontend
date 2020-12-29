@@ -20,6 +20,8 @@ const ProfileContainer = (props) => {
   const [showFollowers, setShowFollowers] = useState(true)
   const [loading, setLoading] = useState(true)
   const [gameIndex, setGameIndex] = useState(0)
+  const [followersIndex, setFollowersIndex] = useState(0)
+  const [followingsIndex, setFollowingsIndex] = useState(0)
 
 
   useEffect(() => {
@@ -39,18 +41,6 @@ const ProfileContainer = (props) => {
   }, [props.match.params.id]);
 
 
-  const removeFavoriteFromProfile = (gameId) => {
-    const updatedGames = user.games.filter(game => {
-    return game.id !== gameId
-    })
-
-    setUser({
-      ...user,
-      games: updatedGames
-    })
-  }
-
-
   const slicedGames = () => {
     if (gameIndex > user.games.length) {
       setGameIndex(0)
@@ -59,7 +49,30 @@ const ProfileContainer = (props) => {
   }
 
   const nextGames = () => {
-    setGameIndex(gameIndex + 4)
+    setGameIndex(prevState => prevState + 4)
+  }
+
+
+  const slicedFollowers = () => {
+    if (followersIndex > user.followers.length) {
+      setFollowersIndex(0)
+    }
+    return user.followers.slice(followersIndex, followersIndex +4)
+  }
+
+  const slicedFollowings = () => {
+    if (followingsIndex > user.followings.length) {
+      setFollowingsIndex(0)
+    }
+    return user.followings.slice(followingsIndex, followingsIndex +4)
+  }
+
+  const nextFollowers = () => {
+    setFollowersIndex(prevState => prevState + 4)
+  }
+  
+  const nextFollowings = () => {
+    setFollowingsIndex(prevState => prevState + 4)
   }
 
 
@@ -83,6 +96,16 @@ const ProfileContainer = (props) => {
     })
   }
 
+  const removeFavoriteFromProfile = (gameId) => {
+    const updatedGames = user.games.filter(game => {
+    return game.id !== gameId
+    })
+
+    setUser({
+      ...user,
+      games: updatedGames
+    })
+  }
 
   const addFollowerToProfile = () => {
     setUser(prevState => {
@@ -114,11 +137,11 @@ const ProfileContainer = (props) => {
     }
 
   const renderFollowersContainer = () => {
-    return <FollowersContainer followers={user.followers} />
+    return <FollowersContainer followers={slicedFollowers()} nextFollowers={nextFollowers}/>
   }
 
   const renderFollowingContainer = () => {
-    return <FollowingContainer followings={user.followings} />
+    return <FollowingContainer followings={slicedFollowings()} nextFollowings={nextFollowings} />
   }
 
   let photoUrl = `http://localhost:3000${user.photo}`

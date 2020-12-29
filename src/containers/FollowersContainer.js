@@ -1,7 +1,8 @@
 import React from 'react';
 import UserThumb from '../components/UserThumb'
+import Button from 'react-bootstrap/Button'
 
-const FollowersContainer = ({followers}) => {
+const FollowersContainer = ({followers, nextFollowers}) => {
   
   const renderFollowers = () => {
     return followers.map(user => {
@@ -15,8 +16,10 @@ const FollowersContainer = ({followers}) => {
       followers.length === 0 ?
         <h3>No followers.</h3>
       :
-        renderFollowers()
-
+      <>
+        {renderFollowers()}
+        <Button style={{fontSize: "30px", marginLeft: "1%"}} variant="dark" onClick={nextFollowers}>→</Button>
+      </>
       }
     </div>
   );
