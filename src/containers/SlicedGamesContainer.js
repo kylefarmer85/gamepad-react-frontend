@@ -7,7 +7,7 @@ const SlicedGamesContainer = (props) => {
 
     // game image is named "image" in rails db, and named "background_image" in the other fetches that get games from rawg api
 
-    return game.background_image ?
+    return game.background_image || game.background_image === null ?
       <SlicedGame {...game} key={game.id} />
       :
       <SlicedGame name={game.name} background_image={game.image} id={game.game_api_id} key={game.id} />   
