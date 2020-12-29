@@ -5,7 +5,6 @@ import { connect } from 'react-redux'
 import { removeFromFavorites } from '../actions/games'
 import { useHistory } from 'react-router-dom'
 import Button from 'react-bootstrap/Button'
-import Col from 'react-bootstrap/Col'
 
 
 const FavoriteGame = ({id, gameUserId, game_api_id, name, image, user, removeFavoriteFromProfile, removeFromFavorites}) => {

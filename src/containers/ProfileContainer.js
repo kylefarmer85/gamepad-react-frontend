@@ -132,12 +132,10 @@ const ProfileContainer = (props) => {
       :
        
 
-        <Container className="mt-5" fluid style={{textAlign: "center"}}>
-
-          <Row className="align-items-center justify-content-center" >
+        <Container fluid style={{textAlign: "center"}}>
+          <Row className="mt-5 align-items-center justify-content-center" >
             <Col lg={3}>
-
-              <img style={imgStyle} src={photoUrl} alt="profile"/>
+              <img style={{height: "150px", width: "150px"}} src={photoUrl} alt="profile"/>
               {
                 props.user ?
                   props.user.id === user.id ?
@@ -150,21 +148,21 @@ const ProfileContainer = (props) => {
                 :
                 
                   <Button as={Link} to={'/login'}>Login to Follow User</Button>
-                
               } 
             </Col>
-            
             <Col lg={9} >
+              <Row>
+                <Col>
+                  <h3>Favorite Games</h3>
+                </Col>
+              </Row>
               <div className="d-flex flex-wrap align-items-center justify-content-center">
 
                 <FavoritesContainer slicedFavorites={slicedGames()} gameUserId={user.id} removeFavoriteFromProfile={removeFavoriteFromProfile} />
-
               
                 <Button style={{fontSize: "30px", marginLeft: "1%"}} variant="dark" onClick={nextGames}>→</Button>
               </div>
             </Col>
-              
-          
           </Row>
           <Row>
             <Col>
@@ -206,16 +204,6 @@ const ProfileContainer = (props) => {
     </div>
   );
 }
-
-  // const favStyle ={
-  //   display: "flex",
-  //   flexWrap: "wrap"
-  // }
-
-  const imgStyle = {
-    width: "150px",
-    height: "150px"
-  }
 
   const mapStateToProps = (state) => {
     return {
