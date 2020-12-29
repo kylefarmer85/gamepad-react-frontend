@@ -133,21 +133,18 @@ const ProfileContainer = (props) => {
        
 
         <Container className="mt-5" fluid style={{textAlign: "center"}}>
-          {/* <Row >
-            <Col>
-              <h1>{user.username}</h1>
-            </Col>
-            <Col>
-              <h1>Favorite Games</h1>
-            </Col>
-          </Row> */}
-          <Row className="d-flex flex-row align-items-center justify-content-center">
+
+          <Row className="align-items-center justify-content-center" >
             <Col lg={3}>
+
               <img style={imgStyle} src={photoUrl} alt="profile"/>
               {
                 props.user ?
                   props.user.id === user.id ?
+                    <>
+                    <br></br>
                     <Button as={Link} to={`/users/${props.user.id}/edit`}>Edit Info</Button>
+                    </>
                   :
                     <FollowButton followedUserId={user.id} followerId={props.user.id} addFollowerToProfile={addFollowerToProfile} removeFollowerFromProfile={removeFollowerFromProfile}/>
                 :
@@ -157,13 +154,15 @@ const ProfileContainer = (props) => {
               } 
             </Col>
             
-            
+            <Col lg={9} >
+              <div className="d-flex flex-wrap align-items-center justify-content-center">
 
                 <FavoritesContainer slicedFavorites={slicedGames()} gameUserId={user.id} removeFavoriteFromProfile={removeFavoriteFromProfile} />
 
-              <Col lg={1}>
+              
                 <Button style={{fontSize: "30px", marginLeft: "1%"}} variant="dark" onClick={nextGames}>→</Button>
-              </Col>
+              </div>
+            </Col>
               
           
           </Row>
@@ -208,10 +207,14 @@ const ProfileContainer = (props) => {
   );
 }
 
+  // const favStyle ={
+  //   display: "flex",
+  //   flexWrap: "wrap"
+  // }
 
   const imgStyle = {
-    width: "50%",
-    margin: "25%",
+    width: "150px",
+    height: "150px"
   }
 
   const mapStateToProps = (state) => {

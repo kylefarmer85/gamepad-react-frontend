@@ -48,9 +48,8 @@ const FavoriteGame = ({id, gameUserId, game_api_id, name, image, user, removeFav
   
 
 return (
-  <Col lg={2}>
-    <Card style={cardStyle}>
 
+    <Card style={cardStyle}>
       { image === null ?
         <img onClick={goToGame} style={imgStyle} git variant="top" src={Mario} alt="game" />
       :
@@ -75,7 +74,6 @@ return (
           null
       } 
     </Card>
-  </Col>
   );
 }
 
