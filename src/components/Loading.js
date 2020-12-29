@@ -1,7 +1,7 @@
 import React from 'react';
-import Sonic from '../gifs/sonic-foot-tap.gif'
-import Mario from  '../gifs/mario-sleeping.gif'
-import Mario2 from  '../gifs/mario-sleeping-2.gif'
+import Sonic from '../assets/gifs/sonic-foot-tap.gif'
+import Mario from  '../assets/gifs/mario-sleeping.gif'
+import Mario2 from  '../assets/gifs/mario-sleeping-2.gif'
 
 
 const randomGif = () => {

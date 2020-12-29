@@ -1,6 +1,6 @@
 import React from 'react';
 import Card from 'react-bootstrap/Card'
-import Mario from '../images/mario-is-missing.jpg'
+import Mario from '../assets/images/mario-is-missing.jpg'
 import { connect } from 'react-redux'
 import { removeFromFavorites } from '../actions/games'
 import { useHistory } from 'react-router-dom'

@@ -192,7 +192,7 @@ const ProfileContainer = (props) => {
               </Row>
             </Col>
           </Row>
-          <Row>
+          <Row className="mt-4">
             <Col>
               <Row>
                 <Col>

@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import SearchedUsersContainer from './SearchedUsersContainer'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
-// import { randomGenre, randomConsole } from "../helpers/randomFuncs"
 import Container from 'react-bootstrap/Container'
 import Col from 'react-bootstrap/Col'
 import Row from 'react-bootstrap/Row'

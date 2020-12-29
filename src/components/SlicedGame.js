@@ -1,7 +1,7 @@
 import React from 'react';
 import Card from 'react-bootstrap/Card'
 import { Link } from 'react-router-dom'
-import Mario from '../images/mario-is-missing.jpg'
+import Mario from '../assets/images/mario-is-missing.jpg'
 
 const SlicedGame = ({name, background_image, released, id}) => {
 

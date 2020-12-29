@@ -1,9 +1,9 @@
 import React from 'react';
-import bananas from '../images/bananas3.png'
-import heart from '../images/heart.png'
-import sword from '../images/sword.png'
-import fire from '../images/fire.png'
-import ring from '../images/ringflipped.png'
+import bananas from '../assets/images/bananas3.png'
+import heart from '../assets/images/heart.png'
+import sword from '../assets/images/sword.png'
+import fire from '../assets/images/fire.png'
+import ring from '../assets/images/ringflipped.png'
 
 const NavBarSprites = () => {
   return (
