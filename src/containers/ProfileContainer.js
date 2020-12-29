@@ -19,7 +19,8 @@ const ProfileContainer = (props) => {
   const [user, setUser] = useState({})
   const [showFollowers, setShowFollowers] = useState(true)
   const [loading, setLoading] = useState(true)
-  const [gameIndex, setGameIndex] = useState(0)
+
+  const [gamesIndex, setGamesIndex] = useState(0)
   const [followersIndex, setFollowersIndex] = useState(0)
   const [followingsIndex, setFollowingsIndex] = useState(0)
 
@@ -42,14 +43,14 @@ const ProfileContainer = (props) => {
 
 
   const slicedGames = () => {
-    if (gameIndex > user.games.length) {
-      setGameIndex(0)
+    if (gamesIndex > user.games.length) {
+      setGamesIndex(0)
     }
-    return user.games.slice(gameIndex, gameIndex +4)
+    return user.games.slice(gamesIndex, gamesIndex +4)
   }
 
   const nextGames = () => {
-    setGameIndex(prevState => prevState + 4)
+    setGamesIndex(prevState => prevState + 4)
   }
 
 
@@ -57,22 +58,22 @@ const ProfileContainer = (props) => {
     if (followersIndex > user.followers.length) {
       setFollowersIndex(0)
     }
-    return user.followers.slice(followersIndex, followersIndex +4)
+    return user.followers.slice(followersIndex, followersIndex + 3)
   }
 
   const slicedFollowings = () => {
     if (followingsIndex > user.followings.length) {
       setFollowingsIndex(0)
     }
-    return user.followings.slice(followingsIndex, followingsIndex +4)
+    return user.followings.slice(followingsIndex, followingsIndex + 3)
   }
 
   const nextFollowers = () => {
-    setFollowersIndex(prevState => prevState + 4)
+    setFollowersIndex(prevState => prevState + 3)
   }
   
   const nextFollowings = () => {
-    setFollowingsIndex(prevState => prevState + 4)
+    setFollowingsIndex(prevState => prevState + 3)
   }
 
 
@@ -137,11 +138,11 @@ const ProfileContainer = (props) => {
     }
 
   const renderFollowersContainer = () => {
-    return <FollowersContainer followers={slicedFollowers()} nextFollowers={nextFollowers}/>
+    return <FollowersContainer followers={slicedFollowers()} nextFollowers={nextFollowers} followersCount={user.followers.count}/>
   }
 
   const renderFollowingContainer = () => {
-    return <FollowingContainer followings={slicedFollowings()} nextFollowings={nextFollowings} />
+    return <FollowingContainer followings={slicedFollowings()} nextFollowings={nextFollowings} followingsCount={user.followings.count} />
   }
 
   let photoUrl = `http://localhost:3000${user.photo}`
@@ -153,12 +154,12 @@ const ProfileContainer = (props) => {
       loading ?
         <Loading />
       :
-       
-
         <Container fluid style={{textAlign: "center"}}>
           <Row className="mt-5 align-items-center justify-content-center" >
             <Col lg={3}>
+
               <img style={{height: "150px", width: "150px"}} src={photoUrl} alt="profile"/>
+
               {
                 props.user ?
                   props.user.id === user.id ?
@@ -176,46 +177,58 @@ const ProfileContainer = (props) => {
             <Col lg={9} >
               <Row>
                 <Col>
+
                   <h3>Favorite Games</h3>
+                  <Button style={{fontSize: "17px"}} variant="none" onClick={nextGames}>more→</Button>
+
                 </Col>
               </Row>
-              <div className="d-flex flex-wrap align-items-center justify-content-center">
+              <Row>
+                <Col className="d-flex flex-wrap align-items-center justify-content-center">
 
-                <FavoritesContainer slicedFavorites={slicedGames()} gameUserId={user.id} removeFavoriteFromProfile={removeFavoriteFromProfile} />
-              
-                <Button style={{fontSize: "30px", marginLeft: "1%"}} variant="dark" onClick={nextGames}>→</Button>
-              </div>
+                  <FavoritesContainer slicedFavorites={slicedGames()} gameUserId={user.id} removeFavoriteFromProfile={removeFavoriteFromProfile} />
+                
+                </Col>
+              </Row>
             </Col>
           </Row>
           <Row>
             <Col>
-              <ToggleButton
-                type="radio"
-                variant="none"
-                name="radio"
-                value={showFollowers}
-                checked={showFollowers}
-                onChange={toggleShowFollowers}
-              > Followers: {user.followers.length}
-              </ToggleButton>
+              <Row>
+                <Col>
+                  <ToggleButton
+                    type="radio"
+                    variant="none"
+                    name="radio"
+                    value={showFollowers}
+                    checked={showFollowers}
+                    onChange={toggleShowFollowers}
+                  > Followers: {user.followers.length}
+                  </ToggleButton>
 
-              <ToggleButton
-                type="radio"
-                variant="none"
-                name="radio"
-                value={!showFollowers}
-                checked={!showFollowers}
-                onChange={toggleShowFollowers}
-              > Following: {user.followings.length}
-              </ToggleButton>
+                  <ToggleButton
+                    type="radio"
+                    variant="none"
+                    name="radio"
+                    value={!showFollowers}
+                    checked={!showFollowers}
+                    onChange={toggleShowFollowers}
+                  > Following: {user.followings.length}
+                  </ToggleButton>
+                </Col>
+              </Row>
+              <Row>
+                <Col className="d-flex flex-wrap align-items-center justify-content-center">
+  
+                  {
+                  showFollowers ?
+                    renderFollowersContainer()
+                  :
+                    renderFollowingContainer()
+                  }
 
-              {
-              showFollowers ?
-                renderFollowersContainer()
-              :
-                renderFollowingContainer()
-              }
-
+                </Col>
+              </Row>
             </Col>
             <Col>
               <h3>Reviews</h3>
@@ -234,5 +247,4 @@ const ProfileContainer = (props) => {
     }
   }
   
-
-  export default connect(mapStateToProps, null) (ProfileContainer);
+export default connect(mapStateToProps, null) (ProfileContainer);
