@@ -5,6 +5,7 @@ import { connect } from 'react-redux'
 import { removeFromFavorites } from '../actions/games'
 import { useHistory } from 'react-router-dom'
 import Button from 'react-bootstrap/Button'
+import Col from 'react-bootstrap/Col'
 
 
 const FavoriteGame = ({id, gameUserId, game_api_id, name, image, user, removeFavoriteFromProfile, removeFromFavorites}) => {
@@ -20,10 +21,35 @@ const FavoriteGame = ({id, gameUserId, game_api_id, name, image, user, removeFav
     history.push(`/games/${game_api_id}`)
   }
 
-return (
+  const cardStyle = {
+    margin: "1%",
+    padding: "1.3%",
+    width: '10em', 
+    minWidth: '10em',
+    height:'14em', 
+    minHeight: '14em',
+    backgroundColor: "#E5E3E3",
+    boxShadow: "2px 2px grey",
+    overflow: "hidden",
+  }
   
-    <Card style={cardStyle}>
+  const imgStyle = {
+    width: "100%",
+    height: "50%",
+    backgroundColor: "#B7A955",
+    outline: "4px grey solid",
+  }
+  
+  const pStyle = {
+    margin: "8%",
+    textAlign: "center",
+    color: "black"
+  }
+  
 
+return (
+
+    <Card style={cardStyle}>
       { image === null ?
         <img onClick={goToGame} style={imgStyle} git variant="top" src={Mario} alt="game" />
       :
@@ -34,7 +60,6 @@ return (
         <strong>{name}</strong><br></br>
       </div>
 
-      
       {
         user ?
           gameUserId === user.id ?
@@ -48,34 +73,8 @@ return (
         :
           null
       } 
-      
-      
     </Card>
-
   );
-}
-
-const cardStyle = {
-  margin: "1%",
-  padding: "1.3%",
-  width: '10em', 
-  height:'14em', 
-  backgroundColor: "#E5E3E3",
-  boxShadow: "2px 2px grey",
-  overflow: "hidden",
-}
-
-const imgStyle = {
-  width: "100%",
-  height: "50%",
-  backgroundColor: "#B7A955",
-  outline: "4px grey solid",
-}
-
-const pStyle = {
-  margin: "8%",
-  textAlign: "center",
-  color: "black"
 }
 
 

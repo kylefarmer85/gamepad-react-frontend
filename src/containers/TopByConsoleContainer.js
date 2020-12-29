@@ -116,11 +116,11 @@ class TopByConsoleContainer extends Component {
             this.state.loading ?
               null
             :
-            <Row className="align-items-center" style={{justifyContent: "center"}}>
+            <div className="d-flex flex-wrap align-items-center justify-content-center">
               <SlicedGamesContainer slicedGames={this.slicedGames()} />
 
               <Button style={{fontSize: "30px", marginLeft: "1%"}} variant="dark" onClick={this.nextGames}>→</Button>
-            </Row>
+            </div>
             }     
             
           </Col>

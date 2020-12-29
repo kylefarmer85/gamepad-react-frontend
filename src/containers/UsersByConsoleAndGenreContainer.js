@@ -132,11 +132,11 @@ class UsersByConsoleAndGenreContainer extends Component {
             this.state.loading ?
               null
             :
-            <Row className="align-items-center" style={{justifyContent: "center"}}>
+            <div className="d-flex flex-wrap align-items-center justify-content-center">
               <SearchedUsersContainer users={this.slicedUsers()} />
 
               <Button style={{fontSize: "30px", marginLeft: "1%"}} variant="dark" onClick={this.nextUsers}>→</Button>
-            </Row>
+            </div>
             }     
             
           </Col>
