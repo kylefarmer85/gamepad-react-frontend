@@ -37,11 +37,11 @@ class SearchBar extends Component {
         <Form inline onSubmit={this.handleSubmit}>
           <Form.Group controlId="formSearchTerm">
 
-          <Button type="submit" variant="outline-light" className="mr-sm-2" size="sm">Search Games</Button>
+          <Button type="submit" variant="outline-light" className="mr-2" size="sm">Search Games</Button>
 
-          <Form.Control type="text" name="searchTerm" value={this.state.searchTerm} className="mr-sm-2" placeholder="Search Games or Users" onChange={this.handleChange} />
+          <Form.Control type="text" name="searchTerm" value={this.state.searchTerm} className="mr-2 mt-1 mb-1" placeholder="Search Games or Users" onChange={this.handleChange} />
    
-          <Button onClick={this.handleUserSearch} variant="outline-light" className="mr-sm-5" size="sm">Search Users</Button>
+          <Button onClick={this.handleUserSearch} variant="outline-light" size="sm">Search Users</Button>
 
           </Form.Group>  
         </Form>

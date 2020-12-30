@@ -4,16 +4,30 @@ import heart from '../assets/images/heart.png'
 import sword from '../assets/images/sword.png'
 import fire from '../assets/images/fire.png'
 import ring from '../assets/images/ringflipped.png'
+import { Link } from 'react-router-dom'
+import styled from 'styled-components'
+
+
+const SpritesDiv = styled.div`
+  @media (max-width: 1000px) {
+    display: none
+  }
+`
+
+const FruitImg = styled.img`
+  width: 48px;
+  height: 48px
+`
 
 const NavBarSprites = () => {
   return (
-    <div className="mr-2">
-      <img src={bananas} style={{width: "48px", height: "48px"}} alt="bananas"/>
-      <img src={heart} style={{width: "48px", height: "48px"}} alt="heart"/>
-      <img src={sword} style={{width: "48px", height: "48px"}} alt="sword"/>
-      <img src={fire} style={{width: "48px", height: "48px"}} alt="fire"/>
-      <img src={ring} style={{width: "48px", height: "48px"}} alt="sword"/>
-    </div>
+    <SpritesDiv className="ml-auto" as={Link} to={'/'}>
+      <FruitImg src={bananas} alt="bananas"/>
+      <FruitImg src={heart} alt="heart"/>
+      <FruitImg src={sword} alt="sword"/>
+      <FruitImg src={fire} alt="fire"/>
+      <FruitImg src={ring} alt="sword"/>
+    </SpritesDiv>
   );
 }
 

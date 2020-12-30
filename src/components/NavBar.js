@@ -12,31 +12,31 @@ import { toast } from 'react-toastify';
 const NavBar = (props) => {
 
   const handleLogout = () => {
-
     toast.info("You have successfully logged out.", {position: "top-center", autoClose: 3000})
 
     localStorage.removeItem("my_app_token")
     props.logoutUser()
   }
 
+
   return (
     <Navbar expand="md" bg="dark" variant="dark">
-      <Nav className="mr-auto ml-2">
-
-      <Navbar.Brand style={{outline: "solid white", padding: "5px"}} as={Link} to={`/home`}>GamePad</Navbar.Brand>
       
-      { props.user ?
-      <>
-        <Nav.Link onClick={handleLogout} as={Link} to={"/login"}>Logout</Nav.Link>
-
-        <Nav.Link as={Link} to={`/users/${props.user.id}/profile`}>Profile</Nav.Link>
-      </>
-      :  
-        <Nav.Link as={Link} to={`/login`}>Login</Nav.Link>
-      } 
-
+      <Navbar.Brand style={{outline: "solid white", padding: "5px"}} as={Link} to={`/`}>GamePad</Navbar.Brand>
+       
+      <Nav className="mr-auto"> 
+        { props.user ?
+          <>
+            <Nav.Link onClick={handleLogout} as={Link} to={"/login"}>Logout</Nav.Link>
+          
+            <Nav.Link as={Link} to={`/users/${props.user.id}/profile`}>Profile</Nav.Link>
+          </>
+        :  
+          <Nav.Link as={Link} to={`/login`}>Login</Nav.Link>
+        } 
       </Nav>
-      <SearchBar />
+
+      <SearchBar />  
       <NavBarSprites />
     </Navbar>
   );
