@@ -79,13 +79,13 @@ class ConsoleAndGenreContainer extends Component {
 
   render() {
     return (
-      <Container fluid className="mt-3">
+      <Container fluid className="mt-3 text-center">
         <Row className="align-items-center" >
           <Col lg={3}>
             <Form onSubmit={this.handleSubmit}>
               <Form.Group controlId="formConsole">
                 <Form.Label>Browse Games By Console and Genre</Form.Label>
-                <Form.Control name="console" value={this.state.console} onChange={this.handleChange}  as="select">
+                <Form.Control style={{textAlignLast: "center"}} name="console" value={this.state.console} onChange={this.handleChange} as="select">
                   <option>Atari 2600</option>
                   <option>Atari 5200</option>
                   <option>Atari 7800</option>
@@ -108,7 +108,7 @@ class ConsoleAndGenreContainer extends Component {
                 </Form.Control>
               </Form.Group> 
               <Form.Group controlId="formGenre">
-                <Form.Control name="genre" value={this.state.genre} onChange={this.handleChange} as="select">
+                <Form.Control style={{textAlignLast: "center"}} name="genre" value={this.state.genre} onChange={this.handleChange} as="select">
                   <option>Action</option>
                   <option>Adventure</option>
                   <option>Platformer</option>
@@ -123,7 +123,10 @@ class ConsoleAndGenreContainer extends Component {
                 </Form.Control>
               </Form.Group>     
               <Button type="submit">Browse Games</Button>
-            </Form> 
+
+              <Button style={{fontSize: "17px", marginLeft: "1%"}} variant="outline-dark" onClick={this.nextGames}>more→</Button>
+
+            </Form>
           </Col >
           <Col lg={9}>
            
@@ -133,8 +136,6 @@ class ConsoleAndGenreContainer extends Component {
             :
             <div className="d-flex flex-wrap align-items-center justify-content-center">
               <SlicedGamesContainer slicedGames={this.slicedGames()} />
-
-              <Button style={{fontSize: "30px", marginLeft: "1%"}} variant="dark" onClick={this.nextGames}>→</Button>
             </div>
             }     
             

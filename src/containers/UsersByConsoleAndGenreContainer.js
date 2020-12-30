@@ -79,13 +79,13 @@ class UsersByConsoleAndGenreContainer extends Component {
 
   render() {
     return (
-      <Container fluid className="mt-3">
+      <Container fluid className="mt-3 text-center">
         <Row className="align-items-center">
           <Col lg={3}>
             <Form onSubmit={this.handleSubmit}>
               <Form.Group controlId="formConsole">
                 <Form.Label>Browse Users By Console and Genre</Form.Label>
-                <Form.Control name="console" value={this.state.console} onChange={this.handleChange}  as="select">
+                <Form.Control name="console" value={this.state.console} onChange={this.handleChange} as="select" style={{textAlignLast: "center"}}>
                   <option>Atari 2600</option>
                   <option>Atari 5200</option>
                   <option>Atari 7800</option>
@@ -108,7 +108,7 @@ class UsersByConsoleAndGenreContainer extends Component {
                 </Form.Control>
               </Form.Group> 
               <Form.Group controlId="formGenre">
-                <Form.Control name="genre" value={this.state.genre} onChange={this.handleChange} as="select">
+                <Form.Control name="genre" value={this.state.genre} onChange={this.handleChange} as="select" style={{textAlignLast: "center"}}>
                   <option>Action</option>
                   <option>Adventure</option>
                   <option>Platformer</option>
@@ -123,6 +123,8 @@ class UsersByConsoleAndGenreContainer extends Component {
                 </Form.Control>
               </Form.Group>     
               <Button type="submit">Browse Games</Button>
+
+              <Button style={{fontSize: "17px", marginLeft: "1%"}} variant="outline-dark" onClick={this.nextUsers}>more→</Button>
             </Form> 
           </Col >
           <Col lg={9}>
@@ -133,8 +135,6 @@ class UsersByConsoleAndGenreContainer extends Component {
             :
             <div className="d-flex flex-wrap align-items-center justify-content-center">
               <SearchedUsersContainer users={this.slicedUsers()} />
-
-              <Button style={{fontSize: "30px", marginLeft: "1%"}} variant="dark" onClick={this.nextUsers}>→</Button>
             </div>
             }     
             

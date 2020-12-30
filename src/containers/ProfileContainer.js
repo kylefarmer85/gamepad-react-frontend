@@ -154,7 +154,7 @@ const ProfileContainer = (props) => {
       loading ?
         <Loading />
       :
-        <Container fluid style={{textAlign: "center"}}>
+        <Container fluid className="text-center">
           <Row className="mt-5 align-items-center justify-content-center" >
             <Col lg={3}>
 

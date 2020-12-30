@@ -79,13 +79,13 @@ class YearAndGenreContainer extends Component {
 
   render() {
     return (
-      <Container fluid className="mt-3">
+      <Container fluid className="mt-3 text-center">
         <Row className="align-items-center">
           <Col lg={3}>
             <Form onSubmit={this.handleSubmit}>
               <Form.Group controlId="formYear">
                 <Form.Label>Browse Games By Year and Genre</Form.Label>
-                <Form.Control name="year" value={this.state.year} onChange={this.handleChange} as="select">
+                <Form.Control name="year" value={this.state.year} onChange={this.handleChange} as="select" style={{textAlignLast: "center"}}>
                   {/* <option>{this.randomYear}</option> */}
                   <option>1977</option>
                   <option>1978</option>
@@ -117,8 +117,7 @@ class YearAndGenreContainer extends Component {
                 </Form.Control>
               </Form.Group> 
               <Form.Group controlId="formGenre">
-                <Form.Control name="genre" value={this.state.genre} onChange={this.handleChange} as="select">
-                  {/* <option>{this.randomGenre}</option> */}
+                <Form.Control name="genre" value={this.state.genre} onChange={this.handleChange} as="select" style={{textAlignLast: "center"}}>
                   <option>Action</option>
                   <option>Adventure</option>
                   <option>Platformer</option>
@@ -133,6 +132,8 @@ class YearAndGenreContainer extends Component {
                 </Form.Control>
               </Form.Group>     
               <Button type="submit">Browse Games</Button>
+
+              <Button style={{fontSize: "17px", marginLeft: "1%"}} variant="outline-dark" onClick={this.nextGames}>more→</Button>
             </Form>
           </Col >
           <Col lg={9}>
@@ -143,8 +144,6 @@ class YearAndGenreContainer extends Component {
           :
           <div className="d-flex flex-wrap align-items-center justify-content-center">
             <SlicedGamesContainer slicedGames={this.slicedGames()} />
-            
-            <Button style={{fontSize: "30px", marginLeft: "1%"}} variant="dark" onClick={this.nextGames}>→</Button>
           </div>
           }        
             

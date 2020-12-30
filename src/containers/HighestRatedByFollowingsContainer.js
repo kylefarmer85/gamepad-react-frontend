@@ -64,10 +64,11 @@ class HighestRatedByFollowingsContainer extends Component {
 
   render() {
     return (
-      <Container fluid className="mt-3">
+      <Container fluid className="mt-3 text-center">
         <Row className="align-items-center">
           <Col lg={3}>
-            Highest Rated Games by Users You Follow
+            Highest Rated Games by Users You Follow<br></br><br></br>
+            <Button style={{fontSize: "17px", marginLeft: "1%"}} variant="outline-dark" onClick={this.nextGames}>more→</Button>
           </Col >
           <Col lg={9}>
             
@@ -77,8 +78,6 @@ class HighestRatedByFollowingsContainer extends Component {
             :
             <div className="d-flex flex-wrap align-items-center justify-content-center">
               <SlicedGamesContainer slicedGames={this.slicedGames()} />
-
-              <Button style={{fontSize: "30px", marginLeft: "1%"}} variant="dark" onClick={this.nextGames}>→</Button>
             </div>
             }     
             
