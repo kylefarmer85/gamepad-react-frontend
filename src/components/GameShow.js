@@ -13,7 +13,7 @@ toast.configure()
 const GameShow = ({game, screenshots, addToFavorites, user, games}) => {
 
   const handleFavorite = () => {
-    
+
     if (!user) {
       return  toast.error("You must be logged in to add favorites", {position: "bottom-center", autoClose: 3000})
     } 
@@ -30,9 +30,7 @@ const GameShow = ({game, screenshots, addToFavorites, user, games}) => {
 
 
     return (
-      <Container className="mt-5">
-        {/* needs styling */}
-        
+      <Container className="mt-4">
         <div style={{textAlign: "center"}}>
          
           <img style={{height: "50%", width: "50%"}} src={game.background_image} alt="game" />
@@ -43,26 +41,26 @@ const GameShow = ({game, screenshots, addToFavorites, user, games}) => {
             {
             game.platforms.map(p => <span key={uuidv4()}>{`${p.platform.name} | ` }</span>)
             }
-          <br>
-          </br>
+          <br/>
+
           <button className="btn-nes" onClick={handleFavorite}>Add to Favorites</button>
         </div>
 
         <div className="m-4" style={{textAlign: "center"}}>
           { 
           game.clip ? 
-            <div className="align-items-center" style={crtTvDiv}> 
-              <video style={videoStyle} src={game.clip.clip} type="video/mp4" controls/>
-            </div> 
+            <CrtTvDiv className="align-items-center"> 
+              <GameClip src={game.clip.clip} type="video/mp4" controls/>
+            </CrtTvDiv> 
           :
             null 
           }
       
-          <p style={gameDesStyle} >{game.description_raw}</p>
+          <GameDesc >{game.description_raw}</GameDesc>
 
           { 
             screenshots ?
-            screenshots.map(ss => <TvImg src={ss.image}  alt='screenshot' key={uuidv4()}></TvImg>)
+            screenshots.map(ss => <SsImg src={ss.image}  alt='screenshot' key={uuidv4()}></SsImg>)
             :
             null
           }
@@ -81,15 +79,19 @@ const mapStateToProps = (state) => {
   }
 }
 
-const gameDesStyle = {
-  textAlign: "left",
-  marginTop: "20px",
-  padding: "15px",
-  border: "4px solid white",
-  fontSize: "10pt"
-}
+const GameDesc = styled.p`
+  text-align: left;
+  margin-top: 20px;
+  padding: 15px;
+  border: 4px solid white;
+  font-size: 10pt;
 
-const TvImg = styled.img`
+  @media (max-width: 600px) {
+    font-size: 8pt;
+  }
+`
+
+const SsImg = styled.img`
   width: 400px;
   height: 350px;
   margin: 20px;
@@ -102,22 +104,46 @@ const TvImg = styled.img`
   }
 `
 
-const crtTvDiv = {
-  margin: "auto",
-  backgroundImage: `url(${crtTv})`,
-  backgroundSize: "100% 100%",
-  backgroundRepeat: "no-repeat",
-  width: "600px",
-  height: "400px",
-}
+const CrtTvDiv = styled.div`
+  margin: auto;
+  background-image: url(${crtTv});
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  width: 600px;
+  height: 400px;
 
-const videoStyle = {
-  width: "430px",
-  height: "340px",
-  position: "relative",
-  top: "26px",
-  right: "57px"
-}
+  @media (max-width: 775px) {
+    width: 300px;
+    height: 200px;
+  }
+
+  @media (max-width: 400px) {
+    width: 200px;
+    height: 140px
+  }
+`
+
+const GameClip = styled.video`
+  width: 430px;
+  height: 340px;
+  position: relative;
+  top: 26px;
+  right: 57px;
+
+  @media (max-width: 775px) {
+    width: 215px;
+    height: 170px;
+    top: 13px;
+    right: 28.5px;
+  }
+
+  @media (max-width: 400px) {
+    width: 150.5px;
+    height: 119px;
+    top: 9.1px;
+    right: 20px;
+  }
+`
 
 
 
