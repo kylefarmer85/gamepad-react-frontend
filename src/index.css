@@ -16,9 +16,10 @@ body {
   box-sizing: "border-box";
 }
 
-* {
+*:not(span) {
   color: white
 }
+
 
 h2 {
   font-family: 'Press Start 2P', cursive;
