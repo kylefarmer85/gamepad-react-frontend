@@ -5,20 +5,30 @@ import Loading from '../components/Loading'
 class ReviewsPageContainer extends Component {
   state = {
     reviews: [],
-    loading: true
+    pageCounter: 1,
+    loading: true,
+    endOfPosts: false
   }
 
   componentDidMount() {
-    fetch("http://localhost:3000/api/v1/reviews")
+    this.fetchReviews()
+  }  
+
+  fetchReviews() {
+    fetch(`http://localhost:3000/api/v1/reviews/${this.state.pageCounter}`)
     .then(resp => resp.json())
     .then(gameReviews => {
       console.log(gameReviews)
-      this.setState({
-        reviews: gameReviews,
-        loading: false
+      
+      this.setState(prevState => {
+        return {
+          reviews: [...prevState.reviews, ...gameReviews],
+          pageCounter: prevState.pageCounter += 1,
+          loading: false
+        }
       })
     })
-  }  
+  }
 
 
   handleDelete = (id) => {
@@ -31,6 +41,7 @@ class ReviewsPageContainer extends Component {
   }
 
   renderGameReviews = () => {
+    
     return this.state.reviews.map(review => {
       return <Review {...review} key={review.id} handleDelete={this.handleDelete}/>
     })
