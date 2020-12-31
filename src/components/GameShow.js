@@ -8,6 +8,7 @@ import { toast } from 'react-toastify'
 import styled from 'styled-components'
 import crtTv from '../assets/images/crt-tv.png' 
 
+toast.configure()
 
 const GameShow = ({game, screenshots, addToFavorites, user, games}) => {
 
@@ -105,15 +106,14 @@ const crtTvDiv = {
   backgroundRepeat: "no-repeat",
   width: "600px",
   height: "400px",
-  
 }
 
 const videoStyle = {
-  width: "400px",
-  height: "300px",
+  width: "430px",
+  height: "340px",
   position: "relative",
-  top: "50px",
-  right: "60px"
+  top: "26px",
+  right: "57px"
 }
 
 
