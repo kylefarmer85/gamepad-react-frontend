@@ -18,7 +18,7 @@ const FollowersContainer = ({followers, nextFollowers, followersCount}) => {
       :
       <>
         {renderFollowers()}
-        <Button style={{fontSize: "17px"}} variant="none" onClick={nextFollowers}>more→</Button>
+        <Button style={{fontSize: "17px"}} variant="outline-light" onClick={nextFollowers}>more→</Button>
       </>
       }
     </>

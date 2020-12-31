@@ -19,7 +19,7 @@ const FollowingContainer = ({followings, nextFollowings, followingsCount}) => {
       <>  
         {renderFollowings()}
         
-        <Button style={{fontSize: "17px"}} variant="none" onClick={nextFollowings}>more→</Button>
+        <Button style={{fontSize: "17px"}} variant="outline-light" onClick={nextFollowings}>more→</Button>
       </>
       }
     </>

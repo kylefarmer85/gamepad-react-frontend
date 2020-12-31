@@ -179,7 +179,7 @@ const ProfileContainer = (props) => {
                 <Col>
 
                   <h3>Favorite Games</h3>
-                  <Button style={{fontSize: "17px"}} variant="none" onClick={nextGames}>more→</Button>
+                  <Button style={{fontSize: "17px"}} variant="outline-light" onClick={nextGames}>more→</Button>
 
                 </Col>
               </Row>
