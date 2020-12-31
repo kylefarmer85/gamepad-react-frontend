@@ -16,23 +16,31 @@ body {
   box-sizing: "border-box";
 }
 
+* {
+  color: white
+}
+
 h2 {
   font-family: 'Press Start 2P', cursive;
 }
 
 label, p, h3 {
   font-family: 'Press Start 2P', cursive;
-  font-size: 9pt
+  font-size: 9pt;
 }
 
-/* .button {
-  background:blue;
-  display: inline-block;
-  position: relative;
+.btn-nes {
+  margin: 4px;
+  background:black;
   text-align: center;
   font-size: 15px;
-  padding: 7px;
+  padding: 10px;
   font-family: 'Press Start 2P', cursive;
-  text-decoration: none; 
   color: white;
-} */
+  border: none;
+  outline: 2px solid white;
+}
+
+.btn-nes:hover {
+  background: blue
+}

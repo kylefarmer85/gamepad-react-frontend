@@ -24,13 +24,13 @@ const Review = ({ game_name, user_pic, game_api_id, content, rating, username, i
   }
 
   const mediaStyle = {
-    margin: "3% 5% ",
-    outline: "solid black 4px",
+    margin: "3% 5%",
+    padding: "10px",
+    outline: "solid white 4px",
     textAlign: "left"
   }
 
   const bodyStyle = {
-    backgroundColor: "lightGray",
     padding: "2%",
   }
 

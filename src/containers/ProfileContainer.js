@@ -199,6 +199,7 @@ const ProfileContainer = (props) => {
                   <ToggleButton
                     type="radio"
                     variant="none"
+                    style={{color: "white"}}
                     name="radio"
                     value={showFollowers}
                     checked={showFollowers}
@@ -209,6 +210,7 @@ const ProfileContainer = (props) => {
                   <ToggleButton
                     type="radio"
                     variant="none"
+                    style={{color: "white"}}
                     name="radio"
                     value={!showFollowers}
                     checked={!showFollowers}

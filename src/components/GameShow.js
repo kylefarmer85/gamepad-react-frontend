@@ -4,11 +4,10 @@ import Container from 'react-bootstrap/Container'
 import { addToFavorites } from '../actions/games'
 import { connect } from 'react-redux'
 import ReviewsContainer from '../containers/ReviewsContainer';
-import Button from 'react-bootstrap/button'
 import { toast } from 'react-toastify'
+import styled from 'styled-components'
+import crtTv from '../assets/images/crt-tv.png' 
 
-
-toast.configure()
 
 const GameShow = ({game, screenshots, addToFavorites, user, games}) => {
 
@@ -30,9 +29,10 @@ const GameShow = ({game, screenshots, addToFavorites, user, games}) => {
       <Container className="mt-5">
         {/* needs styling */}
         
-        <div style={{textAlign: "center"}}>     
+        <div style={{textAlign: "center"}}>
+         
           <img style={{height: "50%", width: "50%"}} src={game.background_image} alt="game" />
-
+ 
           <h2>{game.name}</h2>
           <p>Released: {game.released}</p>
           <p>Platform(s):</p>
@@ -41,28 +41,29 @@ const GameShow = ({game, screenshots, addToFavorites, user, games}) => {
             }
           <br>
           </br>
-          <Button onClick={handleFavorite}>Add to Favorites</Button>
+          <button className="btn-nes" onClick={handleFavorite}>Add to Favorites</button>
         </div>
 
-       <div style={{textAlign: "center"}}>
-    
-        { 
-        game.clip ? 
-          <video src={game.clip.clip} type="video/mp4" controls/>
-        :
-          null 
-        }
-    
-        
-            <p style={gameDesStyle} >{game.description_raw}</p>
-            { 
-              screenshots ?
-              screenshots.map(ss => <img src={ss.image} style={{height: "16em", width: "20em", margin: "1%"}} alt='screenshot' key={uuidv4()}></img>)
-              :
-              null
-            }
-         
+        <div className="m-4" style={{textAlign: "center"}}>
+          { 
+          game.clip ? 
+            <div className="align-items-center" style={crtTvDiv}> 
+              <video style={videoStyle} src={game.clip.clip} type="video/mp4" controls/>
+            </div> 
+          :
+            null 
+          }
+      
+          <p style={gameDesStyle} >{game.description_raw}</p>
+
+          { 
+            screenshots ?
+            screenshots.map(ss => <TvImg src={ss.image}  alt='screenshot' key={uuidv4()}></TvImg>)
+            :
+            null
+          }
         </div>
+
         <ReviewsContainer gameApiId={game.id} gameName={game.name} gameImage={game.background_image} />
   
       </Container >
@@ -78,9 +79,45 @@ const mapStateToProps = (state) => {
 
 const gameDesStyle = {
   textAlign: "left",
-  padding: "10px",
-  border: "4px solid black"
+  marginTop: "20px",
+  padding: "15px",
+  border: "4px solid white",
+  fontSize: "10pt"
 }
+
+const TvImg = styled.img`
+  width: 400px;
+  height: 350px;
+  margin: 20px;
+  border-radius: 50% / 20%;
+  border: 3px solid white;
+
+  @media (max-width: 600px) {
+    width: 75%;
+    height: 60%;
+  }
+`
+
+const crtTvDiv = {
+  margin: "auto",
+  backgroundImage: `url(${crtTv})`,
+  backgroundSize: "100% 100%",
+  backgroundRepeat: "no-repeat",
+  width: "600px",
+  height: "400px",
+  
+}
+
+const videoStyle = {
+  width: "400px",
+  height: "300px",
+  position: "relative",
+  top: "50px",
+  right: "60px"
+}
+
+
+
 
 export default connect (mapStateToProps, { addToFavorites })(GameShow)
 

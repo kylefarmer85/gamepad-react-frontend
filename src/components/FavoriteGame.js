@@ -28,7 +28,7 @@ const FavoriteGame = ({id, gameUserId, game_api_id, name, image, user, removeFav
     height:'14em', 
     minHeight: '14em',
     backgroundColor: "#E5E3E3",
-    boxShadow: "2px 2px grey",
+    boxShadow: "4px 4px grey",
     overflow: "hidden",
   }
   
@@ -42,7 +42,6 @@ const FavoriteGame = ({id, gameUserId, game_api_id, name, image, user, removeFav
   const pStyle = {
     margin: "8%",
     textAlign: "center",
-    color: "black"
   }
   
 
@@ -56,7 +55,7 @@ return (
       }
 
       <div onClick={goToGame} style={pStyle}>
-        <p>{name}</p><br></br>
+        <p style={{color: "black"}}>{name}</p><br></br>
       </div>
 
       {
