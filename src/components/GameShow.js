@@ -85,6 +85,9 @@ const GameDesc = styled.p`
   padding: 15px;
   border: 4px solid white;
   font-size: 10pt;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: break-word;
 
   @media (max-width: 600px) {
     font-size: 8pt;

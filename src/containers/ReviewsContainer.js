@@ -24,7 +24,7 @@ class ReviewsContainer extends Component {
         game_api_id: this.props.gameApiId,
       })
     }
-    fetch("http://localhost:3000/api/v1/reviews/all", reqObj)
+    fetch("http://localhost:3000/api/v1/reviews/gamereviews", reqObj)
     .then(resp => resp.json())
     .then(gameReviews => {
       console.log(gameReviews)

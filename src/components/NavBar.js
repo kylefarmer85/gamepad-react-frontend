@@ -25,6 +25,7 @@ const NavBar = (props) => {
       <Navbar.Brand style={{outline: "solid white", padding: "5px"}} as={Link} to={`/`}>GamePad</Navbar.Brand>
        
       <Nav className="mr-auto"> 
+      
         { props.user ?
           <>
             <Nav.Link onClick={handleLogout} as={Link} to={"/login"}>Logout</Nav.Link>
@@ -34,6 +35,8 @@ const NavBar = (props) => {
         :  
           <Nav.Link as={Link} to={`/login`}>Login</Nav.Link>
         } 
+
+        <Nav.Link as={Link} to={`/reviews`}>Reviews</Nav.Link>
       </Nav>
 
       <SearchBar />  

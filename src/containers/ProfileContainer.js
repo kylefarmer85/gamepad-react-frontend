@@ -157,14 +157,14 @@ const ProfileContainer = (props) => {
         <Container fluid className="text-center">
           <Row className="mt-5 align-items-center justify-content-center" >
             <Col lg={3}>
-
+              <h3>{user.username}</h3>
               <img style={{height: "150px", width: "150px"}} src={photoUrl} alt="profile"/>
 
               {
                 props.user ?
                   props.user.id === user.id ?
                     <>
-                    <br></br>
+                    <br/>
                     <Button as={Link} to={`/users/${props.user.id}/edit`}>Edit Info</Button>
                     </>
                   :

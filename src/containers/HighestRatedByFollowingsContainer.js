@@ -67,7 +67,7 @@ class HighestRatedByFollowingsContainer extends Component {
       <Container fluid className="mt-3 text-center">
         <Row className="align-items-center">
           <Col lg={3}>
-          <label>Highest Rated Games by Users You Follow</label><br></br><br></br>
+          <label>Highest Rated Games by Users You Follow</label><br/><br/>
             <Button style={{fontSize: "17px", marginLeft: "1%"}} variant="outline-dark" onClick={this.nextGames}>more→</Button>
           </Col >
           <Col lg={9}>
