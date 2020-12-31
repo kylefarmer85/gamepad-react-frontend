@@ -25,8 +25,7 @@ const Review = ({ game_name, user_pic, game_api_id, content, rating, username, i
 
   const mediaStyle = {
     margin: "3% 5% ",
-    outline: "solid",
-    outlineColor: "#B7A955",
+    outline: "solid black 4px",
     textAlign: "left"
   }
 
@@ -50,7 +49,7 @@ const Review = ({ game_name, user_pic, game_api_id, content, rating, username, i
       <Media.Body style={bodyStyle}>
         <p>{content}</p>
         <Link to={`/games/${game_api_id}`}>
-          <em>{game_name}</em><br></br>
+          {game_name}<br></br>
         </Link>
         
         <strong>Rating: {rating}</strong>

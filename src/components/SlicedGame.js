@@ -23,9 +23,10 @@ const SlicedGame = ({name, background_image, released, id}) => {
   }
 
   const pStyle = {
-    marginTop: "8%",
+    marginTop: "6%",
     textAlign: "center",
     color: "black",
+
   }
 
   return (
@@ -37,13 +38,14 @@ const SlicedGame = ({name, background_image, released, id}) => {
         <img style={imgStyle} variant="top" src={background_image} alt="game" />
       }
       <div style={pStyle}>
-        <strong>{name}</strong><br></br>
+        <p>{name}<br></br>
       {
         released ?
         <span style={{color: "#A5356D"}}>{released.slice(0,4)}</span>
       :
         null
       }
+      </p>
       </div>
     </Card>   
 

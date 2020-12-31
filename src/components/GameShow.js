@@ -27,13 +27,13 @@ const GameShow = ({game, screenshots, addToFavorites, user, games}) => {
 
 
     return (
-      <Container className="mt-5 ">
+      <Container className="mt-5">
         {/* needs styling */}
         
         <div style={{textAlign: "center"}}>     
           <img style={{height: "50%", width: "50%"}} src={game.background_image} alt="game" />
 
-          <h1>{game.name}</h1>
+          <h2>{game.name}</h2>
           <p>Released: {game.released}</p>
           <p>Platform(s):</p>
             {
@@ -43,23 +43,25 @@ const GameShow = ({game, screenshots, addToFavorites, user, games}) => {
           </br>
           <Button onClick={handleFavorite}>Add to Favorites</Button>
         </div>
+
        <div style={{textAlign: "center"}}>
     
         { 
-        game.clip === null ? 
-          null 
-        :
+        game.clip ? 
           <video src={game.clip.clip} type="video/mp4" controls/>
+        :
+          null 
         }
     
-        <p style={{textAlign: "left"}} >{game.description_raw}</p>
-
-        { 
-          screenshots ?
-          screenshots.map(ss => <img src={ss.image} style={{height: "16em", width: "20em", margin: "1%"}} alt='screenshot' key={uuidv4()}></img>)
-          :
-          null
-        }
+        
+            <p style={gameDesStyle} >{game.description_raw}</p>
+            { 
+              screenshots ?
+              screenshots.map(ss => <img src={ss.image} style={{height: "16em", width: "20em", margin: "1%"}} alt='screenshot' key={uuidv4()}></img>)
+              :
+              null
+            }
+         
         </div>
         <ReviewsContainer gameApiId={game.id} gameName={game.name} gameImage={game.background_image} />
   
@@ -72,6 +74,12 @@ const mapStateToProps = (state) => {
     user: state.user,
     games: state.games
   }
+}
+
+const gameDesStyle = {
+  textAlign: "left",
+  padding: "10px",
+  border: "4px solid black"
 }
 
 export default connect (mapStateToProps, { addToFavorites })(GameShow)

@@ -56,7 +56,7 @@ return (
       }
 
       <div onClick={goToGame} style={pStyle}>
-        <strong>{name}</strong><br></br>
+        <p>{name}</p><br></br>
       </div>
 
       {

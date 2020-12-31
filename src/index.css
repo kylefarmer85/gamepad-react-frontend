@@ -13,19 +13,26 @@ code {
 }
 
 body {
-  box-sizing: "border-box" 
+  box-sizing: "border-box";
 }
 
-h1, h2, h3, h4, h5, li {
+h2 {
   font-family: 'Press Start 2P', cursive;
 }
 
-p, label {
+label, p, h3 {
   font-family: 'Press Start 2P', cursive;
-  font-size: 10pt
+  font-size: 9pt
 }
 
-.btn-primary, .btn-none, .btn-outline-dark {
+/* .button {
+  background:blue;
+  display: inline-block;
+  position: relative;
+  text-align: center;
+  font-size: 15px;
+  padding: 7px;
   font-family: 'Press Start 2P', cursive;
-  font-size: 6pt
-}
+  text-decoration: none; 
+  color: white;
+} */
