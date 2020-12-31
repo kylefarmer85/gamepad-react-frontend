@@ -11,3 +11,21 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+body {
+  box-sizing: "border-box" 
+}
+
+h1, h2, h3, h4, h5, li {
+  font-family: 'Press Start 2P', cursive;
+}
+
+p, label {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 10pt
+}
+
+.btn-primary, .btn-none, .btn-outline-dark {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 6pt
+}

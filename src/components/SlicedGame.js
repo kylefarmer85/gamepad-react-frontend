@@ -8,7 +8,6 @@ const SlicedGame = ({name, background_image, released, id}) => {
   const cardStyle = {
     margin: "1%",
     padding: "1.3%",
-    // paddingBottom: "3.4%",
     width: '10em', 
     height:'14em', 
     backgroundColor: "#E5E3E3",
