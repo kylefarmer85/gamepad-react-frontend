@@ -124,7 +124,7 @@ class UsersByConsoleAndGenreContainer extends Component {
               </Form.Group>     
               <Button type="submit">Browse Games</Button>
 
-              <Button style={{fontSize: "17px", marginLeft: "1%"}} variant="outline-dark" onClick={this.nextUsers}>more→</Button>
+              <Button style={{fontSize: "17px", marginLeft: "1%"}} variant="outline-light" onClick={this.nextUsers}>more→</Button>
             </Form> 
           </Col >
           <Col lg={9}>

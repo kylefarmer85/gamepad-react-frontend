@@ -10,7 +10,7 @@ class ReviewForm extends Component {
     super(props)
       this.state = {
         content: "",
-        rating: "",
+        rating: 1,
         gameName: this.props.gameName,
         gameApiId: this.props.gameApiId,
         gameImage: this.props.gameImage,
@@ -25,6 +25,10 @@ class ReviewForm extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault()
+
+    if (!this.state.content) {
+      return toast.error("Please enter content!", {position: "bottom-center", autoClose: 3000})
+    }
 
     if (this.props.user) {
       
@@ -57,7 +61,7 @@ class ReviewForm extends Component {
 
         this.setState({
           content: "",
-          rating: ""
+          rating: 1
         })
       })
     } else {

@@ -86,7 +86,9 @@ export function signupUser(userObj) {
       dispatch({ type: "LOGIN_USER", data})
       localStorage.setItem('my_app_token', data.token)
       console.log(data)
+
       toast.success(`Welcome ${data.user.username}!`, {position: 'bottom-center', autoClose: 3000})
+      
       history.push('/')
       }
     })

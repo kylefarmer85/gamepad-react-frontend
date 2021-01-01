@@ -33,7 +33,7 @@ const GameShow = ({game, screenshots, addToFavorites, user, games}) => {
       <Container className="mt-4">
         <div style={{textAlign: "center"}}>
          
-          <img style={{height: "50%", width: "50%"}} src={game.background_image} alt="game" />
+          <img style={{height: "50%", width: "50%", marginBottom: "15px"}} src={game.background_image} alt="game" />
  
           <h2>{game.name}</h2>
           <p>Released: {game.released}</p>
@@ -85,6 +85,9 @@ const GameDesc = styled.p`
   padding: 15px;
   border: 4px solid white;
   font-size: 10pt;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: break-word;
 
   @media (max-width: 600px) {
     font-size: 8pt;
