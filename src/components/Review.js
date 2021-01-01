@@ -49,7 +49,7 @@ const Review = ({ game_name, user_pic, game_api_id, content, rating, username, i
       <Media.Body style={bodyStyle}>
         <p>{content}</p>
         <Link to={`/games/${game_api_id}`}>
-          {game_name}<br></br>
+          <h5>{game_name}</h5>
         </Link>
         
         <strong>Rating: {rating}</strong>

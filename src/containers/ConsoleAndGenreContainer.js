@@ -124,7 +124,7 @@ class ConsoleAndGenreContainer extends Component {
               </Form.Group>     
               <Button type="submit">Browse Games</Button>
 
-              <Button style={{fontSize: "17px", marginLeft: "1%"}} variant="outline-dark" onClick={this.nextGames}>more→</Button>
+              <Button style={{fontSize: "17px", marginLeft: "1%"}} variant="outline-light" onClick={this.nextGames}>more→</Button>
             </Form>
           </Col >
           <Col lg={9}>
