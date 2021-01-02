@@ -1,113 +1,32 @@
-import React, { Component } from 'react';
-import Review from '../components/Review'
-import Loading from '../components/Loading'
-import { Waypoint } from 'react-waypoint'
+import React from 'react';
+import { connect } from 'react-redux'
+import ReviewsInfiniteScrollContainer from './ReviewsInfiniteScrollContainer'
 
-class ReviewsPageContainer extends Component {
-  constructor() {
-    super()
-    this.state = {
-      reviews: [],
-      pageCounter: 1,
-      loading: true,
-      endOfReviews: false
-    }
-  }
+const ReviewsPageContainer = (props) => {
 
-  componentDidMount() {
-    this.fetchReviews()
-  }  
-
-  fetchReviews = () => {
-    if (this.state.endOfReviews) {
-      return
-    }
-
-    fetch(`http://localhost:3000/api/v1/reviews/${this.state.pageCounter}`)
-    .then(resp => resp.json())
-    .then(gameReviews => {
-      console.log(gameReviews)
-
-      if (gameReviews.length > 0) {
-        this.setState(prevState => {
-          return {
-            reviews: [...prevState.reviews, ...gameReviews],
-            pageCounter: prevState.pageCounter += 1,
-            loading: false
-          }
-        })
-      } else {
-        this.setState({loading: false, endOfReviews: true})
-      }  
-    })
-  }
-
-
-  handleDelete = (id) => {
-    const updatedReviews = this.state.reviews.filter(review => {
-      return review.id !== id
-    })
-    this.setState({
-      reviews: updatedReviews
-    })
-  }
-
-
-  handleAddComment = (comment) => {
-    const reviewCommentsUpdated = this.state.reviews.map(review => {
-      if (review.id === comment.review_id) {
-        return {
-          ...review,
-          comments: [...review.comments, comment]
-        }
-      } else {
-        return review
+  return (
+    <div className="mt-4" style={{textAlign: "center"}}>
+      {
+      props.user ?
+        <>
+          <h3>Followed User's Reviews</h3>
+          <ReviewsInfiniteScrollContainer userId={props.user.id} followingsBool={true} />
+        </>
+  
+      :
+        <>
+          <h3>All User's Reviews</h3>
+          <ReviewsInfiniteScrollContainer userId={false} followingsBool={false}  />
+        </>
       }
-    })
-    this.setState({
-      reviews: reviewCommentsUpdated
-    })
-  }
+    </div>
+  );
+}
 
-  renderGameReviews = () => {
-    return this.state.reviews.map((review, i) => (
-        <React.Fragment key={review.id}>
-
-          <Review {...review} handleDelete={this.handleDelete} handleAddComment={this.handleAddComment}/>
-
-          {i === this.state.reviews.length - 2 && (
-            <Waypoint onEnter={this.fetchReviews} />
-          )}
-
-        </React.Fragment>
-      )
-    )
-  }
-
-
-
-  render() {
-    return (
-      <div className="m-4">
-        {
-        this.state.loading ?
-            <Loading />
-          :
-          <div style={{textAlign: "center"}}>
-            <h3>All User Reviews</h3>
-            {this.renderGameReviews()}
-
-            {this.state.endOfReviews ?
-              <h3>End of Reviews</h3>
-            :
-              null
-            }
-          </div>
-        }
-        
-      </div>
-    );
+const mapStateToProps = (state) => {
+  return {
+    user: state.user
   }
 }
 
-export default ReviewsPageContainer;
+export default connect(mapStateToProps, null) (ReviewsPageContainer);

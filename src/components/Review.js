@@ -83,7 +83,7 @@ const Review = ({ game_name, user_pic, game_api_id, content, rating, username, i
         : 
           <em>Posted just now</em>
         }
-
+        
         <Accordion>
           <Accordion.Toggle as={Button} variant="link" eventKey="0">
             <h5>Comments ({comments.length})</h5>
