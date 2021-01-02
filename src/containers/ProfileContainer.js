@@ -135,7 +135,6 @@ const ProfileContainer = (props) => {
 
   const toggleShowFollowers = () => {
       setShowFollowers(prevState => !prevState) 
-      setUser(prevState => prevState)
     }
 
   const renderFollowersContainer = () => {
