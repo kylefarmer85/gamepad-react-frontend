@@ -91,7 +91,7 @@ const Review = ({ game_name, user_pic, game_api_id, content, rating, username, i
       
           <Accordion.Collapse eventKey="0">
             
-            <CommentsContainer comments={comments} reviewId={id} reviewUsername={username} gameName={game_name} gameApiId={game_api_id} handleAddComment={handleAddComment} />
+            <CommentsContainer comments={comments} reviewId={id} reviewUsername={username} reviewUserId={user_id} gameName={game_name} gameApiId={game_api_id} handleAddComment={handleAddComment} />
 
           </Accordion.Collapse>
         </Accordion>

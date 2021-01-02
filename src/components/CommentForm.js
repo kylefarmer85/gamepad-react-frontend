@@ -39,6 +39,7 @@ class CommentForm extends Component {
           content: this.state.content,
           user_id: this.props.user.id,
           review_id: this.props.reviewId,
+          review_user_id: this.props.reviewUserId,
           review_username: this.props.reviewUsername,
           username: this.props.user.username,
           user_pic: photoUrl,

@@ -57,8 +57,8 @@ class ReviewsPageContainer extends Component {
     const reviewCommentsUpdated = this.state.reviews.map(review => {
       if (review.id === comment.review_id) {
         return {
-            ...review,
-            comments: [...review.comments, comment]
+          ...review,
+          comments: [...review.comments, comment]
         }
       } else {
         return review
