@@ -1,12 +1,95 @@
 import React from 'react';
+import Media from 'react-bootstrap/Media'
+import { connect } from 'react-redux'
+import { deleteComment } from '../actions/comments'
+import Button from 'react-bootstrap/Button'
+import { Link } from 'react-router-dom'
+import { useHistory } from "react-router-dom"
 
-const Comment = () => {
+const Comment = ({id, content, user_id, username, user_pic, review_username, review_user_id, game_name, game_api_id, created_at, handleDelete, user }) => {
+
+  let history = useHistory()  
+
+  const handleClick = () => {
+    deleteComment(id)
+
+    if (handleDelete) {
+      handleDelete(id)
+    }
+  }
+
+  const goToUser = () => {
+    history.push(`/users/${user_id}/profile`)
+  }
+
+  const mediaStyle = {
+    margin: "3% 5%",
+    padding: "10px",
+    outline: "solid white 4px",
+    textAlign: "left"
+  }
+
+  const bodyStyle = {
+    padding: "3%",
+    overflowWrap: "break-word",
+    wordWrap: "break-word",
+    wordBreak: "break_word"
+
+  }
+
+  const date = new Date(created_at)
+
   return (
-    <div>
-      
-    </div>
+    <Media style={mediaStyle}>
+     
+      <img onClick={goToUser}
+      style={{margin: "auto", width: "128px", height: "128px"}}
+      className="img-thumbnail"
+      src={user_pic}
+      alt="user pic"
+      />
+        
+      <Media.Body style={bodyStyle}>
+        <p>{content}</p>
+        <Link to={`/games/${game_api_id}`}>
+          <h5>{game_name}</h5>
+        </Link>
+        
+
+        <Link to={`/users/${user_id}/profile`}>
+          <p>by: {username}</p>
+        </Link>
+          
+        {
+          user ?
+            user.id === user_id ?
+              <Button onClick={handleClick}>Delete Review</Button>
+            :
+              null
+          :
+            null
+        }
+        <br/>
+
+        {
+          created_at ?
+          <>
+          <em>Posted on {date.toLocaleString()}</em>
+          </>  
+        : 
+          <em>Posted just now</em>
+        }
+      </Media.Body>
+    </Media>
   );
 }
 
-export default Comment;
+const mapStateToProps = (state) => {
+  return {
+    user: state.user
+  }
+}
+
+
+export default connect(mapStateToProps, { deleteComment }) (Comment);
 
