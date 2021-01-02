@@ -52,15 +52,37 @@ class ReviewsPageContainer extends Component {
     })
   }
 
+
+  handleAddComment = (comment) => {
+    const reviewCommentsUpdated = this.state.reviews.map(review => {
+      if (review.id === comment.review_id) {
+        return {
+            ...review,
+            comments: [...review.comments, comment]
+        }
+      } else {
+        return review
+      }
+    })
+    this.setState({
+      reviews: reviewCommentsUpdated
+    })
+  }
+
   renderGameReviews = () => {
     return this.state.reviews.map((review, i) => (
         <React.Fragment key={review.id}>
-          <Review {...review} handleDelete={this.handleDelete}/>
+
+          <Review {...review} handleDelete={this.handleDelete} handleAddComment={this.handleAddComment}/>
+
           {i === this.state.reviews.length - 2 && (
             <Waypoint onEnter={this.fetchReviews} />
           )}
+
         </React.Fragment>
-      ))}
+      )
+    )
+  }
 
 
 

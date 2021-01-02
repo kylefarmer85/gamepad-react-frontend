@@ -53,7 +53,6 @@ class ReviewsContainer extends Component {
       }
     })
   }
-  
 
 
   renderGameReviews = () => {

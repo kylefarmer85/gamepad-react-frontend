@@ -2,7 +2,7 @@ import React from 'react';
 import Comment from '../components/Comment'
 import CommentForm from '../components/CommentForm'
 
-const CommentsContainer = ({comments, reviewId, reviewUsername, gameName, gameApiId}) => {
+const CommentsContainer = ({comments, reviewId, reviewUsername, gameName, gameApiId, handleAddComment}) => {
 
   const renderComments = () => {
     return comments.map(comment => {
@@ -13,7 +13,7 @@ const CommentsContainer = ({comments, reviewId, reviewUsername, gameName, gameAp
   return (
     <div>
       {renderComments()}
-      <CommentForm reviewUsername={reviewUsername} reviewId={reviewId} gameName={gameName} gameApiId={gameApiId} />
+      <CommentForm reviewUsername={reviewUsername} reviewId={reviewId} gameName={gameName} gameApiId={gameApiId} handleAddComment={handleAddComment} />
     </div>
   );
 }
