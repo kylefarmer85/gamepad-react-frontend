@@ -39,7 +39,7 @@ const GameShow = ({game, screenshots, addToFavorites, user, games}) => {
           <p>Released: {game.released}</p>
           <p>Platform(s):</p>
             {
-            game.platforms.map(p => <span key={uuidv4()}>{`${p.platform.name} | ` }</span>)
+            game.platforms.map(p => <span key={uuidv4()}>{` ${p.platform.name}` }</span>)
             }
           <br/>
 
@@ -60,9 +60,9 @@ const GameShow = ({game, screenshots, addToFavorites, user, games}) => {
 
           { 
             screenshots ?
-            screenshots.map(ss => <SsImg src={ss.image}  alt='screenshot' key={uuidv4()}></SsImg>)
+              screenshots.map(ss => <SsImg src={ss.image}  alt='screenshot' key={uuidv4()}></SsImg>)
             :
-            null
+              null
           }
         </div>
 

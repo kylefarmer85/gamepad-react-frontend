@@ -32,22 +32,24 @@ const Review = ({ game_name, user_pic, game_api_id, content, rating, username, i
 
   const bodyStyle = {
     padding: "2%",
+    overflowWrap: "break-word",
+    wordWrap: "break-word",
+    wordBreak: "break_word"
+
   }
 
   const date = new Date(created_at)
 
   return (
-   
     <Media style={mediaStyle}>
      
-          <img onClick={goToUser}
-          style={{margin: "auto", width: "128px", height: "128px"}}
-          className="img-thumbnail"
-          src={user_pic}
-          alt="user pic"
-          />
+      <img onClick={goToUser}
+      style={{margin: "auto", width: "128px", height: "128px"}}
+      className="img-thumbnail"
+      src={user_pic}
+      alt="user pic"
+      />
         
-
       <Media.Body style={bodyStyle}>
         <p>{content}</p>
         <Link to={`/games/${game_api_id}`}>
@@ -69,7 +71,17 @@ const Review = ({ game_name, user_pic, game_api_id, content, rating, username, i
           :
             null
         }
-        <br/><em>Posted on {date.toLocaleString()}</em>
+
+        <br/>
+
+        {
+          created_at ?
+          <>
+          <em>Posted on {date.toLocaleString()}</em>
+          </>  
+        : 
+          <em>Posted just now</em>
+        }
       </Media.Body>
     </Media>
 
