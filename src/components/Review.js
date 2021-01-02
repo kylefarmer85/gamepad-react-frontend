@@ -5,8 +5,10 @@ import { deleteReview } from '../actions/reviews'
 import Button from 'react-bootstrap/Button'
 import { Link } from 'react-router-dom'
 import { useHistory } from "react-router-dom"
+import Accordion from 'react-bootstrap/Accordion'
+import CommentsContainer from '../containers/CommentsContainer'
 
-const Review = ({ game_name, user_pic, game_api_id, content, rating, username, id, created_at, user_id, user, deleteReview, handleDelete }) => {
+const Review = ({ game_name, user_pic, game_api_id, content, rating, username, id, created_at, user_id, user, comments, deleteReview, handleDelete }) => {
 
   let history = useHistory()  
 
@@ -31,7 +33,7 @@ const Review = ({ game_name, user_pic, game_api_id, content, rating, username, i
   }
 
   const bodyStyle = {
-    padding: "2%",
+    padding: "3%",
     overflowWrap: "break-word",
     wordWrap: "break-word",
     wordBreak: "break_word"
@@ -56,7 +58,7 @@ const Review = ({ game_name, user_pic, game_api_id, content, rating, username, i
           <h5>{game_name}</h5>
         </Link>
         
-        <strong>Rating: {rating}</strong>
+        <p>Rating: {rating}</p>
 
         <Link to={`/users/${user_id}/profile`}>
           <p>by: {username}</p>
@@ -71,7 +73,6 @@ const Review = ({ game_name, user_pic, game_api_id, content, rating, username, i
           :
             null
         }
-
         <br/>
 
         {
@@ -82,6 +83,19 @@ const Review = ({ game_name, user_pic, game_api_id, content, rating, username, i
         : 
           <em>Posted just now</em>
         }
+
+        <Accordion>
+          <Accordion.Toggle as={Button} variant="link" eventKey="0">
+            <h5>Comments ({comments.length})</h5>
+          </Accordion.Toggle>
+      
+          <Accordion.Collapse eventKey="0">
+            
+            <CommentsContainer comments={comments} reviewId={id} reviewUsername={username} gameName={game_name} gameApiId={game_api_id} />
+
+          </Accordion.Collapse>
+        </Accordion>
+
       </Media.Body>
     </Media>
 

@@ -27,7 +27,7 @@ class ReviewForm extends Component {
     e.preventDefault()
 
     if (!this.state.content) {
-      return toast.error("Please enter content!", {position: "bottom-center", autoClose: 3000})
+      return toast.error("Please enter a review!", {position: "bottom-center", autoClose: 3000})
     }
 
     if (this.props.user) {

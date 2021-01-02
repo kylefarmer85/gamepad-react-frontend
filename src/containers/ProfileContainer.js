@@ -92,6 +92,7 @@ const ProfileContainer = (props) => {
 
 
   const renderReviews = () => {
+    
     return user.reviews.map(review => {
       return <Review {...review} key={review.id} handleDelete={handleDelete} />
     })
