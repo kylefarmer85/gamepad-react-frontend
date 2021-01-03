@@ -24,6 +24,8 @@ class App extends Component {
     if (!token) {
       return
     } else {
+      
+      this.props.startAddingUserRequest()
 
       const reqObj = {
         method: 'GET',

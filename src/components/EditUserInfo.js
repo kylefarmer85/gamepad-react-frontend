@@ -61,8 +61,9 @@ class EditUserInfo extends Component {
 
   render() {
     return (
-    
-      <Container style={{width: "50%"}}>  
+
+      <Container style={{width: "50%"}}>
+               
         <h1 style={{textAlign: "center"}}>Edit Profile</h1>
         <Form onSubmit={this.handleSubmit}>
 
@@ -142,6 +143,7 @@ class EditUserInfo extends Component {
           
           <Button style={{margin: "1%"}} onClick={this.handleDelete}>Delete Profile</Button>
         </Form>     
+        
       </Container> 
     );
   }

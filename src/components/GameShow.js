@@ -30,13 +30,15 @@ const GameShow = ({game, screenshots, addToFavorites, user, games}) => {
 
 
     return (
-      <Container className="mt-4">
+      <Container className="mt-4 mb-4">
         <div style={{textAlign: "center"}}>
          
           <img style={{height: "50%", width: "50%", marginBottom: "15px"}} src={game.background_image} alt="game" />
  
           <h2>{game.name}</h2>
+          
           <p>Released: {game.released}</p>
+
           <p>Platform(s):</p>
             {
             game.platforms.map(p => <span key={uuidv4()}>{` ${p.platform.name}` }</span>)
@@ -48,7 +50,8 @@ const GameShow = ({game, screenshots, addToFavorites, user, games}) => {
 
         <div className="m-4" style={{textAlign: "center"}}>
           { 
-          game.clip ? 
+            game.clip ? 
+
             <CrtTvDiv className="align-items-center"> 
               <GameClip src={game.clip.clip} type="video/mp4" controls/>
             </CrtTvDiv> 
@@ -61,13 +64,13 @@ const GameShow = ({game, screenshots, addToFavorites, user, games}) => {
           { 
             screenshots ?
               screenshots.map(ss => <SsImg src={ss.image}  alt='screenshot' key={uuidv4()}></SsImg>)
-            :
-              null
+          :
+            null
           }
-        </div>
 
-        <ReviewsContainer gameApiId={game.id} gameName={game.name} gameImage={game.background_image} />
-  
+          <ReviewsContainer gameApiId={game.id} gameName={game.name} gameImage={game.background_image} />
+          
+        </div>
       </Container >
     ); 
 }

@@ -8,7 +8,7 @@ class ReviewsInfiniteScrollContainer extends Component {
     super(props)
     this.state = {
       userId: this.props.userId,
-      followingsBool: this.props.followingsBool,
+      sortByNewest: this.props.sortByNewest,
       reviews: [],
       pageCounter: 1,
       loading: true,
@@ -32,7 +32,7 @@ class ReviewsInfiniteScrollContainer extends Component {
       },
       body: JSON.stringify({
         page_counter: this.state.pageCounter,
-        followings_bool: this.state.followingsBool,
+        sort_by_newest: this.state.sortByNewest,
         user_id: this.state.userId
       })
     }
@@ -116,8 +116,6 @@ class ReviewsInfiniteScrollContainer extends Component {
     )
   }
 
-
-
   render() {
     return (
       <div className="m-4">
@@ -125,15 +123,17 @@ class ReviewsInfiniteScrollContainer extends Component {
         this.state.loading ?
             <Loading />
           :
+
           <div>
-    
             {this.renderGameReviews()}
 
             {this.state.endOfReviews ?
               <h3>End of Reviews</h3>
+
             :
               null
             }
+
           </div>
         }
       </div>
