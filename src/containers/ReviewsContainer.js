@@ -3,6 +3,8 @@ import Loading from '../components/Loading'
 import Review from '../components/Review'
 import ReviewForm from '../components/ReviewForm'
 import Container from 'react-bootstrap/Container'
+import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
 
 class ReviewsContainer extends Component {
   constructor(props) {
@@ -98,27 +100,43 @@ class ReviewsContainer extends Component {
         <Container>
         {
           this.state.loading ?
-            <Loading />
-          :
-          <>
-           <h1 style={{textAlign: "center", marginTop: "3%"}}>
+          <Loading />
+        :
+          <div style={{textAlign: "center", marginTop: "3%"}}>
+
             {
-            this.state.reviews.length === 0 ? 
-              "Leave the first review!"
-            :
-              "Reviews"
+              this.state.reviews.length === 0 ? 
+                <h3>Leave the first review!</h3>
+              :
+                <h3>Reviews</h3>
             }
-             </h1> 
-             
-           { this.renderGameReviews() }
-          </>
+
+            { this.renderGameReviews() }
+
+          </div>
         }
+
+        {
+          this.props.user ?
         
-        <ReviewForm gameApiId={this.props.gameApiId} gameName={this.props.gameName} gameImage={this.props.gameImage} handleAddReview={this.handleAddReview} />
+          <ReviewForm gameApiId={this.props.gameApiId} gameName={this.props.gameName} gameImage={this.props.gameImage} handleAddReview={this.handleAddReview} />
+
+        :
+          <Link to="/login">
+            <button type="button" className="btn-nes mt-3">Login to add a review!</button>
+          </Link>
+        } 
+
         </Container>
       </div>
     );
   }
 }
 
-export default ReviewsContainer;
+const addStateToProps = (state) => {
+  return {  
+    user: state.user
+  }
+}
+
+export default connect (addStateToProps, null) (ReviewsContainer);

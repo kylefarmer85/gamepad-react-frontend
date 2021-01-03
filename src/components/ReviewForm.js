@@ -27,10 +27,10 @@ class ReviewForm extends Component {
     e.preventDefault()
 
     if (!this.state.content) {
-      return toast.error("Please enter a review!", {position: "bottom-center", autoClose: 3000})
+      return toast.error("Review cannot be blank!", {position: "bottom-center", autoClose: 3000})
     }
 
-    if (this.props.user) {
+    
       
       let photoUrl = `http://localhost:3000/${this.props.user.photo}`  
 
@@ -63,18 +63,17 @@ class ReviewForm extends Component {
           rating: 1
         })
       })
-    } else {
-      toast.error("You must be logged in to submit a review.", {position: "bottom-center", autoClose: 3000})
-    }
+
   }
 
 
   render() {
     return (
-      <Form style={{padding: "5% 50% 5% 5%"}} onSubmit={this.handleSubmit}>
+      <Form style={{padding: "5% 50% 5% 5%", textAlign: "left"}} onSubmit={this.handleSubmit}>
+
         <Form.Group controlId="formReview">
 
-          <Form.Label>Create a new review</Form.Label>
+          <Form.Label>Leave a review!</Form.Label>
           <Form.Control name="content" value={this.state.content} as="textarea" rows={3} onChange={this.handleChange}/>
         </Form.Group>
 
