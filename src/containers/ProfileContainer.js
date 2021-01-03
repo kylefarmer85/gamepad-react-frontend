@@ -255,7 +255,7 @@ const ProfileContainer = (props) => {
             </Col>  
           </Row>
 
-          <Row className="mt-4">
+          <Row className="mt-5">
   
           <Col>
               <Row>
@@ -273,7 +273,7 @@ const ProfileContainer = (props) => {
               </Row>
             </Col>
           </Row>
-          <Row className="mt-4">  
+          <Row className="mt-5">  
             <Col>
               <h3>Reviews</h3>
               {renderReviews()}  

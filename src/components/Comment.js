@@ -48,9 +48,12 @@ const Comment = ({id, content, user_id, review_id, username, user_pic, review_us
         
       <Media.Body style={bodyStyle}>
         <p>{content}</p>
-        <Link to={`/games/${game_api_id}`}>
-          <h5>{game_name}</h5>
-        </Link>
+        
+        <em>response to <Link to={`/users/${review_user_id}/profile`}> 
+          {review_username}'s 
+        </Link> review of <Link to={`/games/${game_api_id}`}>
+            {game_name}
+        </Link></em>
         
 
         <Link to={`/users/${user_id}/profile`}>
@@ -70,11 +73,9 @@ const Comment = ({id, content, user_id, review_id, username, user_pic, review_us
 
         {
           created_at ?
-          <>
-          <em>Posted on {date.toLocaleString()}</em>
-          </>  
-        : 
-          <em>Posted just now</em>
+            <em>Posted on {date.toLocaleString()}</em>
+          : 
+            <em>Posted just now</em> 
         }
       </Media.Body>
     </Media>
