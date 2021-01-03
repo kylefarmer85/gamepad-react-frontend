@@ -84,30 +84,58 @@ const ProfileContainer = (props) => {
 
     setUser(prevState => {
       return {
-      ...prevState,
+        ...prevState,
         reviews: updatedReviews
       }
     })
   }
 
 
+  const handleAddComment = (comment) => {
+    const reviewCommentsUpdated = user.reviews.map(review => {
+      if (review.id === comment.review_id) {
+        return {
+          ...review,
+          comments: [...review.comments, comment]
+        }
+      } else {
+        return review
+      }
+    })
+    setUser(prevState => {
+      return {
+        ...prevState,
+        reviews: reviewCommentsUpdated
+      }
+    })
+  }
+
+  const handleDeleteComment = (commentId, reviewId) => {
+    const reviewsCommentDeleted = user.reviews.map(review => {
+      if (review.id === reviewId) {
+        const updatedComments = review.comments.filter(comment => comment.id !== commentId)
+        return {
+          ...review,
+          comments: updatedComments
+        }
+      } else {
+        return review
+      }
+    })
+    setUser(prevState => {
+      return {
+        ...prevState,
+        reviews: reviewsCommentDeleted
+      }
+    })
+  }
+
   const renderReviews = () => {
-    
     return user.reviews.map(review => {
-      return <Review {...review} key={review.id} handleDelete={handleDelete} />
+      return <Review {...review} key={review.id} handleDelete={handleDelete} handleDeleteComment={handleDeleteComment} handleAddComment={handleAddComment} />
     })
   }
 
-  const removeFavoriteFromProfile = (gameId) => {
-    const updatedGames = user.games.filter(game => {
-    return game.id !== gameId
-    })
-
-    setUser({
-      ...user,
-      games: updatedGames
-    })
-  }
 
   const addFollowerToProfile = () => {
     setUser(prevState => {
@@ -117,7 +145,6 @@ const ProfileContainer = (props) => {
       }
     })
   }
-  
 
   const removeFollowerFromProfile = () => {
     const updatedFollowers = user.followers.filter(f => {
@@ -132,7 +159,6 @@ const ProfileContainer = (props) => {
     })
   }
 
-
   const toggleShowFollowers = () => {
       setShowFollowers(prevState => !prevState) 
     }
@@ -144,6 +170,18 @@ const ProfileContainer = (props) => {
   const renderFollowingContainer = () => {
     return <FollowingContainer followings={slicedFollowings()} nextFollowings={nextFollowings} followingsCount={user.followings.count} />
   }
+
+  const removeFavoriteFromProfile = (gameId) => {
+    const updatedGames = user.games.filter(game => {
+    return game.id !== gameId
+    })
+
+    setUser({
+      ...user,
+      games: updatedGames
+    })
+  }
+
 
   let photoUrl = `http://localhost:3000${user.photo}`
 
