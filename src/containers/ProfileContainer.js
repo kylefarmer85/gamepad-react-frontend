@@ -12,13 +12,16 @@ import FollowButton from '../components/FollowButton'
 import FollowersContainer from './FollowersContainer'
 import FollowingContainer from './FollowingContainer'
 import FavoritesContainer from './FavoritesContainer'
+import Comment from '../components/Comment'
 
 
 const ProfileContainer = (props) => {
 
-  const [user, setUser] = useState({})
-  const [showFollowers, setShowFollowers] = useState(true)
   const [loading, setLoading] = useState(true)
+  const [user, setUser] = useState({})
+
+  const [showFollowers, setShowFollowers] = useState(true)
+  const [showReviews, setShowReviews] = useState(true)
 
   const [gamesIndex, setGamesIndex] = useState(0)
   const [followersIndex, setFollowersIndex] = useState(0)
@@ -122,17 +125,35 @@ const ProfileContainer = (props) => {
         return review
       }
     })
-    setUser(prevState => {
-      return {
-        ...prevState,
-        reviews: reviewsCommentDeleted
-      }
+    setUser({
+      ...user,
+      reviews: reviewsCommentDeleted
     })
+  }
+
+  const handleDeleteFromUserComment = (commentId) => {
+    const updatedComments = user.comments.filter(comment => {
+      return comment.id !== commentId
+    })
+    setUser({
+      ...user,
+      comments: updatedComments
+    })
+  }
+
+  const toggleShowReviews = () => {
+    setShowReviews(prevState => !prevState) 
   }
 
   const renderReviews = () => {
     return user.reviews.map(review => {
       return <Review {...review} key={review.id} handleDelete={handleDelete} handleDeleteComment={handleDeleteComment} handleAddComment={handleAddComment} />
+    })
+  }
+
+  const renderComments = () => {
+    return user.comments.map(comment => {
+      return <Comment {...comment} key={comment.id} handleDeleteComment={handleDeleteFromUserComment} />
     })
   }
 
@@ -162,7 +183,7 @@ const ProfileContainer = (props) => {
   const toggleShowFollowers = () => {
       setShowFollowers(prevState => !prevState) 
     }
-
+    
   const renderFollowersContainer = () => {
     return <FollowersContainer followers={slicedFollowers()} nextFollowers={nextFollowers} followersCount={user.followers.count}/>
   }
@@ -195,8 +216,8 @@ const ProfileContainer = (props) => {
         <Container fluid className="text-center">
 
           <Row className="mt-5 align-items-center justify-content-center" >
-
             <Col>
+
               <h3>{user.username}</h3>
               <img style={{height: "150px", width: "150px"}} src={photoUrl} alt="profile"/>
 
@@ -217,8 +238,9 @@ const ProfileContainer = (props) => {
             <Col>
               <Row>
                 <Col>
+
                   <ToggleButton
-                    type="radio"
+                    type="checkbox"
                     variant="none"
                     style={{color: "white"}}
                     name="radio"
@@ -229,7 +251,7 @@ const ProfileContainer = (props) => {
                   </ToggleButton>
 
                   <ToggleButton
-                    type="radio"
+                    type="checkbox"
                     variant="none"
                     style={{color: "white"}}
                     name="radio"
@@ -238,6 +260,7 @@ const ProfileContainer = (props) => {
                     onChange={toggleShowFollowers}
                   > Following: {user.followings.length}
                   </ToggleButton>
+
                 </Col>
               </Row>
               <Row>
@@ -256,12 +279,13 @@ const ProfileContainer = (props) => {
           </Row>
 
           <Row className="mt-5">
-  
-          <Col>
+            <Col>
               <Row>
                 <Col>
+
                   <h3>Favorite Games</h3>
                   <Button style={{fontSize: "17px"}} variant="outline-light" onClick={nextGames}>more→</Button>
+
                 </Col>
               </Row>
               <Row>
@@ -273,12 +297,52 @@ const ProfileContainer = (props) => {
               </Row>
             </Col>
           </Row>
+
           <Row className="mt-5">  
+
             <Col>
-              <h3>Reviews</h3>
-              {renderReviews()}  
+              <Row>
+                <Col>
+                  <ToggleButton
+                    type="checkbox"
+                    variant="none"
+                    style={{color: "white"}}
+                    name="radio"
+                    value={showReviews}
+                    checked={showReviews}
+                    onChange={toggleShowReviews}
+                  > Reviews
+                  </ToggleButton>
+
+                  <ToggleButton
+                    type="checkbox"
+                    variant="none"
+                    style={{color: "white"}}
+                    name="radio"
+                    value={!showReviews}
+                    checked={!showReviews}
+                    onChange={toggleShowReviews}
+                  > Comments
+                  </ToggleButton>
+
+                </Col>
+              </Row>
+              <Row>
+                <Col>
+
+                  {
+                    showReviews ?
+                      renderReviews()  
+                    : 
+                      renderComments()
+                  }
+
+                </Col>
+              </Row>
             </Col>
+
           </Row>
+          
         </Container>
       }
     </div>

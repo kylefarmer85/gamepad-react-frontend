@@ -18,7 +18,7 @@ const ReviewsPageContainer = (props) => {
       props.user ?
         <>
           <ToggleButton
-            type="radio"
+            type="checkbox"
             variant="none"
             style={{color: "white"}}
             name="radio"
@@ -29,7 +29,7 @@ const ReviewsPageContainer = (props) => {
           </ToggleButton>
 
           <ToggleButton
-            type="radio"
+            type="checkbox"
             variant="none"
             style={{color: "white"}}
             name="radio"

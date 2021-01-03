@@ -42,7 +42,8 @@ const Review = ({ game_name, user_pic, game_api_id, content, rating, username, i
     <Media style={mediaStyle}>
      
       <img onClick={goToUser}
-      style={{margin: "auto", width: "128px", height: "128px"}}
+
+      style={{marginTop: "25px", width: "128px", height: "128px"}}
       className="img-thumbnail"
       src={user_pic}
       alt="user pic"
