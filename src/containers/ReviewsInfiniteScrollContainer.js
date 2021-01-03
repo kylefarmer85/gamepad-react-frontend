@@ -83,11 +83,30 @@ class ReviewsInfiniteScrollContainer extends Component {
     })
   }
 
+  handleDeleteComment = (commentId, reviewId) => {
+    const reviewsCommentDeleted = this.state.reviews.map(review => {
+      if (review.id === reviewId) {
+        const updatedComments = review.comments.filter(comment => comment.id !== commentId)
+        return {
+          ...review,
+          comments: updatedComments
+        }
+      } else {
+        return review
+      }
+    })
+
+    this.setState({
+      reviews: reviewsCommentDeleted
+    })
+  }
+
   renderGameReviews = () => {
     return this.state.reviews.map((review, i) => (
+      
         <React.Fragment key={review.id}>
 
-          <Review {...review} handleDelete={this.handleDelete} handleAddComment={this.handleAddComment}/>
+          <Review {...review} handleDelete={this.handleDelete} handleDeleteComment={this.handleDeleteComment}  handleAddComment={this.handleAddComment}/>
 
           {i === this.state.reviews.length - 2 && (
             <Waypoint onEnter={this.fetchReviews} />

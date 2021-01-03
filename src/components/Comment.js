@@ -6,16 +6,13 @@ import Button from 'react-bootstrap/Button'
 import { Link } from 'react-router-dom'
 import { useHistory } from "react-router-dom"
 
-const Comment = ({id, content, user_id, username, user_pic, review_username, review_user_id, game_name, game_api_id, created_at, handleDelete, user }) => {
+const Comment = ({id, content, user_id, review_id, username, user_pic, review_username, review_user_id, game_name, game_api_id, created_at, deleteComment, handleDeleteComment, user }) => {
 
   let history = useHistory()  
 
   const handleClick = () => {
     deleteComment(id)
-
-    if (handleDelete) {
-      handleDelete(id)
-    }
+    handleDeleteComment(id, review_id)
   }
 
   const goToUser = () => {
@@ -63,7 +60,7 @@ const Comment = ({id, content, user_id, username, user_pic, review_username, rev
         {
           user ?
             user.id === user_id ?
-              <Button onClick={handleClick}>Delete Review</Button>
+              <Button onClick={handleClick}>Delete Comment</Button>
             :
               null
           :

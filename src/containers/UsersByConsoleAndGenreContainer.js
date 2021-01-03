@@ -122,7 +122,7 @@ class UsersByConsoleAndGenreContainer extends Component {
                   <option>Family</option>
                 </Form.Control>
               </Form.Group>     
-              <Button type="submit">Browse Games</Button>
+              <Button type="submit">Browse Users</Button>
 
               <Button style={{fontSize: "17px", marginLeft: "1%"}} variant="outline-light" onClick={this.nextUsers}>more→</Button>
             </Form> 

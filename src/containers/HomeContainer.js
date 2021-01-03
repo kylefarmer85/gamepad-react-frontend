@@ -10,7 +10,7 @@ import { connect } from 'react-redux'
 class HomeContainer extends Component {
   render() {
     return (
-      <div>
+      <div className="mb-4">
         <ConsoleAndGenreContainer />
         <YearAndGenreContainer />
         <TopByConsoleContainer />
