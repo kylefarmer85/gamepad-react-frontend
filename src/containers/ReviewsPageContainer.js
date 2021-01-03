@@ -26,7 +26,7 @@ const ReviewsPageContainer = (props) => {
         null
       :
         <div>  
-          <h3>User Reviews</h3>
+          <h3>Reviews</h3>
           <ToggleButton
             type="radio"
             variant="none"
