@@ -15,7 +15,7 @@ const loadingReducer = (state = false, action) => {
 
     case 'CURRENT_USER':
       return false
-
+      
 
     case 'ADD_GAME':
       return false  

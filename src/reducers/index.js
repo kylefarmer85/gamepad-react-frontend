@@ -8,11 +8,11 @@ import followers from './followersReducer'
 import following from './followingReducer'
 
 export default combineReducers({
-  loading,
   user,
   games,
   reviews,
   comments,
   followers,
-  following
+  following,
+  loading
 });
