@@ -155,8 +155,10 @@ const ProfileContainer = (props) => {
         <Loading />
       :
         <Container fluid className="text-center">
+
           <Row className="mt-5 align-items-center justify-content-center" >
-            <Col lg={3}>
+
+            <Col>
               <h3>{user.username}</h3>
               <img style={{height: "150px", width: "150px"}} src={photoUrl} alt="profile"/>
 
@@ -174,25 +176,6 @@ const ProfileContainer = (props) => {
                   <Button as={Link} to={'/login'}>Login to Follow User</Button>
               } 
             </Col>
-            <Col lg={9} >
-              <Row>
-                <Col>
-
-                  <h3>Favorite Games</h3>
-                  <Button style={{fontSize: "17px"}} variant="outline-light" onClick={nextGames}>more→</Button>
-
-                </Col>
-              </Row>
-              <Row>
-                <Col className="d-flex flex-wrap align-items-center justify-content-center">
-
-                  <FavoritesContainer slicedFavorites={slicedGames()} gameUserId={user.id} removeFavoriteFromProfile={removeFavoriteFromProfile} />
-                
-                </Col>
-              </Row>
-            </Col>
-          </Row>
-          <Row className="mt-4">
             <Col>
               <Row>
                 <Col>
@@ -231,7 +214,28 @@ const ProfileContainer = (props) => {
 
                 </Col>
               </Row>
+            </Col>  
+          </Row>
+
+          <Row className="mt-4">
+  
+          <Col>
+              <Row>
+                <Col>
+                  <h3>Favorite Games</h3>
+                  <Button style={{fontSize: "17px"}} variant="outline-light" onClick={nextGames}>more→</Button>
+                </Col>
+              </Row>
+              <Row>
+                <Col className="d-flex flex-wrap align-items-center justify-content-center">
+
+                  <FavoritesContainer slicedFavorites={slicedGames()} gameUserId={user.id} removeFavoriteFromProfile={removeFavoriteFromProfile} />
+                
+                </Col>
+              </Row>
             </Col>
+          </Row>
+          <Row className="mt-4">  
             <Col>
               <h3>Reviews</h3>
               {renderReviews()}  
