@@ -13,7 +13,6 @@ class ReviewsContainer extends Component {
     }  
   }  
 
-
   componentDidMount(){
     const reqObj = {
       method: 'POST',
@@ -45,7 +44,6 @@ class ReviewsContainer extends Component {
     })
   }
 
-  
   handleAddReview = (review) => {
     this.setState(prevState => {
       return {
@@ -55,9 +53,42 @@ class ReviewsContainer extends Component {
   }
 
 
+  handleAddComment = (comment) => {
+    const reviewCommentsUpdated = this.state.reviews.map(review => {
+      if (review.id === comment.review_id) {
+        return {
+          ...review,
+          comments: [...review.comments, comment]
+        }
+      } else {
+        return review
+      }
+    })
+    this.setState({
+      reviews: reviewCommentsUpdated
+    })
+  }
+
+  handleDeleteComment = (commentId, reviewId) => {
+    const reviewsCommentDeleted = this.state.reviews.map(review => {
+      if (review.id === reviewId) {
+        const updatedComments = review.comments.filter(comment => comment.id !== commentId)
+        return {
+          ...review,
+          comments: updatedComments
+        }
+      } else {
+        return review
+      }
+    })
+    this.setState({
+      reviews: reviewsCommentDeleted
+    })
+  }
+
   renderGameReviews = () => {
     return this.state.reviews.map(review => {
-      return <Review {...review} key={review.id} handleDelete={this.handleDelete}/>
+      return <Review {...review} key={review.id} handleDelete={this.handleDelete} handleDeleteComment={this.handleDeleteComment} handleAddComment={this.handleAddComment} />
     })
   }
 

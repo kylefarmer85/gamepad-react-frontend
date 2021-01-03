@@ -95,7 +95,6 @@ class ReviewsInfiniteScrollContainer extends Component {
         return review
       }
     })
-
     this.setState({
       reviews: reviewsCommentDeleted
     })
@@ -103,7 +102,7 @@ class ReviewsInfiniteScrollContainer extends Component {
 
   renderGameReviews = () => {
     return this.state.reviews.map((review, i) => (
-      
+
         <React.Fragment key={review.id}>
 
           <Review {...review} handleDelete={this.handleDelete} handleDeleteComment={this.handleDeleteComment}  handleAddComment={this.handleAddComment}/>
