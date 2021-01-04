@@ -19,14 +19,14 @@ const Comment = ({id, content, user_id, review_id, username, user_pic, review_us
   }
 
   const mediaStyle = {
-    margin: "3% 5%",
+    margin: "2% 5%",
     padding: "10px",
     outline: "solid white 4px",
     textAlign: "left"
   }
 
   const bodyStyle = {
-    padding: "3%",
+    padding: "1% 2%",
     overflowWrap: "break-word",
     wordWrap: "break-word",
     wordBreak: "break_word"
@@ -38,16 +38,13 @@ const Comment = ({id, content, user_id, review_id, username, user_pic, review_us
   return (
     <Media style={mediaStyle}>
      
-      <img onClick={goToUser} className="review-comment-thumb mt-4" src={user_pic} alt="user pic"/>
+      <img onClick={goToUser} className="review-comment-thumb mt-2" src={user_pic} alt="user pic"/>
         
       <Media.Body style={bodyStyle}>
         <p className="comment">{content}</p>
         
-        <em>response to <Link to={`/users/${review_user_id}/profile`}> 
-          {review_username}'s 
-        </Link> review of <Link to={`/games/${game_api_id}`}>
-            {game_name}
-        </Link></em>
+        <em>response to <Link to={`/users/${review_user_id}/profile`}> {review_username}'s </Link>
+        <Link to={`/reviews/${review_id}`}> review </Link> of <Link to={`/games/${game_api_id}`}> {game_name}</Link></em>
         
 
         <Link to={`/users/${user_id}/profile`}>
@@ -66,12 +63,15 @@ const Comment = ({id, content, user_id, review_id, username, user_pic, review_us
         }
         <br/>
 
+        <Link to={`/reviews/${review_id}`}>
         {
           created_at ?
             <em>Posted on {date.toLocaleString()}</em>
           : 
             <em>Posted just now</em> 
         }
+        </Link>
+
       </Media.Body>
     </Media>
   );

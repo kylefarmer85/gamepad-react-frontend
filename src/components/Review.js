@@ -22,14 +22,14 @@ const Review = ({ game_name, user_pic, game_api_id, content, rating, username, i
   }
 
   const mediaStyle = {
-    margin: "3% 5%",
+    margin: "2% 5%",
     padding: "10px",
     outline: "solid white 4px",
     textAlign: "left"
   }
 
   const bodyStyle = {
-    padding: "3%",
+    padding: "1% 2%",
     overflowWrap: "break-word",
     wordWrap: "break-word",
     wordBreak: "break_word"
@@ -48,9 +48,8 @@ const Review = ({ game_name, user_pic, game_api_id, content, rating, username, i
         <br/>
         <Link to={`/games/${game_api_id}`}>
           <h6>{game_name}</h6>
+          <h6>Rating: {rating}</h6>
         </Link>
-        
-        <h6>Rating: {rating}</h6>
 
         <Link to={`/users/${user_id}/profile`}>
           <h6>by: {username}</h6>
@@ -68,13 +67,15 @@ const Review = ({ game_name, user_pic, game_api_id, content, rating, username, i
         }
         <br/>
 
+        <Link to={`/reviews/${id}`}>
         {
           created_at ?
             <em>Posted on {date.toLocaleString()}</em>
         : 
             <em>Posted just now</em>
         }
-        
+        </Link>
+
         <Accordion>
           <Accordion.Toggle as={Button} variant="none" eventKey="0">
             <h4>Comments ({comments.length})</h4>

@@ -14,6 +14,7 @@ import ProfileContainer from './containers/ProfileContainer'
 import EditUserInfo from './components/EditUserInfo'
 import UserSearchResult from './components/UserSearchResult'
 import ReviewsPageContainer from './containers/ReviewsPageContainer'
+import ReviewShow from './components/ReviewShow'
 
 
 class App extends Component {
@@ -59,6 +60,7 @@ class App extends Component {
             <Route exact path ='/games/search/:searchTerm' component={ResultsContainer} />
             <Route exact path ='/games/:id' component={GameContainer} />
             <Route exact path ='/reviews' component={ReviewsPageContainer} />
+            <Route exact path ='/reviews/:id' component={ReviewShow} />
             <Route exact path ='/users/:id/profile' component={ProfileContainer} />
             <Route exact path ='/users/:id/edit' component={EditUserInfo} />
             <Route exact path ='/users/search/:searchTerm' component={UserSearchResult} />
