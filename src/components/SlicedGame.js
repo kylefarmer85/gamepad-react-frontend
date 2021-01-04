@@ -13,13 +13,14 @@ const SlicedGame = ({name, background_image, released, id}) => {
     backgroundColor: "#E5E3E3",
     boxShadow: "4px 4px grey",
     overflow: "hidden",
+    textDecoration: "none"
   }
 
   const imgStyle = {
     width: "100%",
     height: "50%",
     backgroundColor: "#B7A955",
-    outline: "4px grey solid",
+    outline: "4px grey solid"
   }
 
   const pStyle = {
@@ -28,7 +29,7 @@ const SlicedGame = ({name, background_image, released, id}) => {
   }
 
   return (
-    <Card as={Link} to={`/games/${id}`} style={cardStyle}>
+    <Card as={Link} to={`/games/${id}`} className="card fade-in" style={cardStyle}>
 
       { background_image === null ?
         <img style={imgStyle} variant="top" src={Mario} alt="game" />
@@ -46,7 +47,6 @@ const SlicedGame = ({name, background_image, released, id}) => {
       </p>
       </div>
     </Card>   
-
   );
 }
 

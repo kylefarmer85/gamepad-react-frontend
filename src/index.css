@@ -16,9 +16,12 @@ body {
   box-sizing: "border-box";
 }
 
+
+
 *:not(span) {
   color: white
 }
+
 
 .review, .comment {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -26,6 +29,7 @@ body {
   sans-serif;
   font-size: 16pt;
 }
+
 
 label, h1, h2, h3, h5, h6 {
   font-family: 'Press Start 2P', cursive;
@@ -35,6 +39,11 @@ p {
   font-family: 'Press Start 2P', cursive;
   font-size: 10pt;
 }
+
+.card:hover {
+  transform: skew(-1deg);
+}
+
 
 .btn-nes {
   margin: 5px;
@@ -110,3 +119,31 @@ p {
     display: none;
   }
 }
+
+
+.fade-in {
+    animation: fadeIn ease 1s;
+  }
+
+@keyframes fadeIn {
+  0% {opacity:0;}
+  100% {opacity:1;}
+}
+  
+.slide-in {
+  animation-duration: .5s;
+  animation-name: slidein;
+}
+
+@keyframes slidein {
+  from {
+    margin-left: 100%;
+    width: 300%;
+  }
+
+  to {
+    margin-left: 0%;
+    width: 100%;
+  }
+}
+

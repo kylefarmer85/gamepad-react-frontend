@@ -132,7 +132,7 @@ class UsersByConsoleAndGenreContainer extends Component {
             this.state.loading ?
               null
             :
-            <div className="d-flex flex-wrap justify-content-around">
+            <div className="d-flex flex-wrap justify-content-around slide-in">
               <SearchedUsersContainer users={this.slicedUsers()} />
             </div>
             }     

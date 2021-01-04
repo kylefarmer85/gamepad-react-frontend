@@ -298,7 +298,7 @@ const ProfileContainer = (props) => {
                 </Col>
               </Row>
               <Row>
-                <Col className="d-flex flex-wrap justify-content-around">
+                <Col className="d-flex flex-wrap justify-content-around slide-in">
 
                   <FavoritesContainer slicedFavorites={slicedGames()} gameUserId={user.id} removeFavoriteFromProfile={removeFavoriteFromProfile} />
                 

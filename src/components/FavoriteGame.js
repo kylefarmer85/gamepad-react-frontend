@@ -47,7 +47,7 @@ const FavoriteGame = ({id, gameUserId, game_api_id, name, image, user, removeFav
 
 return (
 
-    <Card style={cardStyle}>
+    <Card style={cardStyle} className="fade-in">
       { image === null ?
         <img onClick={goToGame} style={imgStyle} git variant="top" src={Mario} alt="game" />
       :

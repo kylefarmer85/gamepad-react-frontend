@@ -116,7 +116,7 @@ class TopByConsoleContainer extends Component {
             this.state.loading ?
               null
             :
-            <div className="d-flex flex-wrap justify-content-around">
+            <div className="d-flex flex-wrap justify-content-around slide-in">
               <SlicedGamesContainer slicedGames={this.slicedGames()} />
             </div>
             }     
