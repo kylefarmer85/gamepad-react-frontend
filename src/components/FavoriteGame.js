@@ -20,17 +20,17 @@ const FavoriteGame = ({id, gameUserId, game_api_id, name, image, user, removeFav
     history.push(`/games/${game_api_id}`)
   }
 
-  const cardStyle = {
-    margin: "1%",
-    padding: "1.3%",
-    width: '10em', 
-    minWidth: '10em',
-    height:'14em', 
-    minHeight: '14em',
-    backgroundColor: "#E5E3E3",
-    boxShadow: "4px 4px grey",
-    overflow: "hidden",
-  }
+  // const cardStyle = {
+  //   margin: "1%",
+  //   padding: "1.3%",
+  //   width: '10em', 
+  //   minWidth: '10em',
+  //   height:'14em', 
+  //   minHeight: '14em',
+  //   backgroundColor: "#E5E3E3",
+  //   boxShadow: "4px 4px grey",
+  //   overflow: "hidden",
+  // }
   
   const imgStyle = {
     width: "100%",
@@ -47,7 +47,8 @@ const FavoriteGame = ({id, gameUserId, game_api_id, name, image, user, removeFav
 
 return (
 
-    <Card style={cardStyle} className="fade-in">
+    <Card className="card m-2 fade-in">
+
       { image === null ?
         <img onClick={goToGame} style={imgStyle} git variant="top" src={Mario} alt="game" />
       :

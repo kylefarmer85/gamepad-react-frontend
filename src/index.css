@@ -118,9 +118,21 @@ p {
 }
 
 
-.card:hover {
-  transform: skew(-1deg);
+.card {
+  margin: 1%;
+  padding: 1.3%;
+  width: 10em; 
+  height: 14em; 
+  background-color: #E5E3E3;
+  box-shadow: 4px 4px grey;
+  overflow: hidden;
 }
+
+.card:hover {
+  box-shadow: 6px 6px white;
+  transform: translateY(3px);
+}
+
 
 .fade-in {
     animation: fadeIn ease .5s;

@@ -5,17 +5,6 @@ import Mario from '../assets/images/mario-is-missing.jpg'
 
 const SlicedGame = ({name, background_image, released, id}) => {
 
-  const cardStyle = {
-    margin: "1%",
-    padding: "1.3%",
-    width: '10em', 
-    height:'14em', 
-    backgroundColor: "#E5E3E3",
-    boxShadow: "4px 4px grey",
-    overflow: "hidden",
-    textDecoration: "none"
-  }
-
   const imgStyle = {
     width: "100%",
     height: "50%",
@@ -25,11 +14,11 @@ const SlicedGame = ({name, background_image, released, id}) => {
 
   const pStyle = {
     marginTop: "6%",
-    textAlign: "center"
+    textAlign: "center",
   }
 
   return (
-    <Card as={Link} to={`/games/${id}`} className="card fade-in" style={cardStyle}>
+    <Card as={Link} to={`/games/${id}`} className="card m-2 fade-in" style={{textDecoration: "none"}}>
 
       { background_image === null ?
         <img style={imgStyle} variant="top" src={Mario} alt="game" />
