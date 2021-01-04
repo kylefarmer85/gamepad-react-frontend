@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom'
 import Container from 'react-bootstrap/Container'
 import Form from 'react-bootstrap/Form'
-import Button from 'react-bootstrap/Button'
 import { logoutUser, updateUser } from '../actions/user'
 
 
@@ -137,11 +136,20 @@ class EditUserInfo extends Component {
               <Form.Control type="text" name="fav_game" value={this.state.fav_game} onChange={this.handleChange} />
           </Form.Group>
 
-          <Button style={{margin: "1%"}} variant="outline-primary" type="submit">Update</Button>
+          {/* <Button style={{margin: "1%"}} variant="outline-primary" type="submit">Update</Button>
 
           <Button style={{margin: "1%"}} as={Link} to={`/users/${this.props.user.id}/profile`}>Back to Profile</Button>
           
-          <Button style={{margin: "1%"}} onClick={this.handleDelete}>Delete Profile</Button>
+          <Button style={{margin: "1%"}} onClick={this.handleDelete}>Delete Profile</Button> */}
+
+          <button type="submit" className="btn-nes primary">Update</button>
+
+          <Link  to={`/users/${this.props.user.id}/profile`}>
+            <button type="button" className="btn-nes secondary">Back to Profile</button>
+          </Link>
+
+          <button type="button" className="btn-nes delete" onClick={this.handleDelete}>Delete User</button>
+
         </Form>     
         
       </Container> 

@@ -68,3 +68,10 @@ label, p, h3 {
   background-color: blue;
   font-size: 10pt;
 }
+
+.delete:focus {
+  outline: 3px solid #fff;
+  color: white;
+  background-color: red;
+  font-size: 10pt;
+}

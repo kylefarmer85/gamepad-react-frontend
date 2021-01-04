@@ -4,7 +4,6 @@ import { signupUser } from '../actions/user'
 import { Link } from 'react-router-dom'
 import Container from 'react-bootstrap/Container'
 import Form from 'react-bootstrap/Form'
-import Button from 'react-bootstrap/Button'
 
 class Signup extends Component {
   state = {
@@ -122,8 +121,12 @@ class Signup extends Component {
             <Form.Control type="text" placeholder="Favorite Game" name="fav_game" value={this.state.fav_game} onChange={this.handleChange} />
           </Form.Group>
 
-          <Button variant="outline-primary" type="submit">Signup</Button>
-          <Link to={`/login`}> or Login</Link>
+            <button type="submit" className="btn-nes primary">Signup</button>
+
+            <Link to={`/login`}>
+              <button type="button" className="btn-nes secondary">Back to Login</button>
+            </Link>
+
         </Form>     
   
       </Container> 
