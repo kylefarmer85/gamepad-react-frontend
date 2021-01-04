@@ -185,11 +185,11 @@ const ProfileContainer = (props) => {
     }
     
   const renderFollowersContainer = () => {
-    return <FollowersContainer followers={slicedFollowers()} nextFollowers={nextFollowers} followersCount={user.followers.count}/>
+    return <FollowersContainer followers={slicedFollowers()} nextFollowers={nextFollowers} followersLength={user.followers.length}/>
   }
 
   const renderFollowingContainer = () => {
-    return <FollowingContainer followings={slicedFollowings()} nextFollowings={nextFollowings} followingsCount={user.followings.count} />
+    return <FollowingContainer followings={slicedFollowings()} nextFollowings={nextFollowings} followingsLength={user.followings.length} />
   }
 
   const removeFavoriteFromProfile = (gameId) => {
@@ -221,12 +221,11 @@ const ProfileContainer = (props) => {
               {
                 props.user ?
                   props.user.id === user.id ?
-                    <>
-                      <br/>
-                      <Link to={`/users/${props.user.id}/edit`}>
-                        <button type="button" className="btn-nes primary">Edit User Info</button>
-                      </Link>  
-                    </>
+              
+                    <Link to={`/users/${props.user.id}/edit`}>
+                      <button type="button" className="btn-nes primary">Edit User Info</button>
+                    </Link>  
+            
                   :
                     <FollowButton followedUserId={user.id} followerId={props.user.id} addFollowerToProfile={addFollowerToProfile} removeFollowerFromProfile={removeFollowerFromProfile}/>
                 :
@@ -268,7 +267,7 @@ const ProfileContainer = (props) => {
                 </Col>
               </Row>
               <Row>
-                <Col className="d-flex flex-wrap align-items-center justify-content-center">
+                {/* <Col className="d-flex flex-wrap align-items-center justify-content-center"> */}
   
                   {
                   showFollowers ?
@@ -277,7 +276,7 @@ const ProfileContainer = (props) => {
                     renderFollowingContainer()
                   }
 
-                </Col>
+                {/* </Col> */}
               </Row>
             </Col>  
           </Row>
@@ -304,7 +303,6 @@ const ProfileContainer = (props) => {
           </Row>
 
           <Row className="mt-5">  
-
             <Col>
               <Row>
                 <Col>
@@ -345,7 +343,6 @@ const ProfileContainer = (props) => {
                 </Col>
               </Row>
             </Col>
-
           </Row>
           
         </Container>
