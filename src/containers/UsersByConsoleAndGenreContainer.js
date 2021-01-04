@@ -78,12 +78,12 @@ class UsersByConsoleAndGenreContainer extends Component {
 
   render() {
     return (
-      <Container fluid className="mt-3 text-center">
+      <Container fluid className="mt-4 text-center">
         <Row className="align-items-center">
           <Col lg={3}>
             <Form onSubmit={this.handleSubmit}>
               <Form.Group controlId="formConsole">
-                <Form.Label>Browse Users By Console and Genre</Form.Label>
+                <Form.Label>Browse Users by Console and Genre</Form.Label>
                 <Form.Control name="console" value={this.state.console} onChange={this.handleChange} as="select" style={{textAlignLast: "center"}}>
                   <option>Atari 2600</option>
                   <option>Atari 5200</option>

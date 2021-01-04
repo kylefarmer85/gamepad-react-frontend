@@ -43,7 +43,7 @@ const GameShow = ({game, screenshots, addToFavorites, user, games}) => {
           :
             <h6 style={{textDecoration: "underline"}}>Platform:</h6>
           }
-          <div className="slide-in">
+          <div className="slide-from-bottom">
           {
             game.platforms.map(p => <h6 key={uuidv4()}>{`${p.platform.name}` }</h6>)
           }

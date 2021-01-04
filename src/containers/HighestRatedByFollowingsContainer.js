@@ -63,7 +63,7 @@ class HighestRatedByFollowingsContainer extends Component {
 
   render() {
     return (
-      <Container fluid className="mt-3 text-center">
+      <Container fluid className="mt-4 text-center">
         <Row className="align-items-center">
           <Col lg={3}>
           <label>Highest Rated Games by Users You Follow</label><br/><br/>

@@ -78,12 +78,12 @@ class YearAndGenreContainer extends Component {
 
   render() {
     return (
-      <Container fluid className="mt-3 text-center">
+      <Container fluid className="mt-4 text-center">
         <Row className="align-items-center">
           <Col lg={3}>
             <Form onSubmit={this.handleSubmit}>
               <Form.Group controlId="formYear">
-                <Form.Label>Browse Games By Year and Genre</Form.Label>
+                <Form.Label>Browse by Year and Genre</Form.Label>
                 <Form.Control name="year" value={this.state.year} onChange={this.handleChange} as="select" style={{textAlignLast: "center"}}>
                   {/* <option>{this.randomYear}</option> */}
                   <option>1977</option>
