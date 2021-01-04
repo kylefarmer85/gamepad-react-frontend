@@ -32,19 +32,19 @@ const GameShow = ({game, screenshots, addToFavorites, user, games}) => {
          
           <img style={{height: "50%", width: "50%", marginBottom: "15px"}} src={game.background_image} alt="game" />
  
-          <h2>{game.name}</h2>
+          <h1>{game.name}</h1>
           
-          <p>Released: {game.released}</p>
+          <h6>Released: {game.released}</h6>
           <br/>
           {
             game.platforms.length > 1 ?
-            <h5>Platforms:</h5>
+            <h3>Platforms</h3>
           :
-            <h5>Platform:</h5>
+            <h3>Platform</h3>
           }
 
           {
-            game.platforms.map(p => <p key={uuidv4()}>{`${p.platform.name}` }</p>)
+            game.platforms.map(p => <h6 key={uuidv4()}>{`${p.platform.name}` }</h6>)
           }
 
           {

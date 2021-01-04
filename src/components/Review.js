@@ -43,15 +43,17 @@ const Review = ({ game_name, user_pic, game_api_id, content, rating, username, i
       <img onClick={goToUser} src={user_pic} className="review-comment-thumb mt-3"alt="user pic"/>
         
       <Media.Body style={bodyStyle}>
-        <h4>{content}</h4>
+
+        <p className="review">{content}</p>
+        <br/>
         <Link to={`/games/${game_api_id}`}>
-          <h5>{game_name}</h5>
+          <h6>{game_name}</h6>
         </Link>
         
-        <p>Rating: {rating}</p>
+        <h6>Rating: {rating}</h6>
 
         <Link to={`/users/${user_id}/profile`}>
-          <p>by: {username}</p>
+          <h6>by: {username}</h6>
         </Link>
           
         {

@@ -1,4 +1,4 @@
-body {
+body, .review, .comment {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
@@ -20,9 +20,20 @@ body {
   color: white
 }
 
-label, p, h2, h3, h5, h6 {
+.review, .comment {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  sans-serif;
+  font-size: 16pt;
+}
+
+label, h1, h2, h3, h5, h6 {
   font-family: 'Press Start 2P', cursive;
-  font-size: 9pt;
+}
+
+p {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 10pt;
 }
 
 .btn-nes {

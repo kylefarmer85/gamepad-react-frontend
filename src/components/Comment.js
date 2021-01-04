@@ -41,7 +41,7 @@ const Comment = ({id, content, user_id, review_id, username, user_pic, review_us
       <img onClick={goToUser} className="review-comment-thumb mt-4" src={user_pic} alt="user pic"/>
         
       <Media.Body style={bodyStyle}>
-        <p>{content}</p>
+        <p className="comment">{content}</p>
         
         <em>response to <Link to={`/users/${review_user_id}/profile`}> 
           {review_username}'s 

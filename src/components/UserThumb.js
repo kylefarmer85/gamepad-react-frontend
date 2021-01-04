@@ -24,7 +24,7 @@ const UserThumb = ({id, username, photo}) => {
 
       <img onClick={goToUser} src={photoUrl} style={picStyle} alt="user pic"/>
 
-      <h5 onClick={goToUser}>{username}</h5>
+      <h4 onClick={goToUser}>{username}</h4>
 
     </div>
   );
