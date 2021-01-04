@@ -37,6 +37,7 @@ const NavBar = (props) => {
         } 
 
         <Nav.Link as={Link} to={`/reviews`}>Reviews</Nav.Link>
+        
       </Nav>
 
       <SearchBar />  

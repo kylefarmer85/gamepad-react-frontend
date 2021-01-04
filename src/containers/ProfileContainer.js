@@ -286,13 +286,19 @@ const ProfileContainer = (props) => {
                 <Col>
 
                   <h3>Favorite Games</h3>
-
-                  <button type="button" className="btn-nes secondary" onClick={nextGames}>more{'>'}</button>
-
+                  {
+                    user.games.length > 4 ?
+                      <button type="button" className="btn-nes secondary" onClick={nextGames}>more{'>'}</button>
+                    :
+                      user.games.length === 0 ?
+                        <p>{user.username} has no favorite games.</p>
+                      :
+                        null
+                  }
                 </Col>
               </Row>
               <Row>
-                <Col className="d-flex flex-wrap align-items-center justify-content-center">
+                <Col className="d-flex flex-wrap justify-content-around">
 
                   <FavoritesContainer slicedFavorites={slicedGames()} gameUserId={user.id} removeFavoriteFromProfile={removeFavoriteFromProfile} />
                 
@@ -334,9 +340,15 @@ const ProfileContainer = (props) => {
 
                   {
                     showReviews ?
-                      renderReviews()  
+                      user.reviews.length > 0 ?
+                        renderReviews()  
+                      :
+                        <p>No reviews yet.</p>
                     : 
-                      renderComments()
+                      user.comments.length > 0 ?
+                        renderComments()
+                      :
+                        <p>No comments yet.</p>
                   }
 
                 </Col>

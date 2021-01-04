@@ -133,7 +133,7 @@ class ConsoleAndGenreContainer extends Component {
             this.state.loading ?
               <Loading />
             :
-            <div className="d-flex flex-wrap align-items-center justify-content-center">
+            <div className="d-flex flex-wrap justify-content-around">
               <SlicedGamesContainer slicedGames={this.slicedGames()} />
             </div>
             }     

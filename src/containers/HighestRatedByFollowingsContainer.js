@@ -77,7 +77,7 @@ class HighestRatedByFollowingsContainer extends Component {
             this.state.loading ?
               null
             :
-            <div className="d-flex flex-wrap align-items-center justify-content-center">
+            <div className="d-flex flex-wrap justify-content-around">
               <SlicedGamesContainer slicedGames={this.slicedGames()} />
             </div>
             }     
