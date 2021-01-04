@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import SlicedGamesContainer from './SlicedGamesContainer'
 import Form from 'react-bootstrap/Form'
-import Button from 'react-bootstrap/Button'
 import { randomGenre, randomConsole } from "../helpers/randomFuncs"
 import Container from 'react-bootstrap/Container'
 import Col from 'react-bootstrap/Col'
@@ -122,9 +121,9 @@ class ConsoleAndGenreContainer extends Component {
                   <option>Family</option>
                 </Form.Control>
               </Form.Group>     
-              <Button type="submit">Browse Games</Button>
+              <button type="submit" className="btn-nes">Browse Games</button>
 
-              <Button style={{fontSize: "17px", marginLeft: "1%"}} variant="outline-light" onClick={this.nextGames}>more→</Button>
+              <button type="button" className="btn-nes" onClick={this.nextGames}>more{'>'}</button>
             </Form>
           </Col >
           <Col lg={9}>
