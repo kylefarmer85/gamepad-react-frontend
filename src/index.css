@@ -73,10 +73,9 @@ label, p, h3 {
 }
 
 .btn-nes:focus {
-  color: black;
+  color: white;
   border-color: white;
-  background-color: white;
   font-size: 10pt;
-  outline: 3px solid #fff;
+  outline: 4px solid #fff;
 }
 

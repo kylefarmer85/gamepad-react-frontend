@@ -1,6 +1,5 @@
 import React from 'react';
 import UserThumb from '../components/UserThumb'
-import Button from 'react-bootstrap/Button'
 
 const FollowersContainer = ({followers, nextFollowers, followersCount}) => {
   

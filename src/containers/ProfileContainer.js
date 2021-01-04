@@ -11,6 +11,7 @@ import FollowButton from '../components/FollowButton'
 import FollowersContainer from './FollowersContainer'
 import FollowingContainer from './FollowingContainer'
 import FavoritesContainer from './FavoritesContainer'
+import ProfilePicCard from '../components/ProfilePicCard'
 import Comment from '../components/Comment'
 
 
@@ -195,7 +196,6 @@ const ProfileContainer = (props) => {
     const updatedGames = user.games.filter(game => {
     return game.id !== gameId
     })
-
     setUser({
       ...user,
       games: updatedGames
@@ -206,7 +206,6 @@ const ProfileContainer = (props) => {
   let photoUrl = `http://localhost:3000${user.photo}`
 
   return (
-    
     <div>
       {
       loading ?
@@ -217,9 +216,7 @@ const ProfileContainer = (props) => {
           <Row className="mt-5 align-items-center justify-content-center" >
             <Col>
 
-              <h3>{user.username}</h3>
-
-              <img style={{height: "150px", width: "150px"}} src={photoUrl} alt="profile"/>
+              <ProfilePicCard username={user.username} profilePic={photoUrl} favConsole={user.fav_console} favGenre={user.fav_genre} favGame={user.fav_game} />
 
               {
                 props.user ?
