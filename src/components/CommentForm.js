@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Form from 'react-bootstrap/Form'
-import Button from 'react-bootstrap/Button'
 import { connect } from 'react-redux'
 import { addComment } from '../actions/comments'
 import { toast } from 'react-toastify'
@@ -26,43 +25,39 @@ class CommentForm extends Component {
     if (!this.state.content) {
       return toast.error("Please enter a comment!", {position: "bottom-center", autoClose: 3000})
     }
+    
+    let photoUrl = `http://localhost:3000/${this.props.user.photo}`
 
-    if (this.props.user) {
-      let photoUrl = `http://localhost:3000/${this.props.user.photo}`
-
-      const reqObj = {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          content: this.state.content,
-          user_id: this.props.user.id,
-          review_id: this.props.reviewId,
-          review_user_id: this.props.reviewUserId,
-          review_username: this.props.reviewUsername,
-          username: this.props.user.username,
-          user_pic: photoUrl,
-          game_name: this.props.gameName,
-          game_api_id: this.props.gameApiId,
-        })
-      }
-      fetch(`http://localhost:3000/api/v1/comments`, reqObj)
-      .then(resp => resp.json())
-      .then(comment => {
-        
-        this.props.addComment(comment)
-        this.props.handleAddComment(comment)
-
-        toast.success("Comment posted!", {position: "bottom-center", autoClose: 3000})
-
-        this.setState({
-          content: "",
-        })
+    const reqObj = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        content: this.state.content,
+        user_id: this.props.user.id,
+        review_id: this.props.reviewId,
+        review_user_id: this.props.reviewUserId,
+        review_username: this.props.reviewUsername,
+        username: this.props.user.username,
+        user_pic: photoUrl,
+        game_name: this.props.gameName,
+        game_api_id: this.props.gameApiId,
       })
-    } else {
-      toast.error("You must be logged in to submit a comment.", {position: "bottom-center", autoClose: 3000})
     }
+    fetch(`http://localhost:3000/api/v1/comments`, reqObj)
+    .then(resp => resp.json())
+    .then(comment => {
+      
+      this.props.addComment(comment)
+      this.props.handleAddComment(comment)
+
+      toast.success("Comment posted!", {position: "bottom-center", autoClose: 3000})
+
+      this.setState({
+        content: "",
+      })
+    })
   }
 
 
@@ -75,7 +70,7 @@ class CommentForm extends Component {
           <Form.Control name="content" value={this.state.content} as="textarea" rows={3} onChange={this.handleChange}/>
         </Form.Group>
         
-        <Button type="submit">Submit</Button>
+        <button type="submit" className="btn-nes primary">Submit</button>
       </Form>
     );
   }

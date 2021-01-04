@@ -61,7 +61,7 @@ class EditUserInfo extends Component {
   render() {
     return (
 
-      <Container style={{width: "50%"}}>
+      <Container className="mt-4 mb-4" style={{width: "50%"}}>
                
         <h1 style={{textAlign: "center"}}>Edit Profile</h1>
         <Form onSubmit={this.handleSubmit}>

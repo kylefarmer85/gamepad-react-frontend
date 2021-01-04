@@ -5,7 +5,6 @@ import Loading from '../components/Loading'
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
-import Button from 'react-bootstrap/Button'
 import ToggleButton from 'react-bootstrap/ToggleButton'
 import Review from '../components/Review'
 import FollowButton from '../components/FollowButton'
@@ -228,14 +227,18 @@ const ProfileContainer = (props) => {
                     <>
                       <br/>
                       <Link to={`/users/${props.user.id}/edit`}>
-                        <button type="button" className="btn-nes">Edit User Info</button>
+                        <button type="button" className="btn-nes primary">Edit User Info</button>
                       </Link>  
                     </>
                   :
                     <FollowButton followedUserId={user.id} followerId={props.user.id} addFollowerToProfile={addFollowerToProfile} removeFollowerFromProfile={removeFollowerFromProfile}/>
                 :
-                
-                  <Button as={Link} to={'/login'}>Login to Follow User</Button>
+                <>
+                  <br/>
+                  <Link to={'/login'}>
+                    <button type="button" className="btn-nes primary">Login to Follow User</button>
+                  </Link>  
+                </>
               } 
             </Col>
 

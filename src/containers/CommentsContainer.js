@@ -21,7 +21,7 @@ const CommentsContainer = ({comments, reviewId, reviewUserId, reviewUsername, ga
         <CommentForm reviewUsername={reviewUsername} reviewUserId={reviewUserId} reviewId={reviewId} gameName={gameName} gameApiId={gameApiId} handleAddComment={handleAddComment} />
       :
         <Link to="/login">
-          <button type="button" className="btn-nes mt-4">Login to add a comment!</button>
+          <button type="button" className="btn-nes primary mt-4">Login to add a comment!</button>
         </Link>
       }
     </div>

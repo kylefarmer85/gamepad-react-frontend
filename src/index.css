@@ -42,36 +42,41 @@ label, p, h3 {
   outline: 2px solid white;
 }
 
-.btn-nes:hover {
-  color: black;
-  border-color: white;
-  background-color: white;
-}
+
 
 .btn-nes:active {
-  outline: 3px solid #fff;
+  outline: 4px solid #fff;
   color: white;
   background-color: green;
   font-size: 10pt;
 }
 
-.primary:focus {
-  outline: 3px solid #fff;
+.primary:hover {
+  outline: 2px solid #fff;
   color: white;
   background-color: green;
   font-size: 10pt;
 }
 
-.secondary:focus {
-  outline: 3px solid #fff;
+.secondary:hover {
+  outline: 2px solid #fff;
   color: white;
   background-color: blue;
   font-size: 10pt;
 }
 
-.delete:focus {
-  outline: 3px solid #fff;
+.delete:hover {
+  outline: 2px solid #fff;
   color: white;
   background-color: red;
   font-size: 10pt;
 }
+
+.btn-nes:focus {
+  color: black;
+  border-color: white;
+  background-color: white;
+  font-size: 10pt;
+  outline: 3px solid #fff;
+}
+

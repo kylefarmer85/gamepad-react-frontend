@@ -123,7 +123,7 @@ class ReviewsContainer extends Component {
 
         :
           <Link to="/login">
-            <button type="button" className="btn-nes mt-3">Login to add a review!</button>
+            <button type="button" className="btn-nes primary mt-3">Login to add a review!</button>
           </Link>
         } 
 

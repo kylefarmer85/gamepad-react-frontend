@@ -46,10 +46,10 @@ const GameShow = ({game, screenshots, addToFavorites, user, games}) => {
           {
             user ?
 
-            <button type="button" className="btn-nes mt-4" onClick={handleFavorite}>Add to Favorites</button>
+            <button type="button" className="btn-nes primary mt-4" onClick={handleFavorite}>Add to Favorites</button>
           :
             <Link to={'/login'}>
-              <button type="button" className="btn-nes mt-4">Login to add game to Favorites!</button>
+              <button type="button" className="btn-nes primary mt-4">Login to add game to Favorites!</button>
             </Link>
           }
           
