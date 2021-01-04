@@ -43,7 +43,7 @@ const Review = ({ game_name, user_pic, game_api_id, content, rating, username, i
       <img onClick={goToUser} src={user_pic} className="review-comment-thumb mt-3"alt="user pic"/>
         
       <Media.Body style={bodyStyle}>
-        <p>{content}</p>
+        <h4>{content}</h4>
         <Link to={`/games/${game_api_id}`}>
           <h5>{game_name}</h5>
         </Link>
@@ -75,7 +75,7 @@ const Review = ({ game_name, user_pic, game_api_id, content, rating, username, i
         
         <Accordion>
           <Accordion.Toggle as={Button} variant="none" eventKey="0">
-            <h5>Comments ({comments.length})</h5>
+            <h4>Comments ({comments.length})</h4>
           </Accordion.Toggle>
       
           <Accordion.Collapse eventKey="0">

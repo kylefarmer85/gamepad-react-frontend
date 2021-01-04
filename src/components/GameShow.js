@@ -35,13 +35,17 @@ const GameShow = ({game, screenshots, addToFavorites, user, games}) => {
           <h2>{game.name}</h2>
           
           <p>Released: {game.released}</p>
-
-          <p>Platform(s):</p>
+          <br/>
           {
-            game.platforms.map(p => <span key={uuidv4()}>{` ${p.platform.name}` }</span>)
+            game.platforms.length > 1 ?
+            <h5>Platforms:</h5>
+          :
+            <h5>Platform:</h5>
           }
 
-          <br/>
+          {
+            game.platforms.map(p => <p key={uuidv4()}>{`${p.platform.name}` }</p>)
+          }
 
           {
             user ?

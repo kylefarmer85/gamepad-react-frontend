@@ -20,12 +20,7 @@ body {
   color: white
 }
 
-
-h2 {
-  font-family: 'Press Start 2P', cursive;
-}
-
-label, p, h3 {
+label, p, h2, h3, h5, h6 {
   font-family: 'Press Start 2P', cursive;
   font-size: 9pt;
 }
@@ -40,15 +35,6 @@ label, p, h3 {
   color: white;
   border: white;
   outline: 2px solid white;
-}
-
-
-
-.btn-nes:active {
-  outline: 4px solid #fff;
-  color: white;
-  background-color: green;
-  font-size: 10pt;
 }
 
 .primary:hover {
@@ -77,6 +63,13 @@ label, p, h3 {
   border-color: white;
   font-size: 10pt;
   outline: 4px solid #fff;
+}
+
+.btn-nes:active {
+  outline: 4px solid #fff;
+  color: black;
+  background-color: white;
+  font-size: 10pt;
 }
 
 .review-comment-thumb {
