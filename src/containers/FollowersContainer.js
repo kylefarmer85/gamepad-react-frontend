@@ -1,6 +1,5 @@
 import React from 'react';
 import UserThumb from '../components/UserThumb'
-import Button from 'react-bootstrap/Button'
 
 const FollowersContainer = ({followers, nextFollowers, followersCount}) => {
   
@@ -18,7 +17,8 @@ const FollowersContainer = ({followers, nextFollowers, followersCount}) => {
       :
       <>
         {renderFollowers()}
-        <Button style={{fontSize: "17px"}} variant="outline-light" onClick={nextFollowers}>more→</Button>
+
+        <button type="button" className="btn-nes secondary" onClick={nextFollowers}>more{'>'}</button>
       </>
       }
     </>

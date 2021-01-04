@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import SearchedUsersContainer from './SearchedUsersContainer'
 import Form from 'react-bootstrap/Form'
-import Button from 'react-bootstrap/Button'
 import Container from 'react-bootstrap/Container'
 import Col from 'react-bootstrap/Col'
 import Row from 'react-bootstrap/Row'
@@ -122,9 +121,9 @@ class UsersByConsoleAndGenreContainer extends Component {
                   <option>Family</option>
                 </Form.Control>
               </Form.Group>     
-              <Button type="submit">Browse Users</Button>
+              <button type="submit" className="btn-nes primary">Browse Users</button>
 
-              <Button style={{fontSize: "17px", marginLeft: "1%"}} variant="outline-light" onClick={this.nextUsers}>more→</Button>
+              <button type="button" className="btn-nes secondary" onClick={this.nextGames}>more{'>'}</button>
             </Form> 
           </Col >
           <Col lg={9}>

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import SlicedGamesContainer from './SlicedGamesContainer'
-import Button from 'react-bootstrap/Button'
 import Container from 'react-bootstrap/Container'
 import Col from 'react-bootstrap/Col'
 import Row from 'react-bootstrap/Row'
@@ -68,7 +67,9 @@ class HighestRatedByFollowingsContainer extends Component {
         <Row className="align-items-center">
           <Col lg={3}>
           <label>Highest Rated Games by Users You Follow</label><br/><br/>
-            <Button style={{fontSize: "17px", marginLeft: "1%"}} variant="outline-light" onClick={this.nextGames}>more→</Button>
+
+          <button type="button" className="btn-nes secondary" onClick={this.nextGames}>more{'>'}</button>
+
           </Col >
           <Col lg={9}>
             

@@ -63,7 +63,7 @@ return (
           gameUserId === user.id ?
 
             <div style={{position: "absolute", bottom: "0px"}}>
-              <Button onClick={removeFavorite} variant="outlin-dark" size="sm" style={{fontSize: "7pt"}}>✘ remove</Button>
+              <Button onClick={removeFavorite} variant="outlin-dark" size="sm" style={{fontSize: "8pt"}}>✘ remove</Button>
             </div>  
 
           :

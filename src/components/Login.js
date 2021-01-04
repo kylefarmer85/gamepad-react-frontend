@@ -4,7 +4,6 @@ import { fetchUser } from '../actions/user'
 import { Link } from 'react-router-dom'
 import Container from 'react-bootstrap/Container'
 import Form from 'react-bootstrap/Form'
-import Button from 'react-bootstrap/Button'
 
 
 class Login extends Component {
@@ -37,15 +36,25 @@ class Login extends Component {
       <Container style={{width: "50%", marginTop: "5%"}}>  
 
         <h1 style={{textAlign: "center"}}>Login</h1>
+
         <Form onSubmit={this.handleSubmit}>
           <Form.Group controlId="formUsername">
+            
             <Form.Control type="text" placeholder="Username" name="username" value={this.state.username} onChange={this.handleChange} />
+
           </Form.Group>
           <Form.Group controlId="formPassword">
+
             <Form.Control type="password" placeholder="Password" name="password" value={this.state.password} onChange={this.handleChange} />
+
           </Form.Group>
-          <Button variant="outline-primary" type="submit">Login</Button>
-          <Link to={`/signup`}> or Signup</Link>
+
+            <button type="submit" className="btn-nes primary">Login</button>
+
+            <Link to={`/signup`}>
+              <button type="button" className="btn-nes secondary">Go to Signup</button>
+            </Link>
+
         </Form>
 
       </Container> 

@@ -42,7 +42,6 @@ const Review = ({ game_name, user_pic, game_api_id, content, rating, username, i
     <Media style={mediaStyle}>
      
       <img onClick={goToUser}
-
       style={{marginTop: "25px", width: "128px", height: "128px"}}
       className="img-thumbnail"
       src={user_pic}
@@ -64,7 +63,8 @@ const Review = ({ game_name, user_pic, game_api_id, content, rating, username, i
         {
           user ?
             user.id === user_id ?
-              <Button onClick={handleClick}>Delete Review</Button>
+            
+              <button type="button" className="btn-nes delete" onClick={handleClick}>Delete Review</button>
             :
               null
           :
@@ -80,7 +80,7 @@ const Review = ({ game_name, user_pic, game_api_id, content, rating, username, i
         }
         
         <Accordion>
-          <Accordion.Toggle as={Button} variant="outline-dark" eventKey="0">
+          <Accordion.Toggle as={Button} variant="none" eventKey="0">
             <h5>Comments ({comments.length})</h5>
           </Accordion.Toggle>
       

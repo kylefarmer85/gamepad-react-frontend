@@ -2,7 +2,6 @@ import React from 'react';
 import Media from 'react-bootstrap/Media'
 import { connect } from 'react-redux'
 import { deleteComment } from '../actions/comments'
-import Button from 'react-bootstrap/Button'
 import { Link } from 'react-router-dom'
 import { useHistory } from "react-router-dom"
 
@@ -63,7 +62,8 @@ const Comment = ({id, content, user_id, review_id, username, user_pic, review_us
         {
           user ?
             user.id === user_id ?
-              <Button onClick={handleClick}>Delete Comment</Button>
+              <button type="button" className="btn-nes delete" onClick={handleClick}>Delete Comment</button>
+           
             :
               null
           :

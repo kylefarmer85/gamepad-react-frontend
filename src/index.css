@@ -31,17 +31,51 @@ label, p, h3 {
 }
 
 .btn-nes {
-  margin: 4px;
+  margin: 5px;
   background:black;
   text-align: center;
-  font-size: 15px;
-  padding: 10px;
+  font-size: 10pt;
+  padding: 8px;
   font-family: 'Press Start 2P', cursive;
   color: white;
-  border: none;
+  border: white;
   outline: 2px solid white;
 }
 
-.btn-nes:hover {
-  background: blue
+
+
+.btn-nes:active {
+  outline: 4px solid #fff;
+  color: white;
+  background-color: green;
+  font-size: 10pt;
 }
+
+.primary:hover {
+  outline: 2px solid #fff;
+  color: white;
+  background-color: green;
+  font-size: 10pt;
+}
+
+.secondary:hover {
+  outline: 2px solid #fff;
+  color: white;
+  background-color: blue;
+  font-size: 10pt;
+}
+
+.delete:hover {
+  outline: 2px solid #fff;
+  color: white;
+  background-color: red;
+  font-size: 10pt;
+}
+
+.btn-nes:focus {
+  color: white;
+  border-color: white;
+  font-size: 10pt;
+  outline: 4px solid #fff;
+}
+

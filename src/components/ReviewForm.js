@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Form from 'react-bootstrap/Form'
-import Button from 'react-bootstrap/Button'
 import { connect } from 'react-redux'
 import { addReview } from '../actions/reviews'
 import { toast } from 'react-toastify'
@@ -93,7 +92,8 @@ class ReviewForm extends Component {
           </Form.Control>
         </Form.Group>
         
-        <Button type="submit">Submit</Button>
+        <button type="submit" className="btn-nes primary">Submit</button>
+        
       </Form>
     );
   }

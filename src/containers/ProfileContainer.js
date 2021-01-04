@@ -5,13 +5,13 @@ import Loading from '../components/Loading'
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
-import Button from 'react-bootstrap/Button'
 import ToggleButton from 'react-bootstrap/ToggleButton'
 import Review from '../components/Review'
 import FollowButton from '../components/FollowButton'
 import FollowersContainer from './FollowersContainer'
 import FollowingContainer from './FollowingContainer'
 import FavoritesContainer from './FavoritesContainer'
+import ProfilePicCard from '../components/ProfilePicCard'
 import Comment from '../components/Comment'
 
 
@@ -196,7 +196,6 @@ const ProfileContainer = (props) => {
     const updatedGames = user.games.filter(game => {
     return game.id !== gameId
     })
-
     setUser({
       ...user,
       games: updatedGames
@@ -207,7 +206,6 @@ const ProfileContainer = (props) => {
   let photoUrl = `http://localhost:3000${user.photo}`
 
   return (
-    
     <div>
       {
       loading ?
@@ -218,23 +216,29 @@ const ProfileContainer = (props) => {
           <Row className="mt-5 align-items-center justify-content-center" >
             <Col>
 
-              <h3>{user.username}</h3>
-              <img style={{height: "150px", width: "150px"}} src={photoUrl} alt="profile"/>
+              <ProfilePicCard username={user.username} profilePic={photoUrl} favConsole={user.fav_console} favGenre={user.fav_genre} favGame={user.fav_game} />
 
               {
                 props.user ?
                   props.user.id === user.id ?
                     <>
-                    <br/>
-                    <Button as={Link} to={`/users/${props.user.id}/edit`}>Edit Info</Button>
+                      <br/>
+                      <Link to={`/users/${props.user.id}/edit`}>
+                        <button type="button" className="btn-nes primary">Edit User Info</button>
+                      </Link>  
                     </>
                   :
                     <FollowButton followedUserId={user.id} followerId={props.user.id} addFollowerToProfile={addFollowerToProfile} removeFollowerFromProfile={removeFollowerFromProfile}/>
                 :
-                
-                  <Button as={Link} to={'/login'}>Login to Follow User</Button>
+                <>
+                  <br/>
+                  <Link to={'/login'}>
+                    <button type="button" className="btn-nes primary">Login to Follow User</button>
+                  </Link>  
+                </>
               } 
             </Col>
+
             <Col>
               <Row>
                 <Col>
@@ -284,7 +288,8 @@ const ProfileContainer = (props) => {
                 <Col>
 
                   <h3>Favorite Games</h3>
-                  <Button style={{fontSize: "17px"}} variant="outline-light" onClick={nextGames}>more→</Button>
+
+                  <button type="button" className="btn-nes secondary" onClick={nextGames}>more{'>'}</button>
 
                 </Col>
               </Row>
