@@ -23,7 +23,7 @@ const SlicedGame = ({name, background_image, released, id}) => {
   }
 
   const pStyle = {
-    marginTop: "5%",
+    marginTop: "6%",
     textAlign: "center"
   }
 

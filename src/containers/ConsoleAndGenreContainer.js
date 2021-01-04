@@ -5,6 +5,7 @@ import { randomGenre, randomConsole } from "../helpers/randomFuncs"
 import Container from 'react-bootstrap/Container'
 import Col from 'react-bootstrap/Col'
 import Row from 'react-bootstrap/Row'
+import Loading from '../components/Loading'
 
 
 class ConsoleAndGenreContainer extends Component {
@@ -130,7 +131,7 @@ class ConsoleAndGenreContainer extends Component {
            
             { 
             this.state.loading ?
-              null
+              <Loading />
             :
             <div className="d-flex flex-wrap align-items-center justify-content-center">
               <SlicedGamesContainer slicedGames={this.slicedGames()} />

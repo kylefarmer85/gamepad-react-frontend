@@ -5,7 +5,7 @@ import { randomYear, randomGenre } from "../helpers/randomFuncs"
 import Container from 'react-bootstrap/Container'
 import Col from 'react-bootstrap/Col'
 import Row from 'react-bootstrap/Row'
-import Loading from '../components/Loading'
+
 
 class YearAndGenreContainer extends Component {
   state = {
@@ -139,7 +139,7 @@ class YearAndGenreContainer extends Component {
                  
           { 
           this.state.loading ?
-            <Loading />
+            null
           :
           <div className="d-flex flex-wrap align-items-center justify-content-center">
             <SlicedGamesContainer slicedGames={this.slicedGames()} />
