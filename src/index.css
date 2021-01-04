@@ -31,7 +31,7 @@ label, p, h3 {
 }
 
 .btn-nes {
-  margin: 4px;
+  margin: 5px;
   background:black;
   text-align: center;
   font-size: 10pt;
@@ -49,11 +49,22 @@ label, p, h3 {
 }
 
 .btn-nes:active {
-  background: black;
+  outline: 3px solid #fff;
+  color: white;
+  background-color: green;
+  font-size: 10pt;
 }
 
-.btn-nes:focus {
-  outline: 4px solid #fff;
+.primary:focus {
+  outline: 3px solid #fff;
+  color: white;
+  background-color: green;
   font-size: 10pt;
+}
 
+.secondary:focus {
+  outline: 3px solid #fff;
+  color: white;
+  background-color: blue;
+  font-size: 10pt;
 }

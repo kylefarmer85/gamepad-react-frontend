@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux'
 import { followUser, unfollowUser } from '../actions/follows'
-import Button from 'react-bootstrap/Button'
 
 const FollowButton = ({followedUserId, followerId, addFollowerToProfile, removeFollowerFromProfile, followUser, unfollowUser, following}) => {
 
@@ -22,10 +21,11 @@ const FollowButton = ({followedUserId, followerId, addFollowerToProfile, removeF
   return (
     <div>
       {
-      alreadyFollowed ?
-        <Button onClick={unfollow}>Unfollow</Button>
+        alreadyFollowed ?
+
+        <button type="button" className="btn-nes secondary" onClick={unfollow}>Unfollow</button>
       :
-        <Button onClick={follow}>Follow</Button>
+        <button type="button" className="btn-nes primary" onClick={follow}>Follow</button>
       }
     </div>
   );

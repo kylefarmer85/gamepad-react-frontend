@@ -68,7 +68,7 @@ class HighestRatedByFollowingsContainer extends Component {
           <Col lg={3}>
           <label>Highest Rated Games by Users You Follow</label><br/><br/>
 
-          <button type="button" className="btn-nes" onClick={this.nextGames}>more{'>'}</button>
+          <button type="button" className="btn-nes secondary" onClick={this.nextGames}>more{'>'}</button>
 
           </Col >
           <Col lg={9}>

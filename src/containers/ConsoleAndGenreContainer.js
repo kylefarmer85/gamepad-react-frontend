@@ -121,9 +121,9 @@ class ConsoleAndGenreContainer extends Component {
                   <option>Family</option>
                 </Form.Control>
               </Form.Group>     
-              <button type="submit" className="btn-nes">Browse Games</button>
+              <button type="submit" className="btn-nes primary">Browse Games</button>
 
-              <button type="button" className="btn-nes" onClick={this.nextGames}>more{'>'}</button>
+              <button type="button" className="btn-nes secondary" onClick={this.nextGames}>more{'>'}</button>
             </Form>
           </Col >
           <Col lg={9}>

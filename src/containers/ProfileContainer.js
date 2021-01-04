@@ -219,14 +219,17 @@ const ProfileContainer = (props) => {
             <Col>
 
               <h3>{user.username}</h3>
+
               <img style={{height: "150px", width: "150px"}} src={photoUrl} alt="profile"/>
 
               {
                 props.user ?
                   props.user.id === user.id ?
                     <>
-                    <br/>
-                    <Button as={Link} to={`/users/${props.user.id}/edit`}>Edit Info</Button>
+                      <br/>
+                      <Link to={`/users/${props.user.id}/edit`}>
+                        <button type="button" className="btn-nes">Edit User Info</button>
+                      </Link>  
                     </>
                   :
                     <FollowButton followedUserId={user.id} followerId={props.user.id} addFollowerToProfile={addFollowerToProfile} removeFollowerFromProfile={removeFollowerFromProfile}/>
@@ -235,6 +238,7 @@ const ProfileContainer = (props) => {
                   <Button as={Link} to={'/login'}>Login to Follow User</Button>
               } 
             </Col>
+
             <Col>
               <Row>
                 <Col>
@@ -284,7 +288,8 @@ const ProfileContainer = (props) => {
                 <Col>
 
                   <h3>Favorite Games</h3>
-                  <Button style={{fontSize: "17px"}} variant="outline-light" onClick={nextGames}>more→</Button>
+
+                  <button type="button" className="btn-nes secondary" onClick={nextGames}>more{'>'}</button>
 
                 </Col>
               </Row>
