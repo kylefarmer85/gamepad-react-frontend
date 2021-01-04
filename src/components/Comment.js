@@ -38,12 +38,7 @@ const Comment = ({id, content, user_id, review_id, username, user_pic, review_us
   return (
     <Media style={mediaStyle}>
      
-      <img onClick={goToUser}
-      style={{margin: "auto", width: "128px", height: "128px"}}
-      className="img-thumbnail"
-      src={user_pic}
-      alt="user pic"
-      />
+      <img onClick={goToUser} className="review-comment-thumb mt-4" src={user_pic} alt="user pic"/>
         
       <Media.Body style={bodyStyle}>
         <p>{content}</p>

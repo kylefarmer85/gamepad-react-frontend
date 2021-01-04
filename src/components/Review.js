@@ -33,7 +33,6 @@ const Review = ({ game_name, user_pic, game_api_id, content, rating, username, i
     overflowWrap: "break-word",
     wordWrap: "break-word",
     wordBreak: "break_word"
-
   }
 
   const date = new Date(created_at)
@@ -41,12 +40,7 @@ const Review = ({ game_name, user_pic, game_api_id, content, rating, username, i
   return (
     <Media style={mediaStyle}>
      
-      <img onClick={goToUser}
-      style={{marginTop: "25px", width: "128px", height: "128px"}}
-      className="img-thumbnail"
-      src={user_pic}
-      alt="user pic"
-      />
+      <img onClick={goToUser} src={user_pic} className="review-comment-thumb mt-3"alt="user pic"/>
         
       <Media.Body style={bodyStyle}>
         <p>{content}</p>
