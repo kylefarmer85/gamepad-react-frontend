@@ -20,7 +20,7 @@ const UserThumb = ({id, username, photo}) => {
   let photoUrl = `http://localhost:3000${photo}` 
 
   return (
-    <div className="m-2 text-center">
+    <div className="m-2 text-center fade-in">
 
       <img onClick={goToUser} src={photoUrl} style={picStyle} alt="user pic"/>
 

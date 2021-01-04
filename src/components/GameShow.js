@@ -30,22 +30,24 @@ const GameShow = ({game, screenshots, addToFavorites, user, games}) => {
       <Container className="mt-4 mb-4">
         <div style={{textAlign: "center"}}>
          
-          <img style={{height: "50%", width: "50%", marginBottom: "15px"}} src={game.background_image} alt="game" />
+          <img style={{height: "50%", width: "50%", marginBottom: "15px"}} className="fade-in" src={game.background_image} alt="game" />
  
           <h1>{game.name}</h1>
           
           <h6>Released: {game.released}</h6>
           <br/>
+
           {
             game.platforms.length > 1 ?
-            <h6>Platforms:</h6>
+            <h6 style={{textDecoration: "underline"}}>Platforms:</h6>
           :
-            <h6>Platform:</h6>
+            <h6 style={{textDecoration: "underline"}}>Platform:</h6>
           }
-  
+          <div className="slide-in">
           {
-            game.platforms.map(p => <p key={uuidv4()}>{`${p.platform.name}` }</p>)
+            game.platforms.map(p => <h6 key={uuidv4()}>{`${p.platform.name}` }</h6>)
           }
+          </div>
 
           {
             user ?

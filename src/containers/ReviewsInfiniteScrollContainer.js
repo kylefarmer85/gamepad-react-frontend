@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Review from '../components/Review'
-import Loading from '../components/Loading'
 import { Waypoint } from 'react-waypoint'
 
 class ReviewsInfiniteScrollContainer extends Component {
@@ -121,10 +120,10 @@ class ReviewsInfiniteScrollContainer extends Component {
       <div className="m-4">
         {
         this.state.loading ?
-            <Loading />
+            null
           :
 
-          <div>
+          <div className="slide-from-bottom">
             {this.renderGameReviews()}
 
             {this.state.endOfReviews ?
