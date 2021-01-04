@@ -16,25 +16,27 @@ const FollowersContainer = ({followers, nextFollowers, followersLength}) => {
     <>
       {
       followersLength === 0 ?
-        <h3>No followers.</h3>
+        <Col>
+          <p>No followers.</p>
+        </Col>
       :
-      <Col>
-        <Row>
-          <Col className="d-flex flex-wrap align-items-center justify-content-center">
-            {renderFollowers()}
-          </Col>
-        </Row>
-        <Row>
-          <Col >
-            {
-            followersLength < 3 ?
-              null
-            :  
-              <button type="button" className="btn-nes secondary" onClick={nextFollowers}>more{'>'}</button>
-            }  
-          </Col>
-        </Row>
-      </Col>
+        <Col>
+          <Row>
+            <Col className="d-flex flex-wrap align-items-center justify-content-center">
+              {renderFollowers()}
+            </Col>
+          </Row>
+          <Row>
+            <Col >
+              {
+              followersLength < 3 ?
+                null
+              :  
+                <button type="button" className="btn-nes secondary" onClick={nextFollowers}>more{'>'}</button>
+              }  
+            </Col>
+          </Row>
+        </Col>
       }
     </>
   );

@@ -9,11 +9,17 @@ const ProfilePicCard = ({username, profilePic, favConsole, favGenre, favGame}) =
     padding: "20px 0"
   }
 
+  const picStyle = {
+    height: "200px",
+    width: "200px",
+    border: "8px solid white",
+    borderRadius: "3%"
+  }
+
   return (
     <Row style={rowStyle} className="m-4 align-items-center justify-content-center">
       <Col>
-
-        <img style={{height: "200px", width: "200px"}} src={profilePic} alt="profile pic" />
+        <img style={picStyle} src={profilePic} alt="profile pic" />
       </Col>
       <Col>
         <h3>{username}</h3>

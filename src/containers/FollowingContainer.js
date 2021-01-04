@@ -15,25 +15,27 @@ const FollowingContainer = ({followings, nextFollowings, followingsLength}) => {
     <>
       {
       followingsLength === 0 ?
-        <h3>Not following anyone.</h3>
+        <Col>
+          <p>Not following anyone.</p>
+        </Col>
       :
-      <Col>
-        <Row>
-          <Col className="d-flex flex-wrap align-items-center justify-content-center">
-            {renderFollowings()}
-          </Col>
-        </Row>
-        <Row>
-          <Col>    
-            {
-            followingsLength < 3 ?
-              null
-            :  
-              <button type="button" className="btn-nes secondary" onClick={nextFollowings}>more{'>'}</button>
-            }
-          </Col>
-        </Row>
-      </Col>    
+        <Col>
+          <Row>
+            <Col className="d-flex flex-wrap align-items-center justify-content-center">
+              {renderFollowings()}
+            </Col>
+          </Row>
+          <Row>
+            <Col>    
+              {
+              followingsLength < 3 ?
+                null
+              :  
+                <button type="button" className="btn-nes secondary" onClick={nextFollowings}>more{'>'}</button>
+              }
+            </Col>
+          </Row>
+        </Col>    
       }
     </>
   );

@@ -266,9 +266,9 @@ const ProfileContainer = (props) => {
 
                 </Col>
               </Row>
+
               <Row>
-                {/* <Col className="d-flex flex-wrap align-items-center justify-content-center"> */}
-  
+              {/* more columns and rows in follows containers */}
                   {
                   showFollowers ?
                     renderFollowersContainer()
@@ -276,7 +276,6 @@ const ProfileContainer = (props) => {
                     renderFollowingContainer()
                   }
 
-                {/* </Col> */}
               </Row>
             </Col>  
           </Row>
