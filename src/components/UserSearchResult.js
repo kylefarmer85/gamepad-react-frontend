@@ -97,16 +97,17 @@ const UserSearchResult = (props) => {
   return (
     <Container fluid className="mt-4 text-center">
       <h3>Results for {props.match.params.searchTerm}</h3>
-      {
-        loading ?
-          <Loading />
-        :
-        <Row>
-          <Col className="d-flex flex-wrap justify-content-center">
-            {renderUsers()}
-          </Col>
-        </Row>
-      }
+      <Row>
+        <Col className="d-flex flex-wrap justify-content-center">
+          { 
+          loading ?
+            <Loading />
+          :
+            
+            renderUsers()
+          }
+        </Col>
+      </Row>
     </Container>
   );
 }

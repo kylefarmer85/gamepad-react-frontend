@@ -34,10 +34,10 @@ class GameContainer extends Component {
   render() {
     return (
       <div>
-        { this.state.loading ?
-        <Loading />
+        { this.state.loading ?         
+          <Loading />          
         :
-        <GameShow game={this.state.gameObj} screenshots={this.state.screenshots}/>
+          <GameShow game={this.state.gameObj} screenshots={this.state.screenshots}/>
         }
       </div>
     );

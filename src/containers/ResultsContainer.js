@@ -45,17 +45,16 @@ const ResultsContainer = (props) => {
   return (
     <Container fluid className="mt-4 text-center">
       <h2>Results for {props.match.params.searchTerm}</h2>
-        { loading?
-
-          <Loading />
-        :
-        <Row>
-          <Col className="d-flex flex-wrap justify-content-center">
-            {renderSearchResults()}
-          </Col>
-        </Row>
-        }
-      
+      <Row>
+        <Col className="d-flex flex-wrap justify-content-center">
+          { 
+          loading?
+            <Loading />
+          :
+            renderSearchResults()
+          }
+        </Col>
+      </Row>
     </Container>
   );
 }
