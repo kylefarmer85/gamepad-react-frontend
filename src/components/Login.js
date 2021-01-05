@@ -30,14 +30,15 @@ class Login extends Component {
     })
   }
 
+
   render() {
     return (
 
-      <Container style={{width: "50%", marginTop: "5%"}}>  
+      <Container fluid className="mt-5 text-center">  
         
-        <h1 style={{textAlign: "center"}}>Login</h1>
+        <h1>Login</h1>
 
-        <Form onSubmit={this.handleSubmit}>
+        <Form style={{width: "25%", margin: "auto"}} onSubmit={this.handleSubmit}>
           <Form.Group controlId="formUsername">
             
             <Form.Control type="text" placeholder="Username" name="username" value={this.state.username} onChange={this.handleChange} />
@@ -57,8 +58,13 @@ class Login extends Component {
 
         </Form>
         
-          <img src={GamepadLogo} style={logoStyle} className="slide-from-bottom" alt="gamepad logo"/>
-      
+          
+          <img src={GamepadLogo} style={logoStyle} alt="gamepad logo" className="slide-from-bottom" />
+              
+          <h5 className="fade-in-slow">Old Games, New Friends</h5>
+
+        
+
       </Container> 
     
 
@@ -67,11 +73,11 @@ class Login extends Component {
 }
 
 const logoStyle = {
-  height: "75%",
-  width: "75%",
-  paddingTop: "5%",
+  height: "35%",
+  width: "35%",
+  padding: "4% 0%",
   display: "block",
-  margin: "auto"
+  margin: "auto",
 }
 
 

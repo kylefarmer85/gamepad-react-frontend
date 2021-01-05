@@ -7,7 +7,6 @@ import SearchBar from './SearchBar'
 import { Link } from 'react-router-dom'
 import NavBarSprites from './NavBarSprites'
 import { toast } from 'react-toastify';
-import GamepadLogo from '../assets/images/gamepad-logo.png'
 
 
 const NavBar = (props) => {

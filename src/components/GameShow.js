@@ -25,6 +25,14 @@ const GameShow = ({game, screenshots, addToFavorites, user, games}) => {
     }
   }
 
+  const acceptedPlatformNamesArray = ["Sega Genesis" , "Super Nintendo" , "Dreamcast" , "PlayStation" , "Nintendo 64" , "SNES" , "Genesis" , "Jaguar" , "Game Boy" , "Game Gear" , "SEGA CD" , "SEGA Master System" , "NES" , "Atari 7800" , "Game Boy Color" , "Atari 2600" , "Atari 5200" , "Neo Geo" , "3DO" , "SEGA Saturn"]
+
+  const renderGamePlatforms = game.platforms.map(p => { 
+    return acceptedPlatformNamesArray.includes(p.platform.name) ?
+      <h6 key={uuidv4()}>{`${p.platform.name}` }</h6>
+    :
+      null
+  })
 
     return (
       <Container className="mt-4 mb-4">
@@ -37,21 +45,14 @@ const GameShow = ({game, screenshots, addToFavorites, user, games}) => {
           <h6>Released: {game.released}</h6>
           <br/>
 
-          {
-            game.platforms.length > 1 ?
-            <h6 style={{textDecoration: "underline"}}>Platforms:</h6>
-          :
-            <h6 style={{textDecoration: "underline"}}>Platform:</h6>
-          }
+          <h5 style={{textDecoration: "underline"}}>Platform</h5>
+          
           <div className="slide-from-bottom">
-          {
-            game.platforms.map(p => <h6 key={uuidv4()}>{`${p.platform.name}` }</h6>)
-          }
+            {renderGamePlatforms}
           </div>
 
-          {
-            user ?
-
+          { 
+          user ?
             <button type="button" className="btn-nes primary mt-4" onClick={handleFavorite}>Add to Favorites</button>
           :
             <Link to={'/login'}>

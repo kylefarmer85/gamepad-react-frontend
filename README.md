@@ -8,3 +8,5 @@ The Rails backend can be found here: https://github.com/kylefarmer85/gamepad-rai
 
 To use: 
 Clone and navigate to the GamePad Rails backend and run budle install in the terminal. Run rails s in the terminal to connect to localhost:3000. Clone and navigate to GamePad React frontend. Run npm install in the terminal. Run npm start in the terminal and connect to localhost:3001.
+
+Created using the excellent RAWG API - https://rawg.io/apidocs
