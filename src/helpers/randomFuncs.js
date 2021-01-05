@@ -1,6 +1,6 @@
 export const randomConsole = () => {
 
-  const consoles = ["Nintendo Entertainment System", "Sega Genesis", "Game Boy", "Super Nintendo", "PlayStation", "Nintendo 64"]
+  const consoles = ["Nintendo Entertainment System", "Sega Genesis", "Super Nintendo", "PlayStation", "Nintendo 64"]
 
   return consoles[Math.floor(Math.random() * consoles.length)];
 }

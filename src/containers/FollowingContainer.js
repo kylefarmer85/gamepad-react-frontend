@@ -28,7 +28,7 @@ const FollowingContainer = ({followings, nextFollowings, followingsLength}) => {
           <Row>
             <Col>    
               {
-              followingsLength < 3 ?
+              followingsLength < 4 ?
                 null
               :  
                 <button type="button" className="btn-nes secondary" onClick={nextFollowings}>more{'>'}</button>
