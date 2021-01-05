@@ -38,7 +38,7 @@ const Comment = ({id, content, user_id, review_id, username, user_pic, review_us
   return (
     <Media style={mediaStyle}>
      
-      <img onClick={goToUser} className="review-comment-thumb mt-2" src={user_pic} alt="user pic"/>
+      <img onClick={goToUser} className="user-thumb mt-2" src={user_pic} alt="user pic"/>
         
       <Media.Body style={bodyStyle}>
         <p className="comment">{content}</p>

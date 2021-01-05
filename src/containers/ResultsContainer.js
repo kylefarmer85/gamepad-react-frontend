@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Loading from '../components/Loading'
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col'
 import SlicedGame from '../components/SlicedGame'
 import { toast } from 'react-toastify'
 
@@ -42,19 +43,17 @@ const ResultsContainer = (props) => {
   }
 
   return (
-    <Container>
-      
+    <Container fluid className="mt-4 text-center">
+      <h2>Results for {props.match.params.searchTerm}</h2>
         { loading?
-          <div>
-            <Loading />
-          </div>
+
+          <Loading />
         :
-        <>
-          <h2 style={{textAlign: "center", marginTop: "2%"}}>Results for {props.match.params.searchTerm}</h2>
-          <Row className="mr-1" style={{justifyContent: "center"}}>
+        <Row>
+          <Col className="d-flex flex-wrap justify-content-center">
             {renderSearchResults()}
-          </Row>
-        </>
+          </Col>
+        </Row>
         }
       
     </Container>

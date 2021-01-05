@@ -10,19 +10,12 @@ const UserThumb = ({id, username, photo}) => {
     history.push(`/users/${id}/profile`)
   }
 
-  const picStyle = {
-    width: "128px",
-    height: "128px",
-    border: "4px solid white",
-    borderRadius: "3%"
-  }
-
   let photoUrl = `http://localhost:3000${photo}` 
 
   return (
     <div className="m-2 text-center fade-in">
 
-      <img onClick={goToUser} src={photoUrl} style={picStyle} alt="user pic"/>
+      <img className="user-thumb" onClick={goToUser} src={photoUrl} alt="user pic"/>
 
       <h4 onClick={goToUser}>{username}</h4>
 
