@@ -4,6 +4,7 @@ import { fetchUser } from '../actions/user'
 import { Link } from 'react-router-dom'
 import Container from 'react-bootstrap/Container'
 import Form from 'react-bootstrap/Form'
+import GamepadLogo from '../assets/images/gamepad-logo.png'
 
 
 class Login extends Component {
@@ -29,12 +30,11 @@ class Login extends Component {
     })
   }
 
-
   render() {
     return (
 
       <Container style={{width: "50%", marginTop: "5%"}}>  
-
+        
         <h1 style={{textAlign: "center"}}>Login</h1>
 
         <Form onSubmit={this.handleSubmit}>
@@ -56,12 +56,22 @@ class Login extends Component {
             </Link>
 
         </Form>
-
+        
+          <img src={GamepadLogo} style={logoStyle} className="slide-from-bottom" alt="gamepad logo"/>
+      
       </Container> 
     
 
     );
   }
+}
+
+const logoStyle = {
+  height: "75%",
+  width: "75%",
+  paddingTop: "5%",
+  display: "block",
+  margin: "auto"
 }
 
 
