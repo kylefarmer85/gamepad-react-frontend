@@ -40,7 +40,7 @@ const Review = ({ game_name, user_pic, game_api_id, content, rating, username, i
   return (
     <Media style={mediaStyle}>
      
-      <img onClick={goToUser} src={user_pic} className="review-comment-thumb mt-3"alt="user pic"/>
+      <img onClick={goToUser} src={user_pic} className="user-thumb mt-3" alt="user pic"/>
         
       <Media.Body style={bodyStyle}>
 

@@ -21,7 +21,6 @@ class SearchBar extends Component {
     this.setState({
       searchTerm: ""
     })
-    console.log(this.state.searchTerm)
   } 
 
   handleUserSearch = () => {

@@ -15,16 +15,16 @@ const cardStyle = {
   overflow: "hidden"
 }
 
-const SearchResult = (props) => {
+const SearchResult = ({id, background_image, name, released}) => {
   return (
-    <Link to={`/games/${props.id}`}>
-      <Col className="pt-5">
-        <Card style={cardStyle}>
-          <Card.Img style={imgStyle} variant="top" src={props.background_image} />
+    <Link to={`/games/${id}`}>
+      <Col>
+        <Card className="m-4" style={cardStyle}>
+          <Card.Img style={imgStyle} variant="top" src={background_image} />
           <Card.Body>
-            <Card.Title>{props.name}</Card.Title>
+            <Card.Title>{name}</Card.Title>
             <Card.Text>
-              {props.released}
+              {released}
             </Card.Text>
           </Card.Body>
         </Card>    

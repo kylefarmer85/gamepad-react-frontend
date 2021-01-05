@@ -1,11 +1,66 @@
+// import React, { useEffect, useState } from 'react';
+// import Loading from './Loading'
+// import { toast } from 'react-toastify'
+// import history from '../history'
+
+// const UserSearchResult = (props) => {
+
+//   const [loading, setLoading] = useState(true)
+
+//   useEffect(() => {
+//     const reqObj = {
+//       method: 'POST',
+//       headers: {
+//         'Content-Type': 'application/json'
+//       },
+//       body: JSON.stringify({
+//         search_term: props.match.params.searchTerm
+//       })
+//     }
+
+//     fetch("http://localhost:3000/api/v1/users/search", reqObj)
+//     .then(resp => resp.json())
+//     .then(id => {
+//       if (id.error) {
+//         toast.error("No user found matching that name.", {position: "top-center", autoclose: 3000})
+//         history.push('/home')
+
+//       } else {
+//         setLoading(false)
+//         history.push(`/users/${id}/profile`)
+//       }
+//     }) 
+//   }, [props.match.params.searchTerm]);
+
+
+//   return (
+//     <div>
+//       {
+//         loading ?
+//           <Loading />
+//         :
+//           null
+//       }
+//     </div>
+//   );
+// }
+
+// export default UserSearchResult;
+
+
 import React, { useEffect, useState } from 'react';
 import Loading from './Loading'
 import { toast } from 'react-toastify'
 import history from '../history'
+import UserThumb from './UserThumb'
+import Container from 'react-bootstrap/Container'
+import Row from 'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col'
 
 const UserSearchResult = (props) => {
 
   const [loading, setLoading] = useState(true)
+  const [users, setUsers] = useState([])
 
   useEffect(() => {
     const reqObj = {
@@ -20,28 +75,39 @@ const UserSearchResult = (props) => {
 
     fetch("http://localhost:3000/api/v1/users/search", reqObj)
     .then(resp => resp.json())
-    .then(id => {
-      if (id.error) {
+    .then(fetchedUsers => {
+    
+      if (fetchedUsers.length === 0) {
         toast.error("No user found matching that name.", {position: "top-center", autoclose: 3000})
-        history.push('/home')
+        history.push('/')
 
       } else {
+        setUsers(fetchedUsers)
         setLoading(false)
-        history.push(`/users/${id}/profile`)
       }
     }) 
   }, [props.match.params.searchTerm]);
 
+  const renderUsers = () => {
+    return users.map(user => {
+      return <UserThumb key={user.id} {...user} />
+    })
+  }
 
   return (
-    <div>
+    <Container fluid className="mt-4 text-center">
+      <h3>Results for {props.match.params.searchTerm}</h3>
       {
         loading ?
           <Loading />
         :
-          null
+        <Row>
+          <Col className="d-flex flex-wrap justify-content-center">
+            {renderUsers()}
+          </Col>
+        </Row>
       }
-    </div>
+    </Container>
   );
 }
 
