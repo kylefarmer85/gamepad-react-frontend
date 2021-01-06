@@ -2,7 +2,9 @@ GamePad - Old Games, New Friends!
 
 ![](project.gif)
 
-GamePad is a vintage video game social media app. Discover "new" games (nothing past Dreamcast is searchable) and build a collection of favorites. Leave reviews, comments and make new friends that you can follow to track their reviews and favorites! 
+GamePad is a vintage video game social media app. Discover "new" games (nothing past Dreamcast is searchable) and build a collection of favorites. Leave reviews, comments and make new friends that you can follow to track their reviews, ratings and favorite games! 
+
+![Alt text](src/assets/images/gamepad-logo.png?raw=true "Logo")
 
 The Rails backend can be found here: https://github.com/kylefarmer85/gamepad-rails-backend
 
