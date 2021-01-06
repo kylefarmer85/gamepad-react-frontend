@@ -50,11 +50,11 @@ const Review = ({ game_name, user_pic, game_api_id, content, rating, username, i
         <Link to={`/games/${game_api_id}`}>
           {game_name}<br/>
           Rating: {rating}
-        </Link>
+        </Link></p>
 
         <Link to={`/users/${user_id}/profile`}>
-          <br/>by: {username}
-        </Link></p>
+          <p>by: {username}</p>
+        </Link>
           
         {
           user ?

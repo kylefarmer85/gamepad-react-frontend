@@ -45,7 +45,7 @@ const UserSearchResult = (props) => {
   }
 
   return (
-    <Container fluid className="mt-4 text-center">
+    <Container fluid className="m-4 text-center">
       <h3>Results for {props.match.params.searchTerm}</h3>
       <Row>
         <Col className="mt-4 d-flex flex-wrap justify-content-center">

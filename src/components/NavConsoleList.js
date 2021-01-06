@@ -3,7 +3,7 @@ import React from 'react';
 const NavConsoleList = () => {
   return (
     <div style={{fontSize: "0", backgroundColor: "#0275d8"}}>
-      <div style={{fontSize: "7pt", fontWeight: "bold", color: "#C2C5CC", marginLeft: "-6px", display: "block", overflow: "hidden", whiteSpace: "nowrap"}}>
+      <div style={{fontSize: "7pt", fontWeight: "bold", color: "white", marginLeft: "-6px", display: "block", overflow: "hidden", whiteSpace: "nowrap"}}>
         <span> Sega CD</span>
         <span> Atari</span>
         <span> Nintendo Entertainment System</span>

@@ -46,7 +46,7 @@ const ResultsContainer = (props) => {
     <Container fluid className="mt-4 text-center">
       <h2>Results for {props.match.params.searchTerm}</h2>
       <Row>
-        <Col className="mt-4 d-flex flex-wrap justify-content-center">
+        <Col className="m-4 d-flex flex-wrap justify-content-center">
           { 
           loading?
             <Loading />
