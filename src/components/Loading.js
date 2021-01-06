@@ -20,7 +20,7 @@ const randomGif = () => {
 const imgStyle = {
   maxHeight: "150px",
   maxWidth: "150px",
-  margin: "5% auto",
+  margin: "4% auto",
   
 }
 

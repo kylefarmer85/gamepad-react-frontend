@@ -13,17 +13,12 @@ toast.configure()
 
 const GameShow = ({game, screenshots, addToFavorites, user, games}) => {
 
+  const alreadyFavorite = games.find(g => g.game_api_id === game.id)
+
   const handleFavorite = () => {
-
-    const alreadyFavorite = games.find(g => g.game_api_id === game.id)
-
-    if (alreadyFavorite) {
-        return toast.info(`This game is already in ${user.username}'s collection!`, {position: "bottom-center", autoClose: 3000})
-
-    } else {
-      addToFavorites(game.id, game.name, game.background_image, user)
-    }
+    addToFavorites(game.id, game.name, game.background_image, user)
   }
+  
 
   const acceptedPlatformNamesArray = ["Sega Genesis" , "Super Nintendo" , "Dreamcast" , "PlayStation" , "Nintendo 64" , "SNES" , "Genesis" , "Jaguar" , "Game Boy" , "Game Gear" , "SEGA CD" , "SEGA Master System" , "NES" , "Atari 7800" , "Game Boy Color" , "Atari 2600" , "Atari 5200" , "Neo Geo" , "3DO" , "SEGA Saturn"]
 
@@ -53,7 +48,10 @@ const GameShow = ({game, screenshots, addToFavorites, user, games}) => {
 
           { 
           user ?
-            <button type="button" className="btn-nes primary mt-4" onClick={handleFavorite}>Add to Favorites</button>
+            alreadyFavorite ?
+              <button className="btn-nes secondary mt-4">{game.name} is in {user.username}'s Favorites</button>
+            :
+              <button type="button" className="btn-nes primary mt-4" onClick={handleFavorite}>Add to Favorites</button>
           :
             <Link to={'/login'}>
               <button type="button" className="btn-nes primary mt-4">Login to add game to Favorites!</button>

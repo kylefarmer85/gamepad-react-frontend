@@ -22,7 +22,7 @@ const Review = ({ game_name, user_pic, game_api_id, content, rating, username, i
   }
 
   const mediaStyle = {
-    margin: "2% 5%",
+    margin: "20px 6%",
     padding: "10px",
     outline: "solid white 4px",
     textAlign: "left"
@@ -32,7 +32,7 @@ const Review = ({ game_name, user_pic, game_api_id, content, rating, username, i
     padding: "1% 2%",
     overflowWrap: "break-word",
     wordWrap: "break-word",
-    wordBreak: "break_word"
+    wordBreak: "break-word",
   }
 
   const date = new Date(created_at)
@@ -44,16 +44,17 @@ const Review = ({ game_name, user_pic, game_api_id, content, rating, username, i
         
       <Media.Body style={bodyStyle}>
 
-        <p className="review">{content}</p>
+        <strong><p className="review">{content}</p></strong>
         <br/>
+        <p>
         <Link to={`/games/${game_api_id}`}>
-          <h6>{game_name}</h6>
-          <h6>Rating: {rating}</h6>
+          {game_name}<br/>
+          Rating: {rating}
         </Link>
 
         <Link to={`/users/${user_id}/profile`}>
-          <h6>by: {username}</h6>
-        </Link>
+          <br/>by: {username}
+        </Link></p>
           
         {
           user ?
@@ -65,6 +66,7 @@ const Review = ({ game_name, user_pic, game_api_id, content, rating, username, i
           :
             null
         }
+        
         <br/>
 
         <Link to={`/reviews/${id}`}>

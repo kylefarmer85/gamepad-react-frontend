@@ -49,9 +49,11 @@ class Signup extends Component {
 
   render() {
     return (
-      <Container style={{width: "50%", marginTop: "5%"}}>  
-        <h1 style={{textAlign: "center"}}>Signup</h1>
-        <Form onSubmit={this.handleSubmit}>
+      <Container fluid className="mt-5 mb-4 text-center">  
+
+        <h1>Signup</h1>
+
+        <Form style={{width: "35%", margin: "auto"}} onSubmit={this.handleSubmit}>
 
           <Form.Group controlId="formUsername">
             <Form.Control type="text" placeholder="Username" name="username" value={this.state.username} onChange={this.handleChange} />

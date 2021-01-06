@@ -29,7 +29,7 @@ const Comment = ({id, content, user_id, review_id, username, user_pic, review_us
     padding: "1% 2%",
     overflowWrap: "break-word",
     wordWrap: "break-word",
-    wordBreak: "break_word"
+    wordBreak: "break-word"
 
   }
 
@@ -38,19 +38,16 @@ const Comment = ({id, content, user_id, review_id, username, user_pic, review_us
   return (
     <Media style={mediaStyle}>
      
-      <img onClick={goToUser} className="user-thumb mt-2" src={user_pic} alt="user pic"/>
+      <img onClick={goToUser} className="user-thumb" src={user_pic} alt="user pic"/>
         
       <Media.Body style={bodyStyle}>
-        <p className="comment">{content}</p>
-        
+      <strong><p className="comment">{content}</p></strong>
+        <br/>
         <em>response to <Link to={`/users/${review_user_id}/profile`}> {review_username}'s </Link>
-        <Link to={`/reviews/${review_id}`}> review </Link> of <Link to={`/games/${game_api_id}`}> {game_name}</Link></em>
-        
-
-        <Link to={`/users/${user_id}/profile`}>
-          <p>by: {username}</p>
-        </Link>
-          
+        <Link to={`/reviews/${review_id}`}> review </Link> of <Link to={`/games/${game_api_id}`}> {game_name}</Link></em> by: 
+        <Link to={`/users/${user_id}/profile`}> {username}</Link>
+         
+        <br/>
         {
           user ?
             user.id === user_id ?
@@ -61,8 +58,8 @@ const Comment = ({id, content, user_id, review_id, username, user_pic, review_us
           :
             null
         }
+        
         <br/>
-
         <Link to={`/reviews/${review_id}`}>
         {
           created_at ?

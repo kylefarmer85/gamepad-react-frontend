@@ -28,7 +28,7 @@ const FavoriteGame = ({id, gameUserId, game_api_id, name, image, user, removeFav
   }
   
   const pStyle = {
-    margin: "8%",
+    marginTop: "8%",
     textAlign: "center",
   }
   
@@ -52,7 +52,9 @@ return (
           gameUserId === user.id ?
 
             <div style={{position: "absolute", bottom: "0px"}}>
+
               <Button onClick={removeFavorite} variant="outlin-dark" size="sm" style={{fontSize: "8pt"}}>✘ remove</Button>
+
             </div>  
 
           :

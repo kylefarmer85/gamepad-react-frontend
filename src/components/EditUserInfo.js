@@ -49,6 +49,7 @@ class EditUserInfo extends Component {
     })
     .then(resp => resp.json())
     .then(deletedUser => {
+      
       alert(`${deletedUser.username} was deleted`)
       this.props.history.push('/login')
       
@@ -61,10 +62,10 @@ class EditUserInfo extends Component {
   render() {
     return (
 
-      <Container className="mt-4 mb-4" style={{width: "50%"}}>
+      <Container fluid className="mt-5 mb-4 text-center">
                
-        <h1 style={{textAlign: "center"}}>Edit Profile</h1>
-        <Form onSubmit={this.handleSubmit}>
+        <h1>Edit Profile</h1>
+        <Form style={{width: "35%", margin: "auto"}} onSubmit={this.handleSubmit}>
 
           <Form.Group controlId="formUsername">
             <Form.Control type="text" name="username" value={this.state.username} onChange={this.handleChange} />
@@ -135,12 +136,6 @@ class EditUserInfo extends Component {
             <Form.Label>Favorite Game</Form.Label>
               <Form.Control type="text" name="fav_game" value={this.state.fav_game} onChange={this.handleChange} />
           </Form.Group>
-
-          {/* <Button style={{margin: "1%"}} variant="outline-primary" type="submit">Update</Button>
-
-          <Button style={{margin: "1%"}} as={Link} to={`/users/${this.props.user.id}/profile`}>Back to Profile</Button>
-          
-          <Button style={{margin: "1%"}} onClick={this.handleDelete}>Delete Profile</Button> */}
 
           <button type="submit" className="btn-nes primary">Update</button>
 

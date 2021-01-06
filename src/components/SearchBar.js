@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import history from '../history'
+import { toast } from 'react-toastify'
+
 
 class SearchBar extends Component {
   state = {
@@ -16,15 +18,26 @@ class SearchBar extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault()
-    history.push(`/games/search/${this.state.searchTerm}`)
 
+    if (this.state.searchTerm === "") {
+      return toast.error("Search cannot be blank!", {position: "bottom-center"})
+    }
+
+    history.push(`/games/search/${this.state.searchTerm}`)
+      
     this.setState({
       searchTerm: ""
     })
   } 
 
   handleUserSearch = () => {
+
+    if (this.state.searchTerm === "") {
+      return toast.error("Search cannot be blank!", {position: "bottom-center"})
+    }
+
     history.push(`/users/search/${this.state.searchTerm}`)
+
     this.setState({
       searchTerm: ""
     })

@@ -34,8 +34,10 @@ class GameContainer extends Component {
   render() {
     return (
       <div>
-        { this.state.loading ?         
-          <Loading />          
+        { this.state.loading ? 
+          <div style={{marginTop: "7%"}}>       
+            <Loading />  
+          </div>      
         :
           <GameShow game={this.state.gameObj} screenshots={this.state.screenshots}/>
         }
