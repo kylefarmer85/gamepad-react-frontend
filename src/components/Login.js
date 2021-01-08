@@ -73,7 +73,7 @@ class Login extends Component {
 const logoStyle = {
   height: "35%",
   width: "35%",
-  padding: "4% 0%",
+  padding: "3% 0%",
   display: "block",
   margin: "auto",
 }

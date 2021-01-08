@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import Loading from './Loading'
 import { toast } from 'react-toastify'
 import history from '../history'
 import UserThumb from './UserThumb'
@@ -51,7 +50,7 @@ const UserSearchResult = (props) => {
         <Col className="mt-4 d-flex flex-wrap justify-content-center">
           { 
           loading ?
-            <Loading />
+            null
           :
             
             renderUsers()
