@@ -10,13 +10,6 @@ const randomGif = () => {
   return gifs[Math.floor(Math.random() * gifs.length)]
 }
 
-// const imgStyle = {
-//   display: 'block',
-//   margin: '20% auto',
-//   maxHeight: "10em",
-//   maxWidth: "10em"
-// }
-
 const imgStyle = {
   maxHeight: "150px",
   maxWidth: "150px",

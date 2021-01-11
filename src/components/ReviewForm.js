@@ -101,8 +101,7 @@ class ReviewForm extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    user: state.user,
-    reviews: state.reviews
+    user: state.user
   }
 }
 

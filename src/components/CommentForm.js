@@ -78,8 +78,7 @@ class CommentForm extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    user: state.user,
-    comments: state.comments
+    user: state.user
   }
 }
 

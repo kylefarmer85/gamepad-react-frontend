@@ -88,13 +88,6 @@ const GameShow = ({game, screenshots, addToFavorites, user, games}) => {
     ); 
 }
 
-const mapStateToProps = (state) => {
-  return {
-    user: state.user,
-    games: state.games
-  }
-}
-
 const GameDesc = styled.p`
   text-align: left;
   margin-top: 20px;
@@ -164,6 +157,12 @@ const GameClip = styled.video`
   }
 `
 
+const mapStateToProps = (state) => {
+  return {
+    user: state.user,
+    games: state.games
+  }
+}
 
 export default connect (mapStateToProps, { addToFavorites })(GameShow)
 
