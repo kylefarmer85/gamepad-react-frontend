@@ -24,3 +24,11 @@ export const addComment = comment => {
     comment
   }
 }
+
+export const addFetchedComments = comments => {
+  return {
+    type: 'ADD_FETCHED_COMMENTS',
+    comments
+  }
+}
+

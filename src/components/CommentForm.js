@@ -50,7 +50,7 @@ class CommentForm extends Component {
     .then(comment => {
       
       this.props.addComment(comment)
-      this.props.handleAddComment(comment)
+      // this.props.handleAddComment(comment)
 
       toast.success("Comment posted!", {position: "bottom-center", autoClose: 3000})
 

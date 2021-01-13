@@ -14,7 +14,7 @@ const Review = ({ game_name, user_pic, game_api_id, content, rating, username, i
 
   const handleClick = () => {
     deleteReview(id)
-    handleDelete(id)
+    // handleDelete(id)
   }
 
   const goToUser = () => {

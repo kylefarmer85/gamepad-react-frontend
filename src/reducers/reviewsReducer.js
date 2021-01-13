@@ -2,12 +2,20 @@ const reviewsReducer = (state = [], action) => {
 
   switch(action.type) {
 
-    case 'LOGIN_USER':
-      return action.data.reviews
+    // case 'LOGIN_USER':
+    //   return action.data.reviews
 
-      
+
+    case 'ADD_FETCHED_REVIEWS':
+      return action.reviews  
+
+
     case 'ADD_REVIEW':
       return [...state, action.review]
+
+
+    case 'ADD_REVIEWS':
+      return [...state, ...action.reviews]
 
 
     case 'DELETE_REVIEW':
@@ -16,8 +24,43 @@ const reviewsReducer = (state = [], action) => {
       return updatedReviews
 
 
-    case 'CURRENT_USER':
-      return action.data.reviews
+    case 'ADD_COMMENT':
+      const reviewCommentsUpdated = state.map(review => {
+        if (review.id === action.comment.review_id) {
+          return {
+            ...review,
+            comments: [...review.comments, action.comment]
+          }
+        } else {
+          return review
+        }
+      })  
+      
+      return reviewCommentsUpdated  
+
+
+    case 'DELETE_COMMENT':
+      const reviewCommentDeleted = state.map(review => {
+        if (review.id === action.data.review_id) {
+
+          const updatedComments = review.comments.filter(comment => comment.id !== action.data.id)
+            return {
+              ...review,
+              comments: updatedComments
+            }
+        } else {
+          return review
+        }
+      })
+      
+      return reviewCommentDeleted
+
+
+    case 'EMPTY_REVIEWS':
+      return []  
+
+    // case 'CURRENT_USER':
+    //   return action.data.reviews
 
 
     case 'LOGOUT_USER':

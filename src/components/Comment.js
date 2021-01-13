@@ -11,7 +11,7 @@ const Comment = ({id, content, user_id, review_id, username, user_pic, review_us
 
   const handleClick = () => {
     deleteComment(id)
-    handleDeleteComment(id, review_id)
+    // handleDeleteComment(id, review_id)
   }
 
   const goToUser = () => {

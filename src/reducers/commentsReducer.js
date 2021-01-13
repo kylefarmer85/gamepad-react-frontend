@@ -2,12 +2,14 @@ const commentsReducer = (state = [], action) => {
 
   switch(action.type) {
 
-    case 'LOGIN_USER':
-      return action.data.comments
+    // case 'LOGIN_USER':
+    //   return action.data.comments
 
+    case 'ADD_FETCHED_COMMENTS':
+      return action.comments
       
-    case 'ADD_COMMENT':
-      return [...state, action.comment]
+    // case 'ADD_COMMENT':
+    //   return [...state, action.comment]
 
 
     case 'DELETE_COMMENT':
@@ -16,8 +18,8 @@ const commentsReducer = (state = [], action) => {
       return updatedComments
 
 
-    case 'CURRENT_USER':
-      return action.data.comments
+    // case 'CURRENT_USER':
+    //   return action.data.comments
 
 
     case 'LOGOUT_USER':

@@ -24,3 +24,23 @@ export const addReview = review => {
     review
   }
 }
+
+export const addReviews = reviews => {
+  return {
+    type: 'ADD_REVIEWS',
+    reviews
+  }
+}
+
+export const addFetchedReviews = reviews => {
+  return {
+    type: 'ADD_FETCHED_REVIEWS',
+    reviews
+  }
+}
+
+export const emptyReviews = () => {
+  return {
+    type: "EMPTY_REVIEWS"
+  }
+}

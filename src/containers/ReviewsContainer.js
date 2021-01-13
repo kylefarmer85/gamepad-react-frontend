@@ -5,17 +5,20 @@ import ReviewForm from '../components/ReviewForm'
 import Container from 'react-bootstrap/Container'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
+import { emptyReviews, addFetchedReviews } from '../actions/reviews'
 
 class ReviewsContainer extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      reviews: [],
+      // reviews: [],
       loading: true
     }  
   }  
 
   componentDidMount(){
+    this.props.emptyReviews()
+
     const reqObj = {
       method: 'POST',
       headers: {
@@ -28,69 +31,71 @@ class ReviewsContainer extends Component {
     fetch("http://localhost:3000/api/v1/reviews/gamereviews", reqObj)
     .then(resp => resp.json())
     .then(gameReviews => {
-      console.log(gameReviews)
+      
+      this.props.addFetchedReviews(gameReviews)
+
       this.setState({
-        reviews: gameReviews,
         loading: false
       })
     })
   }  
 
 
-  handleDelete = (id) => {
-    const updatedReviews = this.state.reviews.filter(review => {
-      return review.id !== id
-    })
-    this.setState({
-      reviews: updatedReviews
-    })
-  }
+  // handleDelete = (id) => {
+  //   const updatedReviews = this.state.reviews.filter(review => {
+  //     return review.id !== id
+  //   })
+  //   this.setState({
+  //     reviews: updatedReviews
+  //   })
+  // }
 
-  handleAddReview = (review) => {
-    this.setState(prevState => {
-      return {
-        reviews: [...prevState.reviews, review]
-      }
-    })
-  }
+  // handleAddReview = (review) => {
+  //   this.setState(prevState => {
+  //     return {
+  //       reviews: [...prevState.reviews, review]
+  //     }
+  //   })
+  // }
 
 
-  handleAddComment = (comment) => {
-    const reviewCommentsUpdated = this.state.reviews.map(review => {
-      if (review.id === comment.review_id) {
-        return {
-          ...review,
-          comments: [...review.comments, comment]
-        }
-      } else {
-        return review
-      }
-    })
-    this.setState({
-      reviews: reviewCommentsUpdated
-    })
-  }
+  // handleAddComment = (comment) => {
+  //   const reviewCommentsUpdated = this.state.reviews.map(review => {
+  //     if (review.id === comment.review_id) {
+  //       return {
+  //         ...review,
+  //         comments: [...review.comments, comment]
+  //       }
+  //     } else {
+  //       return review
+  //     }
+  //   })
+  //   this.setState({
+  //     reviews: reviewCommentsUpdated
+  //   })
+  // }
 
-  handleDeleteComment = (commentId, reviewId) => {
-    const reviewsCommentDeleted = this.state.reviews.map(review => {
-      if (review.id === reviewId) {
-        const updatedComments = review.comments.filter(comment => comment.id !== commentId)
-        return {
-          ...review,
-          comments: updatedComments
-        }
-      } else {
-        return review
-      }
-    })
-    this.setState({
-      reviews: reviewsCommentDeleted
-    })
-  }
+  // handleDeleteComment = (commentId, reviewId) => {
+  //   const reviewsCommentDeleted = this.state.reviews.map(review => {
+  //     if (review.id === reviewId) {
+  //       const updatedComments = review.comments.filter(comment => comment.id !== commentId)
+  //       return {
+  //         ...review,
+  //         comments: updatedComments
+  //       }
+  //     } else {
+  //       return review
+  //     }
+  //   })
+  //   this.setState({
+  //     reviews: reviewsCommentDeleted
+  //   })
+  // }
 
   renderGameReviews = () => {
-    return this.state.reviews.map(review => {
-      return <Review {...review} key={review.id} handleDelete={this.handleDelete} handleDeleteComment={this.handleDeleteComment} handleAddComment={this.handleAddComment} />
+    return this.props.reviews.map(review => {
+      return <Review {...review} key={review.id} />
+      // handleDelete={this.handleDelete} handleDeleteComment={this.handleDeleteComment} handleAddComment={this.handleAddComment} />
     })
   }
 
@@ -105,7 +110,7 @@ class ReviewsContainer extends Component {
           <div style={{textAlign: "center", marginTop: "3%"}}>
 
             {
-              this.state.reviews.length === 0 ? 
+              this.props.reviews.length === 0 ? 
                 <h3>Leave the first review!</h3>
               :
                 <h3>Reviews</h3>
@@ -135,8 +140,9 @@ class ReviewsContainer extends Component {
 
 const addStateToProps = (state) => {
   return {  
-    user: state.user
+    user: state.user,
+    reviews: state.reviews
   }
 }
 
-export default connect (addStateToProps, null) (ReviewsContainer);
+export default connect (addStateToProps, { emptyReviews, addFetchedReviews }) (ReviewsContainer);

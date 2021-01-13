@@ -53,7 +53,7 @@ class ReviewForm extends Component {
       .then(resp => resp.json())
       .then(review => {
         this.props.addReview(review)
-        this.props.handleAddReview(review)
+        // this.props.handleAddReview(review)
 
         toast.success("Review posted!", {position: "bottom-center", autoClose: 3000})
 

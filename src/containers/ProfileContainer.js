@@ -13,6 +13,8 @@ import FollowingContainer from './FollowingContainer'
 import FavoritesContainer from './FavoritesContainer'
 import ProfilePicCard from '../components/ProfilePicCard'
 import Comment from '../components/Comment'
+import { addFetchedReviews, emptyReviews } from '../actions/reviews';
+import { addFetchedComments } from '../actions/comments'
 
 
 const ProfileContainer = (props) => {
@@ -29,6 +31,7 @@ const ProfileContainer = (props) => {
 
 
   useEffect(() => {
+
     fetch(`http://localhost:3000/api/v1/users/${props.match.params.id}`)
     .then(resp => resp.json())
     .then(user => {
@@ -37,6 +40,9 @@ const ProfileContainer = (props) => {
       
       } else {
         console.log(user)
+
+        props.addFetchedReviews(user.reviews)
+        props.addFetchedComments(user.comments)
 
         setUser(user)
         setLoading(false)
@@ -80,80 +86,84 @@ const ProfileContainer = (props) => {
   }
 
 
-  const handleDelete = (id) => {
-    const updatedReviews = user.reviews.filter(r => {
-      return r.id !== id
-    })
+  // const handleDelete = (id) => {
+  //   const updatedReviews = user.reviews.filter(r => {
+  //     return r.id !== id
+  //   })
 
-    setUser(prevState => {
-      return {
-        ...prevState,
-        reviews: updatedReviews
-      }
-    })
-  }
+  //   setUser(prevState => {
+  //     return {
+  //       ...prevState,
+  //       reviews: updatedReviews
+  //     }
+  //   })
+  // }
 
 
-  const handleAddComment = (comment) => {
-    const reviewCommentsUpdated = user.reviews.map(review => {
-      if (review.id === comment.review_id) {
-        return {
-          ...review,
-          comments: [...review.comments, comment]
-        }
-      } else {
-        return review
-      }
-    })
-    setUser(prevState => {
-      return {
-        ...prevState,
-        reviews: reviewCommentsUpdated
-      }
-    })
-  }
+  // const handleAddComment = (comment) => {
+  //   const reviewCommentsUpdated = user.reviews.map(review => {
+  //     if (review.id === comment.review_id) {
+  //       return {
+  //         ...review,
+  //         comments: [...review.comments, comment]
+  //       }
+  //     } else {
+  //       return review
+  //     }
+  //   })
+  //   setUser(prevState => {
+  //     return {
+  //       ...prevState,
+  //       reviews: reviewCommentsUpdated
+  //     }
+  //   })
+  // }
 
-  const handleDeleteComment = (commentId, reviewId) => {
-    const reviewsCommentDeleted = user.reviews.map(review => {
-      if (review.id === reviewId) {
-        const updatedComments = review.comments.filter(comment => comment.id !== commentId)
-        return {
-          ...review,
-          comments: updatedComments
-        }
-      } else {
-        return review
-      }
-    })
-    setUser({
-      ...user,
-      reviews: reviewsCommentDeleted
-    })
-  }
+  // const handleDeleteComment = (commentId, reviewId) => {
+  //   const reviewsCommentDeleted = user.reviews.map(review => {
+  //     if (review.id === reviewId) {
+  //       const updatedComments = review.comments.filter(comment => comment.id !== commentId)
+  //       return {
+  //         ...review,
+  //         comments: updatedComments
+  //       }
+  //     } else {
+  //       return review
+  //     }
+  //   })
+  //   setUser({
+  //     ...user,
+  //     reviews: reviewsCommentDeleted
+  //   })
+  // }
 
-  const handleDeleteFromUserComment = (commentId) => {
-    const updatedComments = user.comments.filter(comment => {
-      return comment.id !== commentId
-    })
-    setUser({
-      ...user,
-      comments: updatedComments
-    })
-  }
+  // const handleDeleteFromUserComment = (commentId) => {
+  //   const updatedComments = user.comments.filter(comment => {
+  //     return comment.id !== commentId
+  //   })
+  //   setUser({
+  //     ...user,
+  //     comments: updatedComments
+  //   })
+  // }
 
   const toggleShowReviews = () => {
     setShowReviews(prevState => !prevState) 
   }
 
   const renderReviews = () => {
-    return user.reviews.map(review => {
-      return <Review {...review} key={review.id} handleDelete={handleDelete} handleDeleteComment={handleDeleteComment} handleAddComment={handleAddComment} />
+    return props.reviews.map(review => {
+      return <Review {...review} key={review.id} />
+      // handleDelete={handleDelete} handleDeleteComment={handleDeleteComment} handleAddComment={handleAddComment} />
     })
   }
 
+
+
   const renderComments = () => {
-    return user.comments.map(comment => {
-      return <Comment {...comment} key={comment.id} handleDeleteComment={handleDeleteFromUserComment} />
+    return props.comments.map(comment => {
+      return <Comment {...comment} key={comment.id} />
+      // handleDeleteComment={handleDeleteFromUserComment} />
     })
   }
 
@@ -340,12 +350,12 @@ const ProfileContainer = (props) => {
 
                   {
                     showReviews ?
-                      user.reviews.length > 0 ?
+                      props.reviews.length > 0 ?
                         renderReviews()  
                       :
                         <p>No reviews yet.</p>
                     : 
-                      user.comments.length > 0 ?
+                      props.comments.length > 0 ?
                         renderComments()
                       :
                         <p>No comments yet.</p>
@@ -364,8 +374,10 @@ const ProfileContainer = (props) => {
 
   const mapStateToProps = (state) => {
     return {
-      user: state.user
+      user: state.user,
+      reviews: state.reviews,
+      comments: state.comments
     }
   }
   
-export default connect(mapStateToProps, null) (ProfileContainer);
+export default connect(mapStateToProps, { addFetchedReviews, addFetchedComments, emptyReviews }) (ProfileContainer);
