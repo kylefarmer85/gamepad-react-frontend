@@ -13,8 +13,9 @@ import FollowingContainer from './FollowingContainer'
 import FavoritesContainer from './FavoritesContainer'
 import ProfilePicCard from '../components/ProfilePicCard'
 import Comment from '../components/Comment'
-import { addFetchedReviews } from '../actions/reviews';
+import { addFetchedReviews } from '../actions/reviews'
 import { addFetchedComments } from '../actions/comments'
+import API from '../API'
 
 
 const ProfileContainer = ({addFetchedReviews, addFetchedComments, authUser, reviews, comments, match}) => {
@@ -32,7 +33,7 @@ const ProfileContainer = ({addFetchedReviews, addFetchedComments, authUser, revi
 
   useEffect(() => {
 
-    fetch(`http://localhost:3000/api/v1/users/${match.params.id}`)
+    fetch(`${API}/api/v1/users/${match.params.id}`)
     .then(resp => resp.json())
     .then(user => {
       if (user.error) {
@@ -150,7 +151,7 @@ const ProfileContainer = ({addFetchedReviews, addFetchedComments, authUser, revi
   
   const removeFavoriteFromProfile = (gameId) => {
     const updatedGames = user.games.filter(game => {
-    return game.id !== gameId
+      return game.id !== gameId
     })
     setUser({
       ...user,
@@ -159,7 +160,7 @@ const ProfileContainer = ({addFetchedReviews, addFetchedComments, authUser, revi
   }
 
 
-  let photoUrl = `http://localhost:3000${user.photo}`
+  let photoUrl = `${API}/${user.photo}`
 
   return (
     <div>

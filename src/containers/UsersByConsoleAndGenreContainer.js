@@ -4,6 +4,7 @@ import Form from 'react-bootstrap/Form'
 import Container from 'react-bootstrap/Container'
 import Col from 'react-bootstrap/Col'
 import Row from 'react-bootstrap/Row'
+import API from '../API'
 
 
 class UsersByConsoleAndGenreContainer extends Component {
@@ -31,7 +32,7 @@ class UsersByConsoleAndGenreContainer extends Component {
       })
     }
 
-    fetch(`http://localhost:3000/api/v1/users/searchbyconsoleandgenre`, reqObj)
+    fetch(`${API}/api/v1/users/searchbyconsoleandgenre`, reqObj)
     .then(resp => resp.json())
     .then(data => {
       if (data.error) {

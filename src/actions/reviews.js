@@ -1,9 +1,11 @@
 import { toast } from 'react-toastify'
+import API from '../API'
+
 
 export function deleteReview(id) {
   return(dispatch) => {
 
-    fetch(`http://localhost:3000/api/v1/reviews/${id}`, {
+    fetch(`${API}/api/v1/reviews/${id}`, {
       method: 'DELETE'
     })
     .then(resp => resp.json())

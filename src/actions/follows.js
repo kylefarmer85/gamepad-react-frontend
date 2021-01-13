@@ -1,4 +1,5 @@
 import { toast } from "react-toastify"
+import API from '../API'
 
 export function followUser(followedUserId, followerId) {
   return(dispatch) => {
@@ -14,7 +15,7 @@ export function followUser(followedUserId, followerId) {
       })
     }
 
-    fetch("http://localhost:3000/api/v1/users/following", reqObj)
+    fetch(`${API}/api/v1/users/following`, reqObj)
     .then(resp => resp.json())
     .then(followedUser => {
       if(followedUser.error) {
@@ -42,7 +43,7 @@ export function unfollowUser(followedUserId, followerId) {
       })
     }
 
-    fetch("http://localhost:3000/api/v1/users/unfollow", reqObj)
+    fetch(`${API}/api/v1/users/unfollow`, reqObj)
     .then(resp => resp.json())
     .then(unfollowedUser => {
 

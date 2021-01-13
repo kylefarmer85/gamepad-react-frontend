@@ -1,5 +1,7 @@
 import history from '../history'
 import { toast } from  'react-toastify'
+import API from '../API'
+
 
 export const logoutUser = () => {
   return {
@@ -35,7 +37,7 @@ export function fetchUser(userObj) {
       })
     }
 
-    fetch("http://localhost:3000/api/v1/auth", reqObj)
+    fetch(`${API}/api/v1/auth`, reqObj)
     .then(resp => resp.json())
     .then(data => {
       if (data.error) {
@@ -74,7 +76,7 @@ export function signupUser(userObj) {
       body: formData
     }
 
-    fetch("http://localhost:3000/api/v1/users", reqObj)
+    fetch(`${API}/api/v1/users`, reqObj)
     .then(resp => resp.json())
     .then(data => {
       if (data.error) {
@@ -112,7 +114,7 @@ export function updateUser(userObj) {
       body: formData
     }
 
-    fetch(`http://localhost:3000/api/v1/users/${userObj.id}`, reqObj)
+    fetch(`${API}/api/v1/users/${userObj.id}`, reqObj)
     .then(resp => resp.json())
     .then(data => {
       if (data.error) {

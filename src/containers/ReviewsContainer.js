@@ -6,6 +6,7 @@ import Container from 'react-bootstrap/Container'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { addFetchedReviews } from '../actions/reviews'
+import API from '../API'
 
 class ReviewsContainer extends Component {
   constructor(props) {
@@ -25,7 +26,7 @@ class ReviewsContainer extends Component {
         game_api_id: this.props.gameApiId,
       })
     }
-    fetch("http://localhost:3000/api/v1/reviews/gamereviews", reqObj)
+    fetch(`${API}/api/v1/reviews/gamereviews`, reqObj)
     .then(resp => resp.json())
     .then(gameReviews => {
       

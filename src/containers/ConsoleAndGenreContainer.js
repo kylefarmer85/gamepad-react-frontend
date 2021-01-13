@@ -6,6 +6,7 @@ import Container from 'react-bootstrap/Container'
 import Col from 'react-bootstrap/Col'
 import Row from 'react-bootstrap/Row'
 import Loading from '../components/Loading'
+import API from '../API'
 
 
 class ConsoleAndGenreContainer extends Component {
@@ -33,7 +34,7 @@ class ConsoleAndGenreContainer extends Component {
       })
     }
 
-    fetch(`http://localhost:3000/api/v1/games/consoleandgenre`, reqObj)
+    fetch(`${API}/api/v1/games/consoleandgenre`, reqObj)
     .then(resp => resp.json())
     .then(data => {
       if (data.error) {

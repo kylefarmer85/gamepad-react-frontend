@@ -5,6 +5,8 @@ import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import SlicedGame from '../components/SlicedGame'
 import { toast } from 'react-toastify'
+import API from '../API'
+
 
 const ResultsContainer = (props) => {
 
@@ -22,7 +24,7 @@ const ResultsContainer = (props) => {
       })
     }
 
-    fetch("http://localhost:3000/api/v1/games/search", reqObj)
+    fetch(`${API}/api/v1/games/search`, reqObj)
     .then(resp => resp.json())
     .then(data => {
       setSearchResults(data.results)

@@ -4,6 +4,7 @@ import Container from 'react-bootstrap/Container'
 import Col from 'react-bootstrap/Col'
 import Row from 'react-bootstrap/Row'
 import { connect } from 'react-redux'
+import API from '../API'
 
 
 class HighestRatedByFollowingsContainer extends Component {
@@ -28,7 +29,7 @@ class HighestRatedByFollowingsContainer extends Component {
       })
     }
 
-    fetch(`http://localhost:3000/api/v1/games/highestratedbyfollowings`, reqObj)
+    fetch(`${API}/api/v1/games/highestratedbyfollowings`, reqObj)
     .then(resp => resp.json())
     .then(data => {
       if (data.error) {

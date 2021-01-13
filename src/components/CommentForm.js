@@ -3,6 +3,7 @@ import Form from 'react-bootstrap/Form'
 import { connect } from 'react-redux'
 import { addComment } from '../actions/comments'
 import { toast } from 'react-toastify'
+import API from '../API'
 
 
 class CommentForm extends Component {
@@ -26,7 +27,7 @@ class CommentForm extends Component {
       return toast.error("Please enter a comment!", {position: "bottom-center", autoClose: 3000})
     }
     
-    let photoUrl = `http://localhost:3000/${this.props.user.photo}`
+    let photoUrl = `${API}/${this.props.user.photo}`
 
     const reqObj = {
       method: 'POST',
@@ -45,7 +46,7 @@ class CommentForm extends Component {
         game_api_id: this.props.gameApiId,
       })
     }
-    fetch(`http://localhost:3000/api/v1/comments`, reqObj)
+    fetch(`${API}/api/v1/comments`, reqObj)
     .then(resp => resp.json())
     .then(comment => {
       

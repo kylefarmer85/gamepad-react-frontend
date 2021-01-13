@@ -1,4 +1,5 @@
 import { toast } from 'react-toastify'
+import API from '../API'
 
 export function addToFavorites(gameApiId, gameName, gameImage, user) {
   return(dispatch) => {
@@ -16,7 +17,7 @@ export function addToFavorites(gameApiId, gameName, gameImage, user) {
       })
     }
 
-    fetch("http://localhost:3000/api/v1/games/favorites", reqObj)
+    fetch(`${API}/api/v1/games/favorites`, reqObj)
     .then(resp => resp.json())
     .then(game => {
       console.log(game)
@@ -45,7 +46,7 @@ export function removeFromFavorites(id, user, name) {
       })
     }
 
-    fetch(`http://localhost:3000/api/v1/favorites/remove`, reqObj)
+    fetch(`${API}/api/v1/favorites/remove`, reqObj)
 
     .then(resp => resp.json())
     .then(favorite => {
