@@ -13,11 +13,11 @@ import FollowingContainer from './FollowingContainer'
 import FavoritesContainer from './FavoritesContainer'
 import ProfilePicCard from '../components/ProfilePicCard'
 import Comment from '../components/Comment'
-import { addFetchedReviews, emptyReviews } from '../actions/reviews';
+import { addFetchedReviews } from '../actions/reviews';
 import { addFetchedComments } from '../actions/comments'
 
 
-const ProfileContainer = (props) => {
+const ProfileContainer = ({addFetchedReviews, addFetchedComments, authUser, reviews, comments, match}) => {
 
   const [loading, setLoading] = useState(true)
   const [user, setUser] = useState({})
@@ -32,7 +32,7 @@ const ProfileContainer = (props) => {
 
   useEffect(() => {
 
-    fetch(`http://localhost:3000/api/v1/users/${props.match.params.id}`)
+    fetch(`http://localhost:3000/api/v1/users/${match.params.id}`)
     .then(resp => resp.json())
     .then(user => {
       if (user.error) {
@@ -41,14 +41,14 @@ const ProfileContainer = (props) => {
       } else {
         console.log(user)
 
-        props.addFetchedReviews(user.reviews)
-        props.addFetchedComments(user.comments)
+        addFetchedReviews(user.reviews)
+        addFetchedComments(user.comments)
 
         setUser(user)
         setLoading(false)
       }
     })
-  }, [props.match.params.id]);
+  }, [match.params.id, addFetchedReviews, addFetchedComments]);
 
 
   const slicedGames = () => {
@@ -96,14 +96,14 @@ const ProfileContainer = (props) => {
 
 
   const renderReviews = () => {
-    return props.reviews.map(review => {
+    return reviews.map(review => {
       return <Review {...review} key={review.id} />
     })
   }
 
 
   const renderComments = () => {
-    return props.comments.map(comment => {
+    return comments.map(comment => {
       return <Comment {...comment} key={comment.id} />
     })
   }
@@ -113,7 +113,7 @@ const ProfileContainer = (props) => {
     setUser(prevState => {
       return {
         ...prevState,
-        followers: [...prevState.followers, props.user]
+        followers: [...prevState.followers, authUser]
       }
     })
   }
@@ -121,7 +121,7 @@ const ProfileContainer = (props) => {
 
   const removeFollowerFromProfile = () => {
     const updatedFollowers = user.followers.filter(f => {
-    return f.id !== props.user.id
+    return f.id !== authUser.id
     })
 
     setUser(prevState => {
@@ -175,15 +175,15 @@ const ProfileContainer = (props) => {
               <ProfilePicCard username={user.username} profilePic={photoUrl} favConsole={user.fav_console} favGenre={user.fav_genre} favGame={user.fav_game} />
 
               {
-                props.user ?
-                  props.user.id === user.id ?
+                authUser ?
+                  authUser.id === user.id ?
               
-                    <Link to={`/users/${props.user.id}/edit`}>
+                    <Link to={`/users/${authUser.id}/edit`}>
                       <button type="button" className="btn-nes primary">Edit User Info</button>
                     </Link>  
             
                   :
-                    <FollowButton followedUserId={user.id} followerId={props.user.id} addFollowerToProfile={addFollowerToProfile} removeFollowerFromProfile={removeFollowerFromProfile}/>
+                    <FollowButton followedUserId={user.id} followerId={authUser.id} addFollowerToProfile={addFollowerToProfile} removeFollowerFromProfile={removeFollowerFromProfile}/>
                 :
                 <>
                   <br/>
@@ -296,12 +296,12 @@ const ProfileContainer = (props) => {
 
                   {
                     showReviews ?
-                      props.reviews.length > 0 ?
+                      reviews.length > 0 ?
                         renderReviews()  
                       :
                         <p>No reviews yet.</p>
                     : 
-                      props.comments.length > 0 ?
+                      comments.length > 0 ?
                         renderComments()
                       :
                         <p>No comments yet.</p>
@@ -318,12 +318,12 @@ const ProfileContainer = (props) => {
   );
 }
 
-  const mapStateToProps = (state) => {
+  const mapStateToProps = state => {
     return {
-      user: state.user,
+      authUser: state.user,
       reviews: state.reviews,
       comments: state.comments
     }
   }
   
-export default connect(mapStateToProps, { addFetchedReviews, addFetchedComments, emptyReviews }) (ProfileContainer);
+export default connect(mapStateToProps, { addFetchedReviews, addFetchedComments }) (ProfileContainer);

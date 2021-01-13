@@ -5,13 +5,12 @@ import { deleteComment } from '../actions/comments'
 import { Link } from 'react-router-dom'
 import { useHistory } from "react-router-dom"
 
-const Comment = ({id, content, user_id, review_id, username, user_pic, review_username, review_user_id, game_name, game_api_id, created_at, deleteComment, handleDeleteComment, user }) => {
+const Comment = ({id, content, user_id, review_id, username, user_pic, review_username, review_user_id, game_name, game_api_id, created_at, deleteComment, user }) => {
 
   let history = useHistory()  
 
   const handleClick = () => {
     deleteComment(id)
-    // handleDeleteComment(id, review_id)
   }
 
   const goToUser = () => {
@@ -51,8 +50,7 @@ const Comment = ({id, content, user_id, review_id, username, user_pic, review_us
         {
           user ?
             user.id === user_id ?
-              <button type="button" className="btn-nes delete" onClick={handleClick}>Delete Comment</button>
-           
+              <button type="button" className="btn-nes delete" onClick={handleClick}>Delete Comment</button>   
             :
               null
           :

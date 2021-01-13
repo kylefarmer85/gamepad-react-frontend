@@ -8,13 +8,12 @@ import { useHistory } from "react-router-dom"
 import Accordion from 'react-bootstrap/Accordion'
 import CommentsContainer from '../containers/CommentsContainer'
 
-const Review = ({ game_name, user_pic, game_api_id, content, rating, username, id, created_at, user_id, user, comments, deleteReview, handleDelete, handleAddComment, handleDeleteComment }) => {
+const Review = ({ game_name, user_pic, game_api_id, content, rating, username, id, created_at, user_id, user, comments, deleteReview }) => {
 
   let history = useHistory()  
 
   const handleClick = () => {
     deleteReview(id)
-    // handleDelete(id)
   }
 
   const goToUser = () => {
@@ -85,7 +84,7 @@ const Review = ({ game_name, user_pic, game_api_id, content, rating, username, i
       
           <Accordion.Collapse eventKey="0">
             
-            <CommentsContainer comments={comments} reviewId={id} reviewUsername={username} reviewUserId={user_id} gameName={game_name} gameApiId={game_api_id} handleAddComment={handleAddComment} handleDeleteComment={handleDeleteComment} />
+            <CommentsContainer comments={comments} reviewId={id} reviewUsername={username} reviewUserId={user_id} gameName={game_name} gameApiId={game_api_id} />
 
           </Accordion.Collapse>
         </Accordion>

@@ -4,11 +4,11 @@ import Comment from '../components/Comment'
 import CommentForm from '../components/CommentForm'
 import { Link } from 'react-router-dom'
 
-const CommentsContainer = ({comments, reviewId, reviewUserId, reviewUsername, gameName, gameApiId, handleDeleteComment, handleAddComment, user}) => {
+const CommentsContainer = ({comments, reviewId, reviewUserId, reviewUsername, gameName, gameApiId, user}) => {
 
   const renderComments = () => {
     return comments.map(comment => {
-      return <Comment {...comment} handleDeleteComment={handleDeleteComment} key={comment.id}/>
+      return <Comment {...comment} key={comment.id}/>
     })
   }
 
@@ -18,7 +18,7 @@ const CommentsContainer = ({comments, reviewId, reviewUserId, reviewUsername, ga
 
       {
       user ?
-        <CommentForm reviewUsername={reviewUsername} reviewUserId={reviewUserId} reviewId={reviewId} gameName={gameName} gameApiId={gameApiId} handleAddComment={handleAddComment} />
+        <CommentForm reviewUsername={reviewUsername} reviewUserId={reviewUserId} reviewId={reviewId} gameName={gameName} gameApiId={gameApiId} />
       :
         <Link to="/login">
           <button type="button" className="btn-nes primary mt-4">Login to add a comment!</button>

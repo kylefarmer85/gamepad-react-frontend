@@ -5,7 +5,7 @@ import ReviewForm from '../components/ReviewForm'
 import Container from 'react-bootstrap/Container'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { emptyReviews, addFetchedReviews } from '../actions/reviews'
+import { addFetchedReviews } from '../actions/reviews'
 
 class ReviewsContainer extends Component {
   constructor(props) {
@@ -16,8 +16,6 @@ class ReviewsContainer extends Component {
   }  
 
   componentDidMount(){
-    this.props.emptyReviews()
-
     const reqObj = {
       method: 'POST',
       headers: {
@@ -70,7 +68,7 @@ class ReviewsContainer extends Component {
         {
           this.props.user ?
         
-          <ReviewForm gameApiId={this.props.gameApiId} gameName={this.props.gameName} gameImage={this.props.gameImage} handleAddReview={this.handleAddReview} />
+          <ReviewForm gameApiId={this.props.gameApiId} gameName={this.props.gameName} gameImage={this.props.gameImage} />
 
         :
           <Link to="/login">
@@ -91,4 +89,4 @@ const addStateToProps = (state) => {
   }
 }
 
-export default connect (addStateToProps, { emptyReviews, addFetchedReviews }) (ReviewsContainer);
+export default connect (addStateToProps, { addFetchedReviews }) (ReviewsContainer);
