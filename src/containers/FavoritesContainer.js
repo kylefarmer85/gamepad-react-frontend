@@ -1,14 +1,19 @@
 import React from 'react';
-import FavoriteGame from '../components/FavoriteGame'
+import FavoriteGame from '../components/FavoriteGame';
 
 const FavoritesContainer = (props) => {
-
-  const renderFavorites = props.slicedFavorites.map(game => {
-    return <FavoriteGame {...game} gameUserId={props.gameUserId} removeFavoriteFromProfile={props.removeFavoriteFromProfile} key={game.id} />
-  })
-  return (
-      renderFavorites
-  );
-}
+  
+  const renderFavorites = props.slicedFavorites.map((game) => {
+    return (
+      <FavoriteGame
+        {...game}
+        gameUserId={props.gameUserId}
+        removeFavoriteFromProfile={props.removeFavoriteFromProfile}
+        key={game.id}
+      />
+    );
+  });
+  return renderFavorites;
+};
 
 export default FavoritesContainer;

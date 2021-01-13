@@ -1,69 +1,61 @@
 const reviewsReducer = (state = [], action) => {
-
-  switch(action.type) {
-
+  switch (action.type) {
     case 'ADD_FETCHED_REVIEWS':
-      return action.reviews  
-
+      return action.reviews;
 
     case 'ADD_REVIEW':
-      return [...state, action.review]
-
+      return [...state, action.review];
 
     case 'ADD_REVIEWS':
-      return [...state, ...action.reviews]
-
+      return [...state, ...action.reviews];
 
     case 'DELETE_REVIEW':
+      const updatedReviews = state.filter(
+        (review) => review.id !== action.data.id
+      );
 
-      const updatedReviews = state.filter(review => review.id !== action.data.id)
-
-      return updatedReviews
-
+      return updatedReviews;
 
     case 'ADD_COMMENT':
-
-      const reviewCommentsUpdated = state.map(review => {
+      const reviewCommentsUpdated = state.map((review) => {
         if (review.id === action.comment.review_id) {
           return {
             ...review,
-            comments: [...review.comments, action.comment]
-          }
+            comments: [...review.comments, action.comment],
+          };
         } else {
-          return review
+          return review;
         }
-      })  
-      
-      return reviewCommentsUpdated  
+      });
 
+      return reviewCommentsUpdated;
 
     case 'DELETE_COMMENT':
-
-      const reviewCommentDeleted = state.map(review => {
+      const reviewCommentDeleted = state.map((review) => {
         if (review.id === action.data.review_id) {
-
-          const updatedComments = review.comments.filter(comment => comment.id !== action.data.id)
-            return {
-              ...review,
-              comments: updatedComments
-            }
+          const updatedComments = review.comments.filter(
+            (comment) => comment.id !== action.data.id
+          );
+          return {
+            ...review,
+            comments: updatedComments,
+          };
         } else {
-          return review
+          return review;
         }
-      })
-      
-      return reviewCommentDeleted
+      });
 
+      return reviewCommentDeleted;
 
     case 'EMPTY_REVIEWS':
-      return []  
+      return [];
 
     case 'LOGOUT_USER':
-      return []      
+      return [];
 
-    default: 
-    return state
+    default:
+      return state;
   }
-}
+};
 
-export default reviewsReducer
+export default reviewsReducer;

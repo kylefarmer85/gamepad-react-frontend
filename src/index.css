@@ -17,7 +17,6 @@ body {
 }
 
 
-
 *:not(span) {
   color: white
 }
@@ -88,6 +87,7 @@ p {
   font-size: 10pt;
 }
 
+
 .card {
   margin: 1%;
   padding: 1.3%;
@@ -103,6 +103,7 @@ p {
   transform: translateY(3px);
 }
 
+
 .user-thumb {
   width: 128px;
   height: 128px;
@@ -114,6 +115,7 @@ p {
   box-shadow: 4px 3px #0275d8;
   transform: translateY(1px);
 }
+
 
 @media (max-width: 800px) {
   .user-thumb{  

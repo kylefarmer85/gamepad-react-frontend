@@ -1,82 +1,80 @@
 import React, { Component } from 'react';
-import Loading from '../components/Loading'
-import Review from '../components/Review'
-import ReviewForm from '../components/ReviewForm'
-import Container from 'react-bootstrap/Container'
-import { connect } from 'react-redux'
-import { Link } from 'react-router-dom'
-import { addFetchedReviews } from '../actions/reviews'
-import API from '../API'
+import Loading from '../components/Loading';
+import Review from '../components/Review';
+import ReviewForm from '../components/ReviewForm';
+import Container from 'react-bootstrap/Container';
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { addFetchedReviews } from '../actions/reviews';
+import API from '../API';
 
 class ReviewsContainer extends Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
-      loading: true
-    }  
-  }  
+      loading: true,
+    };
+  }
 
-  componentDidMount(){
+  componentDidMount() {
     const reqObj = {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify({
         game_api_id: this.props.gameApiId,
-      })
-    }
+      }),
+    };
     fetch(`${API}/api/v1/reviews/gamereviews`, reqObj)
-    .then(resp => resp.json())
-    .then(gameReviews => {
-      
-      this.props.addFetchedReviews(gameReviews)
+      .then((resp) => resp.json())
+      .then((gameReviews) => {
+        
+        this.props.addFetchedReviews(gameReviews);
 
-      this.setState({
-        loading: false
-      })
-    })
-  }  
+        this.setState({
+          loading: false,
+        });
+      });
+  }
 
   renderGameReviews = () => {
-    return this.props.reviews.map(review => {
-      return <Review {...review} key={review.id} />
-    })
-  }
+    return this.props.reviews.map((review) => {
+      return <Review {...review} key={review.id} />;
+    });
+  };
 
   render() {
     return (
       <div>
         <Container>
-        {
-          this.state.loading ?
-          <Loading />
-        :
-          <div style={{textAlign: "center", marginTop: "3%"}}>
-
-            {
-              this.props.reviews.length === 0 ? 
+          {this.state.loading ? (
+            <Loading />
+          ) : (
+            <div style={{ textAlign: 'center', marginTop: '3%' }}>
+              {this.props.reviews.length === 0 ? (
                 <h3>Leave the first review!</h3>
-              :
+              ) : (
                 <h3>Reviews</h3>
-            }
+              )}
 
-            { this.renderGameReviews() }
+              {this.renderGameReviews()}
+            </div>
+          )}
 
-          </div>
-        }
-
-        {
-          this.props.user ?
-        
-          <ReviewForm gameApiId={this.props.gameApiId} gameName={this.props.gameName} gameImage={this.props.gameImage} />
-
-        :
-          <Link to="/login">
-            <button type="button" className="btn-nes primary mt-3">Login to add a review!</button>
-          </Link>
-        } 
-
+          {this.props.user ? (
+            <ReviewForm
+              gameApiId={this.props.gameApiId}
+              gameName={this.props.gameName}
+              gameImage={this.props.gameImage}
+            />
+          ) : (
+            <Link to='/login'>
+              <button type='button' className='btn-nes primary mt-3'>
+                Login to add a review!
+              </button>
+            </Link>
+          )}
         </Container>
       </div>
     );
@@ -84,10 +82,12 @@ class ReviewsContainer extends Component {
 }
 
 const addStateToProps = (state) => {
-  return {  
+  return {
     user: state.user,
-    reviews: state.reviews
-  }
-}
+    reviews: state.reviews,
+  };
+};
 
-export default connect (addStateToProps, { addFetchedReviews }) (ReviewsContainer);
+export default connect(addStateToProps, { addFetchedReviews })(
+  ReviewsContainer
+);

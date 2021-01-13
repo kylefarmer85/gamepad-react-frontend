@@ -1,91 +1,93 @@
 import React, { Component } from 'react';
-import SearchedUsersContainer from './SearchedUsersContainer'
-import Form from 'react-bootstrap/Form'
-import Container from 'react-bootstrap/Container'
-import Col from 'react-bootstrap/Col'
-import Row from 'react-bootstrap/Row'
-import API from '../API'
-
+import SearchedUsersContainer from './SearchedUsersContainer';
+import Form from 'react-bootstrap/Form';
+import Container from 'react-bootstrap/Container';
+import Col from 'react-bootstrap/Col';
+import Row from 'react-bootstrap/Row';
+import API from '../API';
 
 class UsersByConsoleAndGenreContainer extends Component {
   state = {
-    console: "Super Nintendo",
-    genre: "Platformer",
+    console: 'Super Nintendo',
+    genre: 'Platformer',
     users: [],
     index: 0,
-    loading: true
-  }
+    loading: true,
+  };
 
-  componentDidMount(){
-    this.fetchUsers()
+  componentDidMount() {
+    this.fetchUsers();
   }
 
   fetchUsers = () => {
     const reqObj = {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify({
         console: this.state.console,
-        genre: this.state.genre
-      })
-    }
+        genre: this.state.genre,
+      }),
+    };
 
     fetch(`${API}/api/v1/users/searchbyconsoleandgenre`, reqObj)
-    .then(resp => resp.json())
-    .then(data => {
-      if (data.error) {
-        alert(data.error)
-      } else {
-
-        this.setState({
-          users: data,
-          loading: false
-        })
-      }
-    })
-  }
+      .then((resp) => resp.json())
+      .then((data) => {
+        if (data.error) {
+          alert(data.error);
+        } else {
+          this.setState({
+            users: data,
+            loading: false,
+          });
+        }
+      });
+  };
 
   handleSubmit = (e) => {
-    e.preventDefault()
-    this.fetchUsers()
-  }
+    e.preventDefault();
+    this.fetchUsers();
+  };
 
   handleChange = (e) => {
     this.setState({
-      [e.target.name]: e.target.value
-    })
-  }
-
+      [e.target.name]: e.target.value,
+    });
+  };
 
   slicedUsers = () => {
     if (this.state.index > this.state.users.length) {
       this.setState({
-        index: 0
-      })
+        index: 0,
+      });
     }
-    return this.state.users.slice(this.state.index, this.state.index +4)
-  }
+    return this.state.users.slice(this.state.index, this.state.index + 4);
+  };
 
   nextUsers = () => {
-    this.setState(prevState => {
+    this.setState((prevState) => {
       return {
-        index: prevState.index + 4
-      }
-    })
-  }
-
+        index: prevState.index + 4,
+      };
+    });
+  };
 
   render() {
     return (
-      <Container fluid className="mt-4 text-center">
-        <Row className="align-items-center">
+      <Container fluid className='mt-4 text-center'>
+        <Row className='align-items-center'>
           <Col lg={3}>
             <Form onSubmit={this.handleSubmit}>
-              <Form.Group controlId="formConsole">
+              <Form.Group controlId='formConsole'>
                 <Form.Label>Browse Users by Console and Genre</Form.Label>
-                <Form.Control name="console" value={this.state.console} onChange={this.handleChange} as="select" style={{textAlignLast: "center"}}>
+                <Form.Control
+                  name='console'
+                  value={this.state.console}
+                  onChange={this.handleChange}
+                  as='select'
+                  style={{ textAlignLast: 'center' }}
+                >
                   <option>Atari 2600</option>
                   <option>Atari 5200</option>
                   <option>Atari 7800</option>
@@ -106,9 +108,15 @@ class UsersByConsoleAndGenreContainer extends Component {
                   <option>Game Boy Color</option>
                   <option>Dreamcast</option>
                 </Form.Control>
-              </Form.Group> 
-              <Form.Group controlId="formGenre">
-                <Form.Control name="genre" value={this.state.genre} onChange={this.handleChange} as="select" style={{textAlignLast: "center"}}>
+              </Form.Group>
+              <Form.Group controlId='formGenre'>
+                <Form.Control
+                  name='genre'
+                  value={this.state.genre}
+                  onChange={this.handleChange}
+                  as='select'
+                  style={{ textAlignLast: 'center' }}
+                >
                   <option>Action</option>
                   <option>Adventure</option>
                   <option>Platformer</option>
@@ -121,23 +129,26 @@ class UsersByConsoleAndGenreContainer extends Component {
                   <option>Strategy</option>
                   <option>Family</option>
                 </Form.Control>
-              </Form.Group>     
-              <button type="submit" className="btn-nes primary">Browse Users</button>
+              </Form.Group>
+              <button type='submit' className='btn-nes primary'>
+                Browse Users
+              </button>
 
-              <button type="button" className="btn-nes secondary" onClick={this.nextGames}>more{'>'}</button>
-            </Form> 
-          </Col >
+              <button
+                type='button'
+                className='btn-nes secondary'
+                onClick={this.nextGames}
+              >
+                more{'>'}
+              </button>
+            </Form>
+          </Col>
           <Col lg={9}>
-            
-            { 
-            this.state.loading ?
-              null
-            :
-            <div className="d-flex flex-wrap justify-content-around slide-in">
-              <SearchedUsersContainer users={this.slicedUsers()} />
-            </div>
-            }     
-            
+            {this.state.loading ? null : (
+              <div className='d-flex flex-wrap justify-content-around slide-in'>
+                <SearchedUsersContainer users={this.slicedUsers()} />
+              </div>
+            )}
           </Col>
         </Row>
       </Container>

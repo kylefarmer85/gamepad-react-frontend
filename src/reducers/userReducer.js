@@ -1,21 +1,20 @@
 const userReducer = (state = null, action) => {
-  switch(action.type) {
-
+  switch (action.type) {
     case 'LOGIN_USER':
-      return action.data.user
-  
+      return action.data.user;
+
     case 'CURRENT_USER':
-      return action.data.user
+      return action.data.user;
 
     case 'LOGOUT_USER':
-      return null
-      
+      return null;
+
     case 'UPDATE_USER':
-      return action.data
+      return action.data;
 
     default:
-      return state
+      return state;
   }
-}
+};
 
-export default userReducer
+export default userReducer;

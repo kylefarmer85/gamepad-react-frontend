@@ -1,32 +1,26 @@
 const loadingReducer = (state = false, action) => {
-  switch(action.type) {
-
+  switch (action.type) {
     case 'START_ADDING_USER_REQUEST':
-      return true
-      
+      return true;
 
     case 'RETURN_RESULTS':
-      return false  
-
+      return false;
 
     case 'LOGIN_USER':
-      return false
-
+      return false;
 
     case 'CURRENT_USER':
-      return false
-      
+      return false;
 
     case 'ADD_GAME':
-      return false  
+      return false;
 
-      
     case 'LOGOUT_USER':
-      return false    
+      return false;
 
     default:
-      return state
+      return state;
   }
-}
+};
 
-export default loadingReducer
+export default loadingReducer;

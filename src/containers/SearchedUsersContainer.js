@@ -1,15 +1,13 @@
 import React from 'react';
-import UserThumb from '../components/UserThumb'
+import UserThumb from '../components/UserThumb';
 
 const SearchedUsersContainer = (props) => {
+  
+  const renderUsers = props.users.map((user) => {
+    return <UserThumb {...user} key={user.id} />;
+  });
 
-  const renderUsers = props.users.map(user => {
-    return <UserThumb {...user} key={user.id} />
-  })
-
-  return (
-    renderUsers
-  );
-}
+  return renderUsers;
+};
 
 export default SearchedUsersContainer;
