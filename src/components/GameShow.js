@@ -1,92 +1,118 @@
 import React from 'react';
-import { v4 as uuidv4 } from 'uuid'
-import Container from 'react-bootstrap/Container'
-import { addToFavorites } from '../actions/games'
-import { connect } from 'react-redux'
-import { Link } from 'react-router-dom'
+import { v4 as uuidv4 } from 'uuid';
+import Container from 'react-bootstrap/Container';
+import { addToFavorites } from '../actions/games';
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import ReviewsContainer from '../containers/ReviewsContainer';
-import { toast } from 'react-toastify'
-import styled from 'styled-components'
-import crtTv from '../assets/images/crt-tv.png' 
+import { toast } from 'react-toastify';
+import styled from 'styled-components';
+import crtTv from '../assets/images/crt-tv.png';
 
-toast.configure()
+toast.configure();
 
-const GameShow = ({game, screenshots, addToFavorites, user, games}) => {
-
-  const alreadyFavorite = games.find(g => g.game_api_id === game.id)
+const GameShow = ({ game, screenshots, addToFavorites, user, games }) => {
+  const alreadyFavorite = games.find((g) => g.game_api_id === game.id);
 
   const handleFavorite = () => {
-    addToFavorites(game.id, game.name, game.background_image, user)
-  }
-  
+    addToFavorites(game.id, game.name, game.background_image, user);
+  };
 
-  const acceptedPlatformNamesArray = ["Sega Genesis" , "Super Nintendo" , "Dreamcast" , "PlayStation" , "Nintendo 64" , "SNES" , "Genesis" , "Jaguar" , "Game Boy" , "Game Gear" , "SEGA CD" , "SEGA Master System" , "NES" , "Atari 7800" , "Game Boy Color" , "Atari 2600" , "Atari 5200" , "Neo Geo" , "3DO" , "SEGA Saturn"]
+  const acceptedPlatformNamesArray = [
+    'Sega Genesis',
+    'Super Nintendo',
+    'Dreamcast',
+    'PlayStation',
+    'Nintendo 64',
+    'SNES',
+    'Genesis',
+    'Jaguar',
+    'Game Boy',
+    'Game Gear',
+    'SEGA CD',
+    'SEGA Master System',
+    'NES',
+    'Atari 7800',
+    'Game Boy Color',
+    'Atari 2600',
+    'Atari 5200',
+    'Neo Geo',
+    '3DO',
+    'SEGA Saturn',
+  ];
 
-  const renderGamePlatforms = game.platforms.map(p => { 
-    return acceptedPlatformNamesArray.includes(p.platform.name) ?
-      <h6 key={uuidv4()}>{`${p.platform.name}` }</h6>
-    :
-      null
-  })
+  const renderGamePlatforms = game.platforms.map((p) => {
+    return acceptedPlatformNamesArray.includes(p.platform.name) ? (
+      <h6 key={uuidv4()}>{`${p.platform.name}`}</h6>
+    ) : null;
+  });
 
-    return (
-      <Container className="mt-4 mb-4">
-        <div style={{textAlign: "center"}}>
-         
-          <img style={{height: "50%", width: "50%", marginBottom: "15px"}} className="fade-in" src={game.background_image} alt="game" />
- 
-          <h1>{game.name}</h1>
-          
-          <h6>Released: {game.released}</h6>
-          <br/>
+  return (
+    <Container className='mt-4 mb-4'>
+      <div style={{ textAlign: 'center' }}>
+        <img
+          style={{ height: '50%', width: '50%', marginBottom: '15px' }}
+          className='fade-in'
+          src={game.background_image}
+          alt='game'
+        />
 
-          <h5 style={{textDecoration: "underline"}}>Platform</h5>
-          
-          <div className="slide-from-bottom">
-            {renderGamePlatforms}
-          </div>
+        <h1>{game.name}</h1>
 
-          { 
-          user ?
-            alreadyFavorite ?
-              <button className="btn-nes secondary mt-4">{game.name} is in {user.username}'s Favorites</button>
-            :
-              <button type="button" className="btn-nes primary mt-4" onClick={handleFavorite}>Add to Favorites</button>
-          :
-            <Link to={'/login'}>
-              <button type="button" className="btn-nes primary mt-4">Login to add game to Favorites!</button>
-            </Link>
-          }
-          
-        </div>
+        <h6>Released: {game.released}</h6>
+        <br />
 
-        <div className="m-4" style={{textAlign: "center"}}>
-          
-          { 
-            game.clip ? 
+        <h5 style={{ textDecoration: 'underline' }}>Platform</h5>
 
-            <CrtTvDiv className="align-items-center"> 
-              <GameClip src={game.clip.clip} type="video/mp4" controls/>
-            </CrtTvDiv> 
-          :
-            null 
-          }
-      
-          <GameDesc >{game.description_raw}</GameDesc>
+        <div className='slide-from-bottom'>{renderGamePlatforms}</div>
 
-          { 
-            screenshots ?
-              screenshots.map(ss => <SsImg src={ss.image}  alt='screenshot' key={uuidv4()}></SsImg>)
-          :
-            null
-          }
+        {user ? (
+          alreadyFavorite ? (
+            <button className='btn-nes secondary mt-4'>
+              {game.name} is in {user.username}'s Favorites
+            </button>
+          ) : (
+            <button
+              type='button'
+              className='btn-nes primary mt-4'
+              onClick={handleFavorite}
+            >
+              Add to Favorites
+            </button>
+          )
+        ) : (
+          <Link to={'/login'}>
+            <button type='button' className='btn-nes primary mt-4'>
+              Login to add game to Favorites!
+            </button>
+          </Link>
+        )}
+      </div>
 
-          <ReviewsContainer gameApiId={game.id} gameName={game.name} gameImage={game.background_image} />
+      <div className='m-4' style={{ textAlign: 'center' }}>
+        {game.clip ? (
+          <CrtTvDiv className='align-items-center'>
+            <GameClip src={game.clip.clip} type='video/mp4' controls />
+          </CrtTvDiv>
+        ) : null}
 
-        </div>
-      </Container >
-    ); 
-}
+        <GameDesc>{game.description_raw}</GameDesc>
+
+        {screenshots
+          ? screenshots.map((ss) => (
+              <SsImg src={ss.image} alt='screenshot' key={uuidv4()}></SsImg>
+            ))
+          : null}
+
+        <ReviewsContainer
+          gameApiId={game.id}
+          gameName={game.name}
+          gameImage={game.background_image}
+        />
+      </div>
+    </Container>
+  );
+};
 
 const GameDesc = styled.p`
   text-align: left;
@@ -101,7 +127,7 @@ const GameDesc = styled.p`
   @media (max-width: 600px) {
     font-size: 8pt;
   }
-`
+`;
 
 const SsImg = styled.img`
   width: 400px;
@@ -114,7 +140,7 @@ const SsImg = styled.img`
     width: 75%;
     height: 60%;
   }
-`
+`;
 
 const CrtTvDiv = styled.div`
   margin: auto;
@@ -131,9 +157,9 @@ const CrtTvDiv = styled.div`
 
   @media (max-width: 400px) {
     width: 200px;
-    height: 140px
+    height: 140px;
   }
-`
+`;
 
 const GameClip = styled.video`
   width: 430px;
@@ -155,16 +181,13 @@ const GameClip = styled.video`
     top: 9.1px;
     right: 20px;
   }
-`
+`;
 
 const mapStateToProps = (state) => {
   return {
     user: state.user,
-    games: state.games
-  }
-}
+    games: state.games,
+  };
+};
 
-export default connect (mapStateToProps, { addToFavorites })(GameShow)
-
-
-
+export default connect(mapStateToProps, { addToFavorites })(GameShow);

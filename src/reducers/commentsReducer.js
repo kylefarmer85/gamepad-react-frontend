@@ -1,29 +1,26 @@
 const commentsReducer = (state = [], action) => {
-
-  switch(action.type) {
-
+  switch (action.type) {
     //Only used for comments on the profile page
 
     case 'ADD_FETCHED_COMMENTS':
-      return action.comments
-      
+      return action.comments;
 
     case 'ADD_COMMENT':
-      return [...state, action.comment]
-
+      return [...state, action.comment];
 
     case 'DELETE_COMMENT':
-      const updatedComments = state.filter(comment => comment.id !== action.data.id)
+      const updatedComments = state.filter(
+        (comment) => comment.id !== action.data.id
+      );
 
-      return updatedComments
-
+      return updatedComments;
 
     case 'LOGOUT_USER':
-      return []      
+      return [];
 
-    default: 
-    return state
+    default:
+      return state;
   }
-}
+};
 
-export default commentsReducer
+export default commentsReducer;

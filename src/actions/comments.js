@@ -1,35 +1,39 @@
-import { toast } from 'react-toastify'
-import API from '../API'
+import { toast } from 'react-toastify';
+import API from '../API';
 
 export function deleteComment(id) {
-  return(dispatch) => {
-
+  return (dispatch) => {
     fetch(`${API}/api/v1/comments/${id}`, {
-      method: 'DELETE'
+      method: 'DELETE',
     })
-    .then(resp => resp.json())
-    .then(data => {
-      if (data.error) {
-        alert(data.error)
-      } else {
-        dispatch({ type: "DELETE_COMMENT", data})
-        toast.info("Comment Deleted!", {position: "bottom-center", autoClose:3000})
-      }
-    })
-  }
+      .then((resp) => resp.json())
+      .then((data) => {
+
+        if (data.error) {
+          alert(data.error);
+
+        } else {
+          dispatch({ type: 'DELETE_COMMENT', data });
+          
+          toast.info('Comment Deleted!', {
+            position: 'bottom-center',
+            autoClose: 3000,
+          });
+        }
+      });
+  };
 }
 
-export const addComment = comment => {
+export const addComment = (comment) => {
   return {
     type: 'ADD_COMMENT',
-    comment
-  }
-}
+    comment,
+  };
+};
 
-export const addFetchedComments = comments => {
+export const addFetchedComments = (comments) => {
   return {
     type: 'ADD_FETCHED_COMMENTS',
-    comments
-  }
-}
-
+    comments,
+  };
+};

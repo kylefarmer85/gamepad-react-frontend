@@ -1,28 +1,24 @@
 import React, { Component } from 'react';
-import ConsoleAndGenreContainer from './ConsoleAndGenreContainer'
-import YearAndGenreContainer from './YearAndGenreContainer'
+import ConsoleAndGenreContainer from './ConsoleAndGenreContainer';
+import YearAndGenreContainer from './YearAndGenreContainer';
 import TopByConsoleContainer from './TopByConsoleContainer';
-import UsersByConsoleAndGenreContainer from './UsersByConsoleAndGenreContainer'
-import HighestRatedByFollowingsContainer from './HighestRatedByFollowingsContainer'
-import { connect } from 'react-redux'
-
+import UsersByConsoleAndGenreContainer from './UsersByConsoleAndGenreContainer';
+import HighestRatedByFollowingsContainer from './HighestRatedByFollowingsContainer';
+import { connect } from 'react-redux';
 
 class HomeContainer extends Component {
   render() {
     return (
-      <div className="mb-4">
+      <div className='mb-4'>
         <ConsoleAndGenreContainer />
         <YearAndGenreContainer />
         <TopByConsoleContainer />
-        {
-        this.props.user ?
-        <>
-          <HighestRatedByFollowingsContainer />
-          <UsersByConsoleAndGenreContainer />
-        </>  
-        :
-          null
-        }
+        {this.props.user ? (
+          <>
+            <HighestRatedByFollowingsContainer />
+            <UsersByConsoleAndGenreContainer />
+          </>
+        ) : null}
       </div>
     );
   }
@@ -30,11 +26,8 @@ class HomeContainer extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    user: state.user
-  }
-}
+    user: state.user,
+  };
+};
 
-export default connect (mapStateToProps, null) (HomeContainer);
-
-
-
+export default connect(mapStateToProps, null)(HomeContainer);
