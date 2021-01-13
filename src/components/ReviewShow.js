@@ -4,6 +4,8 @@ import { connect } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 import { addFetchedReviews } from '../actions/reviews'
 import { Redirect } from 'react-router-dom'
+import API from '../API'
+
 
 const ReviewShow = ({reviews, addFetchedReviews, match}) => {
 
@@ -12,7 +14,7 @@ const ReviewShow = ({reviews, addFetchedReviews, match}) => {
   let history = useHistory()
 
   useEffect(() => {
-    fetch(`http://localhost:3000/api/v1/reviews/${match.params.id}`)
+    fetch(`${API}/api/v1/reviews/${match.params.id}`)
     .then(resp => resp.json())
     .then(fetchedReview => {
       fetchedReview.error ?

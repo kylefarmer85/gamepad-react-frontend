@@ -5,6 +5,8 @@ import UserThumb from './UserThumb'
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
+import API from '../API'
+
 
 const UserSearchResult = (props) => {
 
@@ -22,7 +24,7 @@ const UserSearchResult = (props) => {
       })
     }
 
-    fetch("http://localhost:3000/api/v1/users/search", reqObj)
+    fetch(`${API}/api/v1/users/search`, reqObj)
     .then(resp => resp.json())
     .then(fetchedUsers => {
     

@@ -5,6 +5,7 @@ import { randomConsole } from "../helpers/randomFuncs"
 import Container from 'react-bootstrap/Container'
 import Col from 'react-bootstrap/Col'
 import Row from 'react-bootstrap/Row'
+import API from '../API'
 
 
 class TopByConsoleContainer extends Component {
@@ -31,7 +32,7 @@ class TopByConsoleContainer extends Component {
       })
     }
 
-    fetch(`http://localhost:3000/api/v1/games/topbyconsole`, reqObj)
+    fetch(`${API}/api/v1/games/topbyconsole`, reqObj)
     .then(resp => resp.json())
     .then(data => {
       if (data.error) {

@@ -5,6 +5,7 @@ import { deleteComment } from '../actions/comments'
 import { Link } from 'react-router-dom'
 import { useHistory } from "react-router-dom"
 
+
 const Comment = ({id, content, user_id, review_id, username, user_pic, review_username, review_user_id, game_name, game_api_id, created_at, deleteComment, user }) => {
 
   let history = useHistory()  

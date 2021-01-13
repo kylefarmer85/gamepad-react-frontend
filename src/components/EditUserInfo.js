@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import Container from 'react-bootstrap/Container'
 import Form from 'react-bootstrap/Form'
 import { logoutUser, updateUser } from '../actions/user'
+import API from '../API'
 
 
 class EditUserInfo extends Component {
@@ -44,7 +45,7 @@ class EditUserInfo extends Component {
       return
     }
 
-    fetch(`http://localhost:3000/api/v1/users/${this.props.user.id}`, {
+    fetch(`${API}/api/v1/users/${this.props.user.id}`, {
       method: 'DELETE'
     })
     .then(resp => resp.json())

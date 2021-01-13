@@ -3,6 +3,7 @@ import Form from 'react-bootstrap/Form'
 import { connect } from 'react-redux'
 import { addReview } from '../actions/reviews'
 import { toast } from 'react-toastify'
+import API from '../API'
 
 class ReviewForm extends Component {
   constructor(props) {
@@ -31,7 +32,7 @@ class ReviewForm extends Component {
 
     
       
-      let photoUrl = `http://localhost:3000/${this.props.user.photo}`  
+      let photoUrl = `${API}/${this.props.user.photo}`  
 
       const reqObj = {
         method: 'POST',
@@ -49,7 +50,7 @@ class ReviewForm extends Component {
           game_image: this.state.gameImage
         })
       }
-      fetch(`http://localhost:3000/api/v1/reviews`, reqObj)
+      fetch(`${API}/api/v1/reviews`, reqObj)
       .then(resp => resp.json())
       .then(review => {
         this.props.addReview(review)

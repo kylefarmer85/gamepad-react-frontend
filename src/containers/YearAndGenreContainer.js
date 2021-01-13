@@ -5,6 +5,7 @@ import { randomYear, randomGenre } from "../helpers/randomFuncs"
 import Container from 'react-bootstrap/Container'
 import Col from 'react-bootstrap/Col'
 import Row from 'react-bootstrap/Row'
+import API from '../API'
 
 
 class YearAndGenreContainer extends Component {
@@ -32,7 +33,7 @@ class YearAndGenreContainer extends Component {
       })
     }
 
-    fetch(`http://localhost:3000/api/v1/games/yearandgenre`, reqObj)
+    fetch(`${API}/api/v1/games/yearandgenre`, reqObj)
     .then(resp => resp.json())
     .then(data => {
       if (data.error) {

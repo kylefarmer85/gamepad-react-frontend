@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import Loading from '../components/Loading'
 import GameShow from '../components/GameShow'
+import API from '../API'
+
 
 class GameContainer extends Component {
   constructor(props) {
@@ -14,7 +16,7 @@ class GameContainer extends Component {
   }
 
   componentDidMount(){
-      fetch(`http://localhost:3000/api/v1/games/${this.state.gameApiId}`)
+      fetch(`${API}/api/v1/games/${this.state.gameApiId}`)
       .then(resp => resp.json())
       .then(game => {
         console.log(game)

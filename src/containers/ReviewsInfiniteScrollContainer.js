@@ -3,6 +3,8 @@ import Review from '../components/Review'
 import { Waypoint } from 'react-waypoint'
 import { connect } from 'react-redux'
 import { addReviews, emptyReviews } from '../actions/reviews'
+import API from '../API'
+
 
 class ReviewsInfiniteScrollContainer extends Component {
   constructor(props) {
@@ -38,7 +40,7 @@ class ReviewsInfiniteScrollContainer extends Component {
       })
     }
 
-    fetch(`http://localhost:3000/api/v1/reviews/infinitescroll`, reqObj)
+    fetch(`${API}/api/v1/reviews/infinitescroll`, reqObj)
     .then(resp => resp.json())
     .then(gameReviews => {
       console.log(gameReviews)
