@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { toast } from 'react-toastify'
 import history from '../history'
-import UserThumb from './UserThumb'
+import UserThumb from '../components/UserThumb'
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import API from '../API'
 
 
-const UserSearchResult = (props) => {
+const UserSearchResultContainer = (props) => {
 
   const [loading, setLoading] = useState(true)
   const [users, setUsers] = useState([])
@@ -63,4 +63,4 @@ const UserSearchResult = (props) => {
   );
 }
 
-export default UserSearchResult;
+export default UserSearchResultContainer;

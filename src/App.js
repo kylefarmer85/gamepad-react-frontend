@@ -12,7 +12,7 @@ import ResultsContainer from './containers/ResultsContainer'
 import GameContainer from './containers/GameContainer'
 import ProfileContainer from './containers/ProfileContainer'
 import EditUserInfo from './components/EditUserInfo'
-import UserSearchResult from './components/UserSearchResult'
+import UserSearchResultContainer from './containers/UserSearchResultContainer'
 import ReviewsPageContainer from './containers/ReviewsPageContainer'
 import ReviewShow from './components/ReviewShow'
 
@@ -63,7 +63,7 @@ class App extends Component {
             <Route exact path ='/reviews/:id' component={ReviewShow} />
             <Route exact path ='/users/:id/profile' component={ProfileContainer} />
             <Route exact path ='/users/:id/edit' component={EditUserInfo} />
-            <Route exact path ='/users/search/:searchTerm' component={UserSearchResult} />
+            <Route exact path ='/users/search/:searchTerm' component={UserSearchResultContainer} />
             <Route path ='/' component={HomeContainer} />
             
           </Switch> 
