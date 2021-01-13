@@ -1,56 +1,55 @@
 import React, { useEffect, useState } from 'react';
-import { useHistory } from 'react-router-dom'
 import Review from './Review'
+import { connect } from 'react-redux'
+import { useHistory } from 'react-router-dom'
+import { addFetchedReviews } from '../actions/reviews'
+import { Redirect } from 'react-router-dom'
 
-const ReviewShow = (props) => {
+const ReviewShow = ({reviews, addFetchedReviews, match}) => {
 
-  const [review, setReview] = useState({})
   const [loading, setLoading] = useState(true)
 
   let history = useHistory()
 
   useEffect(() => {
-    fetch(`http://localhost:3000/api/v1/reviews/${props.match.params.id}`)
+    fetch(`http://localhost:3000/api/v1/reviews/${match.params.id}`)
     .then(resp => resp.json())
     .then(fetchedReview => {
-      setReview(fetchedReview)
-      setLoading(false)
+      fetchedReview.error ?
+        history.push('/')
+      :
+        addFetchedReviews([fetchedReview])
+        setLoading(false)
     }) 
-  }, [props.match.params.id]);
+  }, [match.params.id, addFetchedReviews, history]);
 
 
-  const handleDelete = () => {
-    history.push('/')
+  const renderReview = () => {
+    return reviews.map(review => {
+      return <Review {...review} key={review.id} />
+    })
   }
 
-  const handleAddComment = (comment) => {
-    const updatedReview = {...review,
-      comments: [...review.comments, comment]
-    }
-    setReview(updatedReview)
-  } 
-
-  const handleDeleteComment = (commentId) => {
-    const updatedComments = review.comments.filter(comment => comment.id !== commentId) 
-
-    const reviewCommentDeleted = {
-      ...review,
-      comments: updatedComments
-    }
-    setReview(reviewCommentDeleted)
-  }
-
-
+  
   return (
     <div>
       {
-        loading ?
+      loading ?
         null
       :
-        <Review {...review} handleDelete={handleDelete} handleAddComment={handleAddComment} handleDeleteComment={handleDeleteComment}/>
+        reviews.length ? 
+          renderReview()
+        :
+          <Redirect to="/" />          
       }
     </div>
   );
 }
 
-export default ReviewShow;
+const mapStateToProps = state => {
+  return {
+    reviews: state.reviews
+  }
+}
+
+export default connect (mapStateToProps, { addFetchedReviews }) (ReviewShow);

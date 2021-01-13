@@ -58,6 +58,7 @@ const ProfileContainer = (props) => {
     return user.games.slice(gamesIndex, gamesIndex +4)
   }
 
+
   const nextGames = () => {
     setGamesIndex(prevState => prevState + 4)
   }
@@ -70,6 +71,7 @@ const ProfileContainer = (props) => {
     return user.followers.slice(followersIndex, followersIndex + 3)
   }
 
+
   const slicedFollowings = () => {
     if (followingsIndex > user.followings.length) {
       setFollowingsIndex(0)
@@ -77,93 +79,32 @@ const ProfileContainer = (props) => {
     return user.followings.slice(followingsIndex, followingsIndex + 3)
   }
 
+
   const nextFollowers = () => {
     setFollowersIndex(prevState => prevState + 3)
   }
   
+
   const nextFollowings = () => {
     setFollowingsIndex(prevState => prevState + 3)
   }
 
 
-  // const handleDelete = (id) => {
-  //   const updatedReviews = user.reviews.filter(r => {
-  //     return r.id !== id
-  //   })
-
-  //   setUser(prevState => {
-  //     return {
-  //       ...prevState,
-  //       reviews: updatedReviews
-  //     }
-  //   })
-  // }
-
-
-  // const handleAddComment = (comment) => {
-  //   const reviewCommentsUpdated = user.reviews.map(review => {
-  //     if (review.id === comment.review_id) {
-  //       return {
-  //         ...review,
-  //         comments: [...review.comments, comment]
-  //       }
-  //     } else {
-  //       return review
-  //     }
-  //   })
-  //   setUser(prevState => {
-  //     return {
-  //       ...prevState,
-  //       reviews: reviewCommentsUpdated
-  //     }
-  //   })
-  // }
-
-  // const handleDeleteComment = (commentId, reviewId) => {
-  //   const reviewsCommentDeleted = user.reviews.map(review => {
-  //     if (review.id === reviewId) {
-  //       const updatedComments = review.comments.filter(comment => comment.id !== commentId)
-  //       return {
-  //         ...review,
-  //         comments: updatedComments
-  //       }
-  //     } else {
-  //       return review
-  //     }
-  //   })
-  //   setUser({
-  //     ...user,
-  //     reviews: reviewsCommentDeleted
-  //   })
-  // }
-
-  // const handleDeleteFromUserComment = (commentId) => {
-  //   const updatedComments = user.comments.filter(comment => {
-  //     return comment.id !== commentId
-  //   })
-  //   setUser({
-  //     ...user,
-  //     comments: updatedComments
-  //   })
-  // }
-
   const toggleShowReviews = () => {
     setShowReviews(prevState => !prevState) 
   }
 
+
   const renderReviews = () => {
     return props.reviews.map(review => {
       return <Review {...review} key={review.id} />
-      // handleDelete={handleDelete} handleDeleteComment={handleDeleteComment} handleAddComment={handleAddComment} />
     })
   }
-
 
 
   const renderComments = () => {
     return props.comments.map(comment => {
       return <Comment {...comment} key={comment.id} />
-      // handleDeleteComment={handleDeleteFromUserComment} />
     })
   }
 
@@ -176,6 +117,7 @@ const ProfileContainer = (props) => {
       }
     })
   }
+
 
   const removeFollowerFromProfile = () => {
     const updatedFollowers = user.followers.filter(f => {
@@ -190,18 +132,22 @@ const ProfileContainer = (props) => {
     })
   }
 
+
   const toggleShowFollowers = () => {
       setShowFollowers(prevState => !prevState) 
     }
+
     
   const renderFollowersContainer = () => {
     return <FollowersContainer followers={slicedFollowers()} nextFollowers={nextFollowers} followersLength={user.followers.length}/>
   }
 
+
   const renderFollowingContainer = () => {
     return <FollowingContainer followings={slicedFollowings()} nextFollowings={nextFollowings} followingsLength={user.followings.length} />
   }
 
+  
   const removeFavoriteFromProfile = (gameId) => {
     const updatedGames = user.games.filter(game => {
     return game.id !== gameId
