@@ -1,5 +1,6 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
+import API from '../API'
 
 const UserThumb = ({ id, username, photo }) => {
   
@@ -9,7 +10,7 @@ const UserThumb = ({ id, username, photo }) => {
     history.push(`/users/${id}/profile`);
   };
 
-  let photoUrl = `http://localhost:3000${photo}`;
+  let photoUrl = `${API}/${photo}`;
 
   return (
     <div className='m-2 text-center fade-in'>
