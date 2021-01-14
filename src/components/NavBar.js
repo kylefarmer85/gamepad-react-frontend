@@ -15,6 +15,7 @@ const NavBar = (props) => {
       position: 'top-center',
       autoClose: 3000,
     });
+    
     localStorage.removeItem('my_app_token');
     props.logoutUser();
   };

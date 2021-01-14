@@ -146,7 +146,11 @@ class UsersByConsoleAndGenreContainer extends Component {
           <Col lg={9}>
             {this.state.loading ? null : (
               <div className='d-flex flex-wrap justify-content-around slide-in'>
-                <SearchedUsersContainer users={this.slicedUsers()} />
+                {this.state.users.length ? (
+                  <SearchedUsersContainer users={this.slicedUsers()} />
+                ) : (
+                  <p>No users found.</p>
+                )}
               </div>
             )}
           </Col>
