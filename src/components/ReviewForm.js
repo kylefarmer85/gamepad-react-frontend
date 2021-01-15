@@ -73,7 +73,7 @@ class ReviewForm extends Component {
   render() {
     return (
       <Form
-        style={{ padding: '5% 50% 5% 5%', textAlign: 'left' }}
+        style={{ padding: '5% 15%', textAlign: 'left' }}
         onSubmit={this.handleSubmit}
       >
         <Form.Group controlId='formReview'>
@@ -87,7 +87,7 @@ class ReviewForm extends Component {
           />
         </Form.Group>
 
-        <Form.Group controlId='fromRating'>
+        <Form.Group style={{ width: "65px"}} controlId='fromRating'>
           <Form.Label>Rating</Form.Label>
           <Form.Control
             as='select'

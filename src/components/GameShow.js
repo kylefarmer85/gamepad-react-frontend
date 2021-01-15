@@ -57,8 +57,8 @@ const GameShow = ({ game, screenshots, addToFavorites, user, games }) => {
           alt='game'
         />
 
-        <h1>{game.name}</h1>
-
+        <GameName>{game.name}</GameName>
+        <br />
         <h6>Released: {game.released}</h6>
         <br />
 
@@ -114,6 +114,15 @@ const GameShow = ({ game, screenshots, addToFavorites, user, games }) => {
   );
 };
 
+const GameName = styled.h1`
+  word-wrap: break-word;
+  word-break: break-word;
+
+  @media (max-width: 500px) {
+    font-size: 24pt;
+  }
+`
+
 const GameDesc = styled.p`
   text-align: left;
   margin-top: 20px;
@@ -154,11 +163,6 @@ const CrtTvDiv = styled.div`
     width: 300px;
     height: 200px;
   }
-
-  @media (max-width: 400px) {
-    width: 200px;
-    height: 140px;
-  }
 `;
 
 const GameClip = styled.video`
@@ -173,13 +177,6 @@ const GameClip = styled.video`
     height: 170px;
     top: 13px;
     right: 28.5px;
-  }
-
-  @media (max-width: 400px) {
-    width: 150.5px;
-    height: 119px;
-    top: 9.1px;
-    right: 20px;
   }
 `;
 

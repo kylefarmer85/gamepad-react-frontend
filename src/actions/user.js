@@ -41,7 +41,7 @@ export function fetchUser(userObj) {
       .then((data) => {
         
         if (data.error) {
-          toast.error(data.error, { position: 'top-center', autoClose: 5000 });
+          toast.error("Invalid Username/Password", { position: 'top-center', autoClose: 5000 });
 
           history.push('/login');
 
@@ -81,7 +81,7 @@ export function signupUser(userObj) {
       .then((resp) => resp.json())
       .then((data) => {
         if (data.error) {
-          toast.error(data.error, { position: 'top-center', autoClose: 3000 });
+          toast.error("Unable to create user.", { position: 'top-center', autoClose: 3000 });
 
           history.push('/signup');
         } else {
@@ -118,7 +118,7 @@ export function updateUser(userObj) {
       .then((resp) => resp.json())
       .then((data) => {
         if (data.error) {
-          toast.error(data.error, { position: 'top-center', autoClose: 5000 });
+          toast.error("User not updated", { position: 'top-center', autoClose: 5000 });
 
           history.push(`/users/${userObj.id}/profile`);
 

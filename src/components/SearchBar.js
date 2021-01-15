@@ -59,7 +59,7 @@ class SearchBar extends Component {
               name='searchTerm'
               value={this.state.searchTerm}
               className='mr-2 mt-1 mb-1'
-              placeholder='Search Games or Users'
+              placeholder="Search Games / Users"
               onChange={this.handleChange}
             />
 

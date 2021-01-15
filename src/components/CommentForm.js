@@ -72,7 +72,7 @@ class CommentForm extends Component {
 
   render() {
     return (
-      <Form style={{ padding: '5% 50% 5% 5%' }} onSubmit={this.handleSubmit}>
+      <Form style={{ padding: '5% 15%'}} onSubmit={this.handleSubmit}>
         <Form.Group>
           <Form.Label>Leave a comment!</Form.Label>
           <Form.Control

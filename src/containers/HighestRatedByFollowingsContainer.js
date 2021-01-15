@@ -80,7 +80,11 @@ class HighestRatedByFollowingsContainer extends Component {
           <Col lg={9}>
             {this.state.loading ? null : (
               <div className='d-flex flex-wrap justify-content-around slide-in'>
-                <SlicedGamesContainer slicedGames={this.slicedGames()} />
+                {this.state.games.length ? (
+                  <SlicedGamesContainer slicedGames={this.slicedGames()} />
+                ) : (
+                  <p>Follow users to see their highest rated games.</p>
+                )}
               </div>
             )}
           </Col>
