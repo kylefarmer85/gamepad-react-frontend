@@ -23,7 +23,7 @@ class Login extends Component {
     e.preventDefault();
 
     if (this.state.username.length === 0 || this.state.password.length === 0) {
-      return toast.error('Fields cannot be blank!', { position: 'top-center' })
+      return toast.error('Fields cannot be blank!', { position: 'top-center' });
     }
 
     this.props.fetchUser(this.state);

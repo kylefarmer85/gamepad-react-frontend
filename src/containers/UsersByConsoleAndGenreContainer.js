@@ -137,7 +137,7 @@ class UsersByConsoleAndGenreContainer extends Component {
               <button
                 type='button'
                 className='btn-nes secondary'
-                onClick={this.nextGames}
+                onClick={this.nextUsers}
               >
                 more{'>'}
               </button>
