@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Form from 'react-bootstrap/Form';
 import { connect } from 'react-redux';
-import { addComment } from '../actions/comments';
+import { addComment, addUserCommentToOwnProfile } from '../actions/comments';
 import { toast } from 'react-toastify';
 import API from '../API';
 
@@ -55,6 +55,10 @@ class CommentForm extends Component {
 
         this.props.addComment(comment);
 
+        if (this.props.user.id === comment.review_user_id) {
+          this.props.addUserCommentToOwnProfile(comment)
+        };
+
         toast.success('Comment posted!', {
           position: 'bottom-center',
           autoClose: 3000,
@@ -94,4 +98,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, { addComment })(CommentForm);
+export default connect(mapStateToProps, { addComment, addUserCommentToOwnProfile })(CommentForm);

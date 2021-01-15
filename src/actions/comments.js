@@ -37,3 +37,10 @@ export const addFetchedComments = (comments) => {
     comments,
   };
 };
+
+export const addUserCommentToOwnProfile = (comment) => {
+  return {
+    type: 'ADD_USER_COMMENT_TO_OWN_PROFILE',
+    comment,
+  };
+};

@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import GamepadLogo from '../assets/images/gamepad-logo.png';
+import { toast } from 'react-toastify';
 
 class Login extends Component {
   state = {
@@ -20,6 +21,10 @@ class Login extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
+
+    if (this.state.username.length === 0 || this.state.password.length === 0) {
+      return toast.error('Fields cannot be blank!', { position: 'top-center' })
+    }
 
     this.props.fetchUser(this.state);
 

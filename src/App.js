@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import { Switch, Route, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { currentUser, startAddingUserRequest } from './actions/user';
+import { currentUser, logoutUser, startAddingUserRequest } from './actions/user';
 import NavBar from './components/NavBar';
 import NavConsoleList from './components/NavConsoleList';
 import Login from './components/Login';
@@ -15,6 +15,7 @@ import EditUserInfo from './components/EditUserInfo';
 import UserSearchResultContainer from './containers/UserSearchResultContainer';
 import ReviewsPageContainer from './containers/ReviewsPageContainer';
 import ReviewShow from './components/ReviewShow';
+import API from './API'
 
 class App extends Component {
   componentDidMount() {
@@ -32,13 +33,14 @@ class App extends Component {
         },
       };
 
-      fetch('http://localhost:3000/api/v1/current_user', reqObj)
+      fetch(`${API}/api/v1/current_user`, reqObj)
         .then((resp) => resp.json())
         .then((data) => {
 
           if (data.error) {
             localStorage.removeItem('my_app_token');
-            
+            this.props.logoutUser()  
+
           } else {
             this.props.currentUser(data);
           }
@@ -68,6 +70,6 @@ class App extends Component {
   }
 }
 
-export default connect(null, { currentUser, startAddingUserRequest })(
+export default connect(null, { currentUser, startAddingUserRequest, logoutUser })(
   withRouter(App)
 );

@@ -20,6 +20,7 @@ const Comment = ({
   deleteComment,
   user,
 }) => {
+  
   let history = useHistory();
 
   const handleClick = () => {
