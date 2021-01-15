@@ -12,9 +12,12 @@ const SlicedGame = ({ name, background_image, released, id }) => {
     outline: '4px grey solid',
   };
 
-  const pStyle = {
+  const textStyle = {
     marginTop: '7%',
     textAlign: 'center',
+    overflowWrap: 'break-word',
+    wordWrap: 'break-word',
+    wordBreak: 'break-word',
   };
 
   return (
@@ -29,7 +32,7 @@ const SlicedGame = ({ name, background_image, released, id }) => {
       ) : (
         <img style={imgStyle} variant='top' src={background_image} alt='game' />
       )}
-      <div style={pStyle}>
+      <div style={textStyle}>
         <p style={{ color: 'black' }}>
           {name}
           <br/>

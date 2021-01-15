@@ -29,7 +29,6 @@ body {
   font-size: 16pt;
 }
 
-
 label, h1, h2, h3, h5, h6 {
   font-family: 'Press Start 2P', cursive;
 }
@@ -91,8 +90,8 @@ p {
 .card {
   margin: 1%;
   padding: 1.3%;
-  width: 10em; 
-  height: 14em; 
+  width: 175px; 
+  height: 225px; 
   background-color: #E5E3E3;
   box-shadow: 5px 4px grey;
   overflow: hidden;
