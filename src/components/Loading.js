@@ -1,10 +1,9 @@
 import React from 'react';
 import Sonic from '../assets/gifs/sonic-foot-tap.gif';
 import Mario from '../assets/gifs/mario-sleeping.gif';
-import Mario2 from '../assets/gifs/mario-sleeping-2.gif';
 
 const randomGif = () => {
-  const gifs = [Sonic, Sonic, Mario, Mario2];
+  const gifs = [Sonic, Sonic, Mario];
 
   return gifs[Math.floor(Math.random() * gifs.length)];
 };
