@@ -38,13 +38,19 @@ const ProfilePicCard = ({
       <Col>
         <h3>{username}</h3>
         <p>
-          Favorite Console: <br/> {favConsole}
+          Favorite Console:
+          <br />
+          {favConsole}
         </p>
         <p>
-          Favorite Genre: <br/> {favGenre}
+          Favorite Genre:
+          <br />
+          {favGenre}
         </p>
         <p>
-          Favorite Game: <br/> {favGame}
+          Favorite Game:
+          <br />
+          {favGame}
         </p>
       </Col>
     </Row>

@@ -34,14 +34,14 @@ const Review = ({
   };
 
   const mediaStyle = {
-    margin: '20px 6%',
+    margin: '20px 0%',
     padding: '10px',
     outline: 'solid white 4px',
     textAlign: 'left',
   };
 
   const bodyStyle = {
-    padding: '1% 2%',
+    padding: '1%',
     overflowWrap: 'break-word',
     wordWrap: 'break-word',
     wordBreak: 'break-word',
@@ -54,7 +54,7 @@ const Review = ({
       <img
         onClick={goToUser}
         src={user_pic}
-        className='user-thumb mt-3'
+        className='user-thumb mt-2 mr-1'
         alt='user pic'
       />
 

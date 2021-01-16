@@ -20,7 +20,7 @@ const Comment = ({
   deleteComment,
   user,
 }) => {
-  
+
   let history = useHistory();
 
   const handleClick = () => {
@@ -32,14 +32,14 @@ const Comment = ({
   };
 
   const mediaStyle = {
-    margin: '2% 5%',
+    margin: '20px 2%',
     padding: '10px',
     outline: 'solid white 4px',
     textAlign: 'left',
   };
 
   const bodyStyle = {
-    padding: '1% 2%',
+    padding: '1%',
     overflowWrap: 'break-word',
     wordWrap: 'break-word',
     wordBreak: 'break-word',
@@ -51,7 +51,7 @@ const Comment = ({
     <Media style={mediaStyle}>
       <img
         onClick={goToUser}
-        className='user-thumb'
+        className='user-thumb mt-2 mr-1'
         src={user_pic}
         alt='user pic'
       />

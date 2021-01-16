@@ -30,7 +30,7 @@ const ReviewShow = ({ reviews, addFetchedReviews, match }) => {
   };
 
   return (
-    <div>
+    <div style={{margin: "5%"}}>
       {loading ? null : reviews.length ? renderReview() : <Redirect to='/' />}
     </div>
   );

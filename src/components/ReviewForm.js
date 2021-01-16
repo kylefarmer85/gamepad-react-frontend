@@ -73,7 +73,7 @@ class ReviewForm extends Component {
   render() {
     return (
       <Form
-        style={{ padding: '5% 15%', textAlign: 'left' }}
+      style={{ padding: '5% 20% 5% 3%', textAlign: 'left' }}
         onSubmit={this.handleSubmit}
       >
         <Form.Group controlId='formReview'>

@@ -48,10 +48,10 @@ const GameShow = ({ game, screenshots, addToFavorites, user, games }) => {
   });
 
   return (
-    <Container className='mt-4 mb-4'>
+    <Container className='mt-4'>
       <div style={{ textAlign: 'center' }}>
         <img
-          style={{ height: '50%', width: '50%', marginBottom: '15px' }}
+          style={{ height: '65%', width: '65%', marginBottom: '15px' }}
           className='fade-in'
           src={game.background_image}
           alt='game'
@@ -89,7 +89,7 @@ const GameShow = ({ game, screenshots, addToFavorites, user, games }) => {
         )}
       </div>
 
-      <div className='m-4' style={{ textAlign: 'center' }}>
+      <div className='mt-4' style={{ textAlign: 'center' }}>
         {game.clip ? (
           <CrtTvDiv className='align-items-center'>
             <GameClip src={game.clip.clip} type='video/mp4' controls />

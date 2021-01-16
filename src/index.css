@@ -122,13 +122,6 @@ p {
   }
 }
 
-@media (max-width: 450px) {
-  .user-thumb{  
-    width: 32px;
-    height: 32px;
-    border: 2px solid white;
-  }
-}
 
 @media (max-width: 300px) {
   .user-thumb{  

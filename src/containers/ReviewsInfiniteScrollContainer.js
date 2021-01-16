@@ -72,7 +72,7 @@ class ReviewsInfiniteScrollContainer extends Component {
 
   render() {
     return (
-      <div className='m-4'>
+      <div className='my-3 mx-4'>
         {this.state.loading ? null : (
           <div className='slide-from-bottom'>
             {this.renderGameReviews()}

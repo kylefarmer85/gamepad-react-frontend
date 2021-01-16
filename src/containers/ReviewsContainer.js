@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import Loading from '../components/Loading';
 import Review from '../components/Review';
 import ReviewForm from '../components/ReviewForm';
-import Container from 'react-bootstrap/Container';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { addFetchedReviews } from '../actions/reviews';
@@ -47,35 +46,33 @@ class ReviewsContainer extends Component {
   render() {
     return (
       <div>
-        <Container>
-          {this.state.loading ? (
-            <Loading />
-          ) : (
-            <div style={{ textAlign: 'center', marginTop: '3%' }}>
-              {this.props.reviews.length === 0 ? (
-                <h3>Leave the first review!</h3>
-              ) : (
-                <h3>Reviews</h3>
-              )}
+        {this.state.loading ? (
+          <Loading />
+        ) : (
+          <div style={{ textAlign: 'center', marginTop: '3%' }}>
+            {this.props.reviews.length === 0 ? (
+              <h3>Leave the first review!</h3>
+            ) : (
+              <h3>Reviews</h3>
+            )}
 
-              {this.renderGameReviews()}
-            </div>
-          )}
+            {this.renderGameReviews()}
+          </div>
+        )}
 
-          {this.props.user ? (
-            <ReviewForm
-              gameApiId={this.props.gameApiId}
-              gameName={this.props.gameName}
-              gameImage={this.props.gameImage}
-            />
-          ) : (
-            <Link to='/login'>
-              <button type='button' className='btn-nes primary mt-3'>
-                Login to add a review!
-              </button>
-            </Link>
-          )}
-        </Container>
+        {this.props.user ? (
+          <ReviewForm
+            gameApiId={this.props.gameApiId}
+            gameName={this.props.gameName}
+            gameImage={this.props.gameImage}
+          />
+        ) : (
+          <Link to='/login'>
+            <button type='button' className='btn-nes primary mt-3'>
+              Login to add a review!
+            </button>
+          </Link>
+        )}
       </div>
     );
   }

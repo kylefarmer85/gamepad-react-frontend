@@ -169,7 +169,7 @@ const ProfileContainer = ({
       {loading ? (
         <Loading />
       ) : (
-        <Container fluid className='text-center'>
+        <Container className='text-center'>
           <Row className='mt-5 align-items-center justify-content-center'>
             <Col>
               <ProfilePicCard
