@@ -4,14 +4,14 @@ import Container from 'react-bootstrap/Container';
 import { addToFavorites } from '../actions/games';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import ReviewsContainer from '../containers/ReviewsContainer';
+import ReviewsContainer from './ReviewsContainer';
 import { toast } from 'react-toastify';
 import styled from 'styled-components';
 import crtTv from '../assets/images/crt-tv.png';
 
 toast.configure();
 
-const GameShow = ({ game, screenshots, addToFavorites, user, games }) => {
+const GameShowContainer = ({ game, screenshots, addToFavorites, user, games }) => {
   const alreadyFavorite = games.find((g) => g.game_api_id === game.id);
 
   const handleFavorite = () => {
@@ -51,7 +51,7 @@ const GameShow = ({ game, screenshots, addToFavorites, user, games }) => {
     <Container className='mt-4'>
       <div style={{ textAlign: 'center' }}>
         <img
-          style={{ height: '65%', width: '65%', marginBottom: '15px' }}
+          style={{ height: '55%', width: '55%', marginBottom: '15px' }}
           className='fade-in'
           src={game.background_image}
           alt='game'
@@ -187,4 +187,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, { addToFavorites })(GameShow);
+export default connect(mapStateToProps, { addToFavorites })(GameShowContainer);

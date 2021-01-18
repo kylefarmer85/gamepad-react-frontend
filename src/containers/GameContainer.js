@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Loading from '../components/Loading';
-import GameShow from '../components/GameShow';
+import GameShowContainer from './GameShowContainer';
 import API from '../API';
 
 class GameContainer extends Component {
@@ -41,7 +41,7 @@ class GameContainer extends Component {
             <Loading />
           </div>
         ) : (
-          <GameShow
+          <GameShowContainer
             game={this.state.gameObj}
             screenshots={this.state.screenshots}
           />
