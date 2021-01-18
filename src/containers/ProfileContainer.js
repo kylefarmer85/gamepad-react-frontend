@@ -45,8 +45,6 @@ const ProfileContainer = ({
           alert(user.error);
           
         } else {
-          console.log(user);
-
           addFetchedReviews(user.reviews);
           addFetchedComments(user.comments);
 

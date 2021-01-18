@@ -54,7 +54,6 @@ export function removeFromFavorites(id, user, name) {
     fetch(`${API}/api/v1/favorites/remove`, reqObj)
       .then((resp) => resp.json())
       .then((favorite) => {
-        console.log(favorite);
 
         if (favorite.error) {
           toast.error(favorite.error, {

@@ -42,7 +42,6 @@ class ReviewsInfiniteScrollContainer extends Component {
     fetch(`${API}/api/v1/reviews/infinitescroll`, reqObj)
       .then((resp) => resp.json())
       .then((gameReviews) => {
-        console.log(gameReviews);
 
         if (gameReviews.length > 0) {
           this.props.addReviews(gameReviews);

@@ -5,9 +5,6 @@ const commentsReducer = (state = [], action) => {
     case 'ADD_FETCHED_COMMENTS':
       return action.comments;
 
-    // case 'ADD_COMMENT':
-    //   return [...state, action.comment];
-
     case 'ADD_USER_COMMENT_TO_OWN_PROFILE':
       return [...state, action.comment];
 
