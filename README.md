@@ -1,6 +1,6 @@
 GamePad - Old Games, New Friends!
 
-![](project.gif)
+![](gamepad.gif)
 
 Deployed on Heroku: https://game-pad.herokuapp.com
 
@@ -8,11 +8,11 @@ GamePad is a vintage video game social media app that enables people to connect 
 
 YouTube Demo Video: https://www.youtube.com/watch?v=uQLKLM_15yA
 
-![Alt text](src/assets/images/gamepad-logo.png?raw=true "Logo")
+![Alt text](src/assets/images/gamepad-logo.png?raw=true 'Logo')
 
 The Rails backend can be found here: https://github.com/kylefarmer85/gamepad-rails-backend
 
-To use: 
+To use:
 Clone and navigate to the GamePad Rails backend and run budle install in the terminal. Run rails s in the terminal to connect to localhost:3000. Clone and navigate to GamePad React frontend. Run npm install in the terminal. Run npm start in the terminal and connect to localhost:3001.
 
 Created using the excellent RAWG API - https://rawg.io/apidocs

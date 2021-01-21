@@ -90,7 +90,6 @@ class YearAndGenreContainer extends Component {
                   as='select'
                   style={{ textAlignLast: 'center' }}
                 >
-                  {/* <option>{this.randomYear}</option> */}
                   <option>1977</option>
                   <option>1978</option>
                   <option>1979</option>
