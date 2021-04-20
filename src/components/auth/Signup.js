@@ -39,7 +39,6 @@ class Signup extends Component {
       password: '',
       password_confirmation: '',
       email: '',
-      pic: '',
       fav_genre: '',
       fav_game: '',
       photo: ''
