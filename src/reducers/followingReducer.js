@@ -1,10 +1,10 @@
 const followingReducer = (state = [], action) => {
   switch (action.type) {
     case 'LOGIN_USER':
-      return action.data.following;
+      return action.data.user.followings;
 
     case 'CURRENT_USER':
-      return action.data.following;
+      return action.data.user.followings;
 
     case 'ADD_FOLLOWING':
       return [...state, action.followedUser];

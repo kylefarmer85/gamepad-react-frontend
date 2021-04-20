@@ -1,10 +1,10 @@
 const gamesReducer = (state = [], action) => {
   switch (action.type) {
     case 'LOGIN_USER':
-      return action.data.games;
+      return action.data.user.games;
 
     case 'CURRENT_USER':
-      return action.data.games;
+      return action.data.user.games;
 
     case 'ADD_GAME':
       return [...state, action.game];
