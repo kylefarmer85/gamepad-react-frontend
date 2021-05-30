@@ -1,84 +1,166 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { fetchUser } from '../../actions/user';
+// import React, { Component } from 'react';
+// import { connect } from 'react-redux';
+// import { fetchUser } from '../../actions/user';
+// import { Link } from 'react-router-dom';
+// import Container from 'react-bootstrap/Container';
+// import Form from 'react-bootstrap/Form';
+// import GamepadLogo from '../../assets/images/gamepad-logo.png';
+// import { toast } from 'react-toastify';
+
+// class Login extends Component {
+//   state = {
+//     username: '',
+//     password: ''
+//   };
+
+//   handleChange = e => {
+//     this.setState({
+//       [e.target.name]: e.target.value
+//     });
+//   };
+
+//   handleSubmit = e => {
+//     e.preventDefault();
+
+//     if (this.state.username.length === 0 || this.state.password.length === 0) {
+//       return toast.error('Fields cannot be blank!', { position: 'top-center' });
+//     }
+
+//     this.props.fetchUser(this.state);
+
+//     this.setState({
+//       username: '',
+//       password: ''
+//     });
+//   };
+
+//   render() {
+//     return (
+//       <Container fluid className='mt-5 text-center'>
+//         <h1>Login</h1>
+
+//         <Form
+//           style={{ width: '30%', margin: 'auto' }}
+//           onSubmit={this.handleSubmit}
+//         >
+//           <Form.Group controlId='formUsername'>
+//             <Form.Control
+//               type='text'
+//               placeholder='Username'
+//               name='username'
+//               value={this.state.username}
+//               onChange={this.handleChange}
+//             />
+//           </Form.Group>
+//           <Form.Group controlId='formPassword'>
+//             <Form.Control
+//               type='password'
+//               placeholder='Password'
+//               name='password'
+//               value={this.state.password}
+//               onChange={this.handleChange}
+//             />
+//           </Form.Group>
+
+//           <button type='submit' className='btn-nes primary'>
+//             Login
+//           </button>
+
+//           <Link to={`/signup`}>
+//             <button type='button' className='btn-nes secondary'>
+//               Go to Signup
+//             </button>
+//           </Link>
+//         </Form>
+
+//         <img src={GamepadLogo} style={logoStyle} alt='gamepad logo' />
+
+//         <h5 className='fade-in'>Old Games, New Friends</h5>
+//       </Container>
+//     );
+//   }
+// }
+
+// const logoStyle = {
+//   height: '35%',
+//   width: '35%',
+//   padding: '3% 0%',
+//   display: 'block',
+//   margin: 'auto'
+// };
+
+// export default connect(null, { fetchUser })(Login);
+
+
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux'
+// import { fetchUser } from '../../actions/user';
 import { Link } from 'react-router-dom';
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import GamepadLogo from '../../assets/images/gamepad-logo.png';
 import { toast } from 'react-toastify';
 
-class Login extends Component {
-  state = {
-    username: '',
-    password: ''
-  };
+const Login = () => {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
 
-  handleChange = e => {
-    this.setState({
-      [e.target.name]: e.target.value
-    });
-  };
+  const dispatch = useDispatch();
 
-  handleSubmit = e => {
+  const handleSubmit = e => {
     e.preventDefault();
-
-    if (this.state.username.length === 0 || this.state.password.length === 0) {
+    if (username.length === 0 || password.length === 0) {
       return toast.error('Fields cannot be blank!', { position: 'top-center' });
     }
 
-    this.props.fetchUser(this.state);
-
-    this.setState({
-      username: '',
-      password: ''
-    });
+    dispatch(fetchUser(username, password));
+    setUsername("");
+    setPassword("");
   };
 
-  render() {
-    return (
-      <Container fluid className='mt-5 text-center'>
-        <h1>Login</h1>
+  return (
+    <Container fluid className='mt-5 text-center'>
+      <h1>Login</h1>
 
-        <Form
-          style={{ width: '30%', margin: 'auto' }}
-          onSubmit={this.handleSubmit}
-        >
-          <Form.Group controlId='formUsername'>
-            <Form.Control
-              type='text'
-              placeholder='Username'
-              name='username'
-              value={this.state.username}
-              onChange={this.handleChange}
-            />
-          </Form.Group>
-          <Form.Group controlId='formPassword'>
-            <Form.Control
-              type='password'
-              placeholder='Password'
-              name='password'
-              value={this.state.password}
-              onChange={this.handleChange}
-            />
-          </Form.Group>
+      <Form
+        style={{ width: '30%', margin: 'auto' }}
+        onSubmit={handleSubmit}
+      >
+        <Form.Group controlId='username'>
+          <Form.Control
+            type='text'
+            placeholder='Username'
+            name='username'
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+          />
+        </Form.Group>
+        <Form.Group controlId='password'>
+          <Form.Control
+            type='password'
+            placeholder='Password'
+            name='password'
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+        </Form.Group>
 
-          <button type='submit' className='btn-nes primary'>
-            Login
+        <button type='submit' className='btn-nes primary'>
+          Login
+        </button>
+
+        <Link to={`/signup`}>
+          <button type='button' className='btn-nes secondary'>
+            Go to Signup
           </button>
+        </Link>
+      </Form>
 
-          <Link to={`/signup`}>
-            <button type='button' className='btn-nes secondary'>
-              Go to Signup
-            </button>
-          </Link>
-        </Form>
+      <img src={GamepadLogo} style={logoStyle} alt='gamepad logo' />
 
-        <img src={GamepadLogo} style={logoStyle} alt='gamepad logo' />
-
-        <h5 className='fade-in'>Old Games, New Friends</h5>
-      </Container>
-    );
-  }
+      <h5 className='fade-in'>Old Games, New Friends</h5>
+    </Container>
+  );
 }
 
 const logoStyle = {
@@ -89,4 +171,4 @@ const logoStyle = {
   margin: 'auto'
 };
 
-export default connect(null, { fetchUser })(Login);
+export default Login;
