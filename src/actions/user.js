@@ -40,7 +40,7 @@ export const loginUser = (username, password) => {
         autoClose: 3000
       });
       history.push('/');
-      
+
     } catch (error) {
       toast.error('Invalid Username/Password', {
         position: 'top-center',
@@ -52,46 +52,40 @@ export const loginUser = (username, password) => {
   };
 };
 
-export function signupUser(userObj) {
-  return dispatch => {
-    dispatch({ type: 'START_ADDING_USER_REQUEST' });
+export const signupUser = userObj => {
+  return async dispatch => {
+    try {
+      dispatch({ type: 'START_ADDING_USER_REQUEST' });
 
-    const formData = new FormData();
+      const formData = new FormData();
 
-    Object.keys(userObj).forEach((key, value) => {
-      return formData.append(key, userObj[key]);
-    });
-
-    const reqObj = {
-      method: 'POST',
-      headers: {},
-      body: formData
-    };
-
-    fetch(`${API}/api/v1/users`, reqObj)
-      .then(resp => resp.json())
-      .then(data => {
-        if (data.error) {
-          toast.error('Unable to create user.', {
-            position: 'top-center',
-            autoClose: 3000
-          });
-
-          history.push('/signup');
-        } else {
-          dispatch({ type: 'LOGIN_USER', data });
-          localStorage.setItem('my_app_token', data.token);
-
-          toast.success(`Welcome ${data.user.username}!`, {
-            position: 'bottom-center',
-            autoClose: 3000
-          });
-
-          history.push('/');
-        }
+      Object.keys(userObj).forEach(key => {
+        return formData.append(key, userObj[key]);
       });
+
+      const { data } = await axios.post(`${API}/api/v1/users`,
+        formData, { 
+          headers: {} 
+        });
+
+      dispatch({ type: 'LOGIN_USER', data });
+      localStorage.setItem('my_app_token', data.token);
+
+      toast.success(`Welcome ${data.user.username}!`, {
+        position: 'bottom-center',
+        autoClose: 3000
+      });
+      history.push('/');
+
+    } catch (error) {
+      toast.error('Unable to create user.', {
+        position: 'top-center',
+        autoClose: 3000
+      });
+      history.push('/signup');
+    }
   };
-}
+};
 
 export function updateUser(userObj) {
   return dispatch => {
