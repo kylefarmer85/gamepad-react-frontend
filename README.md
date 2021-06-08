@@ -19,6 +19,9 @@ YouTube Demo Video: https://www.youtube.com/watch?v=uQLKLM_15yA
 
 ![Alt text](src/assets/images/gamepad-logo.png?raw=true 'Logo')
 
+## Application Creation      
+  This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
 ## Dependencies
     "axios": "^0.21.1",
     "bootstrap": "^4.5.3",
