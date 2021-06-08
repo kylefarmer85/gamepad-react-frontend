@@ -10,12 +10,12 @@ Deployed on Heroku: https://game-pad.herokuapp.com
 YouTube Demo Video: https://www.youtube.com/watch?v=uQLKLM_15yA
 
 ## Features
--Explore a massive database of vintage video games
--Rate and review games and leave comments on other user's reviews
--Ability to follow and unfollow other users
--Create user profile to add games, monitor followers/followings and game reviews/comments
--Find new friends based on personal gaming preferences
--Authenticates and authorizes users via JWT, bcrypt, local storage
+* Explore a massive database of vintage video games
+* Rate and review games and leave comments on other user's reviews
+* Ability to follow and unfollow other users
+* Create user profile to add games, monitor followers/followings and game reviews/comments
+* Find new friends based on personal gaming preferences
+* Authenticates and authorizes users via JWT, bcrypt, local storage
 
 ![Alt text](src/assets/images/gamepad-logo.png?raw=true 'Logo')
 
