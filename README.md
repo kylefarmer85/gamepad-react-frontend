@@ -9,7 +9,34 @@ Deployed on Heroku: https://game-pad.herokuapp.com
 
 YouTube Demo Video: https://www.youtube.com/watch?v=uQLKLM_15yA
 
+## Features
+-Explore a massive database of vintage video games
+-Rate and review games and leave comments on other user's reviews
+-Ability to follow and unfollow other users
+-Create user profile to add games, monitor followers/followings and game reviews/comments
+-Find new friends based on personal gaming preferences
+-Authenticates and authorizes users via JWT, bcrypt, local storage
+
 ![Alt text](src/assets/images/gamepad-logo.png?raw=true 'Logo')
+
+## Dependencies
+    "axios": "^0.21.1",
+    "bootstrap": "^4.5.3",
+    "react": "^17.0.1",
+    "react-bootstrap": "^1.4.0",
+    "react-dom": "^17.0.1",
+    "react-hook-form": "^7.7.1",
+    "react-redux": "^7.2.2",
+    "react-router-dom": "^5.2.0",
+    "react-scripts": "4.0.1",
+    "react-toastify": "^6.2.0",
+    "react-waypoint": "^9.0.3",
+    "redux": "^4.0.5",
+    "redux-thunk": "^2.3.0",
+    "styled-components": "^5.2.1",
+    "uuid": "^8.3.2",
+    "uuidv4": "^6.2.6",
+    "web-vitals": "^0.2.4"
 
 ## How to run the application
   - Clone this backend and the frontend: https://github.com/kylefarmer85/gamepad-react-frontend
