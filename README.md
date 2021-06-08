@@ -42,7 +42,7 @@ YouTube Demo Video: https://www.youtube.com/watch?v=uQLKLM_15yA
     "web-vitals": "^0.2.4"
 
 ## How to run the application
-  - Clone this frontend and the backend: https://github.com/kylefarmer85/gamepad-react-frontend
+  - Clone this frontend and the backend: https://github.com/kylefarmer85/gamepad-rails-backend
   - Navigate to the backend directory and run `$ bundle install`
   - Next, migrate the database `$ rails db:migrate`
   - Get your own RAWG API access key https://rawg.io/apidocs and save it as a Rails env variable in an .env file like this `RAWG_API_KEY=<your key here>`
