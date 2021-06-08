@@ -20,6 +20,6 @@ YouTube Demo Video: https://www.youtube.com/watch?v=uQLKLM_15yA
   - The API will begin running on localhost:3000
   - Navigate to the frontend directory
   - Run `$ npm install`
-  - Run `$ npm start` and the app should connect to localost:3001
+  - Run `$ npm start` and the app will load on localhost:3001
 
 Created using the excellent RAWG API - https://rawg.io/apidocs
