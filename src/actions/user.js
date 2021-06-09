@@ -118,3 +118,19 @@ export const updateUser = userObj => {
     }
   };
 };
+
+export const deleteUser = id => {
+  return async dispatch => {
+    try {
+      const { data } = await axios.delete(`${API}/api/v1/users/${id}`);
+
+      history.push('/login');
+      alert(`${data.username} was deleted`);
+      localStorage.removeItem('my_app_token');
+
+      dispatch({ type: 'LOGOUT_USER' });
+    } catch (error) {
+      alert(`ERROR: User was NOT deleted`);
+    }
+  };
+};
