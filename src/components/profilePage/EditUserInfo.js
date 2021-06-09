@@ -9,18 +9,18 @@
 // class EditUserInfo extends Component {
 //   constructor(props) {
 //     super(props);
-//     this.state = {
-//       id: this.props.user.id,
-//       username: this.props.user.username,
-//       password: '',
-//       password_confirmation: '',
-//       email: this.props.user.email,
-//       fav_console: this.props.user.fav_console,
-//       fav_genre: this.props.user.fav_genre,
-//       fav_game: this.props.user.fav_game,
-//       photo: ''
-//     };
-//   }
+  //   this.state = {
+  //     id: this.props.user.id,
+  //     username: this.props.user.username,
+  //     password: '',
+  //     password_confirmation: '',
+  //     email: this.props.user.email,
+  //     fav_console: this.props.user.fav_console,
+  //     fav_genre: this.props.user.fav_genre,
+  //     fav_game: this.props.user.fav_game,
+  //     photo: ''
+  //   };
+  // }
 
 //   handleChange = e => {
 //     this.setState({
@@ -232,7 +232,7 @@ const EditUserInfo = () => {
   const { id, username, email, fav_console, fav_genre, fav_game } = userDetails
 
   const onSubmit = data => {
-    dispatch(updateUser({...data, photo: data.photo[0]}));
+    dispatch(updateUser({...data, id: id, photo: data.photo[0]}));
   };
 
   const handleDelete = e => {
