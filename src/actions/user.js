@@ -40,7 +40,6 @@ export const loginUser = (username, password) => {
         autoClose: 3000
       });
       history.push('/');
-
     } catch (error) {
       toast.error('Invalid Username/Password', {
         position: 'top-center',
@@ -63,10 +62,9 @@ export const signupUser = userObj => {
         return formData.append(key, userObj[key]);
       });
 
-      const { data } = await axios.post(`${API}/api/v1/users`,
-        formData, { 
-          headers: {} 
-        });
+      const { data } = await axios.post(`${API}/api/v1/users`, formData, {
+        headers: {}
+      });
 
       dispatch({ type: 'LOGIN_USER', data });
       localStorage.setItem('my_app_token', data.token);
@@ -76,7 +74,6 @@ export const signupUser = userObj => {
         autoClose: 3000
       });
       history.push('/');
-
     } catch (error) {
       toast.error('Unable to create user.', {
         position: 'top-center',
@@ -87,39 +84,37 @@ export const signupUser = userObj => {
   };
 };
 
-export function updateUser(userObj) {
-  return dispatch => {
-    const formData = new FormData();
+export const updateUser = userObj => {
+  return async dispatch => {
+    try {
+      const formData = new FormData();
 
-    Object.keys(userObj).forEach((key, value) => {
-      return formData.append(key, userObj[key]);
-    });
-
-    const reqObj = {
-      method: 'PATCH',
-      headers: {},
-      body: formData
-    };
-
-    fetch(`${API}/api/v1/users/${userObj.id}`, reqObj)
-      .then(resp => resp.json())
-      .then(data => {
-        if (data.error) {
-          toast.error('User not updated', {
-            position: 'top-center',
-            autoClose: 5000
-          });
-
-          history.push(`/users/${userObj.id}/profile`);
-        } else {
-          toast.info(`${userObj.username}'s info was updated!`, {
-            position: 'bottom-center',
-            autoClose: 3000
-          });
-
-          dispatch({ type: 'UPDATE_USER', data });
-          history.push(`/users/${userObj.id}/profile`);
-        }
+      Object.keys(userObj).forEach((key, value) => {
+        return formData.append(key, userObj[key]);
       });
+
+      const { data } = await axios.put(
+        `${API}/api/v1/users/${userObj.id}`,
+        formData,
+        {
+          headers: {}
+        }
+      );
+
+      dispatch({ type: 'UPDATE_USER', data });
+      history.push(`/users/${userObj.id}/profile`);
+
+      toast.info(`${userObj.username}'s info was updated!`, {
+        position: 'bottom-center',
+        autoClose: 3000
+      });
+    } catch (error) {
+      toast.error('User not updated', {
+        position: 'top-center',
+        autoClose: 5000
+      });
+
+      history.push(`/users/${userObj.id}/profile`);
+    }
   };
-}
+};
