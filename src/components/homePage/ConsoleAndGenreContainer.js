@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import SlicedGamesContainer from './SlicedGamesContainer';
 import Form from 'react-bootstrap/Form';
 import { randomGenre, randomConsole } from '../../helpers/randomFuncs';
@@ -7,157 +7,113 @@ import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import Loading from '../reusable/Loading';
 import API from '../../API';
+import axios from 'axios';
 
-class ConsoleAndGenreContainer extends Component {
-  state = {
-    console: randomConsole(),
-    genre: randomGenre(),
-    games: [],
-    index: 0,
-    loading: true
-  };
+const ConsoleAndGenreContainer = () => {
+  const [console, setConsole] = useState(randomConsole());
+  const [genre, setGenre] = useState(randomGenre());
+  const [games, setGames] = useState([]);
+  const [index, setIndex] = useState(0);
+  const [loading, setLoading] = useState(true);
 
-  componentDidMount() {
-    this.fetchGames();
-  }
-
-  fetchGames = () => {
-    const reqObj = {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        console: this.state.console,
-        genre: this.state.genre
-      })
+  useEffect(() => {
+    const fetchGames = async () => {
+      const { data } = await axios.post(`${API}/api/v1/games/consoleandgenre`, {
+        console,
+        genre
+      });
+      setGames(data.results);
+      setLoading(false);
     };
 
-    fetch(`${API}/api/v1/games/consoleandgenre`, reqObj)
-      .then(resp => resp.json())
-      .then(data => {
-        if (data.error) {
-          alert(data.error);
-        } else {
-          this.setState({
-            games: data.results,
-            loading: false
-          });
-        }
-      });
+    fetchGames();
+  }, [console, genre]);
+
+  const slicedGames = () => {
+    return index > games.length ? setIndex(0) : games.slice(index, index + 4);
   };
 
-  handleSubmit = e => {
-    e.preventDefault();
-    this.fetchGames();
+  const nextGames = () => {
+    setIndex(prevIndex => prevIndex + 4);
   };
 
-  handleChange = e => {
-    this.setState({
-      [e.target.name]: e.target.value
-    });
-  };
-
-  slicedGames = () => {
-    if (this.state.index > this.state.games.length) {
-      this.setState({
-        index: 0
-      });
-    }
-    return this.state.games.slice(this.state.index, this.state.index + 4);
-  };
-
-  nextGames = () => {
-    this.setState(prevState => {
-      return {
-        index: prevState.index + 4
-      };
-    });
-  };
-
-  render() {
-    return (
-      <Container fluid className='mt-4 text-center'>
-        <Row className='align-items-center'>
-          <Col lg={3}>
-            <Form onSubmit={this.handleSubmit}>
-              <Form.Group controlId='formConsole'>
-                <Form.Label>Browse by Console and Genre</Form.Label>
-                <Form.Control
-                  style={{ textAlignLast: 'center' }}
-                  name='console'
-                  value={this.state.console}
-                  onChange={this.handleChange}
-                  as='select'
-                >
-                  <option>Atari 2600</option>
-                  <option>Atari 5200</option>
-                  <option>Atari 7800</option>
-                  <option>Nintendo Entertainment System</option>
-                  <option>Sega Master System</option>
-                  <option>Sega Genesis</option>
-                  <option>Neo Geo</option>
-                  <option>Game Boy</option>
-                  <option>Game Gear</option>
-                  <option>Super Nintendo</option>
-                  <option>Sega CD</option>
-                  <option>Atari Jaguar</option>
-                  <option>Panasonic 3DO</option>
-                  <option>Sega 32X</option>
-                  <option>Sega Saturn</option>
-                  <option>PlayStation</option>
-                  <option>Nintendo 64</option>
-                  <option>Game Boy Color</option>
-                  <option>Dreamcast</option>
-                </Form.Control>
-              </Form.Group>
-              <Form.Group controlId='formGenre'>
-                <Form.Control
-                  style={{ textAlignLast: 'center' }}
-                  name='genre'
-                  value={this.state.genre}
-                  onChange={this.handleChange}
-                  as='select'
-                >
-                  <option>Action</option>
-                  <option>Adventure</option>
-                  <option>Platformer</option>
-                  <option>Arcade</option>
-                  <option>RPG</option>
-                  <option>Fighting</option>
-                  <option>Sports</option>
-                  <option>Racing</option>
-                  <option>Puzzle</option>
-                  <option>Strategy</option>
-                  <option>Family</option>
-                </Form.Control>
-              </Form.Group>
-              <button type='submit' className='btn-nes primary'>
-                Browse Games
-              </button>
-
-              <button
-                type='button'
-                className='btn-nes secondary'
-                onClick={this.nextGames}
+  return (
+    <Container fluid className='mt-4 text-center'>
+      <Row className='align-items-center'>
+        <Col lg={3}>
+          <Form>
+            <Form.Group controlId='formConsole'>
+              <Form.Label>Browse by Console and Genre</Form.Label>
+              <Form.Control
+                style={{ textAlignLast: 'center' }}
+                name='console'
+                value={console}
+                onChange={e => setConsole(e.target.value)}
+                as='select'
               >
-                more{'>'}
-              </button>
-            </Form>
-          </Col>
-          <Col lg={9}>
-            {this.state.loading ? (
-              <Loading />
-            ) : (
-              <div className='d-flex flex-wrap justify-content-around slide-in'>
-                <SlicedGamesContainer slicedGames={this.slicedGames()} />
-              </div>
-            )}
-          </Col>
-        </Row>
-      </Container>
-    );
-  }
-}
+                <option>Atari 2600</option>
+                <option>Atari 5200</option>
+                <option>Atari 7800</option>
+                <option>Nintendo Entertainment System</option>
+                <option>Sega Master System</option>
+                <option>Sega Genesis</option>
+                <option>Neo Geo</option>
+                <option>Game Boy</option>
+                <option>Game Gear</option>
+                <option>Super Nintendo</option>
+                <option>Sega CD</option>
+                <option>Atari Jaguar</option>
+                <option>Panasonic 3DO</option>
+                <option>Sega 32X</option>
+                <option>Sega Saturn</option>
+                <option>PlayStation</option>
+                <option>Nintendo 64</option>
+                <option>Game Boy Color</option>
+                <option>Dreamcast</option>
+              </Form.Control>
+            </Form.Group>
+            <Form.Group controlId='formGenre'>
+              <Form.Control
+                style={{ textAlignLast: 'center' }}
+                name='genre'
+                value={genre}
+                onChange={e => setGenre(e.target.value)}
+                as='select'
+              >
+                <option>Action</option>
+                <option>Adventure</option>
+                <option>Platformer</option>
+                <option>Arcade</option>
+                <option>RPG</option>
+                <option>Fighting</option>
+                <option>Sports</option>
+                <option>Racing</option>
+                <option>Puzzle</option>
+                <option>Strategy</option>
+                <option>Family</option>
+              </Form.Control>
+            </Form.Group>
+            <button
+              type='button'
+              className='btn-nes secondary'
+              onClick={nextGames}
+            >
+              Next Games {'>'}
+            </button>
+          </Form>
+        </Col>
+        <Col lg={9}>
+          {loading ? (
+            <Loading />
+          ) : (
+            <div className='d-flex flex-wrap justify-content-around slide-in'>
+              <SlicedGamesContainer slicedGames={slicedGames()} />
+            </div>
+          )}
+        </Col>
+      </Row>
+    </Container>
+  );
+};
 
 export default ConsoleAndGenreContainer;
