@@ -24,7 +24,7 @@ import API from './API';
 const App = () => {
   const dispatch = useDispatch();
 
-  useEffect(async () => {
+  useEffect(() => {
     const token = localStorage.getItem('my_app_token');
 
     if (!token) {
@@ -38,14 +38,20 @@ const App = () => {
         }
       };
       try {
-        const { data } = await axios.get(`${API}/api/v1/current_user`, reqObj);
-        dispatch(currentUser(data));
+        const fetchUser = async () => {
+          const { data } = await axios.get(
+            `${API}/api/v1/current_user`,
+            reqObj
+          );
+          dispatch(currentUser(data));
+        };
+        fetchUser();
       } catch (error) {
         localStorage.removeItem('my_app_token');
         dispatch(logoutUser());
       }
     }
-  }, []);
+  }, [dispatch]);
 
   return (
     <div className='App'>
