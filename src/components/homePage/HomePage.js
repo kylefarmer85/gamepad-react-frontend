@@ -1,33 +1,28 @@
-import React, { Component } from 'react';
+import React from 'react';
+import { useSelector } from 'react-redux';
 import ConsoleAndGenreContainer from './ConsoleAndGenreContainer';
 import YearAndGenreContainer from './YearAndGenreContainer';
 import TopByConsoleContainer from './TopByConsoleContainer';
 import UsersByConsoleAndGenreContainer from './UsersByConsoleAndGenreContainer';
 import HighestRatedByFollowingsContainer from './HighestRatedByFollowingsContainer';
-import { connect } from 'react-redux';
 
-class HomePage extends Component {
-  render() {
-    return (
-      <div className='mb-4'>
-        <ConsoleAndGenreContainer />
-        <YearAndGenreContainer />
-        <TopByConsoleContainer />
-        {this.props.user ? (
-          <>
-            <HighestRatedByFollowingsContainer />
-            <UsersByConsoleAndGenreContainer />
-          </>
-        ) : null}
-      </div>
-    );
-  }
-}
+const HomePage = () => {
 
-const mapStateToProps = state => {
-  return {
-    user: state.user
-  };
+  const user = useSelector(state => state.user);
+
+  return (
+    <div className='mb-4'>
+      <ConsoleAndGenreContainer />
+      <YearAndGenreContainer />
+      <TopByConsoleContainer />
+      {user ? (
+        <>
+          <HighestRatedByFollowingsContainer />
+          <UsersByConsoleAndGenreContainer />
+        </>
+      ) : null}
+    </div>
+  );
 };
 
-export default connect(mapStateToProps, null)(HomePage);
+export default HomePage;
