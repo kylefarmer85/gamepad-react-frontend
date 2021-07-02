@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-import history from '../../history';
 import { toast } from 'react-toastify';
+import { useHistory } from 'react-router-dom';
 
 const SearchBar = () => {
-  const [searchTerm, setSearchTerm] = useState("")
+  const [searchTerm, setSearchTerm] = useState('');
+  const history = useHistory();
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -15,7 +16,7 @@ const SearchBar = () => {
       });
     }
     history.push(`/games/search/${searchTerm}`);
-    setSearchTerm("")
+    setSearchTerm('');
   };
 
   const handleUserSearch = () => {
@@ -25,7 +26,7 @@ const SearchBar = () => {
       });
     }
     history.push(`/users/search/${searchTerm}`);
-    setSearchTerm("")
+    setSearchTerm('');
   };
 
   return (
@@ -52,6 +53,6 @@ const SearchBar = () => {
       </Form>
     </div>
   );
-}
+};
 
 export default SearchBar;
