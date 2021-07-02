@@ -84,6 +84,22 @@ export const signupUser = userObj => {
   };
 };
 
+export const authorizeUser = token => {
+  return async dispatch => {
+    try {
+      const { data } = await axios.get(`${API}/api/v1/current_user`, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      });
+      dispatch({ type: 'CURRENT_USER', data });
+    } catch (error) {
+      localStorage.removeItem('my_app_token');
+      dispatch(logoutUser());
+    }
+  };
+};
+
 export const updateUser = userObj => {
   return async dispatch => {
     try {

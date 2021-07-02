@@ -1,12 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import axios from 'axios';
 import { Switch, Route } from 'react-router-dom';
-import {
-  currentUser,
-  logoutUser,
-  startAddingUserRequest
-} from './actions/user';
+import { authorizeUser } from './actions/user';
 import NavBar from './components/navbar/NavBar';
 import NavConsoleList from './components/navbar/NavConsoleList';
 import Login from './components/auth/Login';
@@ -19,37 +14,16 @@ import EditUserInfo from './components/profilePage/EditUserInfo';
 import UserSearchResultsPage from './components/UserSearchResultsPage';
 import ReviewsPage from './components/reviewsPage/ReviewsPage';
 import ReviewShow from './components/ReviewPage';
-import API from './API';
 
 const App = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
     const token = localStorage.getItem('my_app_token');
-
     if (!token) {
       return;
     } else {
-      dispatch(startAddingUserRequest());
-      const reqObj = {
-        method: 'GET',
-        headers: {
-          Authorization: `Bearer ${token}`
-        }
-      };
-      try {
-        const fetchUser = async () => {
-          const { data } = await axios.get(
-            `${API}/api/v1/current_user`,
-            reqObj
-          );
-          dispatch(currentUser(data));
-        };
-        fetchUser();
-      } catch (error) {
-        localStorage.removeItem('my_app_token');
-        dispatch(logoutUser());
-      }
+      dispatch(authorizeUser(token));
     }
   }, [dispatch]);
 
