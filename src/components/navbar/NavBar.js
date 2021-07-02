@@ -1,14 +1,17 @@
 import React from 'react';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
-import { connect } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { logoutUser } from '../../actions/user';
 import SearchBar from './SearchBar';
 import { Link } from 'react-router-dom';
 import NavBarSprites from './NavBarSprites';
 import { toast } from 'react-toastify';
 
-const NavBar = props => {
+const NavBar = () => {
+  const dispatch = useDispatch();
+  const user = useSelector(state => state.user);
+
   const handleLogout = () => {
     toast.info('You have successfully logged out.', {
       position: 'top-center',
@@ -16,7 +19,7 @@ const NavBar = props => {
     });
 
     localStorage.removeItem('my_app_token');
-    props.logoutUser();
+    dispatch(logoutUser());
   };
 
   return (
@@ -30,13 +33,13 @@ const NavBar = props => {
       </Navbar.Brand>
 
       <Nav className='mr-auto'>
-        {props.user ? (
+        {user ? (
           <>
             <Nav.Link onClick={handleLogout} as={Link} to={'/login'}>
               Logout
             </Nav.Link>
 
-            <Nav.Link as={Link} to={`/users/${props.user.id}/profile`}>
+            <Nav.Link as={Link} to={`/users/${user.id}/profile`}>
               Profile
             </Nav.Link>
           </>
@@ -57,10 +60,4 @@ const NavBar = props => {
   );
 };
 
-const mapStateToProps = state => {
-  return {
-    user: state.user
-  };
-};
-
-export default connect(mapStateToProps, { logoutUser })(NavBar);
+export default NavBar;
