@@ -1,7 +1,7 @@
 import React from 'react';
 import Card from 'react-bootstrap/Card';
 import Mario from '../../assets/images/mario-is-missing.jpg';
-import { connect } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { removeFromFavorites } from '../../actions/games';
 import { useHistory } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
@@ -12,14 +12,14 @@ const FavoriteGame = ({
   game_api_id,
   name,
   image,
-  user,
-  removeFavoriteFromProfile,
-  removeFromFavorites
+  removeFavoriteFromProfile
 }) => {
   let history = useHistory();
+  const dispatch = useDispatch();
+  const user = useSelector(state => state.user);
 
   const removeFavorite = () => {
-    removeFromFavorites(id, user, name);
+    dispatch(removeFromFavorites(id, user, name));
     removeFavoriteFromProfile(id);
   };
 
@@ -83,10 +83,4 @@ const FavoriteGame = ({
   );
 };
 
-const mapStateToProps = state => {
-  return {
-    user: state.user
-  };
-};
-
-export default connect(mapStateToProps, { removeFromFavorites })(FavoriteGame);
+export default FavoriteGame;
