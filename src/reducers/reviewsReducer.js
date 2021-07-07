@@ -4,7 +4,7 @@ const reviewsReducer = (state = [], action) => {
       return action.reviews;
 
     case 'ADD_REVIEW':
-      return [...state, action.review];
+      return [...state, action.data];
 
     case 'ADD_REVIEWS':
       return [...state, ...action.reviews];
