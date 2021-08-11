@@ -11,7 +11,7 @@ const HomePage = () => {
   const user = useSelector(state => state.user);
 
   return (
-    <div className='mb-4'>
+    <div id='launcher' className='mb-4'>
       <ConsoleAndGenreContainer />
       <YearAndGenreContainer />
       <TopByConsoleContainer />
