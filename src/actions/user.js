@@ -40,6 +40,15 @@ export const loginUser = (username, password) => {
         autoClose: 3000
       });
       history.push('/');
+      // INTERCOM
+      window.Intercom('boot', {
+        app_id: 'yqdan9hq',
+        name: data.user.username,
+        email: data.user.email,
+        user_id: data.user.id,
+        created_at: Date.now()
+      });
+      window.Intercom("update");
     } catch (error) {
       toast.error('Invalid Username/Password', {
         position: 'top-center',
