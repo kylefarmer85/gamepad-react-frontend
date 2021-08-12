@@ -48,7 +48,6 @@ export const loginUser = (username, password) => {
         user_id: data.user.id,
         created_at: Date.now()
       });
-      window.Intercom('update');
     } catch (error) {
       toast.error('Invalid Username/Password', {
         position: 'top-center',
@@ -92,7 +91,6 @@ export const signupUser = userObj => {
         user_id: data.user.id,
         created_at: Date.now()
       });
-      window.Intercom('update');
     } catch (error) {
       toast.error('Unable to create user.', {
         position: 'top-center',
