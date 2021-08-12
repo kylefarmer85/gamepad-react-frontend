@@ -48,7 +48,7 @@ export const loginUser = (username, password) => {
         user_id: data.user.id,
         created_at: Date.now()
       });
-      window.Intercom("update");
+      window.Intercom('update');
     } catch (error) {
       toast.error('Invalid Username/Password', {
         position: 'top-center',
@@ -83,6 +83,16 @@ export const signupUser = userObj => {
         autoClose: 3000
       });
       history.push('/');
+
+      // INTERCOM
+      window.Intercom('boot', {
+        app_id: 'yqdan9hq',
+        name: data.user.username,
+        email: data.user.email,
+        user_id: data.user.id,
+        created_at: Date.now()
+      });
+      window.Intercom('update');
     } catch (error) {
       toast.error('Unable to create user.', {
         position: 'top-center',
