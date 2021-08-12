@@ -13,6 +13,7 @@ const NavBar = () => {
   const user = useSelector(state => state.user);
 
   const handleLogout = () => {
+    window.Intercom('shutdown');
     toast.info('You have successfully logged out.', {
       position: 'top-center',
       autoClose: 3000

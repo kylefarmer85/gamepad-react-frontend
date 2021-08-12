@@ -21,6 +21,7 @@ const App = () => {
   useEffect(() => {
     const token = localStorage.getItem('my_app_token');
     if (!token) {
+      window.Intercom('shutdown');
       return;
     } else {
       dispatch(authorizeUser(token));
