@@ -22,6 +22,9 @@ const App = () => {
     const token = localStorage.getItem('my_app_token');
     if (!token) {
       window.Intercom('shutdown');
+      window.Intercom("boot", {
+        app_id: "yqdan9hq"
+      });
       return;
     } else {
       dispatch(authorizeUser(token));

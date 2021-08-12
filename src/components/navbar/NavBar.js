@@ -14,6 +14,9 @@ const NavBar = () => {
 
   const handleLogout = () => {
     window.Intercom('shutdown');
+    window.Intercom("boot", {
+      app_id: "yqdan9hq"
+    });
     toast.info('You have successfully logged out.', {
       position: 'top-center',
       autoClose: 3000
